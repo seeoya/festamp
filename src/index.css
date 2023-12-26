@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+
+/* reset */
+:root {
+    --text: #000;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-size: 62.5%;
+    line-height: 1.5;
+    scroll-behavior: smooth;
+}
+
+body, a, button, input, select, textarea {
+    color: var(--text);
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 400;
+    font-size: 1.4rem;
+    letter-spacing: -0.1rem;
+}
+
+div, h1, h2, h3, h4, h5, h6, a, p, ol, ul, li {
+    margin: 0;
+    padding: 0;
+    color: currentColor;
+    text-decoration: none;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+a, a:visited, a:link {
+    background-color: transparent;
+    color: inherit;
+    text-decoration: none;
+}
+
+input[type="checkbox"], input[type="submit"], button, a {
+    cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.blind {
+    position: absolute;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+}
