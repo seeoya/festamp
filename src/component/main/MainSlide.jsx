@@ -6,6 +6,8 @@ import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 const MainSlide = (props) => {
+    let data = props.data;
+
     let fesList = [
         {
             title: "aaa",
@@ -26,7 +28,8 @@ const MainSlide = (props) => {
     ];
 
     return (
-        <div>
+        <div className="main_slide">
+            <h2>오늘의 축제</h2>
             <Swiper
                 navigation={true}
                 spaceBetween={10}

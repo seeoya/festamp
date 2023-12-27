@@ -1,52 +1,26 @@
 import React from "react";
 import Map from "../map/Map";
 import MainSlide from "./MainSlide";
+import Popular from "./Popular";
 import RandomFestival from "./RandomFestival";
 import "./main.css";
 
-const Main = () => {
+const Main = (props) => {
+    let data = props.data;
+
     return (
-        <div id="main" className="sec">
+        <>
+            <div id="main" className="sec">
+                <MainSlide data={data} />
+                <Popular data={data} />
+                <RandomFestival data={data} />
+            </div>
+
+            {/* 지도 테스트용. 제거 예정 */}
             <div>
                 <Map />
             </div>
-
-            <div className="main_slide">
-                <h2>오늘의 축제</h2>
-                <MainSlide />
-            </div>
-
-            <div className="popular">
-                <h2>인기 축제 TOP 10</h2>
-                <ul className="list">
-                    <li className="item">
-                        <a href="#">축제 이름</a>
-                    </li>
-                    <li className="item">
-                        <a href="#">축제 이름</a>
-                    </li>
-                    <li className="item">
-                        <a href="#">축제 이름</a>
-                    </li>
-                    <li className="item">
-                        <a href="#">축제 이름</a>
-                    </li>
-                    <li className="item">
-                        <a href="#">축제 이름</a>
-                    </li>
-                    <li className="item">
-                        <a href="#">축제 이름</a>
-                    </li>
-                    <li className="item">
-                        <a href="#">축제 이름</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div>
-                <RandomFestival />
-            </div>
-        </div>
+        </>
     );
 };
 
