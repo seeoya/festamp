@@ -3,29 +3,47 @@ import React, { useState } from 'react'
 function Menu() {
     console.log('Menu() Called!');
     
-    const[isSignUP, setIsSignUp] = useState();
-    const[isSignIn, setIsSignIn] = useState();
-    const[isPrivacy, setIsPrivacy] = useState();
-    const[isSignOut, SetIsSignOut] = useState();
+    const[isSignUp, setIsSignUp] = useState(true);
+    const[isSignIn, setIsSignIn] = useState(false);
+    const[isPrivacy, setIsPrivacy] = useState(false);
+    const[isSignOut, SetIsSignOut] = useState(false);
 
     // handler
     const signUpHandler = () => {
         console.log('signUpHandler() Clicked!');
 
+        setIsSignUp(true);
+        setIsSignIn(false);
+        setIsPrivacy(false);
+        SetIsSignOut(false);
     }
 
     const signInHandler = () => {
         console.log('signInHandler() Clicked!');
-        
+
+        setIsSignUp(false);
+        setIsSignIn(true);
+        setIsPrivacy(false);
+        SetIsSignOut(false);
     }
 
     const privacyRetouchHandler = () => {
         console.log('privacyRetouchHandler() Clicked!');
         
+        setIsSignUp(false);
+        setIsSignIn(false);
+        setIsPrivacy(true);
+        SetIsSignOut(false);
     }
 
     const signOutHandler = () => {
         console.log('signOutHandler() Clicked!');
+
+        
+        setIsSignUp(false);
+        setIsSignIn(false);
+        setIsPrivacy(false);
+        SetIsSignOut(true);
         
     }
 
@@ -40,6 +58,7 @@ function Menu() {
         <br />
         <a href="#none" onClick={signOutHandler}>로그아웃</a>
     </div>
+ 
   );
 }
 
