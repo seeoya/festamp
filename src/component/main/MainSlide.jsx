@@ -29,15 +29,19 @@ const MainSlide = (props) => {
         <div>
             <Swiper
                 navigation={true}
-                pagination={true}
+                spaceBetween={10}
+                centeredSlides={true}
+                pagination={{
+                    clickable: true,
+                }}
                 modules={[Navigation, Pagination]}
                 className="mySwiper"
             >
                 {fesList.map((el) => {
                     return (
                         <SwiperSlide className="slide_item">
-                            <img src={el.src} alt="" />
                             {/* <span className="title">{el.title}</span> */}
+                            <img src={el.src} alt="" />
                         </SwiperSlide>
                     );
                 })}

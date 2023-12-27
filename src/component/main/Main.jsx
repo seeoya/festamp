@@ -1,10 +1,16 @@
 import React from "react";
+import Map from "../map/Map";
 import MainSlide from "./MainSlide";
+import RandomFestival from "./RandomFestival";
 import "./main.css";
 
 const Main = () => {
     return (
         <div id="main" className="sec">
+            <div>
+                <Map />
+            </div>
+
             <div className="main_slide">
                 <h2>오늘의 축제</h2>
                 <MainSlide />
@@ -37,16 +43,8 @@ const Main = () => {
                 </ul>
             </div>
 
-            <div className="random">
-                <h2>이런 축제는 어때?</h2>
-
-                <div className="random_wrap">
-                    <button type="button" className="random_btn">
-                        랜덤
-                    </button>
-
-                    <div className="random_content"></div>
-                </div>
+            <div>
+                <RandomFestival />
             </div>
         </div>
     );
