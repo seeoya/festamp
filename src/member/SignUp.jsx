@@ -24,7 +24,17 @@ const SignUp = () => {
 
     }
 
-    const userPassWordHandler = () => {
+    const userPhoneHandler = () => {
+        console.log('userPassWord() Called!');
+
+    }
+
+    const userEmailHandler = () => {
+        console.log('userPassWord() Called!');
+
+    }
+
+    const userBirthHandler = () => {
         console.log('userPassWord() Called!');
 
     }
@@ -44,11 +54,11 @@ const SignUp = () => {
             <input type="password" name="pw_accordance" onChange={userPwAcdHandler} placeholder="비밀번호 확인"/> &nbsp;
             <button>확인</button>
             <br />
-            <input type="text" name="user_phone" placeholder="연락처"/>
+            <input type="text" name="user_phone" onChange={userPhoneHandler} placeholder="연락처"/>
             <br />
-            <input type="text" name="user_email" placeholder="E-mail"/>
+            <input type="text" name="user_email" onChange={userEmailHandler} placeholder="E-mail"/>
             <br />
-            <input type="date" name="user_birth" placeholder="생일"/>
+            <input type="date" name="user_birth" onChange={userBirthHandler} placeholder="생일"/>
             <br />
             <button >회원가입</button>
 
