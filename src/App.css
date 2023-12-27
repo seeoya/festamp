@@ -1,5 +1,21 @@
-/* 공통 CSS */
+#wrap {
+}
 
-html {
-    
+header, footer {
+    display: flex;
+    margin: auto;
+    width: 100%;
+}
+
+header .nav {
+    display: flex;
+}
+
+#container {
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+footer {
+
 }
