@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import SignUp from "./SignUp"
 import SignIn from './SignIn';
+import Privacy from './Privacy';
+import SignOut from './SignOut';
 
 function Menu() {
     console.log('Menu() Called!');
