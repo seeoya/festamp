@@ -5,7 +5,7 @@ import Header from "./Header";
 
 const Wrap = () => {
     return (
-        <div>
+        <div id="wrap">
             <Header />
             <Container />
             <Footer />
