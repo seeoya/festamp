@@ -1,41 +1,45 @@
 import React from "react";
 
+
+
 const SignUp = () => {
     console.log('SignUp() Called!');
 
     // handleer
-    const userNameHandler = () => {
+    const userNameHandler = (e) => {
         console.log('userNameHandler() Called!');
+
+        e.target.value
 
     }
     
-    const userNickHandler = () => {
+    const userNickHandler = (e) => {
         console.log('userNickName() Called!' );
 
     }
 
-    const userPwHandler = () => {
+    const userPwHandler = (e) => {
         console.log('userPassWord() Called!');
 
     }
 
-    const userPwAcdHandler = () => {
-        console.log('userPassWord() Called!');
+    const userPwAcdHandler = (e) => {
+        console.log('userPwAcdHandler() Called!');
 
     }
 
-    const userPhoneHandler = () => {
-        console.log('userPassWord() Called!');
+    const userPhoneHandler = (e) => {
+        console.log('userPhoneHandler() Called!');
 
     }
 
-    const userEmailHandler = () => {
-        console.log('userPassWord() Called!');
+    const userEmailHandler = (e) => {
+        console.log('userEmailHandler() Called!');
 
     }
 
-    const userBirthHandler = () => {
-        console.log('userPassWord() Called!');
+    const userBirthHandler = (e) => {
+        console.log('userBirthHandler() Called!');
 
     }
 
@@ -52,7 +56,7 @@ const SignUp = () => {
             <input type="password" name="user_pw" onChange={userPwHandler} placeholder="비밀번호 " />
             <br />
             <input type="password" name="pw_accordance" onChange={userPwAcdHandler} placeholder="비밀번호 확인"/> &nbsp;
-            <button>확인</button>
+            <button >확인</button>
             <br />
             <input type="text" name="user_phone" onChange={userPhoneHandler} placeholder="연락처"/>
             <br />
