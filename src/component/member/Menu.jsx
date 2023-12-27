@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import SignUp from "./SignUp"
+import SignIn from './SignIn';
 
 function Menu() {
     console.log('Menu() Called!');
@@ -48,7 +50,7 @@ function Menu() {
     }
 
   return (
-
+    <>
     <div>
         <a href="#none" onClick={signUpHandler}>회원가입</a>
         <br />
@@ -58,8 +60,57 @@ function Menu() {
         <br />
         <a href="#none" onClick={signOutHandler}>로그아웃</a>
     </div>
- 
+
+    {
+        isSignUp
+        ?
+        <SignUp 
+        signupscreen = {setIsSignUp}
+        signinscreen = {setIsSignIn}
+        privacyscreen = {setIsPrivacy}
+        signoutscreen = {SetIsSignOut} />
+        :
+        null
+    }
+    
+    {
+        isSignIn
+        ?
+        <SignIn 
+        signupscreen = {setIsSignUp}
+        signinscreen = {setIsSignIn}
+        privacyscreen = {setIsPrivacy}
+        signoutscreen = {SetIsSignOut} />
+        :
+        null
+    }
+    {
+        isPrivacy
+        ?
+        <Privacy 
+        signupscreen = {setIsSignUp}
+        signinscreen = {setIsSignIn}
+        privacyscreen = {setIsPrivacy}
+        signoutscreen = {SetIsSignOut} />
+        :
+        null
+    }
+    {
+        isSignOut
+        ?
+        <SignOut 
+        signupscreen = {setIsSignUp}
+        signinscreen = {setIsSignIn}
+        privacyscreen = {setIsPrivacy}
+        signoutscreen = {SetIsSignOut} />
+        :
+        null
+    }
+    </>
+
   );
+
+  
 }
 
 export default Menu;
