@@ -2,7 +2,19 @@
 
 /* reset */
 :root {
-    --text: #000;
+
+    /* css 변수 */
+    --bg: #fffdfd;
+    --text: #0c0c0c;
+    --sec-bg: #eee;
+    --sec-border: 1px solid #ccc;
+    --border-color: #eaeaea;
+    --btn-bg: #0c0c0c;
+    --btn-bg-hover: #a3a3a3;
+    --btn-border: 1px solid var(--border-color);
+    --btn-border-radius: 5px;
+    --btn-color: #fff;
+    --btn-color-hover: #fff;
 }
 
 * {
@@ -16,6 +28,7 @@ html, body {
     font-size: 62.5%;
     line-height: 1.5;
     scroll-behavior: smooth;
+    background-color: var(--bg);
 }
 
 body, a, button, input, select, textarea {
@@ -57,4 +70,32 @@ table {
     font-size: 0;
     line-height: 0;
     overflow: hidden;
+}
+
+/* 스타일 가이드 */
+.sec {
+    padding: 30px;
+    background-color: var(--sec-bg);
+    border: var(--sec-border);
+    border-radius: 20px;
+}
+
+.title {
+}
+
+.btn {
+    background-color: var(--btn-bg);
+    border: var(--btn-border);
+    border-radius: var(--btn-border-radius);
+    color: var(--btn-color);
+}
+
+.btn:hover {
+    background-color: var(--btn-bg-hover);
+    color: var(--btn-color-hover);
+}
+
+.input {
+    padding: 10px;
+    border: 1px solid var(--border-color);
 }
