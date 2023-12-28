@@ -21,7 +21,7 @@ const Main = (props) => {
 
             {/* 지도 테스트용. 제거 예정 */}
             <div>
-                <Map />
+                <Map festivalData={festivalData} />
             </div>
         </>
     );
