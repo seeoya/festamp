@@ -72,7 +72,7 @@ const SignUp = () => {
     const joinBtn = () => {
         console.log('joinBtn() Clicked!');
     
-        let memberInStorage = localStorage.getItem('memberDb');
+        let memberInStorage = localStorage.getItem('memberDB');
         if(memberInStorage=== null){
            
             let newMemberDb = {
@@ -84,7 +84,7 @@ const SignUp = () => {
                 birth: UBirth } 
             };
             let memberStr = JSON.stringify(newMemberDb);
-            localStorage.setItem('memberDb', memberStr);
+            localStorage.setItem('memberDB', memberStr);
 
         } else {
 
@@ -137,7 +137,7 @@ return (
                     <label htmlFor="u_birth"><p>생년월일</p></label>
                     <input type="date" id="u_birth" name="u_birth" value={UBirth} onChange={(e)=>userBirthHandler(e)} placeholder="생일" />
                     <br />
-                    <button type="button" onClick={joinBtn}>회원가입</button>
+                <button type="button" onClick={joinBtn}>회원가입</button>
                 </fieldset>
             </form>
 
