@@ -6,7 +6,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 const MainSlide = (props) => {
-    let data = props.data;
+    let festivalData = props.festivalData;
 
     let fesList = [
         {
@@ -32,11 +32,11 @@ const MainSlide = (props) => {
             <h2>오늘의 축제</h2>
             <Swiper
                 navigation={true}
-                spaceBetween={10}
                 centeredSlides={true}
                 pagination={{
                     clickable: true,
                 }}
+                loop={true}
                 modules={[Navigation, Pagination]}
                 className="mySwiper"
             >
