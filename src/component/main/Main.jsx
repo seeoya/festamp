@@ -6,19 +6,22 @@ import RandomFestival from "./RandomFestival";
 import "./main.css";
 
 const Main = (props) => {
-    let data = props.data;
+    let festivalData = props.festivalData;
 
     return (
         <>
             <div id="main" className="sec">
-                <MainSlide data={data} />
-                <Popular data={data} />
-                <RandomFestival data={data} />
+                <MainSlide festivalData={festivalData} />
+
+                <div className="info">
+                    <Popular festivalData={festivalData} />
+                    <RandomFestival festivalData={festivalData} />
+                </div>
             </div>
 
             {/* 지도 테스트용. 제거 예정 */}
             <div>
-                <Map />
+                <Map festivalData={festivalData} />
             </div>
         </>
     );
