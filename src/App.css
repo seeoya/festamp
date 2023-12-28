@@ -5,6 +5,7 @@ header, footer {
     display: flex;
     margin: auto;
     width: 100%;
+    background-color: aquamarine;
 }
 
 header .nav {
@@ -14,8 +15,9 @@ header .nav {
 #container {
     margin: 0 auto;
     max-width: 1200px;
+    background-color: palegreen;
 }
 
 footer {
-
+    background-color: palevioletred;
 }

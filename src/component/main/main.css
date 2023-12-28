@@ -1,5 +1,7 @@
 #main {
     background-color: paleturquoise;
+    display: flex;
+    flex-direction: column;
 }
 
 .swiper {
