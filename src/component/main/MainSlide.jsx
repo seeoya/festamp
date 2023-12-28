@@ -7,7 +7,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const MainSlide = (props) => {
     let festivalData = props.festivalData;
-
     const [nowFestival, setNowFestival] = useState([]);
 
     useEffect(() => {
@@ -31,7 +30,7 @@ const MainSlide = (props) => {
     };
 
     return (
-        <div className="main_slide">
+        <div id="main_slide">
             <h2>오늘의 축제</h2>
 
             <Swiper
@@ -47,8 +46,17 @@ const MainSlide = (props) => {
                 {nowFestival.map((el) => {
                     return (
                         <SwiperSlide className="slide_item">
-                            {/* <span className="title">{el.title}</span> */}
-                            <img src={el.img} alt="" />
+                            <a href={"#" + el.id}>
+                                <img src={el.img} alt={el.title} className="item_title" />
+                                <div className="item_content">
+                                    <div className="item_city">[{el.city}]</div>
+                                    <div className="item_header">
+                                        <span className="item_title">{el.title}</span>
+                                        <span className="item_date">({el.date})</span>
+                                    </div>
+                                    <div className="item_explain">{el.explain}</div>
+                                </div>
+                            </a>
                         </SwiperSlide>
                     );
                 })}
