@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Main from "./main/Main";
-import ListView from "./list/ListView";
+import List from "./list/List";
 
 const Container = (props) => {
     useEffect(() => {
@@ -13,7 +13,7 @@ const Container = (props) => {
         <div id="container">
             {/* 여기에 본문 컴포넌트 삽입 */}
             <Main data={props.data} />
-            <ListView />
+            <List />
         </div>
     );
 };
