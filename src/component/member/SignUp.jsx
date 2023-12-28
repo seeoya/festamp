@@ -71,8 +71,9 @@ const SignUp = () => {
     // 회원가입 버튼
     const joinBtn = () => {
         console.log('joinBtn() Clicked!');
+        
     
-        let memberInStorage = localStorage.getItem('memberDB');
+        let memberInStorage = localStorage.getItem('memberDb');
         if(memberInStorage=== null){
            
             let newMemberDb = {
@@ -88,17 +89,22 @@ const SignUp = () => {
 
         } else {
 
-            let memberDbObj = JSON.parse('memberDb');
+            let memberDbObj = JSON.parse('memberDB');
+            console.log([memberDbObj])
             memberDbObj[UId] = {
                 name: UName,
                 pw: UPw,
                 phone: UPhone,
                 email: UEmail,
                 birth: UBirth
+
             };
+            
             let memberStr = JSON.stringify(memberDbObj);
             localStorage.setItem('memberDb', memberStr);
             
+           
+          
         };
 
         alert('회원가입을 축하드립니다.');
