@@ -13,7 +13,7 @@ const Main = (props) => {
             <div id="main" className="sec">
                 <MainSlide festivalData={festivalData} />
 
-                <div>
+                <div className="info">
                     <Popular festivalData={festivalData} />
                     <RandomFestival festivalData={festivalData} />
                 </div>

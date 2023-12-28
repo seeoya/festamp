@@ -6,12 +6,13 @@ const Popular = (props) => {
     return (
         <div className="popular">
             <h2>인기 축제 TOP 10</h2>
+            
             <ul className="list">
                 {festivalData.map((el, i) => {
                     if (i < 10) {
                         return (
                             <li className="item">
-                                <a href="#">{`${i+1}. ${el.title}`}</a>
+                                <a href="#">{`${i + 1}. ${el.title}`}</a>
                             </li>
                         );
                     }

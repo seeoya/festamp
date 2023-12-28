@@ -24,7 +24,9 @@ const RandomFestival = (props) => {
             <h2>이런 축제는 어때?</h2>
 
             <div className="random_wrap">
-                <button type="button" className="random_btn" onClick={randomBtnClickHandler}>추천해줘!</button>
+                <button type="button" className="random_btn" onClick={randomBtnClickHandler}>
+                    추천해줘!
+                </button>
 
                 <div className="random_content">
                     <div className="item">
