@@ -1,7 +1,7 @@
 import React from "react";
 import './listStyle.css';
 
-const ListView = () => {
+const ListView = (props) => {
     
     let calendar = <i class="fa-regular fa-calendar-days"></i>
     let place = <i class="fa-solid fa-compass"></i>

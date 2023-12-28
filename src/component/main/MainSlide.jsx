@@ -15,11 +15,11 @@ const MainSlide = (props) => {
 
     const FindNowFestival = () => {
         let tmpArr = [];
-        let today = new Date().toLocaleDateString();
+        let today = new Date();
 
         festivalData.map((el) => {
-            let startDate = new Date(el.startDate).toLocaleDateString(),
-                endDate = new Date(el.endDate).toLocaleDateString();
+            let startDate = new Date(el.startDate),
+                endDate = new Date(el.endDate);
 
             if (today > startDate && today < endDate) {
                 tmpArr.push(el);
