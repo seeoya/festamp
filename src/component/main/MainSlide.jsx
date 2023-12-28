@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -8,28 +8,32 @@ import { Swiper, SwiperSlide } from "swiper/react";
 const MainSlide = (props) => {
     let festivalData = props.festivalData;
 
-    let fesList = [
-        {
-            title: "aaa",
-            src: "imgs/dummy/img1.jpg",
-        },
-        {
-            title: "bbb",
-            src: "imgs/dummy/img2.jpg",
-        },
-        {
-            title: "ccc",
-            src: "imgs/dummy/img3.jpg",
-        },
-        {
-            title: "ddd",
-            src: "imgs/dummy/img4.jpg",
-        },
-    ];
+    const [nowFestival, setNowFestival] = useState([]);
+
+    useEffect(() => {
+        setNowFestival(FindNowFestival());
+    }, []);
+
+    const FindNowFestival = () => {
+        let tmpArr = [];
+        let today = new Date().toLocaleDateString();
+
+        festivalData.map((el) => {
+            let startDate = new Date(el.startDate).toLocaleDateString(),
+                endDate = new Date(el.endDate).toLocaleDateString();
+
+            if (today > startDate && today < endDate) {
+                tmpArr.push(el);
+            }
+        });
+
+        return tmpArr;
+    };
 
     return (
         <div className="main_slide">
             <h2>오늘의 축제</h2>
+
             <Swiper
                 navigation={true}
                 centeredSlides={true}
@@ -40,11 +44,11 @@ const MainSlide = (props) => {
                 modules={[Navigation, Pagination]}
                 className="mySwiper"
             >
-                {fesList.map((el) => {
+                {nowFestival.map((el) => {
                     return (
                         <SwiperSlide className="slide_item">
                             {/* <span className="title">{el.title}</span> */}
-                            <img src={el.src} alt="" />
+                            <img src={el.img} alt="" />
                         </SwiperSlide>
                     );
                 })}
