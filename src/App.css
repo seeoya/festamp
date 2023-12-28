@@ -18,6 +18,10 @@ header .nav {
     background-color: palegreen;
 }
 
+.sec {
+    padding: 30px;
+}
+
 footer {
     background-color: palevioletred;
 }

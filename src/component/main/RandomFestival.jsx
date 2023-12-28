@@ -3,13 +3,14 @@ import { customRandom } from "../util/Random";
 
 const RandomFestival = (props) => {
     const [resNum, setResNum] = useState(0);
-    let data = props.data;
+    let festivalData = props.festivalData;
 
     useEffect(() => {
         setRandomResNum();
     }, []);
+
     const setRandomResNum = () => {
-        let resultNum = customRandom(0, data.length);
+        let resultNum = customRandom(0, festivalData.length);
 
         setResNum(resultNum);
     };
@@ -24,19 +25,21 @@ const RandomFestival = (props) => {
 
             <div className="random_wrap">
                 <button type="button" className="random_btn" onClick={randomBtnClickHandler}>
-                    랜덤
+                    추천해줘!
                 </button>
 
                 <div className="random_content">
                     <div className="item">
-                        <div className="item_title">{data[resNum].title}</div>
-                        <div className="item_date">{data[resNum].date}</div>
-                        <div className="item_city">{data[resNum].city}</div>
-                        <div className="item_explan">{data[resNum].explain}</div>
-                        <div className="item_location">{data[resNum].location}</div>
-                        <div className="item_price">{data[resNum].price}</div>
-                        <div className="item_name">{data[resNum].name}</div>
-                        <div className="item_tel">{data[resNum].tel}</div>
+                        <a href={"#" + festivalData[resNum].id}>
+                            <div className="item_title">{festivalData[resNum].title}</div>
+                            <div className="item_date">{festivalData[resNum].date}</div>
+                            <div className="item_city">{festivalData[resNum].city}</div>
+                            <div className="item_explan">{festivalData[resNum].explain}</div>
+                            <div className="item_location">{festivalData[resNum].location}</div>
+                            <div className="item_price">{festivalData[resNum].price}</div>
+                            <div className="item_name">{festivalData[resNum].name}</div>
+                            <div className="item_tel">{festivalData[resNum].tel}</div>
+                        </a>
                     </div>
                 </div>
             </div>

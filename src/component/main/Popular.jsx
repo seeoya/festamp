@@ -1,17 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Popular = (props) => {
-    let data = props.data;
+    let festivalData = props.festivalData;
+    const [popFestival, setPopFestival] = useState([]);
+
+    useEffect(() => {
+        setPopFestival(sortFestival());
+    }, []);
+
+    const sortFestival = (num = 10) => {
+        // 축제 별점 평점 순으로 sort
+        let tmpArr = [];
+        tmpArr = festivalData;
+        return tmpArr;
+    };
 
     return (
         <div className="popular">
-            <h2>인기 축제 TOP 10</h2>
+            <h2>인기 축제 순위</h2>
+
             <ul className="list">
-                {data.map((el, i) => {
+                {popFestival.map((el, i) => {
                     if (i < 10) {
                         return (
                             <li className="item">
-                                <a href="#">{`${i+1}. ${el.title}`}</a>
+                                <a href={"#" + el.id}>{`${i + 1}. ${el.title}`}</a>
                             </li>
                         );
                     }
