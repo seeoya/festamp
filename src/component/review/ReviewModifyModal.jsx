@@ -11,7 +11,7 @@ const ReviewModifyModal = (props) => {
     const [reviewNo, setReviewNo] = useState(0);
     const [rDateTime, setRDateTime] = useState('');
     const [uReview, setUReview] = useState('');
-    const [dataTitle, setDataTitle] = useState('');
+    const [festivalTitle, setFestivalTitle] = useState('');
     const [star, setStar] = useState('');    
 
 

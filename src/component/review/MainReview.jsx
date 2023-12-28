@@ -7,37 +7,41 @@ import { getLoginedId } from './session';
 
 const MainReview = (props) => {
 
-  const [isLogined, setLogined] = useState(true);
+  const [isLogined, setLogined] = useState(false);
   const [isShowWriteModal, setIsShowWriteModal] = useState(false);
   const [isShowModifyModal, setIsShowModifyModal] = useState(false);
   const [reviewsArr, setReviewsArr] = useState([]);
   const [tempFlag, setTempFlag] = useState(true);
+  const [festivalDataId, setFestivalDataId] = useState('');
+  const [festivalTitle, setFestivalTitle] = useState('');
 
   useEffect(() => {
     console.log('useEffect() CALLED!!');
 
+    setFestivalDataId(props.dataId);
+    setFestivalTitle(props.title);
+
     if (!isLogined) {
-        let reviewDBObjs = getReviewDBObjs();  
+        let reviewDBObjs = getReviewDBObjs();
+        // let dataIdReviews = reviewDBObjs[festivalDataId]; 
        
         let reviewskeys = [];
         for (let keys in reviewDBObjs) {
+          
             reviewskeys.push(keys);
+          
         }
 
         let tempArr = [];
         for (let i = 0; i < reviewskeys.length; i++) {
             let reviews = reviewDBObjs[reviewskeys[i]];
-               reviews['key'] = reviews.uId;
-               reviews['key'] = reviews.uId;
-               reviews['key'] = reviews.uReview;
-               reviews['key'] = reviews.uReview;
-
-            
-            tempArr.push(reviews);
+            if (reviews.dataId === festivalDataId){
+                reviews['key'] = reviewskeys[i];
+                     
+                tempArr.push(reviews);
 
         }
-        
-        setReviewsArr(tempArr);
+          setReviewsArr(tempArr);
     }
 
 }, [tempFlag, isShowWriteModal, isShowModifyModal]);
@@ -54,15 +58,17 @@ const MainReview = (props) => {
     }
   }
 
-  const mainReviewModifyBtnClickHandler = () => {
-    console.log('reviewModify Btn Clicked()!');
+  const mainReviewModifyBtnClickHandler = (e, reviewNo) => {
+    console.log('mainReviewModify Btn Clicked()!');
+
+    setModify
     
     // modify modal show
     setIsShowModifyModal(true);
   }
  
   const mainReviewDelBtnClickHandler = (e, reviewNo) => {
-    console.log('reviewDel Btn Clicked!');
+    console.log('mainReviewDel Btn Clicked!');
            
     let result = window.confirm('리뷰를 삭제하시겠습니까?');
 
@@ -109,14 +115,11 @@ const MainReview = (props) => {
 
         <div className='review_list_wrap'>
           <div className='review_head_wrap'>
-
-              <tr>
-                  <td>{festivalName} 리 뷰 |&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                  <td>리뷰 {cnt}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                  <td>*****</td>    // 별점 표시
-                  <td><button onClick={mainReviewWriteBtnClickHandler}>리뷰 쓰기</button></td>
-              </tr>
-
+            <ul>
+              <li>{festivalTitle} 리 뷰 |&nbsp;&nbsp;&nbsp;&nbsp;{props.starDataId}&nbsp;&nbsp;&nbsp;&nbsp;
+                  <button onClick={mainReviewWriteBtnClickHandler}>리뷰 쓰기</button></li>
+            </ul>                               
+          
           </div>
 
           <div className='review_list_wrap'>
@@ -125,16 +128,16 @@ const MainReview = (props) => {
                 ?
             <>
             <ul>
-            <li>===== MY REVIEW =====</li>
-                   { reviewsArr.map((review, idx) =>
+                 { reviewsArr.map((reviews, idx) =>
                     
                 <>
                 <li>
-                    {`${[{idx}]}`}&nbsp;&nbsp;
-                      {review}&nbsp;&nbsp;
-                      {reviewsArr.star}&nbsp;&nbsp;
-                      <button onClick={(e) => mainReviewModifyBtnClickHandler(e, reviewsArr.reviewNo)}>수정</button>&nbsp;&nbsp;
-                      <button onClick={(e) => mainReviewDelBtnClickHandler(e, reviewsArr.reviewNo)}>삭제</button>
+                    {reviews.title}&nbsp;&nbsp;
+                    {`${[reviews.rDateTime]}`}&nbsp;&nbsp;
+                      {reviews.rReview}&nbsp;&nbsp;
+                      {reviews.star}&nbsp;&nbsp;
+                      <button onClick={(e) => mainReviewModifyBtnClickHandler(e, reviews.reviewNo)}>수정</button>&nbsp;&nbsp;
+                      <button onClick={(e) => mainReviewDelBtnClickHandler(e, reviews.reviewNo)}>삭제</button>
                 </li>
                 </>
                    )}
@@ -144,13 +147,14 @@ const MainReview = (props) => {
                 :
             <>
             <ul>  // 로그인 되지 않은 review list
-                { reviewsArr.map((review, idx) =>
+                { reviewsArr.map((reviews, idx) =>
                     
                     <>
-                    <li>
-                        {`${[{idx}]}`}&nbsp;&nbsp;
-                          {review}&nbsp;&nbsp;
-                          {reviewsArr.star}
+                    <li>{reviews.uId}&nbsp;&nbsp;
+                        {reviews.title}&nbsp;&nbsp;
+                        {`${[reviews.rDateTime]}`}&nbsp;&nbsp;
+                        {reviews.rReview}&nbsp;&nbsp;
+                        {reviews.star}
                     </li>
                     </> )}
             </ul>
@@ -160,7 +164,8 @@ const MainReview = (props) => {
               isShowWriteModal
               ?
             <>
-              <ReviewWriteModal />
+              <ReviewWriteModal festivalDataId={props.dataId} festivalTitle={props.title}
+                                isShowWriteModal={setIsShowWriteModal}/>
             </> : null  
             }
             
