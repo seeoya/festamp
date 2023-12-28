@@ -3,11 +3,13 @@ import Container from "./Container";
 import Footer from "./Footer";
 import Header from "./Header";
 
+import { festivalData } from "../data/festivalData";
+
 const Wrap = () => {
     return (
-        <div>
+        <div id="wrap">
             <Header />
-            <Container />
+            <Container festivalData={festivalData} />
             <Footer />
         </div>
     );

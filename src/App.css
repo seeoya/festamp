@@ -1,5 +1,24 @@
-/* 공통 CSS */
+#wrap {
+}
 
-html {
-    
+header, footer {
+    display: flex;
+    margin: auto;
+    width: 100%;
+    background-color: aquamarine;
+}
+
+header .nav {
+    display: flex;
+}
+
+#container {
+    margin: 0 auto;
+    padding: 50px 0 30px;
+    max-width: 1200px;
+    /* background-color: palegreen; */
+}
+
+footer {
+    background-color: palevioletred;
 }

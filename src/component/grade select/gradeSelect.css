@@ -1,0 +1,36 @@
+.fa-star {
+    color: rgb(255, 255, 0);
+}
+
+.fa-star-half-stroke {
+    color: rgb(255, 255, 0);
+}
+
+.select_box {
+    width: 100px; height: 30px;
+    text-align: center;
+    position: relative;
+}
+
+.label {
+    width: inherit; height: inherit;
+    background-color: #47a8d5;
+    border: 1px solid #888;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.label:hover {
+    background-color: #66b3d6;
+}
+
+.label:active {
+    background-color: #83c4e3;
+    color: #eee;
+}
+
+.option_item {
+    background-color: #aaa;
+    border-radius: 3px;
+    display: none;
+}
