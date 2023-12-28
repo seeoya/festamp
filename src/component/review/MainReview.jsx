@@ -4,6 +4,7 @@ import ReviewWriteModal from './ReviewWriteModal';
 import React, {useState, useEffect} from 'react';
 import { getLoginedId } from './session';
 
+
 const MainReview = (props) => {
 
   const [isLogined, setLogined] = useState(true);

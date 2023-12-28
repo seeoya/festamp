@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import ReviewModal from './ReviewModifyModal';
+import ReviewModifyModal from './ReviewModifyModal';
 
 const MyReview = (props) => {
 
@@ -29,7 +29,7 @@ const MyReview = (props) => {
     }
     setMyRiviewArr(tempArr);
     
-  }, [tempFlag, ]);   
+  }, [tempFlag, isShowModifyModal]);   
 
   const myReviewModifyBtnClickHandler = (e, reviewNo) => {
     console.log('reviewModifyBtnClickHandler() Called!');
