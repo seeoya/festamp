@@ -1,36 +1,41 @@
-.fa-star {
-    color: rgb(255, 255, 0);
+.star_wrap{
+    width: 150px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.fa-star-half-stroke {
-    color: rgb(255, 255, 0);
-}
-
-.select_box {
-    width: 100px; height: 30px;
+.star_rating {
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 24px;
+    justify-content: space-around;
+    padding: 0 0.2em;
     text-align: center;
-    position: relative;
+    width: 5em;
 }
 
-.label {
-    width: inherit; height: inherit;
-    background-color: #47a8d5;
-    border: 1px solid #888;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.label:hover {
-    background-color: #66b3d6;
-}
-
-.label:active {
-    background-color: #83c4e3;
-    color: #eee;
-}
-
-.option_item {
-    background-color: #aaa;
-    border-radius: 3px;
+.star_rating input {
     display: none;
+}
+
+.star_rating label {
+    -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 2.3px;
+    -webkit-text-stroke-color: #2b2a29;
+    cursor: pointer;
+}
+
+.star_rating :checked ~ label {
+    -webkit-text-fill-color: rgb(238, 255, 0);
+}
+
+.star_rating label:hover,
+.star_rating label:hover ~ label {
+    -webkit-text-fill-color: #fff476;
+}
+
+.star_rate {
+    margin-top: 6px;
+    font-size: 18px;
+    font-weight: bold;
 }
