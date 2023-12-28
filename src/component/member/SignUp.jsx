@@ -41,6 +41,7 @@ const SignUp = () => {
         console.log('userPwSameHandler() Called!');
         
         setPwSame(e.target.value);
+
     }
     
     const userPhoneHandler = (e) => {
@@ -61,7 +62,12 @@ const SignUp = () => {
         setUBirth(e.target.value);
     }
     
-    // button 
+    //중복확인
+    // const reduplicationBtn = () => {
+    //     if(UId !== )
+    // }
+
+    // 회원가입 버튼
     const joinBtn = () => {
         console.log('joinBtn() Clicked!');
     
@@ -92,8 +98,12 @@ const SignUp = () => {
             let memberStr = JSON.stringify(memberDbObj);
             localStorage.setItem('memberDb', memberStr);
     
-        }
-    
+        };
+
+        alert('회원가입을 축하드립니다.');
+
+        
+            
     
 }
 
@@ -108,7 +118,7 @@ return (
                     <br />
                     <label htmlFor="u_id"><p>아이디</p></label>
                     <input type="text" id="u_id" name="u_id" value={UId} onChange={(e) => userIdHandler(e)} placeholder="아이디" /> &nbsp;
-                    <button>중복 확인</button>
+                    <button >중복 확인</button>
                     <br />
                     <label htmlFor="u_pw"><p>비밀번호</p> </label>
                     <input type="password" id="u_pw" name="u_pw" value={UPw} onChange={(e)=>userPwHandler(e)} placeholder="비밀번호 " />
