@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import ListView from "./list/ListView";
 import Main from "./main/Main";
 
 const Container = (props) => {
@@ -13,7 +12,6 @@ const Container = (props) => {
         <div id="container">
             {/* 여기에 본문 컴포넌트 삽입 */}
             <Main festivalData={props.festivalData} />
-            <ListView />
         </div>
     );
 };
