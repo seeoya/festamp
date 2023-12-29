@@ -18,12 +18,12 @@ const MainSlide = (props) => {
         let tmpArr = [];
         let today = new Date();
 
-        festivalData.map((el) => {
+        tmpArr = festivalData.filter((el) => {
             let startDate = new Date(el.startDate),
                 endDate = new Date(el.endDate);
 
             if (today > startDate && today < endDate) {
-                tmpArr.push(el);
+                return el;
             }
         });
 
@@ -32,7 +32,7 @@ const MainSlide = (props) => {
 
     return (
         <div id="main_slide">
-            <h1 className="main_slide_title">오늘의 축제</h1>
+            <h1 className="sec_title">오늘의 축제</h1>
 
             <Swiper
                 navigation={true}
@@ -42,7 +42,7 @@ const MainSlide = (props) => {
                 }}
                 loop={true}
                 modules={[Navigation, Pagination]}
-                className="mySwiper"
+                className="main-slide"
             >
                 {nowFestival.map((el) => {
                     return (
