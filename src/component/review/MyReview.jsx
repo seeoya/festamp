@@ -88,11 +88,12 @@ const MyReview = (props) => {
                     
                 <>
                 <li>
-                    {`${[{idx}]}`}&nbsp;&nbsp;
-                      {myReview}&nbsp;&nbsp;
-                      {myReviewArr.star}&nbsp;&nbsp;
-                      <button onClick={(e) => myReviewModifyBtnClickHandler(e, myReviewArr.reviewNo)}>수정</button>&nbsp;&nbsp;
-                      <button onClick={(e) => myReviewDelBtnClickHandler(e, myReviewArr.reviewNo)}>삭제</button>
+                      {`${[myReview.rDateTime]}`}&nbsp;&nbsp;
+                      {myReview.title}&nbsp;&nbsp;
+                      {myReview.rReview}&nbsp;&nbsp;
+                      {myReview.star}&nbsp;&nbsp;
+                      <button onClick={(e) => myReviewModifyBtnClickHandler(e, myReview.reviewNo)}>수정</button>&nbsp;&nbsp;
+                      <button onClick={(e) => myReviewDelBtnClickHandler(e, myReview.reviewNo)}>삭제</button>
                 </li>
                 </>
                    )}
