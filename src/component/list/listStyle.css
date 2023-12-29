@@ -123,7 +123,6 @@
 .load_more button {
     border-style: none;
     text-decoration: underline;
-    background-color: palegreen;    
 }
 
 .load_more button:hover {
@@ -179,3 +178,6 @@
     right: 29%;
 }
 
+#list_wrap div.festival_container div.search_wrap .filter_wrap{
+    padding-left: 80px;
+}

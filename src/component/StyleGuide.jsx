@@ -2,8 +2,18 @@ import React from "react";
 
 const StyleGuide = () => {
     return (
-        <div>
+        <div id="styleguide">
             <h1>스타일 가이드</h1>
+
+            <div className="sec">
+                <h2>색상</h2>
+
+                <div className="box_wrap">
+                    <div className="box main">MAIN</div>
+                    <div className="box sub">SUB</div>
+                    <div className="box highlight">HIGHLIGHT</div>
+                </div>
+            </div>
 
             <div className="sec">
                 <h2>헤딩</h2>
@@ -19,24 +29,39 @@ const StyleGuide = () => {
             </div>
 
             <div className="sec">
-                <button type="button" className="btn">
-                    버튼 (button.btn)
-                </button>
+                <h1>버튼</h1>
+
+                <div>
+                    <button type="button" className="btn">
+                        버튼 (button.btn)
+                    </button>
+                    <button type="button" className="btn main">
+                        메인 버튼 (button.btn.main)
+                    </button>
+                    <button type="button" className="btn highlight">
+                        하이라이트 버튼 (button.btn.highlight)
+                    </button>
+                </div>
             </div>
 
             <div className="sec">
-                <input type="text" className="input" placeholder="text" />
-                <input type="password" className="input" placeholder="password" />
-                <input type="email" className="input" placeholder="email" />
-                <input type="tel" className="input" placeholder="tel" />
-                <textarea
-                    name=""
-                    id=""
-                    cols="30"
-                    rows="10"
-                    className="input"
-                    placeholder="textarea"
-                ></textarea>
+                <h1>인풋</h1>
+
+                <div>
+                    <input type="text" className="input" placeholder="text" />
+                    <input type="password" className="input" placeholder="password" />
+                    <input type="email" className="input" placeholder="email" />
+                    <input type="tel" className="input" placeholder="tel" />
+                    <br />
+                    <textarea
+                        name=""
+                        id=""
+                        cols="30"
+                        rows="10"
+                        className="input"
+                        placeholder="textarea"
+                    ></textarea>
+                </div>
             </div>
         </div>
     );

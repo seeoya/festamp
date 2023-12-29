@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { customRandom } from "../util/Random";
 
 const RandomFestival = (props) => {
@@ -30,7 +31,7 @@ const RandomFestival = (props) => {
 
                 <div className="random_content">
                     <div className="item">
-                        <a href={"#" + festivalData[resNum].id}>
+                        <Link to={"/view/" + festivalData[resNum].id}>
                             <div className="item_title">{festivalData[resNum].title}</div>
                             <div className="item_date">{festivalData[resNum].date}</div>
                             <div className="item_city">{festivalData[resNum].city}</div>
@@ -39,7 +40,7 @@ const RandomFestival = (props) => {
                             <div className="item_price">{festivalData[resNum].price}</div>
                             <div className="item_name">{festivalData[resNum].name}</div>
                             <div className="item_tel">{festivalData[resNum].tel}</div>
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>
