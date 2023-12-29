@@ -16,25 +16,16 @@ function SignIn() {
     console.log('loginBtnHandler() Clicked!!');
 
     let memberInStorage = JSON.parse(localStorage.getItem('memberDB'));
-    let memKeysObj = Object.keys(memberInStorage);
+    let memIdObj = Object.keys(memberInStorage);
 
-    console.log(memberInStorage[uId].pw);
-    console.log(memKeysObj);
+   if(memberInStorage !== null && memIdObj.includes(uId) && memberInStorage[uId].pw === uPw) {
+    alert('FESTAMP에 오신 걸 환영합니다. :)');
+
+   } else {
+    alert('회원정보가 없습니다.');
+
+   }
    
-      
-    if(memKeysObj !== null && memberInStorage[uId].pw === uPw){
-    
-      alert('FESTAMP에 오신 걸 환영합니다. :)');
-
-
-    } else {
-      
-      setUId('');
-      setPw('');      
-
-      alert('회원정보가 일치 하지 않습니다.');
-      
-    }
    
 
   }
