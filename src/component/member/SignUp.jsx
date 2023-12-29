@@ -78,6 +78,7 @@ const SignUp = () => {
 
         let memberInStorage = localStorage.getItem('memberDB');
 
+        if(UId !== "" && UName !== "" && UPw !== "" && UPhone !== "" && UEmail !== "" && UBirth !== "") {
         if (memberInStorage === null) {
             let newMemberDb = {
                 [UId]:
@@ -103,7 +104,7 @@ const SignUp = () => {
                 email: UEmail,
                 birth: UBirth
             };
-
+        
             let memberStr = JSON.stringify(memberDbObj);
             localStorage.setItem('memberDB', memberStr);
         };
@@ -111,6 +112,11 @@ const SignUp = () => {
         alert('회원가입을 축하드립니다.');
 
         navigate("/SignIn");
+
+    } else {
+
+        alert('정보를 입력해주세요');
+    }
     }
 
     return (
