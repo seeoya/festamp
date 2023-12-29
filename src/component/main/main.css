@@ -99,10 +99,16 @@
     background: var(--main);
 }
 
-#main_random {
+#main_random .item_intro {
+    display: flex;
+    gap: 10px;
 }
 
-#main_random .item {
+#main_random .item_title {
+}
+
+#main_random .item_img {
+    width: 50%;
 }
 
 #main_random .item_info {

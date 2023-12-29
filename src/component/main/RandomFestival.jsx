@@ -36,16 +36,21 @@ const RandomFestival = (props) => {
             <div className="random_wrap">
                 <div className="random_content">
                     <Link to={`/view/${festivalData[resNum].id}`} className="item">
-                        <img
-                            src={`/${festivalData[resNum].img}`}
-                            alt={festivalData[resNum].title}
-                            className="item_img"
-                        />
+                        <h2 className="item_title">{festivalData[resNum].title}</h2>
 
-                        <div className="item_title">{festivalData[resNum].title}</div>
-                        <div className="item_date">{festivalData[resNum].date}</div>
-                        <div className="item_city">{festivalData[resNum].city}</div>
-                        <div className="item_name">{festivalData[resNum].name}</div>
+                        <div className="item_intro">
+                            <img
+                                src={`/${festivalData[resNum].img}`}
+                                alt={festivalData[resNum].title}
+                                className="item_img"
+                            />
+
+                            <div className="item-info">
+                                <div className="item_date">{festivalData[resNum].date}</div>
+                                <div className="item_city">{festivalData[resNum].city}</div>
+                                <div className="item_name">{festivalData[resNum].price}</div>
+                            </div>
+                        </div>
 
                         <div className="item_explain">{festivalData[resNum].explain}</div>
                     </Link>
