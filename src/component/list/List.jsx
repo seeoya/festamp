@@ -10,12 +10,12 @@ const List = (props) => {
         setVisibleItems(load => load + 6);
     };
 
-    const toggleSortByDate = () => {
-        setSortByDate(!sortByDate); // 버튼 클릭 시 정렬 상태 변경
+    const SortDate = () => {
+        setSortDate(!sortByDate); // 버튼 클릭 시 정렬 상태 변경
     };
 
-    let festivalData = props.festivalData.filter((festival) => {
-        return !searchTerm || festival.title.toLowerCase().includes(searchTerm.toLowerCase());
+    let festivalData = props.festivalData.filter((festival) => {   // filter > 주어진 조건을 통과하는 요소를 새로운 배열로 반환 // 
+        return !searchTerm || festival.title.toLowerCase().includes(searchTerm.toLowerCase()); // toLowerCase > 소문자 변환 // 
     });
 
     // 정렬 상태에 따라 데이터 정렬
@@ -32,16 +32,12 @@ const List = (props) => {
             <div className="festival_container">
                 <div className="search_wrap">
                     <div>
-                        <input
-                            type="text"
-                            placeholder="검색어를 입력해 주세요."
-                            name="uSearch"
-                            value={searchTerm}
+                        <input type="text" placeholder="검색어를 입력해 주세요." name="uSearch" value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
                         <br></br>
                         <div className="filter_wrap">
-                            <a href="#none" onClick={toggleSortByDate}>
+                            <a href="#none" onClick={SortDate}>
                                 축제일순&nbsp;|
                             </a>
                         </div>
