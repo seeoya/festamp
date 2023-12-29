@@ -87,11 +87,11 @@ const List = (props) => {
                 )}
                 <div className="map">
                     {/* 지도 자리 */}
-                    <img src="imgs/festival/map.jpg" />
+                    <img src="imgs/festival/stamp.gif" />
                 </div>
                 <div className="stamp">
                     {/* 스탬프 이미지 자리 */}
-                    <img src="imgs/festival/stamp.gif" />
+                    <img src="imgs/festival/stamp2.jpg" />
                 </div>
             </div>
         </div>
