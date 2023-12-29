@@ -1,4 +1,4 @@
-.star_wrap{
+.star_wrap {
     width: 150px;
     display: flex;
     justify-content: space-between;
@@ -19,18 +19,17 @@
 }
 
 .star_rating label {
-    -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+    -webkit-text-fill-color: transparent;     /* Will override color (regardless of order) */
     -webkit-text-stroke-width: 2.3px;
     -webkit-text-stroke-color: #2b2a29;
     cursor: pointer;
 }
 
-.star_rating :checked ~ label {
+.star_rating:checked ~ label {
     -webkit-text-fill-color: rgb(238, 255, 0);
 }
 
-.star_rating label:hover,
-.star_rating label:hover ~ label {
+.star_rating label:hover, .star_rating label:hover ~ label {
     -webkit-text-fill-color: #fff476;
 }
 
