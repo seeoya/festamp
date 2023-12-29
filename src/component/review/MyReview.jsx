@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import ReviewModal from './ReviewModifyModal';
+import ReviewModifyModal from './ReviewModifyModal';
 
 const MyReview = (props) => {
 
@@ -29,7 +29,7 @@ const MyReview = (props) => {
     }
     setMyRiviewArr(tempArr);
     
-  }, [tempFlag, ]);   
+  }, [tempFlag, isShowModifyModal]);   
 
   const myReviewModifyBtnClickHandler = (e, reviewNo) => {
     console.log('reviewModifyBtnClickHandler() Called!');
@@ -88,11 +88,12 @@ const MyReview = (props) => {
                     
                 <>
                 <li>
-                    {`${[{idx}]}`}&nbsp;&nbsp;
-                      {myReview}&nbsp;&nbsp;
-                      {myReviewArr.star}&nbsp;&nbsp;
-                      <button onClick={(e) => myReviewModifyBtnClickHandler(e, myReviewArr.reviewNo)}>수정</button>&nbsp;&nbsp;
-                      <button onClick={(e) => myReviewDelBtnClickHandler(e, myReviewArr.reviewNo)}>삭제</button>
+                      {`${[myReview.rDateTime]}`}&nbsp;&nbsp;
+                      {myReview.title}&nbsp;&nbsp;
+                      {myReview.rReview}&nbsp;&nbsp;
+                      {myReview.star}&nbsp;&nbsp;
+                      <button onClick={(e) => myReviewModifyBtnClickHandler(e, myReview.reviewNo)}>수정</button>&nbsp;&nbsp;
+                      <button onClick={(e) => myReviewDelBtnClickHandler(e, myReview.reviewNo)}>삭제</button>
                 </li>
                 </>
                    )}

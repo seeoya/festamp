@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
     return (
@@ -7,20 +8,35 @@ const Header = () => {
 
             <ul className="nav">
                 <li>
-                    <a href="#">네비</a>
+                    <Link to="/">HOME</Link>
                 </li>
                 <li>
-                    <a href="#">네비</a>
+                    <Link to="/list">LIST</Link>
                 </li>
                 <li>
-                    <a href="#">네비</a>
+                    <Link to="/view/1">VIEW(1)</Link>
                 </li>
                 <li>
-                    <a href="#">네비</a>
+                    <Link to="/view/11">VIEW(11)</Link>
                 </li>
                 <li>
-                    <a href="#">네비</a>
+                    <Link to="/signin">SIGN IN</Link>
                 </li>
+                <li>
+                    <Link to="/signout">SIGN OUT</Link>
+                </li>
+                <li>
+                    <Link to="/signup">SIGN UP</Link>
+                </li>
+
+                {/* #TODO 테스트용. 제거 예정. */}
+                <li>
+                    <Link to="/gradeselect">*GRADE SELECT</Link>
+                </li>
+                <li>
+                    <Link to="/styleguide">STYLE GUIDE</Link>
+                </li>
+                {/*  */}
             </ul>
         </header>
     );

@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { getLoginedId } from './session';
+import { getDateTime } from './getDateTime';
 // import Star from '';
 
 
 const ReviewWriteModal = (props) => {
 
-    const [isShowWriteModal, setIsShowWriteModal] = useState(false);
-    const [isShowModifyModal, setIsShowModifyModal] =useState(false);
+    
     const [reviewNo, setReviewNo] = useState(0);
     const [rDateTime, setRDateTime] = useState('');
     const [uReview, setUReview] = useState('');
-    const [starInput, setStarInput] = useState('');
-    const [dataId, setDataId] = useState('');    
-    
+    const [star, setStar] = useState('');
+    const [festivalDataId, setFestivalDataId] = useState('');
+    const [festivalTitle, setFestivalTitle] = useState('');
     
     
     const uReviewChangeHandler = (e) => {
@@ -22,19 +22,22 @@ const ReviewWriteModal = (props) => {
 
     const writeModalBtnClickHandler = () => {
         console.log('writeModalWrite Btn Clicked!');
-        setReviewNo(++1);
-        setDataId(props.dataId);
 
-    let reviewDBinStorage = localStorage.getItem('reviewDB');
-    let reviewDBObjs = JSON.parse(reviewDBinStorage);
-    let myReviewObjs = reviewDBObjs[getLoginedId()];
-        console.log('myReviewObjs: ', myReviewObjs);
-    
-        myReviewObjs[reviewNo] = {
-                  'dataId'    : dataId,
-                  'rDateTime' : getReviewDateTime(),
+        setReviewNo(reviewNo+1);
+        setFestivalDataId(props.festivalDataId);
+        setFestivalTitle(props.festivalTitle);
+
+       
+        let reviewDBObjs = getReviewDBObjs();
+        let myReviewObjs = reviewDBObjs[getLoginedId()];
+            console.log('myReviewObjs: ', myReviewObjs);
+        
+            myReviewObjs[reviewNo] = {
+                  'dataId'    : festivalDataId,
+                  'title'     : festivalTitle,
+                  'rDateTime' : getDateTime(),
                   'uReview'   : uReview,
-                  'star'      : starInput,
+                  'star'      : star,
                 }
             
         reviewDBObjs[getLoginedId()] = myReviewObjs;
@@ -42,32 +45,11 @@ const ReviewWriteModal = (props) => {
         localStorage.setItem('reviewDB', addReviewStr);
 
         console.log('Review write success!');
-        props.setIsShowWriteModal(false);
+        props.isShowWriteModal(false);
 
     }
 
-    const modifyModalBtnClickHandler = () => {
-      console.log('writeModalWrite Btn Clicked!');
     
-    
-
-
-
-
-
-    
-            
-        reviewDBObjs[getLoginedId()] = myReviewObjs;
-        let addReviewStr = JSON.stringify(reviewDBObjs);
-        localStorage.setItem('reviewDB', addReviewStr);
-
-        console.log('Review write success!');
-        props.setIsShowWriteModal(false);
-
-    }
-  
-
-
 
   // reviewDB 가져오는 함수
   const getReviewDBObjs = () => {
@@ -87,27 +69,12 @@ const ReviewWriteModal = (props) => {
 
     <div className='review_modal_wrap'>
 
-      <Star setStarInput={setStarInput} starInput={starInput}/>
-      <textarea cols="40" rows="5" vlaue={uReview} onChange={uReviewChangeHandler}></textarea>
+      <Star setStar={setStar} star={star}/>
+      <textarea cols="80" rows="5" vlaue={uReview} onChange={uReviewChangeHandler}></textarea>
       <br />
-   
-      {
-        isShowWriteModal
-        ?
-      <>
+       
       <button onClick={writeModalBtnClickHandler}>저장</button>
-      </>
-      : null
-      }
-      {
-        isShowModifyModal
-        ?
-      <>
-      <button onClick={modifyModalBtnClickHandler}>수정</button>
-      </>
-      : null
-      }
-   
+      
     </div>
   );
 }

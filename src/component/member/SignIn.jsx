@@ -11,10 +11,11 @@ function SignIn() {
     console.log('loginBtnHandler() Clicked!!');
 
     let memberInStorage = JSON.parse(localStorage.getItem('memberDB'));
-    let memKeysObj = Object.keys(memberInStorage);
-    let memValueObj= Object.value(memberInStorage);
-    console.log(memValueObj )
-    console.log(memKeysObj )
+    let memKeysObj = memberInStorage[uId];
+    
+    if(memKeysObj !== null && memKeysObj.pw == uPw){
+      alert('FESTAMP에 오신 걸 환영합니다 :)');
+    }
    
 
   }
@@ -43,7 +44,7 @@ function SignIn() {
           <legend>로그인</legend>
           <input type="text" value={uId} onChange={loginIdHandler} placeholder='ID를 입력하세요' />
           <br />
-          <input type="text" value={uPw} onChange={loginPwHandler} placeholder='PASSWORD를 입력하세요' />
+          <input type="password" value={uPw} onChange={loginPwHandler} placeholder='PASSWORD를 입력하세요' />
           <br />
           <a href="#none">아이디찾기</a> / <a href="#none">비밀번호찾기</a>
           <br />

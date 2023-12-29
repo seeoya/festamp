@@ -63,13 +63,15 @@ const SignUp = () => {
     }
     
     //중복확인
-    // const reduplicationBtn = () => {
-    //     if(UId !== )
+    // const DuplicateTestBtnHandler = (UId) => {
+    //     console.log(UId)
+        // if(UId !== )
     // }
 
     // 회원가입 버튼
     const joinBtn = () => {
         console.log('joinBtn() Clicked!');
+        
     
         let memberInStorage = localStorage.getItem('memberDb');
         if(memberInStorage=== null){
@@ -87,21 +89,26 @@ const SignUp = () => {
 
         } else {
 
-            let memberDbObj = JSON.parse('memberDb');
+            let memberDbObj = JSON.parse('memberDB');
+            console.log([memberDbObj])
             memberDbObj[UId] = {
                 name: UName,
                 pw: UPw,
                 phone: UPhone,
                 email: UEmail,
                 birth: UBirth
+
             };
+            
             let memberStr = JSON.stringify(memberDbObj);
             localStorage.setItem('memberDb', memberStr);
-    
+            
+           
+          
         };
 
         alert('회원가입을 축하드립니다.');
-
+       
         
             
     
@@ -118,14 +125,14 @@ return (
                     <br />
                     <label htmlFor="u_id"><p>아이디</p></label>
                     <input type="text" id="u_id" name="u_id" value={UId} onChange={(e) => userIdHandler(e)} placeholder="아이디" /> &nbsp;
-                    <button >중복 확인</button>
+                    <button type="button" name="same"> 중복 확인</button>
                     <br />
                     <label htmlFor="u_pw"><p>비밀번호</p> </label>
                     <input type="password" id="u_pw" name="u_pw" value={UPw} onChange={(e)=>userPwHandler(e)} placeholder="비밀번호 " />
                     <br />
                     <label htmlFor="pw_same"><p>비밀번호 확인</p></label>
                     <input type="password" id="pw_same" name="pw_same" value={PwSame} onChange={(e)=>userPwSameHandler(e)} placeholder="비밀번호 확인" /> &nbsp;
-                    <button >확인</button>
+                    <button type="button">확인</button>
                     <br />
                     <label htmlFor="u_phone"><p>연락처</p></label>
                     <input type="text" id="u_phone" name="u_phone" value={UPhone} onChange={(e)=>userPhoneHandler(e)} placeholder="연락처" />
@@ -136,8 +143,8 @@ return (
                     <label htmlFor="u_birth"><p>생년월일</p></label>
                     <input type="date" id="u_birth" name="u_birth" value={UBirth} onChange={(e)=>userBirthHandler(e)} placeholder="생일" />
                     <br />
-                </fieldset>
                 <button type="button" onClick={joinBtn}>회원가입</button>
+                </fieldset>
             </form>
 
         </div>
