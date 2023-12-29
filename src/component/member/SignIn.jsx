@@ -1,27 +1,46 @@
 import React, { useState } from 'react'
+import SignUp from './SignUp';
 
 function SignIn() {
   console.log('SignIn() Called!');
 
+  // 로그인 HOOK 
   const [uId, setUId] = useState('');
   const [uPw, setPw] = useState('');
 
+  const [isJoin, setIsJoin] = useState('');
+
+    
   //btn handler
   const loginBtnHandler = () => {
     console.log('loginBtnHandler() Clicked!!');
 
     let memberInStorage = JSON.parse(localStorage.getItem('memberDB'));
-    let memKeysObj = memberInStorage[uId];
+    let memKeysObj = Object.keys(memberInStorage);
+
+    console.log(memberInStorage[uId].pw);
+    console.log(memKeysObj);
+   
+      
+    if(memKeysObj !== null && memberInStorage[uId].pw === uPw){
     
-    if(memKeysObj !== null && memKeysObj.pw == uPw){
-      alert('FESTAMP에 오신 걸 환영합니다 :)');
+      alert('FESTAMP에 오신 걸 환영합니다. :)');
+
+
+    } else {
+      
+      setUId('');
+      setPw('');      
+
+      alert('회원정보가 일치 하지 않습니다.');
+      
     }
    
 
   }
 
 
-  // handler
+  // onChange handler
   const loginIdHandler = (e) => {
     console.log('loginIdHandler() Changed!');
 
@@ -34,6 +53,13 @@ function SignIn() {
 
     setPw(e.target.value);
   }
+
+  // joinBtnHandler
+  const joinBtnHandler =() =>{
+    console.log('joinBtnHandler() Clicked!');
+    setIsJoin(true);
+  }
+
 
   return (
     <div>
@@ -48,9 +74,19 @@ function SignIn() {
           <br />
           <a href="#none">아이디찾기</a> / <a href="#none">비밀번호찾기</a>
           <br />
+          <a href="#none" onClick={joinBtnHandler}>회원가입</a>
+          <br />
           <button type='button' onClick={loginBtnHandler}>로그인</button>
         </fieldset>
       </form>
+
+  {  isJoin
+  ?
+   <SignUp/>
+  :
+   null
+  }
+
     </div>
   );
 }
