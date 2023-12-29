@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -17,12 +18,12 @@ const MainSlide = (props) => {
         let tmpArr = [];
         let today = new Date();
 
-        festivalData.map((el) => {
+        tmpArr = festivalData.filter((el) => {
             let startDate = new Date(el.startDate),
                 endDate = new Date(el.endDate);
 
             if (today > startDate && today < endDate) {
-                tmpArr.push(el);
+                return el;
             }
         });
 
@@ -31,7 +32,7 @@ const MainSlide = (props) => {
 
     return (
         <div id="main_slide">
-            <h1>오늘의 축제</h1>
+            <h1 className="sec_title">오늘의 축제</h1>
 
             <Swiper
                 navigation={true}
@@ -41,12 +42,12 @@ const MainSlide = (props) => {
                 }}
                 loop={true}
                 modules={[Navigation, Pagination]}
-                className="mySwiper"
+                className="main-slide"
             >
                 {nowFestival.map((el) => {
                     return (
                         <SwiperSlide className="slide_item">
-                            <a href={"#" + el.id}>
+                            <Link to={"/view/" + el.id}>
                                 <img src={el.img} alt={el.title} className="item_title" />
                                 <div className="item_content">
                                     <div className="item_city">[{el.city}]</div>
@@ -56,7 +57,7 @@ const MainSlide = (props) => {
                                     </div>
                                     <div className="item_explain">{el.explain}</div>
                                 </div>
-                            </a>
+                            </Link>
                         </SwiperSlide>
                     );
                 })}

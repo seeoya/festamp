@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Popular = (props) => {
     let festivalData = props.festivalData;
     const [popFestival, setPopFestival] = useState([]);
+    const [maxFestivalCount, setMaxFestivalCount] = useState(10);
 
     useEffect(() => {
         setPopFestival(sortFestival());
@@ -16,18 +18,19 @@ const Popular = (props) => {
     };
 
     return (
-        <div className="popular">
-            <h2>인기 축제 순위</h2>
+        <div id="main_popular" className="sec_item">
+            <h1 className="sec_item_title">인기 축제 순위</h1>
 
             <ul className="list">
-                {popFestival.map((el, i) => {
-                    if (i < 10) {
-                        return (
-                            <li className="item">
-                                <a href={"#" + el.id}>{`${i + 1}. ${el.title}`}</a>
-                            </li>
-                        );
-                    }
+                {popFestival.slice(0, maxFestivalCount).map((el, i) => {
+                    return (
+                        <li className="item">
+                            <Link to={"/view/" + el.id}>
+                                <span className="marker">{`${i + 1}`}</span>
+                                <span className="title">{`${el.title}`}</span>
+                            </Link>
+                        </li>
+                    );
                 })}
             </ul>
         </div>
