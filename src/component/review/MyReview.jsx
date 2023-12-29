@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ReviewModifyModal from './ReviewModifyModal';
+import { getLoginedId, setLoginedId } from './session';
+
 
 const MyReview = (props) => {
 
@@ -7,29 +9,32 @@ const MyReview = (props) => {
     const [myReviewArr, setMyRiviewArr] = useState([]);
     const [tempFlag, setTempFlag] = useState(true);
     const [modifyKey, setModifyKey] = useState('');
+    const [isShowModifyModal, setIsShowModifyModal] = useState(false);
 
-
-    useEffect(( ) => {
-      console.log('useEffect() CALLED!!');
-
-    let reviewDBObjs = getReviewDB();
-    let myReviewObjs = reviewDBObjs[getLoginedId()];
-
-    let myReviewKeys = [];
-    for(let keys in myReviewObjs) {
-        myReviewKeys.push(keys);
-    }
-
-    let tempArr = [];
-    for(let i=0; i < myReviewKeys.length; i++) {
-        let myReview = myReviewObjs[myReviewKeys[i]]; //i번째 review 전달
-        myReview['key'] = myReviewKeys[i];  // i번째 키값 전달
-        tempArr.push(myReview);
-         
-    }
-    setMyRiviewArr(tempArr);
     
-  }, [tempFlag, isShowModifyModal]);   
+
+  //   useEffect(( ) => {
+  //     setLoginedId('aa');
+  //     console.log('useEffect() CALLED!!');
+
+  //   let reviewDBObjs = parseReviewDB();
+  //   let myReviewObjs = reviewDBObjs[getLoginedId()];
+
+  //   let myReviewKeys = [];
+  //   for(let keys in myReviewObjs) {
+  //       myReviewKeys.push(keys);
+  //   }
+
+  //   let tempArr = [];
+  //   for(let i=0; i < myReviewKeys.length; i++) {
+  //       let myReview = myReviewObjs[myReviewKeys[i]]; //i번째 review 전달
+  //       myReview['key'] = myReviewKeys[i];  // i번째 키값 전달
+  //       tempArr.push(myReview);
+         
+  //   }
+  //   setMyRiviewArr(tempArr);
+    
+  // }, [tempFlag, isShowModifyModal]);   
 
   const myReviewModifyBtnClickHandler = (e, reviewNo) => {
     console.log('reviewModifyBtnClickHandler() Called!');
@@ -44,7 +49,7 @@ const MyReview = (props) => {
     let result = window.confirm('리뷰를 삭제하시겠습니까?');
 
         if (result) {
-          let reviewDBObjs = getReviewDBObjs();  
+          let reviewDBObjs = parseReviewDB();  
           let myReviews = reviewDBObjs[getLoginedId()];
 
             delete myReviews[reviewNo];
@@ -68,7 +73,7 @@ const MyReview = (props) => {
   }
 
    // reviewDB 가져오는 함수
-   const getReviewDBObjs = () => {
+   const parseReviewDB = () => {
     console.log('getReviewDBObjs() Called!');
 
     let reviewDBinStorage = localStorage.getItem('reviewDB');

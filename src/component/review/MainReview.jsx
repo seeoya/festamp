@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
 import ReviewModifyModal from './ReviewModifyModal';
 import ReviewWriteModal from './ReviewWriteModal';
 import React, {useState, useEffect} from 'react';
-import { getLoginedId } from './session';
+import { getLoginedId, setLoginedId } from './session';
+import { getDateTime } from './getDateTime';
 
 
 const MainReview = (props) => {
@@ -14,6 +14,10 @@ const MainReview = (props) => {
   const [tempFlag, setTempFlag] = useState(true);
   const [festivalDataId, setFestivalDataId] = useState('');
   const [festivalTitle, setFestivalTitle] = useState('');
+  
+  const [starDataId, setStarDataId] = useState('');
+  const [reviewNo, setReviewNo] = useState(0);
+
 
   useEffect(() => {
     console.log('useEffect() CALLED!!');
@@ -21,53 +25,59 @@ const MainReview = (props) => {
     // setFestivalDataId(props.dataId);
     // setFestivalTitle(props.title);
     
-    setFestivalDataId('03');
+    setFestivalDataId('02');
     setFestivalTitle('빙어축제');
+    setStarDataId('******');
+    
+    
 
-
-    if (!isLogined) {
-        let reviewDBObjs = getReviewDBObjs();
-        // let dataIdReviews = reviewDBObjs[festivalDataId]; 
-       
+    // if (!isLogined) {
+        let reviewDBObjs = parseReviewDB();
+        let dataIdReviews = reviewDBObjs[festivalDataId]; 
+               
         let reviewskeys = [];
-        for (let keys in reviewDBObjs) {
+        for (let keys in dataIdReviews) {
           
             reviewskeys.push(keys);
           
         }
+          console.log(reviewskeys);
 
         let tempArr = [];
         for (let i = 0; i < reviewskeys.length; i++) {
-            let reviews = reviewDBObjs[reviewskeys[i]];
-            if (reviews.dataId === festivalDataId){
+            let reviews = dataIdReviews[reviewskeys[i]];
+            
+            // if (reviews.dataId === festivalDataId){
                 reviews['key'] = reviewskeys[i];
                 console.log('reviewskeys[i]:', reviewskeys[i]);
                      
                 tempArr.push(reviews);
 
-        }
+            // }
           setReviewsArr(tempArr);
-      }
-    }
+        }
+     // }
 
 }, [tempFlag, isShowWriteModal, isShowModifyModal]);
+
+
 
   const mainReviewWriteBtnClickHandler = () => {
     console.log('reviewWrite Btn Clicked!');
     // logined check  => 
-    if(getLoginedId() === undefined || getLoginedId() === '' || getLoginedId() === null) {
-      alert('로그인이 필요합니다.');
+    // if(getLoginedId() === undefined || getLoginedId() === '' || getLoginedId() === null) {
+    //   alert('로그인이 필요합니다.');
 
-    } else {
-         // write modal show
+    // } else {
+    //      // write modal show
         setIsShowWriteModal(true);
-    }
-  }
-
+    // }
+   }
+  
   const mainReviewModifyBtnClickHandler = (e, reviewNo) => {
     console.log('mainReviewModify Btn Clicked()!');
 
-    setModify
+    
     
     // modify modal show
     setIsShowModifyModal(true);
@@ -79,7 +89,7 @@ const MainReview = (props) => {
     let result = window.confirm('리뷰를 삭제하시겠습니까?');
 
         if (result) {
-          let reviewDBObjs = getReviewDBObjs();  
+          let reviewDBObjs = parseReviewDB();  
           let myReviews = reviewDBObjs[getLoginedId()];
 
             delete myReviews[reviewNo];
@@ -104,13 +114,35 @@ const MainReview = (props) => {
 
 
   // reviewDB 가져오는 함수
-  const getReviewDBObjs = () => {
+  const parseReviewDB = () => {
     console.log('getReviewDBObjs() Called!');
 
     let reviewDBinStorage = localStorage.getItem('reviewDB');
+    if (reviewDBinStorage === null) {
+      let uId = 'aa';
+      let newDBObj = {
+        'count' : reviewNo,
+        'rData' : {
+                'uId' : uId,
+                'fDataId': festivalDataId,
+                'fTitle' : festivalTitle,
+                'rDateTime' : getDateTime(),
+                'uReview' : uReview,
+                'rNo' : reviewNo,
+                'star' : star,
+        }
+      }
+                  
+       
+      reviewDBinStorage = JSON.stringify(newDBObj);
+      localStorage.setItem('reviewDB', reviewDBinStorage);
+      reviewDBinStorage = localStorage.getItem('reviewDB');
+      
+    } 
     let reviewDBObjs = JSON.parse(reviewDBinStorage);
 
         return reviewDBObjs;
+    
   }
   
 
@@ -122,16 +154,16 @@ const MainReview = (props) => {
         <div className='review_list_wrap'>
           <div className='review_head_wrap'>
             <ul>
-              <li>{festivalTitle} 리 뷰 |&nbsp;&nbsp;&nbsp;&nbsp;{props.starDataId}&nbsp;&nbsp;&nbsp;&nbsp;
+              <li>{festivalTitle} 리 뷰 |&nbsp;&nbsp;&nbsp;&nbsp;{starDataId}&nbsp;&nbsp;&nbsp;&nbsp;
                   <button onClick={mainReviewWriteBtnClickHandler}>리뷰 쓰기</button></li>
             </ul>                               
           
           </div>
 
           <div className='review_list_wrap'>
-            {
-                isLogined
-                ?
+             {
+                 isLogined
+                 ?
             <>
             <ul>
                  { reviewsArr.map((reviews, idx) =>
@@ -170,16 +202,15 @@ const MainReview = (props) => {
               isShowWriteModal
               ?
             <>
-              <ReviewWriteModal festivalDataId={props.dataId} festivalTitle={props.title}
-                                isShowWriteModal={setIsShowWriteModal}/>
+              <ReviewWriteModal setFestivalDataId={setFestivalDataId} setFestivalTitle={setFestivalTitle}
+                                setIsShowWriteModal={setIsShowWriteModal}/>
             </> : null  
             }
-            
             {
               isShowModifyModal
               ?
               <>
-              <ReviewModifyModal />
+              <ReviewModifyModal setIsShowModifyModal={setIsShowModifyModal}/>
               </>
               : null
             }
