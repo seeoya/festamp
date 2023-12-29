@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import './listStyle.css';
+import { Link } from "react-router-dom";
 
 const List = (props) => {
     const [visibleItems, setVisibleItems] = useState(6);
@@ -17,6 +18,7 @@ const List = (props) => {
         setSortByDate(!sortByDate); 
         
     };
+
      // filter > 주어진 조건을 통과하는 요소를 새로운 배열로 반환 //
     let festivalData = props.festivalData.filter((festival) => {
          // toLowerCase > 소문자 변환         includes > 요소가 배열 안에 존재하는 경우에만 true 을 반환 //
@@ -63,17 +65,18 @@ const List = (props) => {
                     .map((festival, index) => (
                         <div className="festival_item" key={index}>
                             <div>
-                                <a href="">
+                                <Link to={`/view/${festival.id}`} onClick={ImgViewClickHandler}>
                                     <img src={festival.img} />
                                     <h3>{festival.title}</h3>
                                     <h5>{festival.date}</h5>
                                     <h5>{festival.city}</h5>
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     ))}
                 </div>
-                {visibleItems < festivalData.length && (
+                {/* visibleItems이 남아있는 festivalData 크고 버튼이 눌리면  */}
+                {visibleItems < festivalData.length &&  (
                     <div className="load_more">
                         <button onClick={loadMoreHandler}>더 보기</button>
                     </div>
