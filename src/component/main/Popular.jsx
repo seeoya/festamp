@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Popular = (props) => {
     let festivalData = props.festivalData;
@@ -24,7 +25,7 @@ const Popular = (props) => {
                     if (i < 10) {
                         return (
                             <li className="item">
-                                <a href={"#" + el.id}>{`${i + 1}. ${el.title}`}</a>
+                                <Link to={"/view/" + el.id}>{`${i + 1}. ${el.title}`}</Link>
                             </li>
                         );
                     }
