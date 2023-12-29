@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import "./gradeSelect.css";
 
 const GradeSelect = (props) => {
-    const fullStar = <i class="fa-solid fa-star"></i>;
-    const blacnkStar = <i class="fa-regular fa-star"></i>;
-    const halfStar = <i class="fa-solid fa-star-half-stroke"></i>;
+
+    const fullStar = <i class="fa-solid fa-star"></i>
+    const blacnkStar = <i class="fa-regular fa-star"></i>
+    const halfStar = <i class="fa-solid fa-star-half-stroke"></i>
 
     // hook
-    const [star, setStar] = useState("");
+    const [star, setStar] = useState('');
 
     useEffect(() => {
-        console.log("useEffect() CALLED");
+        console.log('useEffect() CALLED');
+
+        let starDBInStorage = localStorage.getItem('starDB');
 
         if (star === 1.0) {
             console.log("star 1 CALLED");

@@ -1,7 +1,6 @@
 #main {
     display: flex;
     flex-direction: column;
-    background-color: paleturquoise;
     gap: 30px;
 }
 
@@ -13,13 +12,17 @@
 .info > div {
     padding: 20px 30px;
     width: 50%;
-    background-color: #eaeaea;
+    background-color: #fff;
     border-radius: 10px;
 }
 
 #main_slide {
 }
 
+#main_slide .main_slide_title {
+    font-size: 3.2rem;
+    text-align: center;
+}
 #main_slide .slide_item a {
     position: relative;
     width: 100%;
