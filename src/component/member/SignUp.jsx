@@ -72,6 +72,18 @@ const SignUp = () => {
     // if(UId !== )
     // }
 
+    //비밀번호 확인 버튼
+    const pwSameBntHandler = () => {
+        console.log('pwSameBntHandler() Clicked!');
+
+        if(UPw === PwSame){
+            alert('비밀번호 일치합니다:)')
+        } else {
+            alert('비밀번호가 일치하지 않습니다.');
+            setPwSame('');
+        }
+    }
+
     // 회원가입 버튼
     const joinBtn = () => {
         console.log('joinBtn() Clicked!');
@@ -137,7 +149,7 @@ const SignUp = () => {
                     <br />
                     <label htmlFor="pw_same"><p>비밀번호 확인</p></label>
                     <input type="password" id="pw_same" name="pw_same" value={PwSame} onChange={(e) => userPwSameHandler(e)} placeholder="비밀번호 확인" /> &nbsp;
-                    <button type="button">확인</button>
+                    <button type="button" onClick={pwSameBntHandler}>확인</button>
                     <br />
                     <label htmlFor="u_phone"><p>연락처</p></label>
                     <input type="text" id="u_phone" name="u_phone" value={UPhone} onChange={(e) => userPhoneHandler(e)} placeholder="연락처" />
