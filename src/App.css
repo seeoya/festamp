@@ -25,7 +25,6 @@ header .link {
     align-items: center;
     min-width: 90px;
     height: 60px;
-
 }
 
 header .logo {
@@ -58,7 +57,9 @@ header .link:hover {
 #container {
     margin: 0 auto;
     padding: 100px 0 30px;
+    width: 1200px;
     max-width: 1200px;
+    min-width: 1200px;
 }
 
 /* styleguide */
