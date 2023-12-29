@@ -9,6 +9,7 @@ import Privacy from "./member/Privacy";
 import SignIn from "./member/SignIn";
 import SignOut from "./member/SignOut";
 import SignUp from "./member/SignUp";
+import Stamp from "./stamp/Stamp";
 
 const Container = (props) => {
     useEffect(() => {
@@ -35,6 +36,7 @@ const Container = (props) => {
 
                 {/* #TODO 테스트용. 제거 예정 */}
                 <Route path="/gradeselect" element={<GradeSelect />}></Route>
+                <Route path="/stamp" element={<Stamp />}></Route>
                 <Route path="/styleguide" element={<StyleGuide />}></Route>
                 {/*  */}
 
