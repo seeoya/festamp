@@ -21,27 +21,34 @@ const RandomFestival = (props) => {
     };
 
     return (
-        <div className="random">
-            <h1>이런 축제는 어때?</h1>
+        <div id="main_random" className="sec_item">
+            <h1 className="sec_item_title">
+                <span>이런 축제는 어때?</span>
+                <button
+                    type="button"
+                    className="btn main random_btn"
+                    onClick={randomBtnClickHandler}
+                >
+                    더 추천해줘!
+                </button>
+            </h1>
 
             <div className="random_wrap">
-                <button type="button" className="random_btn" onClick={randomBtnClickHandler}>
-                    추천해줘!
-                </button>
-
                 <div className="random_content">
-                    <div className="item">
-                        <Link to={"/view/" + festivalData[resNum].id}>
-                            <div className="item_title">{festivalData[resNum].title}</div>
-                            <div className="item_date">{festivalData[resNum].date}</div>
-                            <div className="item_city">{festivalData[resNum].city}</div>
-                            <div className="item_explan">{festivalData[resNum].explain}</div>
-                            <div className="item_location">{festivalData[resNum].location}</div>
-                            <div className="item_price">{festivalData[resNum].price}</div>
-                            <div className="item_name">{festivalData[resNum].name}</div>
-                            <div className="item_tel">{festivalData[resNum].tel}</div>
-                        </Link>
-                    </div>
+                    <Link to={`/view/${festivalData[resNum].id}`} className="item">
+                        <img
+                            src={`/${festivalData[resNum].img}`}
+                            alt={festivalData[resNum].title}
+                            className="item_img"
+                        />
+
+                        <div className="item_title">{festivalData[resNum].title}</div>
+                        <div className="item_date">{festivalData[resNum].date}</div>
+                        <div className="item_city">{festivalData[resNum].city}</div>
+                        <div className="item_name">{festivalData[resNum].name}</div>
+
+                        <div className="item_explain">{festivalData[resNum].explain}</div>
+                    </Link>
                 </div>
             </div>
         </div>
