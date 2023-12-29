@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+
 
 
 
 const SignUp = () => {
     console.log('SignUp() Called!');
+
+    const navigate = useNavigate();
 
     // Hook 
     const [UName, setUName] = useState('');
@@ -105,6 +109,8 @@ const SignUp = () => {
         };
 
         alert('회원가입을 축하드립니다.');
+
+        navigate("/SignIn");
     }
 
     return (
