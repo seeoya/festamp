@@ -2,8 +2,18 @@ import React from "react";
 
 const StyleGuide = () => {
     return (
-        <div>
+        <div id="styleguide">
             <h1>스타일 가이드</h1>
+
+            <div className="sec">
+                <h2>색상</h2>
+
+                <div className="box_wrap">
+                    <div className="box main">MAIN</div>
+                    <div className="box sub">SUB</div>
+                    <div className="box highlight">HIGHLIGHT</div>
+                </div>
+            </div>
 
             <div className="sec">
                 <h2>헤딩</h2>
@@ -17,7 +27,6 @@ const StyleGuide = () => {
                     <h6>H6 헤더</h6>
                 </div>
             </div>
-
             <div className="sec">
                 <button type="button" className="btn">
                     버튼 (button.btn)

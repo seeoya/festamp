@@ -4,29 +4,45 @@ import { Link } from "react-router-dom";
 const Header = () => {
     return (
         <header>
-            <div>Logo</div>
+            <Link to="/" className="logo link">
+                FESTAMP
+            </Link>
 
             <ul className="nav">
                 <li>
-                    <Link to="/">HOME</Link>
+                    <Link to="/" className="link">
+                        HOME
+                    </Link>
                 </li>
                 <li>
-                    <Link to="/list">LIST</Link>
+                    <Link to="/list" className="link">
+                        LIST
+                    </Link>
                 </li>
                 <li>
-                    <Link to="/view/1">VIEW(1)</Link>
+                    <Link to="/view/1" className="link">
+                        VIEW(1)
+                    </Link>
                 </li>
                 <li>
-                    <Link to="/view/11">VIEW(11)</Link>
+                    <Link to="/view/11" className="link">
+                        VIEW(11)
+                    </Link>
                 </li>
                 <li>
-                    <Link to="/signin">SIGN IN</Link>
+                    <Link to="/signin" className="link">
+                        SIGN IN
+                    </Link>
                 </li>
                 <li>
-                    <Link to="/signout">SIGN OUT</Link>
+                    <Link to="/signout" className="link">
+                        SIGN OUT
+                    </Link>
                 </li>
                 <li>
-                    <Link to="/signup">SIGN UP</Link>
+                    <Link to="/signup" className="link">
+                        SIGN UP
+                    </Link>
                 </li>
 
                 {/* #TODO 테스트용. 제거 예정. */}

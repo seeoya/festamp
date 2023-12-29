@@ -3,22 +3,86 @@
 
 header, footer {
     display: flex;
+    justify-content: center;
+    align-items: center;
     margin: auto;
     width: 100%;
-    background-color: aquamarine;
+    background-color: #fafafa;
+}
+
+header {
+    position: fixed;
+    gap: 10px;
+    z-index: 999;
+    box-shadow: 0 1px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+header .link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+header .logo {
+    padding: 0 20px;
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+
+header .logo:hover {
+    color: var(--main);
 }
 
 header .nav {
     display: flex;
+    gap: 10px;
+}
+
+header .nav .link {
+    padding: 0 10px;
+    font-size: 1.6rem;
+    border-bottom: 3px solid transparent;
+}
+
+header .link:hover {
+    color: var(--main);
+    border-bottom-color: var(--main);
 }
 
 #container {
     margin: 0 auto;
-    padding: 50px 0 30px;
+    padding: 100px 0 30px;
     max-width: 1200px;
-    /* background-color: palegreen; */
+}
+
+/* styleguide */
+#styleguide {
+}
+
+#styleguide .box_wrap {
+    display: flex;
+}
+
+#styleguide .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+}
+
+#styleguide .box.main {
+    background-color: var(--main);
+}
+
+#styleguide .box.sub {
+    background-color: var(--sub);
+}
+
+#styleguide .box.highlight {
+    background-color: var(--highlight);
 }
 
 footer {
-    background-color: palevioletred;
 }

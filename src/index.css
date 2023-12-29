@@ -6,9 +6,12 @@
     /* css 변수 */
     --bg: #fffdfd;
     --text: #0c0c0c;
-    --sec-bg: #eee;
-    --sec-border: 1px solid #ccc;
-    --border-color: #eaeaea;
+    --main: #47a8d5;
+    --sub: #83c4e3;
+    --highlight: #1db7ff;
+    --sec-bg: #fafafa;
+    --sec-border: 1px solid #eaeaea;
+    --border-color: #242424;
     --btn-bg: #0c0c0c;
     --btn-bg-hover: #a3a3a3;
     --btn-border: 1px solid var(--border-color);
@@ -37,6 +40,7 @@ body, a, button, input, select, textarea {
     font-weight: 400;
     font-size: 1.4rem;
     letter-spacing: -0.1rem;
+    outline: none;
 }
 
 div, h1, h2, h3, h4, h5, h6, a, p, ol, ul, li {
@@ -74,7 +78,7 @@ table {
 
 /* 스타일 가이드 */
 .sec {
-    padding: 30px;
+    padding: 50px 30px;
     background-color: var(--sec-bg);
     border: var(--sec-border);
     border-radius: 20px;
@@ -98,4 +102,5 @@ table {
 .input {
     padding: 10px;
     border: 1px solid var(--border-color);
+    border-radius: 10px;
 }
