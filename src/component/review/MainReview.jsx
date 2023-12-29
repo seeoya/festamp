@@ -18,8 +18,12 @@ const MainReview = (props) => {
   useEffect(() => {
     console.log('useEffect() CALLED!!');
 
-    setFestivalDataId(props.dataId);
-    setFestivalTitle(props.title);
+    // setFestivalDataId(props.dataId);
+    // setFestivalTitle(props.title);
+    
+    setFestivalDataId('03');
+    setFestivalTitle('빙어축제');
+
 
     if (!isLogined) {
         let reviewDBObjs = getReviewDBObjs();
@@ -37,11 +41,13 @@ const MainReview = (props) => {
             let reviews = reviewDBObjs[reviewskeys[i]];
             if (reviews.dataId === festivalDataId){
                 reviews['key'] = reviewskeys[i];
+                console.log('reviewskeys[i]:', reviewskeys[i]);
                      
                 tempArr.push(reviews);
 
         }
           setReviewsArr(tempArr);
+      }
     }
 
 }, [tempFlag, isShowWriteModal, isShowModifyModal]);
