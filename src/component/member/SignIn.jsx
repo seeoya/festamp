@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import SignUp from './SignUp';
+import { useNavigate } from 'react-router-dom';
 
 function SignIn() {
   console.log('SignIn() Called!');
+  const navigate = useNavigate();
 
   // 로그인 HOOK 
   const [uId, setUId] = useState('');
@@ -49,6 +51,9 @@ function SignIn() {
   const joinBtnHandler =() =>{
     console.log('joinBtnHandler() Clicked!');
     setIsJoin(true);
+
+    navigate("/signup");
+    // "/signup"로 이동시켜줘
   }
 
 
