@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import './listStyle.css';
-import { Link } from "react-router-dom";
+import { Link, Routes } from "react-router-dom";
+import ListView from "./ListView";
+
+
+
 
 const List = (props) => {
     const [visibleItems, setVisibleItems] = useState(6);
@@ -65,7 +69,7 @@ const List = (props) => {
                     .map((festival, index) => (
                         <div className="festival_item" key={index}>
                             <div>
-                                <Link to={`/view/${festival.id}`} onClick={ImgViewClickHandler}>
+                                <Link to={`/view/${festival.id}`} >
                                     <img src={festival.img} />
                                     <h3>{festival.title}</h3>
                                     <h5>{festival.date}</h5>
