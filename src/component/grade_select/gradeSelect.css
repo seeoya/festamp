@@ -19,10 +19,7 @@
 }
 
 .star_rating label {
-    -webkit-text-fill-color: transparent;
-    /* Will override color (regardless of order) */
-    -webkit-text-fill-color: transparent;
-    /* Will override color (regardless of order) */
+    -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
     -webkit-text-stroke-width: 2.3px;
     -webkit-text-stroke-color: #2b2a29;
     cursor: pointer;
@@ -41,4 +38,9 @@
     margin-top: 6px;
     font-size: 18px;
     font-weight: bold;
+}
+
+.cur_star_wrap > p {
+    font-size: 14px;
+    color: #fff476;
 }

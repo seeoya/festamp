@@ -3,36 +3,48 @@ import "./gradeSelect.css";
 
 const GradeSelect = (props) => {
 
-    const fullStar = <i class="fa-solid fa-star"></i>
-    const blacnkStar = <i class="fa-regular fa-star"></i>
-    const halfStar = <i class="fa-solid fa-star-half-stroke"></i>
-
     // hook
     const [star, setStar] = useState('');
-
+    
     useEffect(() => {
         console.log('useEffect() CALLED');
 
         let starDBInStorage = localStorage.getItem('starDB');
+        let curStarDBObj = JSON.parse(starDBInStorage);
+    
+        const starArr = [
+            '★',
+            `★★`,
+            `★★★`,
+            `★★★★`,
+            `★★★★★`
+        ];
 
+        let curStarArr = '';
+        // 'starDB' > 객체
+        // starDB > [리뷰번호] : {별점: 5}
+        // starDB[리뷰번호].별점 = 5
+        
         if (star === 1.0) {
             console.log("star 1 CALLED");
-        } else if (star === 1.5) {
-            console.log("star 1.5 CALLED");
+        
+            curStarArr = starArr[0]
         } else if (star === 2.0) {
             console.log("star 2.0 CALLED");
-        } else if (star === 2.5) {
-            console.log("star 2.5 CALLED");
+
+            curStarArr = starArr[1]
         } else if (star === 3.0) {
             console.log("star 3.0 CALLED");
-        } else if (star === 3.5) {
-            console.log("star 3.5 CALLED");
+
+            curStarArr = starArr[2]
         } else if (star === 4.0) {
             console.log("star 4.0 CALLED");
-        } else if (star === 4.5) {
-            console.log("star 4.5 CALLED");
+
+            curStarArr = starArr[3]
         } else if (star === 5.0) {
             console.log("star 5.0 CALLED");
+            
+            curStarArr = starArr[4]
         }
     });
 
@@ -46,16 +58,27 @@ const GradeSelect = (props) => {
         if (starDBInStorage === null) {
             let newStarObj = {
                 [reviewNum]: {
-                    festivalNum: festivalNum,
-                    star: star,
+                    'festivalNum': festivalNum,
+                    'star': star
                 },
             };
             let newStarStr = JSON.stringify(newStarObj);
+            localStorage.setItem("newStarObj", newStarStr);
+        } else {
+
+            let starObj = JSON.parse(starDBInStorage);
+            starObj[reviewNum] = {
+                'festivalNum': festivalNum,
+                'star': star
+            };
+
+            let newStarStr = JSON.stringify(starObj);
             localStorage.setItem("newStarObj", newStarStr);
         }
     }, [star]);
 
     // handler
+    
     const starClickHandler = (e) => {
         console.log("starClickHandler() CALLED");
 
@@ -119,7 +142,9 @@ const GradeSelect = (props) => {
                 </div>
                 &nbsp;&nbsp;&nbsp;
                 <div className="star_rate">{star}</div>
-                <div></div>
+                <div cur_star_wrap>
+                    <p>curStarArr</p>
+                </div>
             </div>
         </>
     );
