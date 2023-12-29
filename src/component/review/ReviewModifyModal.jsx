@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getLoginedId } from './session';
+import { getLoginedId, setLoginedId } from './session';
 import { getDateTime } from './getDateTime';
 // import Star from '';
 
@@ -11,21 +11,27 @@ const ReviewModifyModal = (props) => {
     const [reviewNo, setReviewNo] = useState(0);
     const [rDateTime, setRDateTime] = useState('');
     const [uReview, setUReview] = useState('');
+   
+    const [festivalDataId, setFestivalDataId] = useState('');
     const [festivalTitle, setFestivalTitle] = useState('');
     const [star, setStar] = useState('');    
-
+    const [uId, setUId] = useState('');
 
     useEffect(() => {
-    let reviewDBinStorage = localStorage.getItem('reviewDB');
-    let reviewDBObjs = JSON.parse(reviewDBinStorage);
+    
+    let reviewDBObjs = parseReviewDB();
     let myReviewObjs = reviewDBObjs[getLoginedId()];
     let modifyMyReview = myReviewObjs[props.modifyKey];
         console.log('myReviewObjs: ', modifyMyReview);
 
-        setDataTitle(props.festivalData[modifyMyReview.dataId].title);
+      setFestivalDataId('01');
+      setFestivalTitle('빙어축제');
+      setLoginedId('aa');
+      setStar('*****');
+      
         setUReview(modifyMyReview.uReview);
         // setStar(modifyMyReview.star);
-        setRDateTime(getReviewDateTime());
+        setRDateTime(getDateTime());
 
         
     }, []);
@@ -37,42 +43,62 @@ const ReviewModifyModal = (props) => {
   }
 
     const modifyModalBtnClickHandler = () => {
-      console.log('writeModalWrite Btn Clicked!');
+      console.log('modifyModal Btn Clicked!');
     
-      let reviewDBinStorage = localStorage.getItem('reviewDB');
-      let reviewDBObjs = JSON.parse(reviewDBinStorage);
-      let myReviewObjs = reviewDBObjs[getLoginedId()];
-          console.log('myReviewObjs: ', myReviewObjs);
-          modifyMyReview = myReviewObjs[props.modifyKey];
-          modifyMyReview[props.modifyKey] = {
-                    'dataId'    : modifyMyReview[dataId],
-                    'rDateTime' : getReviewDateTime(),
-                    'uReview'   : uReview,
-                    'star'      : star,
-                  }
+      // let reviewDBinStorage = localStorage.getItem('reviewDB');
+      // let reviewDBObjs = JSON.parse(reviewDBinStorage);
+      // let myReviewObjs = reviewDBObjs[getLoginedId()];
+      //     console.log('myReviewObjs: ', myReviewObjs);
+      //     modifyMyReview = myReviewObjs[props.modifyKey];
+      //     modifyMyReview[props.modifyKey] = {
+      //               'dataId'    : modifyMyReview[dataId],
+      //               'title'     : modifyMyReview[title],
+      //               'rDateTime' : getDateTime(),
+      //               'uReview'   : uReview,
+      //               'star'      : star,
+      //             }
    
             
-        myReviewObjs[getLoginedId()] = modifyMyReview;
-        let modifiedReviewStr = JSON.stringify(myReviewObjs);
-        localStorage.setItem('reviewDB', modifiedReviewStr);
+      //   myReviewObjs[getLoginedId()] = modifyMyReview;
+      //   let modifiedReviewStr = JSON.stringify(myReviewObjs);
+      //   localStorage.setItem('reviewDB', modifiedReviewStr);
 
-        console.log('Review modified success!');
+      //   console.log('Review modified success!');
         props.setIsShowModifyModal(false);
 
     }
   
+// reviewDB 가져오는 함수
+const parseReviewDB = () => {
+  console.log('reviewDBObjs() Called!');
 
+  let reviewDBinStorage = localStorage.getItem('reviewDB');
+  if (reviewDBinStorage === null) {
+    let uId = 'aa';
+    let newDBObj = {
+      [count] : reviewNo,
+      [rData] : {
+              'uId' : uId,
+              'dataId': festivalDataId,
+              'title' : festivalTitle,
+              'rDateTime' : getDateTime(),
+              'uReview' : uReview,
+              'rNo' : reviewNo,
+              'star' : star,
+      }
+    }
+    reviewDBinStorage = JSON.stringify(newDBObj);
+    localStorage.setItem('reviewDB', reviewDBinStorage);
+    reviewDBinStorage = localStorage.getItem('reviewDB');
+  } 
+  let reviewDBObjs = JSON.parse(reviewDBinStorage);
+  console.log('reviewDBinStorage: ', reviewDBinStorage);
+  console.log('reviewDBObjs: ', reviewDBObjs);
 
-
-  // reviewDB 가져오는 함수
-  const getReviewDBObjs = () => {
-    console.log('getReviewDBObjs() Called!');
-
-    let reviewDBinStorage = localStorage.getItem('reviewDB');
-    let reviewDBObjs = JSON.parse(reviewDBinStorage);
-
-        return reviewDBObjs;
+      return reviewDBObjs;
+  
 }
+
 
 
   
@@ -82,13 +108,13 @@ const ReviewModifyModal = (props) => {
 
     <div className='review_modal_wrap'>
 
-      <Star setStar={setStar} star={star}/>
-  
+      {/* <Star setStar={setStar} star={star}/> */}
+{/*   
       <textarea cols="40" rows="5" vlaue={uReview} onChange={uReviewChangeHandler}>
-        {`${rDateTime} | ${dataTitle} | ${uReview} | ${star}`}
+        {`${rDateTime} | ${title} | ${uReview} | ${star}`}
       </textarea>
       <br />
-      
+       */}
       <button onClick={modifyModalBtnClickHandler}>수정</button>
    
     </div>
