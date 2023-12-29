@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@300;700&display=swap');
+
 #wrap {
 }
 
@@ -21,13 +23,16 @@ header .link {
     display: flex;
     justify-content: center;
     align-items: center;
+    min-width: 90px;
     height: 60px;
+
 }
 
 header .logo {
     padding: 0 20px;
     font-size: 3.5rem;
     font-weight: bold;
+    font-family: 'Averia Serif Libre', serif;
 }
 
 header .logo:hover {

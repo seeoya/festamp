@@ -10,11 +10,11 @@
     --sub: #83c4e3;
     --highlight: #1db7ff;
     --sec-bg: #fafafa;
-    --sec-border: 1px solid #eaeaea;
+    --sec-border-color: #dcdcdc;
     --border-color: #242424;
     --btn-bg: #0c0c0c;
     --btn-bg-hover: #a3a3a3;
-    --btn-border: 1px solid var(--border-color);
+    --btn-border-color: var(--border-color);
     --btn-border-radius: 5px;
     --btn-color: #fff;
     --btn-color-hover: #fff;
@@ -80,7 +80,7 @@ table {
 .sec {
     padding: 50px 30px;
     background-color: var(--sec-bg);
-    border: var(--sec-border);
+    border: 1px solid var(--sec-border-color);
     border-radius: 20px;
 }
 
@@ -88,19 +88,44 @@ table {
 }
 
 .btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px;
     background-color: var(--btn-bg);
-    border: var(--btn-border);
+    border: 1px solid var(--btn-border-color);
     border-radius: var(--btn-border-radius);
     color: var(--btn-color);
 }
 
 .btn:hover {
     background-color: var(--btn-bg-hover);
+    border: 1px solid var(--btn-bg-hover);
     color: var(--btn-color-hover);
+}
+
+.btn.main {
+    background-color: var(--main);
+    border: 1px solid var(--main);
+}
+
+.btn.main:hover {
+    background-color: var(--sub);
+    border: 1px solid var(--sub);
+}
+
+.btn.highlight {
+    background-color: var(--highlight);
+    border: 1px solid var(--highlight);
+}
+
+.btn.main:hover {
+    background-color: var(--sub);
+    border: 1px solid var(--sub);
 }
 
 .input {
     padding: 10px;
-    border: 1px solid var(--border-color);
+    border: var(--sec-border);
     border-radius: 10px;
 }
