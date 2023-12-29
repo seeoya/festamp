@@ -25,7 +25,7 @@ const Container = (props) => {
                 <Route path="/" element={<Main festivalData={props.festivalData} />}></Route>
                 <Route path="/list" element={<List festivalData={props.festivalData} />}></Route>
                 <Route
-                    path="/view/*"
+                    path="/view/:id"
                     element={<ListView festivalData={props.festivalData} />}
                 ></Route>
                 <Route path="/signin" element={<SignIn />}></Route>
