@@ -10,6 +10,7 @@ function SignIn() {
   const [uId, setUId] = useState('');
   const [uPw, setPw] = useState('');
 
+  // 회원가입 btn Hook
   const [isJoin, setIsJoin] = useState('');
 
     
