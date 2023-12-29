@@ -1,5 +1,14 @@
 import React, { useEffect } from "react";
+import { Route, Routes } from "react-router";
+import StyleGuide from "./StyleGuide";
+import GradeSelect from "./grade_select/GradeSelect";
+import List from "./list/List";
+import ListView from "./list/ListView";
 import Main from "./main/Main";
+import Privacy from "./member/Privacy";
+import SignIn from "./member/SignIn";
+import SignOut from "./member/SignOut";
+import SignUp from "./member/SignUp";
 
 const Container = (props) => {
     useEffect(() => {
@@ -11,7 +20,27 @@ const Container = (props) => {
     return (
         <div id="container">
             {/* 여기에 본문 컴포넌트 삽입 */}
-            <Main festivalData={props.festivalData} />
+            <Routes>
+                {/* MAIN */}
+                <Route path="/" element={<Main festivalData={props.festivalData} />}></Route>
+                <Route path="/list" element={<List festivalData={props.festivalData} />}></Route>
+                <Route
+                    path="/view/*"
+                    element={<ListView festivalData={props.festivalData} />}
+                ></Route>
+                <Route path="/signin" element={<SignIn />}></Route>
+                <Route path="/signout" element={<SignOut />}></Route>
+                <Route path="/signup" element={<SignUp />}></Route>
+                <Route path="/privacy" element={<Privacy />}></Route>
+
+                {/* #TODO 테스트용. 제거 예정 */}
+                <Route path="/gradeselect" element={<GradeSelect />}></Route>
+                <Route path="/styleguide" element={<StyleGuide />}></Route>
+                {/*  */}
+
+                {/* NOT FOUND */}
+                <Route path="*" element={<></>}></Route>
+            </Routes>
         </div>
     );
 };
