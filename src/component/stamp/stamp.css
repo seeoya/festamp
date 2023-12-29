@@ -1,0 +1,64 @@
+.stamp_wrap {
+    margin: 0 auto;
+    height: 500px;
+    background-color: #c9a9e9;
+    text-align: center;
+    border: 1px solid #000;
+    border-radius: 20px;
+}
+
+.stamp_wrap .stamp_table {
+    margin: 70px auto;
+    width: 600px;
+    height: 300px;
+}
+
+.stamp_table tbody {
+    border: 1px solid #000;
+}
+
+.stamp_table tbody tr {
+    border: 1px solid #000;
+}
+
+.stamp_table tbody td {
+    border: 1px solid #000;
+}
+
+.stamp_table tbody tr:nth-child(1) {
+    width: 600px;
+    height: 60px;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.stamp_table tbody tr:nth-child(2),
+.stamp_table tbody tr:nth-child(4) {
+    width: 600px;
+    height: 40px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.stamp_table tbody tr:nth-child(3),
+.stamp_table tbody tr:nth-child(5) {
+    width: 600px;
+    height: 100px;
+    text-align: center;
+}
+
+.stamp_table tbody tr div {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    border: 1px solid #9b9b9b;
+    border-radius: 50%;
+    box-shadow: 3px 3px 8px #000;
+    background-color: aqua;
+}
+
+.stamp_table tbody tr div img {
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+}

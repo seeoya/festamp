@@ -1,5 +1,8 @@
 import React from "react";
 import './listStyle.css';
+import { useParams } from "react-router-dom";
+
+
 
 const ListView = (festivalData) => {
     
@@ -9,37 +12,42 @@ const ListView = (festivalData) => {
     let name = <i class="fa-solid fa-building"></i>
     let tel = <i class="fa-solid fa-phone-volume"></i>
 
+
+    // useParams > path="/view/:id" id 값을 가져옴 url 파라미터
+    let {id} = useParams()
+    console.log(id)
+
     return (
 
         
 
         <div id="listview_wrap">
             <div className="title">
-                <h1>{festivalData.festivalData[1].title}</h1>
+                <h1>{festivalData.festivalData[id].title}</h1>
             </div>
 
             <div className="date">
-                <h1>{festivalData.festivalData[1].date}</h1>
+                <h1>{festivalData.festivalData[id].date}</h1>
             </div>
 
             <div className="img">
-                <img src={`/${festivalData.festivalData[0].img}`}/>
+                <img src={`/${festivalData.festivalData[id].img}`}/>
             </div>
             <div className="explan">
-                <h1>{festivalData.festivalData[1].explain}</h1>
+                <h1>{festivalData.festivalData[id].explain}</h1>
             </div>
             <div className="middle">
                 <div className="event">
-                    <h1>{festivalData.festivalData[1].event}</h1>
+                    <h1>{festivalData.festivalData[id].event}</h1>
                 </div>
 
                 <div className="total">
                     <ul>
-                        <li>{calendar} &nbsp;{festivalData.festivalData[1].date} </li>
-                        <li>{place} &nbsp;{festivalData.festivalData[1].location} </li>
-                        <li>{price} &nbsp;{festivalData.festivalData[1].price} </li>
-                        <li>{name} &nbsp;{festivalData.festivalData[1].store} </li>
-                        <li>{tel} &nbsp;{festivalData.festivalData[1].tel} : </li>
+                        <li>{calendar} &nbsp;{festivalData.festivalData[id].date} </li>
+                        <li>{place} &nbsp;{festivalData.festivalData[id].location} </li>
+                        <li>{price} &nbsp;{festivalData.festivalData[id].price} </li>
+                        <li>{name} &nbsp;{festivalData.festivalData[id].store} </li>
+                        <li>{tel} &nbsp;{festivalData.festivalData[id].tel} : </li>
                     </ul>
                 </div>
             </div>

@@ -9,6 +9,7 @@ import Privacy from "./member/Privacy";
 import SignIn from "./member/SignIn";
 import SignOut from "./member/SignOut";
 import SignUp from "./member/SignUp";
+import Stamp from "./stamp/Stamp";
 
 const Container = (props) => {
     useEffect(() => {
@@ -25,7 +26,7 @@ const Container = (props) => {
                 <Route path="/" element={<Main festivalData={props.festivalData} />}></Route>
                 <Route path="/list" element={<List festivalData={props.festivalData} />}></Route>
                 <Route
-                    path="/view/*"
+                    path="/view/:id"
                     element={<ListView festivalData={props.festivalData} />}
                 ></Route>
                 <Route path="/signin" element={<SignIn />}></Route>
@@ -35,6 +36,7 @@ const Container = (props) => {
 
                 {/* #TODO 테스트용. 제거 예정 */}
                 <Route path="/gradeselect" element={<GradeSelect />}></Route>
+                <Route path="/stamp" element={<Stamp />}></Route>
                 <Route path="/styleguide" element={<StyleGuide />}></Route>
                 {/*  */}
 

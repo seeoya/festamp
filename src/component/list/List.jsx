@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import './listStyle.css';
-import { Link } from "react-router-dom";
+import { Link, Routes } from "react-router-dom";
+import ListView from "./ListView";
+
+
+
 
 const List = (props) => {
     const [visibleItems, setVisibleItems] = useState(6);
@@ -65,7 +69,7 @@ const List = (props) => {
                     .map((festival, index) => (
                         <div className="festival_item" key={index}>
                             <div>
-                                <Link to={`/view/${festival.id}`} onClick={ImgViewClickHandler}>
+                                <Link to={`/view/${festival.id}`} >
                                     <img src={festival.img} />
                                     <h3>{festival.title}</h3>
                                     <h5>{festival.date}</h5>
@@ -83,11 +87,11 @@ const List = (props) => {
                 )}
                 <div className="map">
                     {/* 지도 자리 */}
-                    <img src="imgs/festival/map.jpg" />
+                    <img src="imgs/festival/stamp.gif" />
                 </div>
                 <div className="stamp">
                     {/* 스탬프 이미지 자리 */}
-                    <img src="imgs/festival/stamp.gif" />
+                    <img src="imgs/festival/stamp2.jpg" />
                 </div>
             </div>
         </div>
