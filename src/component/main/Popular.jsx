@@ -17,7 +17,7 @@ const Popular = (props) => {
 
     return (
         <div className="popular">
-            <h2>인기 축제 순위</h2>
+            <h1>인기 축제 순위</h1>
 
             <ul className="list">
                 {popFestival.map((el, i) => {

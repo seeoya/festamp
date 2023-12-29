@@ -31,7 +31,7 @@ const MainSlide = (props) => {
 
     return (
         <div id="main_slide">
-            <h1>오늘의 축제</h1>
+            <h1 className="main_slide_title">오늘의 축제</h1>
 
             <Swiper
                 navigation={true}
