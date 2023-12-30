@@ -5,6 +5,9 @@ export const getDateTime = () => {
         year: "numeric",
         month: "short",
         day: "numeric",
+        hour : 'numeric',
+        minute : 'numeric',
+        
       });
       
       return currentDate;
