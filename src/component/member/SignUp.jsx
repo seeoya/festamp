@@ -74,14 +74,16 @@ const SignUp = () => {
      console.log(memDbId.includes(UId));
      console.log(memDbId);
 
-    
+    if(UId !== ""){
      if(memDbId.includes(UId)){
         alert('이미 사용중인 아이디입니다.');
         setUId('');
      } else {
         alert('사용 가능한 아이디입니다.');
      }
-
+    } else {
+        alert('아이디를 입력하세요.');
+    }
     }
 
     // 비밀번호 확인 버튼
