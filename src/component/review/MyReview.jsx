@@ -13,49 +13,62 @@ const MyReview = (props) => {
 
     
 
-  //   useEffect(( ) => {
-  //     setLoginedId('aa');
-  //     console.log('useEffect() CALLED!!');
+    useEffect(( ) => {
+      
+      console.log('useEffect() CALLED!!');
 
-  //   let reviewDBObjs = parseReviewDB();
-  //   let myReviewObjs = reviewDBObjs[getLoginedId()];
+      let reviewDBObjs = parseReviewDB();
+      let rDataObjs = reviewDBObjs.rData;
+                          
+      let reviewskeys = [];
+      for (let keys in rDataObjs) {
+        
+          reviewskeys.push(keys);
+        
+      }
+        console.log(reviewskeys);
 
-  //   let myReviewKeys = [];
-  //   for(let keys in myReviewObjs) {
-  //       myReviewKeys.push(keys);
-  //   }
-
-  //   let tempArr = [];
-  //   for(let i=0; i < myReviewKeys.length; i++) {
-  //       let myReview = myReviewObjs[myReviewKeys[i]]; //i번째 review 전달
-  //       myReview['key'] = myReviewKeys[i];  // i번째 키값 전달
-  //       tempArr.push(myReview);
-         
-  //   }
-  //   setMyRiviewArr(tempArr);
+      
+      let tempArr = [];
     
-  // }, [tempFlag, isShowModifyModal]);   
+      for (let i = 0; i < reviewskeys.length; i++) {
+          let reviews = rDataObjs[reviewskeys[i]];
 
-  const myReviewModifyBtnClickHandler = (e, reviewNo) => {
+          let uId = 'aa';    // 로그인 아이디
+         
+          if(reviews.uId === uId) {    // getLoginedId()
+              reviews['key'] = reviewskeys[i];
+              console.log('reviewskeys[i]:', reviewskeys[i]);
+                  
+              tempArr.push(reviews);
+            }
+          }
+        
+         setMyRiviewArr(tempArr);
+    
+  }, [tempFlag, isShowModifyModal]);   
+
+  const myReviewModifyBtnClickHandler = (e, rNo) => {
     console.log('reviewModifyBtnClickHandler() Called!');
 
+    setModifyKey(rNo);
     setIsShowModifyModal(true);
-    setModifyKey(reviewNo);
+    
   }
 
-  const myReviewDelBtnClickHandler = (e, reviewNo) => {
+  const myReviewDelBtnClickHandler = (e, rNo) => {
     console.log('reviewDelBtnClickHandler() Called!');
     
     let result = window.confirm('리뷰를 삭제하시겠습니까?');
 
         if (result) {
           let reviewDBObjs = parseReviewDB();  
-          let myReviews = reviewDBObjs[getLoginedId()];
+          let myReviews = reviewDBObjs.rData;
 
-            delete myReviews[reviewNo];
+            delete myReviews[rNo];
 
-            reviewDBObjs[getLoginedId()] = myReviews;
-              console.log('reviewDBObjs: ', reviewDBObjs);
+            reviewDBObjs.rData = myReviews;
+              console.log('reviewDBObjs.rData: ', reviewDBObjs.rData);
 
           let reviewDBInStorage = JSON.stringify(reviewDBObjs);
             localStorage.setItem('reviewDB', reviewDBInStorage);
@@ -68,6 +81,7 @@ const MyReview = (props) => {
 
         } else {
             alert('취소되었습니다.');
+
 
         }
   }
@@ -94,11 +108,11 @@ const MyReview = (props) => {
                 <>
                 <li>
                       {`${[myReview.rDateTime]}`}&nbsp;&nbsp;
-                      {myReview.title}&nbsp;&nbsp;
-                      {myReview.rReview}&nbsp;&nbsp;
+                      {myReview.fTitle}&nbsp;&nbsp;
+                      {myReview.uReview}&nbsp;&nbsp;
                       {myReview.star}&nbsp;&nbsp;
-                      <button onClick={(e) => myReviewModifyBtnClickHandler(e, myReview.reviewNo)}>수정</button>&nbsp;&nbsp;
-                      <button onClick={(e) => myReviewDelBtnClickHandler(e, myReview.reviewNo)}>삭제</button>
+                      <button onClick={(e) => myReviewModifyBtnClickHandler(e, myReview.rNo)}>수정</button>&nbsp;&nbsp;
+                      <button onClick={(e) => myReviewDelBtnClickHandler(e, myReview.rNo)}>삭제</button>
                 </li>
                 </>
                    )}
@@ -107,7 +121,7 @@ const MyReview = (props) => {
               isShowModifyModal
               ?
               <>
-              <ReviewModifyModal modifyKey={setModifyKey} />
+              <ReviewModifyModal setIsShowModifyModal={setIsShowModifyModal} modifyKey={modifyKey} />
               </>
               : null
             }
