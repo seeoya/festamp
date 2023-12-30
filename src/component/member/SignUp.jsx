@@ -66,13 +66,25 @@ const SignUp = () => {
         setUBirth(e.target.value);
     }
 
-    //중복확인
-    // const DuplicateTestBtnHandler = (UId) => {
-    //     console.log(UId)
-    // if(UId !== )
-    // }
+    // 중복확인 버튼 
+    const DuplicateTestBtnHandler = () => {
+        console.log(UId);
+     let memberDB = JSON.parse(localStorage.getItem('memberDB'));
+     let memDbId = Object.keys(memberDB);
+     console.log(memDbId.includes(UId));
+     console.log(memDbId);
 
-    //비밀번호 확인 버튼
+    
+     if(memDbId.includes(UId)){
+        alert('이미 사용중인 아이디입니다.');
+        setUId('');
+     } else {
+        alert('사용 가능한 아이디입니다.');
+     }
+
+    }
+
+    // 비밀번호 확인 버튼
     const pwSameBntHandler = () => {
         console.log('pwSameBntHandler() Clicked!');
 
@@ -142,7 +154,7 @@ const SignUp = () => {
                     <br />
                     <label htmlFor="u_id"><p>아이디</p></label>
                     <input type="text" id="u_id" name="u_id" value={UId} onChange={(e) => userIdHandler(e)} placeholder="아이디" /> &nbsp;
-                    <button type="button" name="same"> 중복 확인</button>
+                    <button type="button" name="same" onClick={DuplicateTestBtnHandler}> 중복 확인</button>
                     <br />
                     <label htmlFor="u_pw"><p>비밀번호</p> </label>
                     <input type="password" id="u_pw" name="u_pw" value={UPw} onChange={(e) => userPwHandler(e)} placeholder="비밀번호 " />
