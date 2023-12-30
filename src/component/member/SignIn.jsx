@@ -23,6 +23,7 @@ function SignIn() {
 
    if(memberInStorage !== null && memIdObj.includes(uId) && memberInStorage[uId].pw === uPw) {
     alert('FESTAMP에 오신 걸 환영합니다. :)');
+    navigate("/Wrap");
 
    } else {
     alert('회원정보가 없습니다.');
