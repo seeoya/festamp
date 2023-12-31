@@ -154,8 +154,8 @@ const SignUp = () => {
 
         <div>
             <form >
-                <fieldset>
-                    <legend>회원가입</legend>
+                <div>
+                    <div>회원가입</div>
                     <label htmlFor="u_name"><p>이름(닉네임)  </p></label>
                     <input type="text" id="u_name" name="u_name" onChange={(e) => userNameHandler(e)} placeholder="이름(닉네임)" />
                     <br />
@@ -180,7 +180,7 @@ const SignUp = () => {
                     <input type="date" id="u_birth" name="u_birth" value={UBirth} onChange={(e) => userBirthHandler(e)} placeholder="생일" />
                     <br />
                     <button type="button" onClick={joinBtn}>회원가입</button>
-                </fieldset>
+                </div>
             </form>
 
         </div>
