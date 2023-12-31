@@ -14,7 +14,6 @@
 }
 
 #title{
-  /* width: 150px; */
   text-align: center;
   margin: 20px 0;
   padding: 10px;
@@ -49,11 +48,6 @@
   outline: none;
 }
 
-/* .checkBtn{
-  width: 80px;
-  border-radius: 15px;
-  padding: 5px;
-} */
 #joinBtnWrap{
   text-align: center;
   margin-top: 10px;
