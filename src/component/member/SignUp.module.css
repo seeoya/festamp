@@ -24,26 +24,36 @@
   margin-top: 10px;
 }
 
-#joinBtn {
-  border-radius: 15px;
-  padding: 8px;
-  background-color: #47a8d5;
-  margin-top: 10px;
-  width: 80px;
+#joinBtn, .checkBtn {
+  display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: var(--btn-bg);
+    border: 1px solid var(--btn-border-color);
+    border-radius: var(--btn-border-radius);
+    color: var(--btn-color);
+}
+#joinBtn:hover, .checkBtn:hover {
+    background-color: var(--btn-bg-hover);
+    border: 1px solid var(--btn-bg-hover);
+    color: var(--btn-color-hover);
 }
 
 .input{
-  border-radius: 15px;
-  margin-bottom: 10px;
-  font-size: 15px;
-  padding: 5px;
+  color: var(--text);
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  font-size: 1.4rem;
+  letter-spacing: -0.1rem;
+  outline: none;
 }
 
-.checkBtn{
+/* .checkBtn{
   width: 80px;
   border-radius: 15px;
   padding: 5px;
-}
+} */
 #joinBtnWrap{
   text-align: center;
   margin-top: 10px;
