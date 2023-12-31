@@ -1,0 +1,50 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+.nanumgothic * {
+ font-family: 'Nanum Gothic', sans-serif;
+ box-sizing: border-box;
+ 
+}
+
+.signUpWrap {
+ width: 450px;
+ text-align: left;
+ margin: 0 auto;
+ padding-left: 60px;
+}
+
+#title{
+  /* width: 150px; */
+  text-align: center;
+  margin: 20px 0;
+  padding: 10px;
+}
+
+.information{
+  margin-top: 10px;
+}
+
+#joinBtn {
+  border-radius: 15px;
+  padding: 8px;
+  background-color: #47a8d5;
+  margin-top: 10px;
+  width: 80px;
+}
+
+.input{
+  border-radius: 15px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  padding: 5px;
+}
+
+.checkBtn{
+  width: 80px;
+  border-radius: 15px;
+  padding: 5px;
+}
+#joinBtnWrap{
+  text-align: center;
+  margin-top: 10px;
+}
