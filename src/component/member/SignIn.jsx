@@ -20,18 +20,25 @@ function SignIn() {
 
     let memberInStorage = JSON.parse(localStorage.getItem('memberDB'));
     let memIdObj = Object.keys(memberInStorage);
+  
+   if(uId !== "" && uPw !== ""){
 
-   if(memberInStorage !== null && memIdObj.includes(uId) && memberInStorage[uId].pw === uPw) {
+     if(memberInStorage !== null && memIdObj.includes(uId) && memberInStorage[uId].pw === uPw) {
+
     alert('FESTAMP에 오신 걸 환영합니다. :)');
     navigate("/Wrap");
 
    } else {
+
     alert('회원정보가 없습니다.');
     setUId('');
     setPw('');
 
    }
-   
+  } else {
+
+    alert("정보를 입력해주세요.");
+  }
    
 
   }
