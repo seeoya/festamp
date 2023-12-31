@@ -1,0 +1,16 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+.nanumgothic * {
+ font-family: 'Nanum Gothic', sans-serif;
+
+}
+
+.title {
+  box-sizing: border-box;
+  text-align: center;
+  
+}
+
+.logInBtn {
+  text-align: center;
+}
