@@ -89,13 +89,18 @@ const SignUp = () => {
     // 비밀번호 확인 버튼
     const pwSameBntHandler = () => {
         console.log('pwSameBntHandler() Clicked!');
-
+        
+    if(PwSame !== ""){
         if(UPw === PwSame){
             alert('비밀번호 일치합니다:)')
         } else {
             alert('비밀번호가 일치하지 않습니다.');
             setPwSame('');
         }
+    } else {
+        alert('비밀번호를 입력하세요.')
+        setPwSame('');
+    }
     }
 
     // 회원가입 버튼
