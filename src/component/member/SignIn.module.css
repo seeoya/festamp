@@ -11,6 +11,25 @@
   
 }
 
-.logInBtn {
+.logInBtnWrap {
   text-align: center;
+}
+
+.titleName{
+  margin: 20px 0 20px;
+}
+
+.enterInformation{
+  width: 250px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  padding: 5px;
+}
+
+.logInBtn{
+  width: 100px;
+  border-radius: 15px;
+  padding: 8px;
+  background-color: #47a8d5;
 }
