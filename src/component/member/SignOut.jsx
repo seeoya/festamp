@@ -14,7 +14,7 @@ function SignOut() {
     const NoSignOutBntHandler = () => {
       console.log('NoSignOutBntHandler() Clicked!');
 
-      navigate("/Main");
+      navigate("/Privacy");
     }
 
   return (
