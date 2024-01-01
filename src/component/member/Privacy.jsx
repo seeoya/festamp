@@ -12,7 +12,7 @@ const Privacy = () => {
     <>
       <form >
         <div>
-          <div>개인정보수정</div>
+          <h3>개인정보수정</h3>
       <label htmlFor="u_name">
       <p>이름(닉네임)  </p></label>
       <input type="text" id="u_name" name="u_name" placeholder="이름(닉네임)" />
@@ -31,7 +31,7 @@ const Privacy = () => {
       <input type="text" id="u_phone" name="u_phone"placeholder="연락처" />
       <br />
       <label htmlFor="u_email"><p>이메일</p></label>
-      <input type="email" pattern="[a-zA-Z0-9]+[@][a-zA-Z]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*" id="u_email" name="u_email" placeholder="E-mail" />
+      <input type="email" id="u_email" name="u_email" placeholder="E-mail" />
       <br />
       <label htmlFor="u_birth"><p>생년월일</p></label>
       <input type="date" id="u_birth" name="u_birth" placeholder="생일" />
