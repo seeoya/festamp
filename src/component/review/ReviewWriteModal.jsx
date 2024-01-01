@@ -40,7 +40,7 @@ const ReviewWriteModal = (props) => {
   const writeModalBtnClickHandler = () => {
     console.log('writeModalWrite Btn Clicked!');
   
-    let uId = 'aa';
+    let uId = 'jin';
   
     let reviewDBObjs = parseReviewDB();
     let reviewObjs = reviewDBObjs.rData;

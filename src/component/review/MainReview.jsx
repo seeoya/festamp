@@ -20,6 +20,10 @@ const MainReview = (props) => {
   const [festivalDataId, setFestivalDataId] = useState('');
   const [festivalTitle, setFestivalTitle] = useState('');
   const [starDataId, setStarDataId] = useState('');
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(10);
+  
   
 
 
@@ -29,8 +33,8 @@ const MainReview = (props) => {
     // setFestivalDataId(props.dataId);
     // setFestivalTitle(props.title);
     
-    setFestivalDataId('03');
-    setFestivalTitle('산천어축제');
+    setFestivalDataId('02');
+    setFestivalTitle('빙어축제');
     setStarDataId('****');
       
         let reviewDBObjs = parseReviewDB();
@@ -50,7 +54,7 @@ const MainReview = (props) => {
         for (let i = 0; i < reviewskeys.length; i++) {
             let reviews = rDataObjs[reviewskeys[i]];
 
-            let uId = 'aa';    // 로그인 아이디
+            let uId = 'jin';    // 로그인 아이디
             
             if (reviews.fDataId === festivalDataId){
               if (!isLogined) {     // getLoginedId()
@@ -67,13 +71,18 @@ const MainReview = (props) => {
             }
           }
           setReviewsArr(tempArr);
+          currentPosts(reviewsArr);
+          setReviewsArr(currentPosts);
           
-     
+          
+          
+       
 
-}, [festivalDataId, festivalTitle, isLogined, tempFlag, isShowWriteModal, isShowModifyModal, isLogined]);
 
+          
+}, [festivalDataId, festivalTitle, isLogined, tempFlag, isShowWriteModal, isShowModifyModal, isLogined, currentPage]);
 
-
+  // 메인리스트 리뷰쓰기 버튼
   const mainReviewWriteBtnClickHandler = () => {
     console.log('mainReviewWrite Btn Clicked!');
     
@@ -86,21 +95,17 @@ const MainReview = (props) => {
     console.log('reviewsArr: ', reviewsArr);
     let isReviewArr=[];
     let isReview = JSON.stringify(reviewsArr);
-    if (isReview.includes(festivalTitle)) {
-    // for(let value in reviewsArr){
-    //   if(value === festivalTitle){
-    //      isReviewArr.push(value);
-    //   }
-    // }
-    // if (isReviewArr.length > 0 ) {
-       alert(`${festivalTitle} 리뷰가 존재합니다.`);
-    } else {
+  //  if (isReview.includes(festivalTitle)) {
+    
+  //     alert(`${festivalTitle} 리뷰가 존재합니다.`);
+  //  } else {  
             // write modal show
          setIsShowWriteModal(true);
-    }
+  //  }
     
   }
   
+  // 메인리스트 수정 버튼
   const mainReviewModifyBtnClickHandler = (e, rNo) => {
     console.log('mainReviewModify Btn Clicked()!');
    
@@ -109,7 +114,8 @@ const MainReview = (props) => {
     // modify modal show
     setIsShowModifyModal(true);
   }
- 
+  
+  // 메인리스트 삭제 버튼
   const mainReviewDelBtnClickHandler = (e, rNo) => {
     console.log('mainReviewDel Btn Clicked!');
            
@@ -138,6 +144,22 @@ const MainReview = (props) => {
 
         }
     }
+
+   // 메인리뷰 더보기 클릭핸들러
+  const moreViewClickHandler = () => {
+    console.log('moreView Clicked!');
+
+    setCurrentPage((prev) => (prev + 1));
+    console.log(currentPage);
+    setReviewsArr(currentPosts(reviewsArr));
+  }
+
+   // 메인리뷰 접기 클릭핸들러
+  const moreViewCancleClickHandler = () => {
+    console.log('moreViewCancle Clicked!');
+    setCurrentPage(1);
+    setReviewsArr(currentPosts(reviewsArr));
+  }
 
 
   // reviewDB 가져오는 함수
@@ -172,6 +194,8 @@ const MainReview = (props) => {
         return reviewDBObjs;
   }
 
+
+
   const checkLogined = () => {
     if(getLoginedId() === undefined || getLoginedId() === '' || getLoginedId() === null) {
       return false;
@@ -179,24 +203,39 @@ const MainReview = (props) => {
       return true;
     }
   }
+
+  // 해당 page에 보여줄 리스트 담는 함수
+  const currentPosts = (reviewsArr) => {
+    console.log('currentPosts() Called');
+    
+    const indexOfLast = currentPage * postsPerPage;
+    //const indexOfFirst = indexOfLast - postsPerPage;
+    
+    let currentPosts = 0;
+    currentPosts = reviewsArr.slice(currentPosts, indexOfLast);
+    console.log(currentPosts);
+    return currentPosts;
+
+  }
   
 
 
   return (
 
-    <div className='Main_review_wrap'>
+    <div id='review'>
 
-        <div className='review_list_wrap'>
-          <div className='review_head_wrap'>
+    
+          <div className='review_main_header'>
             <ul>
-              <li><h2>{festivalTitle} 리뷰 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{starDataId}
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <button onClick={mainReviewWriteBtnClickHandler}>리뷰 쓰기</button></h2></li>
+              <li><span>{festivalTitle} 리뷰</span><span>{starDataId}</span>
+                  <button onClick={mainReviewWriteBtnClickHandler}>리뷰 쓰기</button>
+              </li>
             </ul>                               
           
           </div>
 
-          <div className='review_list'>
+          <div className='review_main_list'>
+            
              {
                  isLogined
                  ?
@@ -205,12 +244,12 @@ const MainReview = (props) => {
                  { reviewsArr.map((reviews, idx) =>
                     
                 <>
-                <li>{reviews.uId}&nbsp;&nbsp;
-                    {reviews.fTitle}&nbsp;&nbsp;
-                    {`${[reviews.rDateTime.split('일', 1)]}${'일'}`}&nbsp;&nbsp;
-                      {reviews.uReview}&nbsp;&nbsp;
-                      {reviews.star}&nbsp;&nbsp;
-                      <button onClick={(e) => mainReviewModifyBtnClickHandler(e, reviews.rNo)}>수정</button>&nbsp;&nbsp;
+                <li className='full_list'>{reviews.uId}
+                      <span>{reviews.fTitle}</span>
+                      <span>{`${[reviews.rDateTime.split('일', 1)]}${'일'}`}</span>
+                      <span>{reviews.uReview}</span>
+                      <span>{reviews.star}</span>
+                      <button onClick={(e) => mainReviewModifyBtnClickHandler(e, reviews.rNo)}>수정</button>
                       <button onClick={(e) => mainReviewDelBtnClickHandler(e, reviews.rNo)}>삭제</button>
                 </li>
                 </>
@@ -220,21 +259,30 @@ const MainReview = (props) => {
             </>
                 :
             <>
-            <ul>
+           <ul>
                 { reviewsArr.map((reviews, idx) =>
                     
                     <>
-                    <li>{reviews.uId}&nbsp;&nbsp;
-                        {reviews.fTitle}&nbsp;&nbsp;
-                        {`${[reviews.rDateTime.split('일', 1)]}${'일'}`}&nbsp;&nbsp;
-                        {reviews.uReview}&nbsp;&nbsp;
-                        {reviews.star}
+                    <li className='logined_list'><span>{reviews.uId}</span>
+                            <span>{reviews.fTitle}</span>
+                            <span>{`${[reviews.rDateTime.split('일', 1)]}${'일'}`}</span>
+                            <span>{reviews.uReview}</span>
+                            <span>{reviews.star}</span>
                     </li>
                     </>
                      )}
             </ul>
-            </>
-            }
+            </> 
+            }                      
+          </div>
+
+          <div className='more_view_wrap'>
+            <a href='#none' onClick={moreViewClickHandler}>+ 더보기</a>
+            <a href='#none' onClick={moreViewCancleClickHandler}>접기</a>
+
+          </div>
+
+          <div className='modal_wrap'>
             {
               isShowWriteModal
               ?
@@ -243,6 +291,7 @@ const MainReview = (props) => {
                                 setIsShowWriteModal={setIsShowWriteModal}/>
             </> : null  
             }
+
             {
               isShowModifyModal
               ?
@@ -251,8 +300,8 @@ const MainReview = (props) => {
               </>
               : null
             }
-        </div>
-      </div>    
+          </div>
+         
     </div>
     
   );
