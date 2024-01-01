@@ -3,14 +3,17 @@ import ReviewModifyModal from './ReviewModifyModal';
 import { getLoginedId, setLoginedId } from './session';
 
 
+
 const MyReview = (props) => {
 
 
-    const [myReviewArr, setMyRiviewArr] = useState([]);
+    const [myReviewsArr, setMyReviewsArr] = useState([]);
     const [tempFlag, setTempFlag] = useState(true);
     const [modifyKey, setModifyKey] = useState('');
     const [isShowModifyModal, setIsShowModifyModal] = useState(false);
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage, setPostsPerPage] = useState(10);
     
 
     useEffect(( ) => {
@@ -34,7 +37,7 @@ const MyReview = (props) => {
       for (let i = 0; i < reviewskeys.length; i++) {
           let reviews = rDataObjs[reviewskeys[i]];
 
-          let uId = 'aa';    // 로그인 아이디
+          let uId = 'jin';    // 로그인 아이디
          
           if(reviews.uId === uId) {    // getLoginedId()
               reviews['key'] = reviewskeys[i];
@@ -42,11 +45,12 @@ const MyReview = (props) => {
                   
               tempArr.push(reviews);
             }
-          }
-        
-         setMyRiviewArr(tempArr);
+          }        
+          setMyReviewsArr(tempArr);
+          currentPosts(myReviewsArr);
+          setMyReviewsArr(currentPosts);
     
-  }, [tempFlag, isShowModifyModal]);   
+  }, [tempFlag, isShowModifyModal, currentPage]);   
 
   const myReviewModifyBtnClickHandler = (e, rNo) => {
     console.log('reviewModifyBtnClickHandler() Called!');
@@ -86,6 +90,23 @@ const MyReview = (props) => {
         }
   }
 
+   // MY리뷰 더보기 클릭핸들러
+   const moreViewClickHandler = () => {
+    console.log('moreView Clicked!');
+
+    setCurrentPage((prev) => (prev + 1));
+    console.log(currentPage);
+    setMyReviewsArr(currentPosts(myReviewsArr));
+  }
+
+   // MY리뷰 접기 클릭핸들러
+  const moreViewCancleClickHandler = () => {
+    console.log('moreViewCancle Clicked!');
+    setCurrentPage(1);
+    setMyReviewsArr(currentPosts(myReviewsArr));
+  }
+
+
    // reviewDB 가져오는 함수
    const parseReviewDB = () => {
     console.log('getReviewDBObjs() Called!');
@@ -96,37 +117,60 @@ const MyReview = (props) => {
         return reviewDBObjs;
     }
 
+    // 해당 page에 보여줄 리스트 담는 함수
+  const currentPosts = (myReviewsArr) => {
+    console.log('currentPosts() Called');
+    
+    const indexOfLast = currentPage * postsPerPage;
+    //const indexOfFirst = indexOfLast - postsPerPage;
+    
+    let currentPosts = 0;
+    currentPosts = myReviewsArr.slice(currentPosts, indexOfLast);
+    console.log(currentPosts);
+    return currentPosts;
+
+  }
+
   return (
-    <div className='my_review_wrap'>
+    <div className='my_review'>
 
-        <div className='my_review_list_wrap'>
-
+        <div className='my_review_list'>
+          <>
             <ul>
-              <li>===== MY REVIEW =====</li>
-                   { myReviewArr.map((myReview, idx) =>
+                <li className='my_review_title'>MY REVIEW</li>
+                   { myReviewsArr.map((myReview, idx) =>
                     
                 <>
-                <li>
-                      {`${[myReview.rDateTime]}`}&nbsp;&nbsp;
-                      {myReview.fTitle}&nbsp;&nbsp;
-                      {myReview.uReview}&nbsp;&nbsp;
-                      {myReview.star}&nbsp;&nbsp;
-                      <button onClick={(e) => myReviewModifyBtnClickHandler(e, myReview.rNo)}>수정</button>&nbsp;&nbsp;
+                <li className='my_full_list'>
+                      <span>{`${[myReview.rDateTime]}`}</span>
+                      <span>{myReview.fTitle}</span>
+                      <span>{myReview.uReview}</span>
+                      <span>{myReview.star}</span>
+                      <button onClick={(e) => myReviewModifyBtnClickHandler(e, myReview.rNo)}>수정</button>
                       <button onClick={(e) => myReviewDelBtnClickHandler(e, myReview.rNo)}>삭제</button>
                 </li>
                 </>
                    )}
             </ul>
-            {
-              isShowModifyModal
-              ?
-              <>
-              <ReviewModifyModal setIsShowModifyModal={setIsShowModifyModal} modifyKey={modifyKey} />
-              </>
-              : null
-            }
+            </>
         </div>
-    
+        
+        <div className='more_view_wrap'>
+            <a href='#none' onClick={moreViewClickHandler}>+ 더보기</a>
+            <a href='#none' onClick={moreViewCancleClickHandler}>접기</a>
+        </div>
+
+        <div>
+          {
+            isShowModifyModal
+            ?
+            <>
+            <ReviewModifyModal setIsShowModifyModal={setIsShowModifyModal} modifyKey={modifyKey} />
+            </>
+            : null
+          }
+        </div>
+       
     </div>
   );
 }
