@@ -1,0 +1,46 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+.nanumgothic * {
+ font-family: 'Nanum Gothic', sans-serif;
+
+}
+
+.title {
+  box-sizing: border-box;
+  text-align: center;
+  
+}
+
+.logInBtnWrap {
+  text-align: center;
+}
+
+.titleName{
+  margin: 20px 0 20px;
+}
+
+.enterInformation{
+  color: var(--text);
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  font-size: 1.4rem;
+  letter-spacing: -0.1rem;
+  outline: none;
+}
+
+.logInBtn{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: var(--btn-bg);
+  border: 1px solid var(--btn-border-color);
+  border-radius: var(--btn-border-radius);
+  color: var(--btn-color);
+}
+
+.logInBtn:hover{
+  background-color: var(--btn-bg-hover);
+  border: 1px solid var(--btn-bg-hover);
+  color: var(--btn-color-hover);
+}
