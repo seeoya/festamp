@@ -231,7 +231,7 @@ const MainReview = (props) => {
           
           </div>
 
-          <div className='review_main_list'>
+          <div className='view_review_list'>
             
              {
                  isLogined

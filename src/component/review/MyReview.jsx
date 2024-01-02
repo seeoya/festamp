@@ -145,7 +145,7 @@ const MyReview = (props) => {
                       <span>{`${[myReview.rDateTime]}`}</span>
                       <span>{myReview.fTitle}</span>
                       <span>{myReview.uReview}</span>
-                      <span>{`★`}</span>
+                      <span>★</span>
                       <span>{myReview.star}</span>
                       <button onClick={(e) => myReviewModifyBtnClickHandler(e, myReview.rNo)}>수정</button>
                       <button onClick={(e) => myReviewDelBtnClickHandler(e, myReview.rNo)}>삭제</button>
