@@ -77,13 +77,13 @@ const IdFind = () => {
         <div>
             <div>
                 <h3>아이디 찾기</h3>
-                <laber htmlFor="u_email">
-                    <p>E-Mail</p> </laber>
+                <label htmlFor="u_email">
+                    <p>E-Mail</p> </label>
                     <input type="text" id='u_email' value={uEmail} onChange={(e) => inputEmailHandler(e)} placeholder='E-mail을 입력하세요' />
                 
 
-                <laber htmlFor="u_phone">
-                    <p>Phone Number</p>  </laber> 
+                <label htmlFor="u_phone">
+                    <p>Phone Number</p>  </label> 
                     <input type="text" id='u_phone' value={uPhone} onChange={(e) => inputPhoneHandler(e)} placeholder='Phone Number를 입력하세요' />
                <br />
 
