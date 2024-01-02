@@ -48,6 +48,8 @@ const StyleGuide = () => {
                 <h1>인풋</h1>
 
                 <div>
+                    class "input"
+                    <br />
                     <input type="text" className="input" placeholder="text" />
                     <input type="password" className="input" placeholder="password" />
                     <input type="email" className="input" placeholder="email" />
