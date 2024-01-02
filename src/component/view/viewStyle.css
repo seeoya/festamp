@@ -2,9 +2,10 @@
 
 #listview_wrap {
     width: 1200px;
-    /* background-image: radial-gradient(#d3eded 20%, transparent 0), radial-gradient(#d3dbdb 20%, transparent 0);
+    margin: 0 auto;
+    background-image: radial-gradient(#d3eded 20%, transparent 0), radial-gradient(#d3dbdb 20%, transparent 0);
     background-position: 0 0, 10px 10px;
-    background-size: 20px 20px; */
+    background-size: 20px 20px;
 }
 
  #listview_wrap .title {
@@ -43,6 +44,9 @@
     padding: 5px;
     font-style: oblique;
     font-weight: bold;
+    background-color: #fafafa;
+    border: 2px solid #dadada;
+    border-radius: 7px;
 }
 
 #listview_wrap .info {
@@ -53,6 +57,7 @@
     margin-top: 10px;
     font-weight: bold;
     font-size: 1.2em;
+    background-color: #fafafa;
 }
 
 #listview_wrap div.bottom div.info ul {
@@ -75,6 +80,7 @@
     display: flex;
     justify-content: space-around;
     flex-direction: column;
+    background-color: #fafafa;
 }
 
 #listview_wrap .middle {
