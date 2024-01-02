@@ -1,20 +1,27 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
-function SignOut() {
+const SignOut = (props) => {
+
+  let setIsLogined = props.loginInfo.setIsLogIned;
+  let setLogInId = props.loginInfo.setLogInId;
+
     console.log('SignOut() Called!');
     let navigate = useNavigate();
 
     const SignOutBntHandler = () => {
       console.log('SignOutBntHandler() Clicked!');
 
-      navigate("/Main");
+      setIsLogined(false);
+      setLogInId('');
+
+      navigate("/");
     }
 
     const NoSignOutBntHandler = () => {
       console.log('NoSignOutBntHandler() Clicked!');
 
-      navigate("/Privacy");
+      navigate("/");
     }
 
   return (

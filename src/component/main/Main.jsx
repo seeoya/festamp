@@ -21,7 +21,7 @@ const Main = (props) => {
 
             {/* 지도 테스트용. 제거 예정 */}
             <div>
-                <Map festivalData={festivalData} />
+                <Map festivalData={festivalData} width={"400px"} height={"500px"} />
             </div>
         </>
     );

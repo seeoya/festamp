@@ -73,7 +73,7 @@ const SignUp = () => {
      console.log(memDbId.includes(UId));
      console.log(memDbId);
 
-    if(UId !== ""){
+    if(UId !== "" && !null){
      if(memDbId.includes(UId)){
         alert('이미 사용중인 아이디입니다.');
         setUId('');
