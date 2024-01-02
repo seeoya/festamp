@@ -4,22 +4,26 @@ import "./gradeSelect.css";
 const GradeSelect = (props) => {
 
     // hook
-    const [star, setStar] = useState('');
+    const [curStar, setCurStar] = useState('');
     const [isRewrite, setIsRewrite] = useState('');
-    const [isView, setIsView] = useState('');
 
+    // 리뷰 데이터 목록에 점수 넣기
     useEffect(() => {
         console.log('useEffect() CALLED');
 
-        let starDBInStorage = localStorage.getItem('newStarObj');
-        let curStarDBObj = JSON.parse(starDBInStorage);
-        // setMyStarArr(curStarDBObj[getLoginedSessionId()]);
+        // let reviewDBObjs = props.parseReviewDB();
+        // let rDataObjs = reviewDBObjs.rData;
+        // let reviewStar = rDataObjs.reviewNo.star;
 
+        // if (reviewStar === null) {
+        //     // 'star': curStar
+        // }
         // 'starDB' > 객체
         // starDB > [리뷰번호] : {별점: 5}
         // starDB[리뷰번호].별점 = 5
-    }, [star]);
+    }, [curStar]);
 
+    // 별점 DB에 따로 넣어놓기
     useEffect(() => {
         console.log("useEffect() CALLED");
 
@@ -31,7 +35,7 @@ const GradeSelect = (props) => {
             let newStarObj = {
                 [reviewNo]: {
                     'festivalNo': festivalNo,
-                    'star': star
+                    'star': curStar
                 },
             };
             let newStarStr = JSON.stringify(newStarObj);
@@ -41,19 +45,19 @@ const GradeSelect = (props) => {
             let starObj = JSON.parse(starDBInStorage);
             starObj[reviewNo] = {
                 'festivalNo': festivalNo,
-                'star': star
+                'star': curStar
             };
 
             let newStarStr = JSON.stringify(starObj);
             localStorage.setItem("newStarObj", newStarStr);
         }
-    }, [star]);
+    }, [curStar]);
 
     // handler
     const starClickHandler = (e) => {
         console.log("starClickHandler() CALLED");
 
-        setStar(e.target.value);
+        setCurStar(e.target.value);
     };
 
     const inputStar = (e) => {
@@ -124,13 +128,25 @@ const GradeSelect = (props) => {
                 }
                 
                 &nbsp;&nbsp;&nbsp;
-                <div className="star_rate">{star}</div>
-                <button onClick={inputStar} />
+                
+                {
+                    isRewrite
+                    ?
+                    null
+                    :
+                    <>
+                        <div className="star_rate">{curStar}</div>
+                        &nbsp;&nbsp;&nbsp;
+                        <button className="input_star" onClick={inputStar} >별점 입력</button>
+                    </>
+                    
+                }
+                
                 <div className="selected_star">
                     {
                         isRewrite
                         ?
-                        `★ ${star}`
+                        `★ ${curStar}`
                         :
                         null
                     }
