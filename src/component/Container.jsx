@@ -10,6 +10,7 @@ import SignOut from "./member/SignOut";
 import SignUp from "./member/SignUp";
 import IdFind from "./member/IdFind";
 import PwFind from "./member/PwFind"
+import ChangePw from "./member/ChangePw"
 import Stamp from "./stamp/Stamp";
 import ListView from "./view/View";
 
@@ -39,6 +40,7 @@ const Container = (props) => {
                 <Route path="/privacy" element={<Privacy loginInfo={props.loginInfo} />}></Route>
                 <Route path="/IdFind" element={<IdFind  />}></Route>
                 <Route path="/PwFind" element={<PwFind  />}></Route>
+                <Route path="/ChangePw" element={<ChangePw  />}></Route>
 
                 <Route path="/myreview" element={<MyReview loginInfo={props.loginInfo}/>}></Route>
 
