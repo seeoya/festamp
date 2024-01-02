@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import './listStyle.css';
+import './viewStyle.css';
 import { useParams } from "react-router-dom";
 import MainReview from "../review/MainReview";
 

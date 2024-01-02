@@ -9,18 +9,23 @@ const GradeSelect = (props) => {
    
     
 
+    // 리뷰 데이터 목록에 점수 넣기
     useEffect(() => {
         console.log('useEffect() CALLED');
 
-        let starDBInStorage = localStorage.getItem('newStarObj');
-        let curStarDBObj = JSON.parse(starDBInStorage);
-        // setMyStarArr(curStarDBObj[getLoginedSessionId()]);
+        // let reviewDBObjs = props.parseReviewDB();
+        // let rDataObjs = reviewDBObjs.rData;
+        // let reviewStar = rDataObjs.reviewNo.star;
 
+        // if (reviewStar === null) {
+        //     // 'star': curStar
+        // }
         // 'starDB' > 객체
         // starDB > [리뷰번호] : {별점: 5}
         // starDB[리뷰번호].별점 = 5
     }, [inStar, isRewrite]);
 
+    // 별점 DB에 따로 넣어놓기
     useEffect(() => {
         console.log("useEffect() CALLED");
 

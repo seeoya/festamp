@@ -1,5 +1,5 @@
 .star_wrap {
-    width: 150px;
+    width: 250px;
     display: flex;
     justify-content: space-between;
 }
@@ -47,5 +47,10 @@
 
 .selected_star {
     font-size: 22px;
-    color: #faf61d;
+    font-weight: bold;
+    color: #000;
+    text-shadow: -1px 0px #fffb00, 1px 2px #fffb00, 1px 0px #fffb00, 0px -1px #fffb00;}
+
+.input_star {
+    width: 80px;
 }
