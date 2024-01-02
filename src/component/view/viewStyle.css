@@ -1,6 +1,13 @@
  /* view style  */
 
-#listview_wrap .title {
+#listview_wrap {
+    width: 1200px;
+    /* background-image: radial-gradient(#d3eded 20%, transparent 0), radial-gradient(#d3dbdb 20%, transparent 0);
+    background-position: 0 0, 10px 10px;
+    background-size: 20px 20px; */
+}
+
+ #listview_wrap .title {
     width: 500px; height: 50px;
     padding-left: 10px;
     font-size: 2em;
