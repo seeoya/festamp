@@ -39,11 +39,9 @@ const Container = (props) => {
                 <Route path="/signup" element={<SignUp />}></Route>
                 <Route path="/privacy" element={<Privacy />}></Route>
 
-                <Route path="/mainreview" element={<MainReview />}></Route>
-                <Route path="/myreview" element={<MyReview />}></Route>
-                <Route path="/reviewmodifymodal" element={<ReviewModifyModal />}></Route>
-                <Route path="/reviewwritemodal" element={<ReviewWriteModal />}></Route>
                 
+                <Route path="/myreview" element={<MyReview />}></Route>
+               
    
 
                 {/* #TODO 테스트용. 제거 예정 */}
