@@ -34,10 +34,10 @@ const Container = (props) => {
                     path="/view/:id"
                     element={<ListView festivalData={props.festivalData} />}
                 ></Route>
-                <Route path="/signin" element={<SignIn />}></Route>
-                <Route path="/signout" element={<SignOut />}></Route>
+                <Route path="/signin" element={<SignIn loginInfo={props.loginInfo}/>}></Route>
+                <Route path="/signout" element={<SignOut loginInfo={props.loginInfo}/>}></Route>
                 <Route path="/signup" element={<SignUp />}></Route>
-                <Route path="/privacy" element={<Privacy />}></Route>
+                <Route path="/privacy" element={<Privacy loginInfo={props.loginInfo}/>}></Route>
 
                 <Route path="/mainreview" element={<MainReview />}></Route>
                 <Route path="/myreview" element={<MyReview />}></Route>
