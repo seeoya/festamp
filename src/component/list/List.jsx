@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import './listStyle.css';
-import { Link, Routes } from "react-router-dom";
-import ListView from "./ListView";
-
-
-
+import { Link } from "react-router-dom";
 
 const List = (props) => {
     const [visibleItems, setVisibleItems] = useState(6);

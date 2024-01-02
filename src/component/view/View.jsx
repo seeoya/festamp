@@ -1,6 +1,9 @@
 import React from "react";
 import './listStyle.css';
 import { useParams } from "react-router-dom";
+import MainReview from "../review/MainReview";
+
+
 
 
 
@@ -52,9 +55,13 @@ const ListView = (festivalData) => {
                 </div>
             </div>
             <div className="review">
-                <input type="text" placeholder="리뷰를 입력해 주세요." name="user_eview" />
-                <input type="button" value="리뷰 작성" name="review_btn" />
+                <>
+                    <MainReview festivalDataId={festivalData.festivalData[id].id}
+                                festivalTitle={festivalData.festivalData[id].title}
+                    />
+                </>
             </div>
+                
         </div>
     );
 };

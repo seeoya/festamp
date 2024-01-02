@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { setLoginedId, getLoginedId } from './session';
 import { getDateTime } from './getDateTime';
-
+import GradeSelect from '../grade_select/GradeSelect';
 // import Star from '';
 
 
 const ReviewWriteModal = (props) => {
   const [reviewNo, setReviewNo] = useState(0);
-  const [rDateTime, setRDateTime] = useState('');
   const [uReview, setUReview] = useState('');
   
 
@@ -19,18 +18,17 @@ const ReviewWriteModal = (props) => {
   useEffect(() => {
     console.log('useEffect() CALLED!!');
 
-    // setFestivalDataId(props.dataId);
-    // setFestivalTitle(props.title);
     
     setFestivalDataId(props.festivalDataId);
     setFestivalTitle(props.festivalTitle);
-    setStar('***');
+   
+    
     // setLoginedId('aa');
     
     
-  }, [setFestivalDataId, setFestivalTitle]);
+  }, [festivalDataId, festivalTitle, star]);
 
-  // star onChange handler = () => {}
+
 
   const uReviewChangeHandler = (e) => {
     console.log('uReviewChangeHandler() Called!');
@@ -104,7 +102,7 @@ const ReviewWriteModal = (props) => {
 
     <div className='review_write_modal'>
 
-      {/* <Star setStar={setStar} star={star}/> */}
+      <GradeSelect setStar={setStar} star={star}/>
       <textarea cols="50" rows="5" vlaue={uReview} onChange={(e) => uReviewChangeHandler(e)}></textarea>
       <br />
 
