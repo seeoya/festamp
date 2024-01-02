@@ -5,60 +5,32 @@ const GradeSelect = (props) => {
 
     // hook
     const [star, setStar] = useState('');
-    
+    const [isRewrite, setIsRewrite] = useState('');
+    const [isView, setIsView] = useState('');
+
     useEffect(() => {
         console.log('useEffect() CALLED');
 
-        let starDBInStorage = localStorage.getItem('starDB');
+        let starDBInStorage = localStorage.getItem('newStarObj');
         let curStarDBObj = JSON.parse(starDBInStorage);
-    
-        const starArr = [
-            '★',
-            `★★`,
-            `★★★`,
-            `★★★★`,
-            `★★★★★`
-        ];
+        // setMyStarArr(curStarDBObj[getLoginedSessionId()]);
 
-        let curStarArr = '';
         // 'starDB' > 객체
         // starDB > [리뷰번호] : {별점: 5}
         // starDB[리뷰번호].별점 = 5
-        
-        if (star === 1.0) {
-            console.log("star 1 CALLED");
-        
-            curStarArr = starArr[0]
-        } else if (star === 2.0) {
-            console.log("star 2.0 CALLED");
-
-            curStarArr = starArr[1]
-        } else if (star === 3.0) {
-            console.log("star 3.0 CALLED");
-
-            curStarArr = starArr[2]
-        } else if (star === 4.0) {
-            console.log("star 4.0 CALLED");
-
-            curStarArr = starArr[3]
-        } else if (star === 5.0) {
-            console.log("star 5.0 CALLED");
-            
-            curStarArr = starArr[4]
-        }
-    });
+    }, [star]);
 
     useEffect(() => {
         console.log("useEffect() CALLED");
 
         let starDBInStorage = localStorage.getItem("starDB");
-        let festivalNum = props.festivalNum ?? 1;
-        let reviewNum = props.reviewNum ?? 1;
+        let festivalNo = props.festivalNo;
+        let reviewNo = props.reviewNo;
 
         if (starDBInStorage === null) {
             let newStarObj = {
-                [reviewNum]: {
-                    'festivalNum': festivalNum,
+                [reviewNo]: {
+                    'festivalNo': festivalNo,
                     'star': star
                 },
             };
@@ -67,8 +39,8 @@ const GradeSelect = (props) => {
         } else {
 
             let starObj = JSON.parse(starDBInStorage);
-            starObj[reviewNum] = {
-                'festivalNum': festivalNum,
+            starObj[reviewNo] = {
+                'festivalNo': festivalNo,
                 'star': star
             };
 
@@ -78,17 +50,26 @@ const GradeSelect = (props) => {
     }, [star]);
 
     // handler
-    
     const starClickHandler = (e) => {
         console.log("starClickHandler() CALLED");
 
         setStar(e.target.value);
     };
 
+    const inputStar = (e) => {
+        console.log("inputStar() CALLED");
+        setIsRewrite(true);
+    }
+
     return (
         <>
             <div className="star_wrap">
-                <div className="star_rating space-x-4 mx-auto">
+                {
+                    isRewrite
+                    ?
+                    null
+                    :
+                    <div className="star_rating space-x-4 mx-auto">
                     <input
                         onClick={(e) => starClickHandler(e)}
                         type="radio"
@@ -140,10 +121,19 @@ const GradeSelect = (props) => {
                         ★
                     </label>
                 </div>
+                }
+                
                 &nbsp;&nbsp;&nbsp;
                 <div className="star_rate">{star}</div>
-                <div cur_star_wrap>
-                    <p>curStarArr</p>
+                <button onClick={inputStar} />
+                <div className="selected_star">
+                    {
+                        isRewrite
+                        ?
+                        `★ ${star}`
+                        :
+                        null
+                    }
                 </div>
             </div>
         </>
