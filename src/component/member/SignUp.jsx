@@ -17,6 +17,8 @@ const SignUp = () => {
     const [UEmail, setUEmail] = useState('');
     const [UBirth, setUBirth] = useState('');
 
+    
+
 
 
     // handleer
@@ -138,6 +140,28 @@ const SignUp = () => {
             let memberStr = JSON.stringify(memberDbObj);
             localStorage.setItem('memberDB', memberStr);
         };
+
+            let reviewDBinStorage = localStorage.getItem('reviewDB');
+            if (reviewDBinStorage === null) {
+            let reviewNo= 0;
+            let newDBObj = {
+                ['count'] : reviewNo,
+                ['rData'] : {
+                [reviewNo] : {
+                    'uId' : '',
+                    'fDataId': '',
+                    'fTitle' : '',
+                    'rDateTime' : '',
+                    'uReview' : '',
+                    'rNo' : '',
+                    'star' : '',
+                }
+             }
+            }
+                            
+            reviewDBinStorage = JSON.stringify(newDBObj);
+            localStorage.setItem('reviewDB', reviewDBinStorage);           
+        }
 
         alert('회원가입을 축하드립니다.');
 

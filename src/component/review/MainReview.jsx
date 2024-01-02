@@ -7,7 +7,7 @@ import './viewReview.css';
 
 const MainReview = (props) => {
 
-  const [isLogined, setIsLogined] = useState(false);
+  
   const [isShowWriteModal, setIsShowWriteModal] = useState(false);
   const [isShowModifyModal, setIsShowModifyModal] = useState(false);
   const [modifyKey, setModifyKey] = useState('');
@@ -23,16 +23,22 @@ const MainReview = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(10);
   
-  
+  let isLogInId = props.loginInfo.isLogInId;    // 로그인 아이디
+  let isLogIned = props.loginInfo.isLogIned;
+
 
 
   useEffect(() => {
     console.log('useEffect() CALLED!!');
-
-        
+       
     setFestivalDataId(props.festivalDataId);
     setFestivalTitle(props.festivalTitle);
     setStarGradeDataId('****');
+
+    console.log(isLogIned);
+    console.log(isLogInId);
+    
+
       
         let reviewDBObjs = parseReviewDB();
         let rDataObjs = reviewDBObjs.rData;
@@ -51,15 +57,14 @@ const MainReview = (props) => {
         for (let i = 0; i < reviewskeys.length; i++) {
             let reviews = rDataObjs[reviewskeys[i]];
 
-            let uId = 'jin';    // 로그인 아이디
             
             if (reviews.fDataId === festivalDataId){
-              if (!isLogined) {     // getLoginedId()
+              if (!isLogIned) {     // 로그인 상태가 아니라면
                 reviews['key'] = reviewskeys[i];
                 console.log('reviewskeys[i]:', reviewskeys[i]);
                      
                 tempArr.push(reviews);
-              } else if(reviews.uId === uId) {
+              } else if(reviews.uId === isLogInId) {     // 로그인 상태라면
                 reviews['key'] = reviewskeys[i];
                 console.log('reviewskeys[i]:', reviewskeys[i]);
                      
@@ -77,31 +82,35 @@ const MainReview = (props) => {
 
 
           
-}, [festivalDataId, festivalTitle, isLogined, tempFlag, isShowWriteModal, isShowModifyModal, isLogined, currentPage]);
+}, [festivalDataId, festivalTitle, tempFlag, isShowWriteModal,
+   isShowModifyModal, currentPage]);
 
   // 메인리스트 리뷰쓰기 버튼
   const mainReviewWriteBtnClickHandler = () => {
     console.log('mainReviewWrite Btn Clicked!');
     
     // logined check
-    // if(!checkLogined()) {
-    //   alert('로그인이 필요합니다.');
+    if(!checkLogined()) {
+      console.log(checkLogined());
+      alert('로그인이 필요합니다.');
 
-    // } else {
-
+    } else {
     console.log('reviewsArr: ', reviewsArr);
-    let isReviewArr=[];
-    let isReview = JSON.stringify(reviewsArr);
-  //  if (isReview.includes(festivalTitle)) {
-    
-  //     alert(`${festivalTitle} 리뷰가 존재합니다.`);
-  //  } else {  
-            // write modal show
-         setIsShowWriteModal(true);
-  //  }
-    
-  }
+
+      let isReviewArr=[];
+      let isReview = JSON.stringify(reviewsArr);
   
+      if (isReview.includes(festivalTitle)) {
+        
+          alert(`${festivalTitle} 리뷰가 존재합니다.`);
+      } else {  
+                // write modal show
+            setIsShowWriteModal(true);
+      }
+    
+    }
+  }
+
   // 메인리스트 수정 버튼
   const mainReviewModifyBtnClickHandler = (e, rNo) => {
     console.log('mainReviewModify Btn Clicked()!');
@@ -164,28 +173,6 @@ const MainReview = (props) => {
     console.log('getReviewDBObjs() Called!');
 
     let reviewDBinStorage = localStorage.getItem('reviewDB');
-    if (reviewDBinStorage === null) {
-      
-      let newDBObj = {
-        ['count'] : reviewNo,
-        ['rData'] : {
-          [reviewNo] : {
-              'uId' : '',
-              'fDataId': '',
-              'fTitle' : '',
-              'rDateTime' : '',
-              'uReview' : '',
-              'rNo' : '',
-              'star' : '',
-        }
-      }
-    }
-                     
-      reviewDBinStorage = JSON.stringify(newDBObj);
-      localStorage.setItem('reviewDB', reviewDBinStorage);
-      reviewDBinStorage = localStorage.getItem('reviewDB');
-      
-    } 
     let reviewDBObjs = JSON.parse(reviewDBinStorage);
 
         return reviewDBObjs;
@@ -194,7 +181,8 @@ const MainReview = (props) => {
 
 
   const checkLogined = () => {
-    if(getLoginedId() === undefined || getLoginedId() === '' || getLoginedId() === null) {
+
+    if(isLogInId === undefined || isLogInId === '' || isLogInId === null) {
       return false;
     } else {
       return true;
@@ -225,7 +213,7 @@ const MainReview = (props) => {
           <div className='view_review_header'>
             <ul>
               <li><span>{festivalTitle} 리뷰</span><span>{starGradeDataId}</span>
-                  <button onClick={mainReviewWriteBtnClickHandler}>리뷰 쓰기</button>
+                  <button onClick={mainReviewWriteBtnClickHandler} className="btn highlight">리뷰 쓰기</button>
               </li>
             </ul>                               
           
@@ -234,7 +222,7 @@ const MainReview = (props) => {
           <div className='view_review_list'>
             
              {
-                 isLogined
+                 isLogIned
                  ?
             <>
             <ul>
@@ -287,6 +275,7 @@ const MainReview = (props) => {
             <>
               <ReviewWriteModal festivalDataId={festivalDataId} festivalTitle={festivalTitle}
                                 setIsShowWriteModal={setIsShowWriteModal}
+                                loginInfo={props.loginInfo}
                                 />
             </> : null  
             }

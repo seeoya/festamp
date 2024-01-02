@@ -29,14 +29,14 @@ const Container = (props) => {
                 <Route path="/list" element={<List festivalData={props.festivalData} />}></Route>
                 <Route
                     path="/view/:id"
-                    element={<ListView festivalData={props.festivalData} />}
+                    element={<ListView festivalData={props.festivalData} loginInfo={props.loginInfo}/>}
                 ></Route>
                 <Route path="/signin" element={<SignIn loginInfo={props.loginInfo} />}></Route>
                 <Route path="/signout" element={<SignOut loginInfo={props.loginInfo} />}></Route>
                 <Route path="/signup" element={<SignUp />}></Route>
                 <Route path="/privacy" element={<Privacy loginInfo={props.loginInfo} />}></Route>
 
-                <Route path="/myreview" element={<MyReview />}></Route>
+                <Route path="/myreview" element={<MyReview loginInfo={props.loginInfo}/>}></Route>
 
                 {/* #TODO 테스트용. 제거 예정 */}
                 <Route path="/gradeselect" element={<GradeSelect />}></Route>

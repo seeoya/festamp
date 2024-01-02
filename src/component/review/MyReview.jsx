@@ -11,7 +11,7 @@ const MyReview = (props) => {
     const [tempFlag, setTempFlag] = useState(true);
     const [modifyKey, setModifyKey] = useState('');
     const [isShowModifyModal, setIsShowModifyModal] = useState(false);
-
+    
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(10);
     
@@ -37,9 +37,9 @@ const MyReview = (props) => {
       for (let i = 0; i < reviewskeys.length; i++) {
           let reviews = rDataObjs[reviewskeys[i]];
 
-          let uId = 'jin';    // 로그인 아이디
+          let uId = props.loginInfo.logInId;    // 로그인 아이디
          
-          if(reviews.uId === uId) {    // getLoginedId()
+          if(reviews.uId === uId) {     
               reviews['key'] = reviewskeys[i];
               console.log('reviewskeys[i]:', reviewskeys[i]);
                   

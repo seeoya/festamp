@@ -9,23 +9,17 @@ const ReviewWriteModal = (props) => {
   const [reviewNo, setReviewNo] = useState(0);
   const [uReview, setUReview] = useState('');
   
-
   const [star, setStar] = useState('');
   const [festivalDataId, setFestivalDataId] = useState('');
   const [festivalTitle, setFestivalTitle] = useState('');
 
-
+  
   useEffect(() => {
     console.log('useEffect() CALLED!!');
-
     
     setFestivalDataId(props.festivalDataId);
     setFestivalTitle(props.festivalTitle);
-   
-    
-    // setLoginedId('aa');
-    
-    
+       
   }, [festivalDataId, festivalTitle, star]);
 
 
@@ -38,8 +32,8 @@ const ReviewWriteModal = (props) => {
   const writeModalBtnClickHandler = () => {
     console.log('writeModalWrite Btn Clicked!');
   
-    let uId = 'jin';
-  
+    let uId = props.loginInfo.isLogInId; // 로그인한 아이디
+      
     let reviewDBObjs = parseReviewDB();
     let reviewObjs = reviewDBObjs.rData;
     let reviewCnt = reviewDBObjs.count+1;
@@ -70,29 +64,8 @@ const ReviewWriteModal = (props) => {
     console.log('parseReviewDB() Called!');
 
     let reviewDBinStorage = localStorage.getItem('reviewDB');
-    if (reviewDBinStorage === null) {
-      
-      let newDBObj = {
-        ['count'] : reviewNo,
-        ['rData'] : {
-            [reviewNo] : {
-              'uId' : '',
-              'fDataId': '',
-              'fTitle' : '',
-              'rDateTime' : '',
-              'uReview' : '',
-              'rNo' : '',
-              'star' : '',
-        }
-      }
-    }
-      reviewDBinStorage = JSON.stringify(newDBObj);
-      localStorage.setItem('reviewDB', reviewDBinStorage);
-      reviewDBinStorage = localStorage.getItem('reviewDB');
-    }
-
     let reviewDBObjs = JSON.parse(reviewDBinStorage);
-    
+           
     console.log('reviewDBObjs: ', reviewDBObjs);
     return reviewDBObjs;
   }
