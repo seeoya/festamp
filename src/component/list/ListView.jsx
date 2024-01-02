@@ -21,7 +21,7 @@ const ListView = (festivalData) => {
 
         
 
-        <div id="listview_wrap">
+        <div id="listview_wrap" className="sec">
             <div className="title">
                 <h1>{festivalData.festivalData[id].title}</h1>
             </div>
