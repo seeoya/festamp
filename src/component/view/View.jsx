@@ -6,6 +6,7 @@ import MainReview from "../review/MainReview";
 
 
 
+
 const ListView = (festivalData) => {
     
     let calendar = <i class="fa-regular fa-calendar-days"></i>
@@ -55,7 +56,7 @@ const ListView = (festivalData) => {
             </div>
             <div className="review">
                 <>
-                    <MainReview festivalDataId={festivalData.festivalData[id]}
+                    <MainReview festivalDataId={festivalData.festivalData[id].id}
                                 festivalTitle={festivalData.festivalData[id].title}
                     />
                 </>

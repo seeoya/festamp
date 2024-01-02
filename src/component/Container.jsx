@@ -11,9 +11,7 @@ import SignOut from "./member/SignOut";
 import SignUp from "./member/SignUp";
 import Stamp from "./stamp/Stamp";
 
-import MainReview from "./review/MainReview";
-import ReviewModifyModal from "./review/ReviewModifyModal";
-import ReviewWriteModal from "./review/ReviewWriteModal";
+
 import MyReview from "./review/MyReview";
 
 const Container = (props) => {
