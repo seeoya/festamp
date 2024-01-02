@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { setLoginedId, getLoginedId } from './session';
 import { getDateTime } from './getDateTime';
 import GradeSelect from '../grade_select/GradeSelect';
 // import Star from '';
@@ -13,7 +12,8 @@ const ReviewWriteModal = (props) => {
   const [festivalDataId, setFestivalDataId] = useState('');
   const [festivalTitle, setFestivalTitle] = useState('');
 
-  
+  let logInId = props.logInId;
+
   useEffect(() => {
     console.log('useEffect() CALLED!!');
     
@@ -32,7 +32,7 @@ const ReviewWriteModal = (props) => {
   const writeModalBtnClickHandler = () => {
     console.log('writeModalWrite Btn Clicked!');
   
-    let uId = props.loginInfo.isLogInId; // 로그인한 아이디
+    let uId = logInId; // 로그인한 아이디
       
     let reviewDBObjs = parseReviewDB();
     let reviewObjs = reviewDBObjs.rData;

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import ReviewModifyModal from './ReviewModifyModal';
-import { getLoginedId, setLoginedId } from './session';
 
 
 
@@ -14,6 +13,8 @@ const MyReview = (props) => {
     
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(10);
+
+    let logInId = props.loginInfo.logInId;
     
 
     useEffect(( ) => {
@@ -37,7 +38,7 @@ const MyReview = (props) => {
       for (let i = 0; i < reviewskeys.length; i++) {
           let reviews = rDataObjs[reviewskeys[i]];
 
-          let uId = props.loginInfo.logInId;    // 로그인 아이디
+          let uId = logInId;    // 로그인 아이디
          
           if(reviews.uId === uId) {     
               reviews['key'] = reviewskeys[i];

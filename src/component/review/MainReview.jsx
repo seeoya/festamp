@@ -1,7 +1,6 @@
 import ReviewModifyModal from './ReviewModifyModal';
 import ReviewWriteModal from './ReviewWriteModal';
 import React, {useState, useEffect} from 'react';
-import { getLoginedId, setLoginedId } from './session';
 import './viewReview.css';
 
 
@@ -23,7 +22,7 @@ const MainReview = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(10);
   
-  let isLogInId = props.loginInfo.isLogInId;    // 로그인 아이디
+  let logInId = props.loginInfo.logInId;    // 로그인 아이디
   let isLogIned = props.loginInfo.isLogIned;
 
 
@@ -35,8 +34,8 @@ const MainReview = (props) => {
     setFestivalTitle(props.festivalTitle);
     setStarGradeDataId('****');
 
+    console.log(logInId);
     console.log(isLogIned);
-    console.log(isLogInId);
     
 
       
@@ -64,7 +63,7 @@ const MainReview = (props) => {
                 console.log('reviewskeys[i]:', reviewskeys[i]);
                      
                 tempArr.push(reviews);
-              } else if(reviews.uId === isLogInId) {     // 로그인 상태라면
+              } else if(reviews.uId === logInId) {     // 로그인 상태라면
                 reviews['key'] = reviewskeys[i];
                 console.log('reviewskeys[i]:', reviewskeys[i]);
                      
@@ -76,12 +75,7 @@ const MainReview = (props) => {
           currentPosts(reviewsArr);
           setReviewsArr(currentPosts);
           
-          
-          
-       
-
-
-          
+             
 }, [festivalDataId, festivalTitle, tempFlag, isShowWriteModal,
    isShowModifyModal, currentPage]);
 
@@ -181,8 +175,8 @@ const MainReview = (props) => {
 
 
   const checkLogined = () => {
-
-    if(isLogInId === undefined || isLogInId === '' || isLogInId === null) {
+    
+    if(logInId === undefined || logInId === '' || logInId === null) {
       return false;
     } else {
       return true;
@@ -275,7 +269,7 @@ const MainReview = (props) => {
             <>
               <ReviewWriteModal festivalDataId={festivalDataId} festivalTitle={festivalTitle}
                                 setIsShowWriteModal={setIsShowWriteModal}
-                                loginInfo={props.loginInfo}
+                                logInId={props.loginInfo.logInId}
                                 />
             </> : null  
             }
