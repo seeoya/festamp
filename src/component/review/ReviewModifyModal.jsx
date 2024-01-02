@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { getLoginedId, setLoginedId } from './session';
 import { getDateTime } from './getDateTime';
 // import Star from '';
 
