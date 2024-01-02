@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router";
 import StyleGuide from "./StyleGuide";
 import GradeSelect from "./grade_select/GradeSelect";
 import List from "./list/List";
-import ListView from "./list/ListView";
+import ListView from "./view/View";
 import Main from "./main/Main";
 import Privacy from "./member/Privacy";
 import SignIn from "./member/SignIn";
@@ -11,9 +11,7 @@ import SignOut from "./member/SignOut";
 import SignUp from "./member/SignUp";
 import Stamp from "./stamp/Stamp";
 
-import MainReview from "./review/MainReview";
-import ReviewModifyModal from "./review/ReviewModifyModal";
-import ReviewWriteModal from "./review/ReviewWriteModal";
+
 import MyReview from "./review/MyReview";
 
 const Container = (props) => {
@@ -34,16 +32,14 @@ const Container = (props) => {
                     path="/view/:id"
                     element={<ListView festivalData={props.festivalData} />}
                 ></Route>
-                <Route path="/signin" element={<SignIn />}></Route>
-                <Route path="/signout" element={<SignOut />}></Route>
+                <Route path="/signin" element={<SignIn loginInfo={props.loginInfo}/>}></Route>
+                <Route path="/signout" element={<SignOut loginInfo={props.loginInfo}/>}></Route>
                 <Route path="/signup" element={<SignUp />}></Route>
-                <Route path="/privacy" element={<Privacy />}></Route>
+                <Route path="/privacy" element={<Privacy loginInfo={props.loginInfo}/>}></Route>
 
-                <Route path="/mainreview" element={<MainReview />}></Route>
-                <Route path="/myreview" element={<MyReview />}></Route>
-                <Route path="/reviewmodifymodal" element={<ReviewModifyModal />}></Route>
-                <Route path="/reviewwritemodal" element={<ReviewWriteModal />}></Route>
                 
+                <Route path="/myreview" element={<MyReview />}></Route>
+               
    
 
                 {/* #TODO 테스트용. 제거 예정 */}
