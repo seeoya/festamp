@@ -76,7 +76,7 @@ const ListView = (festivalData) => {
             </div>
             <div className="review">
                 <>
-                    <MainReview festivalDataId={festivalData.festivalData[id]}
+                    <MainReview festivalDataId={festivalData.festivalData[id].id}
                                 festivalTitle={festivalData.festivalData[id].title}
                     />
                 </>

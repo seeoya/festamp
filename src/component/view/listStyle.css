@@ -96,18 +96,7 @@
     border-radius: 10px;
 }
 
-#listview_wrap .review input[type="text"]{
-    width: 900px; height: 100px;
-    margin-top: 10px;
-}
-
-#listview_wrap .review input[type="button"]{
-    width: 100px; height: 30px;
-    font-size: 1em;
-    margin-left: 17px;
-}
-
-#listview_wrap .review input[type="button"]:hover {
-    cursor: pointer;
-    background-color: #fff;
+#listview_wrap .review {
+    width: 1000px;
+    margin-top: 0 auto;
 }

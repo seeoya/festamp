@@ -11,9 +11,7 @@ import SignOut from "./member/SignOut";
 import SignUp from "./member/SignUp";
 import Stamp from "./stamp/Stamp";
 
-import MainReview from "./review/MainReview";
-import ReviewModifyModal from "./review/ReviewModifyModal";
-import ReviewWriteModal from "./review/ReviewWriteModal";
+
 import MyReview from "./review/MyReview";
 
 const Container = (props) => {
@@ -34,10 +32,10 @@ const Container = (props) => {
                     path="/view/:id"
                     element={<ListView festivalData={props.festivalData} />}
                 ></Route>
-                <Route path="/signin" element={<SignIn />}></Route>
-                <Route path="/signout" element={<SignOut />}></Route>
+                <Route path="/signin" element={<SignIn loginInfo={props.loginInfo}/>}></Route>
+                <Route path="/signout" element={<SignOut loginInfo={props.loginInfo}/>}></Route>
                 <Route path="/signup" element={<SignUp />}></Route>
-                <Route path="/privacy" element={<Privacy />}></Route>
+                <Route path="/privacy" element={<Privacy loginInfo={props.loginInfo}/>}></Route>
 
                 
                 <Route path="/myreview" element={<MyReview />}></Route>
