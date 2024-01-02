@@ -47,7 +47,7 @@ const ListView = (festivalData) => {
                         <li>{place} &nbsp;{festivalData.festivalData[id].location} </li>
                         <li>{price} &nbsp;{festivalData.festivalData[id].price} </li>
                         <li>{name} &nbsp;{festivalData.festivalData[id].store} </li>
-                        <li>{tel} &nbsp;{festivalData.festivalData[id].tel} : </li>
+                        <li>{tel} &nbsp;{festivalData.festivalData[id].tel} </li>
                     </ul>
                 </div>
             </div>
