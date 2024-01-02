@@ -33,8 +33,8 @@ const MainReview = (props) => {
     // setFestivalDataId(props.dataId);
     // setFestivalTitle(props.title);
     
-    setFestivalDataId('05');
-    setFestivalTitle('산수유축제');
+    setFestivalDataId(props.festivalDataId);
+    setFestivalTitle(props.festivalTitle);
     setStarDataId('****');
       
         let reviewDBObjs = parseReviewDB();
