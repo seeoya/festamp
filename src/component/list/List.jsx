@@ -102,7 +102,9 @@ const List = (props) => {
                         width={"100%"}
                         height={"100%"}
                         nowAddress={nowAddress}
+                        setNowAddress={setNowAddress}
                         nowAddressTitle={nowAddressTitle}
+                        setNowAddressTitle={setNowAddressTitle}
                     />
                 </div>
 
