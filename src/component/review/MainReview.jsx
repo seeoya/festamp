@@ -2,6 +2,7 @@ import ReviewModifyModal from './ReviewModifyModal';
 import ReviewWriteModal from './ReviewWriteModal';
 import React, {useState, useEffect} from 'react';
 import { getLoginedId, setLoginedId } from './session';
+import './viewReview.css';
 
 
 const MainReview = (props) => {
@@ -14,12 +15,10 @@ const MainReview = (props) => {
   const [reviewsArr, setReviewsArr] = useState([]);
   const [reviewNo, setReviewNo] = useState(0);
   const [uReview, setUReview] = useState('');
-  const [star, setStar] = useState('');
-  const [uIdReviewArr, setUIdReviewArr] = useState([]);
   
   const [festivalDataId, setFestivalDataId] = useState('');
   const [festivalTitle, setFestivalTitle] = useState('');
-  const [starDataId, setStarDataId] = useState('');
+  const [starGradeDataId, setStarGradeDataId] = useState('');
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(10);
@@ -30,12 +29,10 @@ const MainReview = (props) => {
   useEffect(() => {
     console.log('useEffect() CALLED!!');
 
-    // setFestivalDataId(props.dataId);
-    // setFestivalTitle(props.title);
-    
+        
     setFestivalDataId(props.festivalDataId);
     setFestivalTitle(props.festivalTitle);
-    setStarDataId('****');
+    setStarGradeDataId('****');
       
         let reviewDBObjs = parseReviewDB();
         let rDataObjs = reviewDBObjs.rData;
@@ -222,12 +219,12 @@ const MainReview = (props) => {
 
   return (
 
-    <div id='review'>
+    <div id='review_wrap'>
 
-    
-          <div className='review_main_header'>
+      <div className='view_review'>
+          <div className='view_review_header'>
             <ul>
-              <li><span>{festivalTitle} 리뷰</span><span>{starDataId}</span>
+              <li><span>{festivalTitle} 리뷰</span><span>{starGradeDataId}</span>
                   <button onClick={mainReviewWriteBtnClickHandler}>리뷰 쓰기</button>
               </li>
             </ul>                               
@@ -288,7 +285,8 @@ const MainReview = (props) => {
               ?
             <>
               <ReviewWriteModal festivalDataId={festivalDataId} festivalTitle={festivalTitle}
-                                setIsShowWriteModal={setIsShowWriteModal}/>
+                                setIsShowWriteModal={setIsShowWriteModal}
+                                />
             </> : null  
             }
 
@@ -301,6 +299,7 @@ const MainReview = (props) => {
               : null
             }
           </div>
+        </div>
          
     </div>
     

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-const Privacy = () => {
+const Privacy = (props) => {
   console.log('Privacy() Called!!');
 
   const [uIdFix, setUIdFix] = useState('');
   
- 
+  
   
   
   return(

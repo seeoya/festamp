@@ -1,0 +1,23 @@
+#review {
+    /* position: relative; */
+    width: 1200px;
+    margin: 0 auto;
+    margin-top: 40px;   
+    
+}
+
+#review .view_review {
+    width: 1000px;
+    margin: 10px auto;
+    margin-top: 30px;
+    border: 1px solid #fffdfd;
+    border-radius: 10px;
+}
+
+
+#review .view_review_header {
+
+}
+
+
+
