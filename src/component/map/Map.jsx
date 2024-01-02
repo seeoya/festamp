@@ -2,28 +2,30 @@ import React, { useEffect, useState } from "react";
 const { kakao } = window;
 
 const Map = (props) => {
-    let festivalData = props.festivalData;
+    let festivalData = props.festivalData,
+        width = props.width ?? "400px",
+        height = props.height ?? "300px";
 
     const [mapObj, setMapObj] = useState("");
     const [isMap, setIsMap] = useState(false);
-    const [mapAddress, setMapAddress] = useState("경기도 수원시 영통구 도청로 30 (이의동)");
-    const [mapAddressTitle, setMapAddressTitle] = useState("경기도청");
+    // const [mapAddress, setMapAddress] = useState("경기도 수원시 영통구 도청로 30 (이의동)");
+    // const [mapAddressTitle, setMapAddressTitle] = useState("경기도청");
+
+    let nowAddress = props.nowAddress,
+        nowAddressTitle = props.nowAddressTitle;
 
     useEffect(() => {
-        setMap();
+        let map = setMap();
 
-        if (props.nowAddress != null) {
-            setMapAddress(props.nowAddress);
-            setMapAddressTitle(props.nowAddressTitle);
+        if (nowAddress == null || nowAddress == "") {
         }
-        // setMapAddress("경기도 포천시 포화로 236-11  포천 백운계곡");
-        // setMapAddressTitle("포천");
-        addAddressMarker(mapAddress, mapAddressTitle);
+
+        addAddressMarker(nowAddress, nowAddressTitle);
     }, []);
 
     useEffect(() => {
-        addAddressMarker(mapAddress, mapAddressTitle);
-    }, [mapAddress, mapAddressTitle, isMap]);
+        addAddressMarker(nowAddress, nowAddressTitle);
+    }, [nowAddress, nowAddressTitle, isMap]);
 
     const setMap = () => {
         let container = document.getElementById("map");
@@ -32,10 +34,12 @@ const Map = (props) => {
             level: 3,
         };
 
-        setMapObj(new kakao.maps.Map(container, options));
+        let map = new kakao.maps.Map(container, options);
+        setMapObj(map);
         setIsMap(true);
 
-        addAddressMarker(mapAddress, mapAddressTitle);
+        addAddressMarker("경기도 수원시 영통구 도청로 30 (이의동)", "경기도청");
+        return map;
     };
 
     const addAddressMarker = (address, addressTitle) => {
@@ -67,20 +71,10 @@ const Map = (props) => {
             <div
                 id="map"
                 style={{
-                    width: "400px",
-                    height: "500px",
+                    width: width,
+                    height: height,
                 }}
             ></div>
-
-            <button type="button" onClick={() => setMapAddress(festivalData[11].location)}>
-                aaa
-            </button>
-            <button type="button" onClick={() => setMapAddress(festivalData[13].location)}>
-                aaa
-            </button>
-            <button type="button" onClick={() => setMapAddress(festivalData[16].location)}>
-                aaa
-            </button>
         </>
     );
 };

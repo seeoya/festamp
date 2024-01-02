@@ -1,189 +1,87 @@
-#listview_wrap .title {
-    width: 350px; height: 50px;
-    padding-left: 10px;
-    margin-bottom: 10px;
-}
-
-#listview_wrap .date {
-    width: 300px; height: 25px;
-    font-size: 0.5em;
-    margin-bottom: 10px;
-    padding-left: 10px;
-}
-
-#listview_wrap div.img img {
-    min-width: 1000px;
-    max-width: 1000px;
-    min-height: 500px;
-    max-height: 500px;
-}
-
-#listview_wrap .explan {
-    width: 1000px;
-    margin: 10px 0;
-    font-size: 0.7em;
-    margin-bottom: 30px;
-}
-
-#listview_wrap .event {
-    border: 2px solid #dadada;
-    width: 200px; height: 300px;
-    border-radius: 7px;
-
-    font-size: 0.5em;
-    white-space: pre-wrap;
-}
-
-#listview_wrap .middle {
-    display: flex;
-}
-
-#listview_wrap .total {
-    border: 2px solid #dadada;
-    width: 750px;
-    margin-left: 50px;
-    border-radius: 7px;
-    font-size: 1.5em;
-}
-
-#listview_wrap .total li {
-    margin: 23px; 
-}
-
-#listview_wrap .review input[type="text"]{
-    width: 900px; height: 100px;
-    margin-top: 10px;
-}
-
-#listview_wrap .review input[type="button"]{
-    width: 100px; height: 30px;
-    font-size: 1em;
-    margin-left: 17px;
-}
-
-#listview_wrap .review input[type="button"]:hover {
-    cursor: pointer;
-    background-color: #fff;
-}
-
 /* list style css */
-
 #list_wrap {
     position: relative;
 }
 
-#list_wrap .search_wrap {
-    margin-top: 10px;
-    margin-left: 20%;
+#list_wrap .festival_container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 50px 5fr 2fr;
+    gap: 20px;
 }
 
-#list_wrap div.festival_container div.search_wrap div .filter_wrap {
-    margin-left: 170px;
+#list_wrap .search_wrap {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    grid-column: 1 / 4;
+    grid-row: 1 / 2;
 }
 
 #list_wrap .search_wrap input[type="text"] {
-    width: 300px;
-    text-align: center;
-    margin-right: 5px;
-    margin-bottom: 10px;
-}
-  
-#list_wrap .festival_wrap img {
-    min-width: 200px;
-    max-width: 200px;
-    min-height: 150px;
-    max-height: 150px;
-  }
-
-#list_wrap .map,
-#list_wrap .stamp{
+    width: 80%;
     text-align: center;
 }
 
-#list_wrap .map img,
-#list_wrap .stamp img {
-    min-width: 200px;
-    max-width: 200px;
-    min-height: 150px;
-    max-height: 150px;
+#list_wrap .search_wrap .filter_wrap {
+    width: 20%;
 }
 
 #list_wrap .festival_wrap {
-    text-align: center;
-    overflow: auto;
-    height: 500px;
+    position: relative;
+    grid-column: 1 / 2;
+    grid-row: 2 / 4;
     border: 1px solid #dadada;
     border-radius: 8px;
-    padding: 10px;
 }
 
-
-.load_more button {
-    border-style: none;
-    text-decoration: underline;
-}
-
-.load_more button:hover {
-    background-color: #dadada;
-    
-}
-
-.festival_container {
+#list_wrap .festival_inner {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-}
-
-.search_wrap {
-	grid-column: 1 / 4;
-	grid-row: 1 / 2;
-}
-
-.festival_wrap {
-    grid-column: 1 / 2;
-	grid-row: 2 / 4;
-    margin-top: 20px;
-}
-
-.festival_wrap {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 50px;
+    padding: 10px;
+    padding-bottom: 40px;
+    height: 540px;
+    text-align: center;
+    overflow: auto;
 }
 
-.map {
+#list_wrap .festival_inner img {
+    position: relative;
+    min-width: 200px;
+    max-width: 200px;
+    min-height: 150px;
+    max-height: 150px;
+    object-fit: cover;
+}
+
+#list_wrap .load_more {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+#list_wrap .load_more button {
+    width: 100%;
+    height: 40px;
+}
+
+#list_wrap .map {
     grid-column: 2 / 3;
-	grid-row: 2 / 5;
-    padding-top: 70px;
+    grid-row: 2 / 3;
+    height: 100%;
 }
 
-.stamp {
+#list_wrap .stamp {
+    display: flex;
+    align-items: end;
     grid-column: 2 / 3;
-	grid-row: 3 / 4;
-    padding-bottom: 70px;
+    grid-row: 3 / 4;
 }
 
-#list_wrap .festival_container .stamp img{
-    width: 380px;
-    max-width: 100%;
-    
-}
-
-#list_wrap .festival_container .map img{
-    width: 380px;
-    max-width: 100%;
-    max-height: 500px;
-    height: 300px;
-    padding-bottom: 70px;
-}
-
-.load_more {
-    grid-column: 1 / 3;
-	grid-row: 4 / 5;
-    position: absolute; 
-    bottom: 1px;
-    right: 29%;
-}
-
-#list_wrap div.festival_container div.search_wrap .filter_wrap{
-    padding-left: 80px;
+#list_wrap .stamp img {
+    width: 100%;
+    height: 160px;
 }
