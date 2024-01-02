@@ -33,7 +33,7 @@ const ChangePw = () => {
       
       alert('비밀번호 형식을 확인해주세요.');
     } else {
-      alert('비밀번호 확인 입력해주세요.');
+      alert('사용 가능한 비밀번호 입니다.');
     }
   }
 
@@ -52,6 +52,13 @@ const ChangePw = () => {
   } else {
     alert('비밀번호를 입력해주세요.');
   }
+
+  }
+
+  // 수정 버튼 핸들러 작업 마저 하기
+  const ChangePwBtnHandler = () => {
+    console.log('pwChangeBtnHandler() Clicked !!');
+    
   }
 
   return (
@@ -70,7 +77,7 @@ const ChangePw = () => {
 
         </div>
         
-        <button>비밀번호 수정</button>
+        <button onClick={ChangePwBtnHandler}>비밀번호 수정</button>
       </div>
     </div>
   )
