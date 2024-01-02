@@ -6,7 +6,7 @@ import { getLoginedId, setLoginedId } from './session';
 
 const MainReview = (props) => {
 
-  const [isLogined, setIsLogined] = useState(true);
+  const [isLogined, setIsLogined] = useState(false);
   const [isShowWriteModal, setIsShowWriteModal] = useState(false);
   const [isShowModifyModal, setIsShowModifyModal] = useState(false);
   const [modifyKey, setModifyKey] = useState('');
@@ -33,8 +33,8 @@ const MainReview = (props) => {
     // setFestivalDataId(props.dataId);
     // setFestivalTitle(props.title);
     
-    setFestivalDataId('02');
-    setFestivalTitle('빙어축제');
+    setFestivalDataId(props.festivalDataId);
+    setFestivalTitle(props.festivalTitle);
     setStarDataId('****');
       
         let reviewDBObjs = parseReviewDB();
