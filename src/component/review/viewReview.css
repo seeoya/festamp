@@ -19,5 +19,8 @@
 
 }
 
-
+.full_list span:nth-child(4){
+    font-size: 22px;
+    color: #faf61d;
+}
 

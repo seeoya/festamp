@@ -245,6 +245,7 @@ const MainReview = (props) => {
                       <span>{reviews.fTitle}</span>
                       <span>{`${[reviews.rDateTime.split('일', 1)]}${'일'}`}</span>
                       <span>{reviews.uReview}</span>
+                      <span>★</span>
                       <span>{reviews.star}</span>
                       <button onClick={(e) => mainReviewModifyBtnClickHandler(e, reviews.rNo)}>수정</button>
                       <button onClick={(e) => mainReviewDelBtnClickHandler(e, reviews.rNo)}>삭제</button>
