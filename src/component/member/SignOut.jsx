@@ -21,7 +21,7 @@ const SignOut = (props) => {
     const NoSignOutBntHandler = () => {
       console.log('NoSignOutBntHandler() Clicked!');
 
-      navigate("/");
+      navigate("/Privacy");
     }
 
   return (
