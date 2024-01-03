@@ -122,6 +122,13 @@ footer img {
     object-fit: contain;
 }
 
-.footer_img {
+.bottom_footer {
     margin-bottom: 20px;
+}
+
+
+footer div.bottom_footer ul.footer_img li.festamp_logo{
+display: flex;
+justify-content: space-between;
+align-items: center;
 }

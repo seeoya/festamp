@@ -69,6 +69,11 @@
     object-fit: cover;
 }
 
+#main .sec_item {
+    width: 50%;
+    min-width: auto;
+}
+
 #main_popular {
 }
 
