@@ -1,5 +1,15 @@
-.sec_item_content {
-    gap: 15px;
+.member {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.member .sec_item {
+    min-width: 600px;
+}
+
+.member .sec_item_content {
+    gap: 20px;
 }
 
 .sec_item_content > div {
@@ -15,6 +25,8 @@
 .btn_wrap {
     display: flex;
     gap: 5px;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn_wrap input {
@@ -31,5 +43,10 @@
     align-content: center;
 }
 
-#sign_up {
+#sign_up .desc {
+    font-size: 1.4rem;
+}
+
+#sign_out .sec_item_title {
+    justify-content: center;
 }

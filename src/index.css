@@ -80,6 +80,7 @@ table {
 /* 스타일 가이드 */
 .sec {
     padding: 50px 40px;
+    min-height: 70vh;
     background-color: var(--sec-bg);
     border: 1px solid var(--sec-border-color);
     border-radius: 20px;
@@ -94,7 +95,6 @@ table {
 
 .sec_item {
     padding: 20px 30px;
-    width: 50%;
     background-color: #fff;
     border-radius: 10px;
 }

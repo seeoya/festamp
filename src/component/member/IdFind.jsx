@@ -73,34 +73,24 @@ const IdFind = () => {
     };
 
     return (
-        <div>
-            <div>
-                <h3>아이디 찾기</h3>
-                <label htmlFor="u_email">
-                    <p>E-Mail</p>{" "}
-                </label>
-                <input
-                    type="text"
-                    id="u_email"
-                    value={uEmail}
-                    onChange={(e) => inputEmailHandler(e)}
-                    placeholder="E-mail을 입력하세요"
-                />
-                <label htmlFor="u_phone">
-                    <p>Phone Number</p>{" "}
-                </label>
-                <input
-                    type="text"
-                    id="u_phone"
-                    value={uPhone}
-                    onChange={(e) => inputPhoneHandler(e)}
-                    placeholder="Phone Number를 입력하세요"
-                />
-                <br />
-                <button onClick={findIdHandler}>아이디 찾기</button> &nbsp;{" "}
-                <button value={isLoginView} onClick={signInView}>
-                    로그인 화면
-                </button>
+        <div id="id_find" className="sec member">
+            <div className="sec_item">
+                <h1 className="sec_item_title">아이디 찾기</h1>
+
+                <div className="sec_item_content">
+                    <div>
+                        <label htmlFor="u_email">이메일</label>
+                        <input type="text" id="u_email" className="input" value={uEmail} onChange={(e) => inputEmailHandler(e)} placeholder="E-mail을 입력하세요" />
+                    </div>
+
+                    <div>
+                        <label htmlFor="u_phone">전화번호</label>
+                        <input type="text" id="u_phone" className="input" value={uPhone} onChange={(e) => inputPhoneHandler(e)} placeholder="Phone Number를 입력하세요" />
+                    </div>
+
+                    <button className="btn main" onClick={findIdHandler}>아이디 찾기</button>
+                    <button className="btn" value={isLoginView} onClick={signInView}>로그인으로</button>
+                </div>
             </div>
         </div>
     );
