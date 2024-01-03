@@ -84,7 +84,7 @@ const Privacy = (props) => {
         console.log(uName, uPw, uPhone, uEmail, uBirth);
 
         if (uName !== "" && uPw !== "" && uPhone !== "" && uEmail !== "" && uBirth !== "") {
-           
+           if(uPw === pwSame){
             currentMemInfo[logInId] = {
                 name: uName,
                 pw: uPw,
@@ -98,6 +98,9 @@ const Privacy = (props) => {
 
             alert('개인정보 변경 완료 !');
             navigate("/");
+        } else {
+                alert('비밀번호가 일치하지 않습니다.');
+            }
         } else {
             alert ("정보를 입력해주세요.");
         }
