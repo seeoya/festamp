@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { setLoginedId, getLoginedId } from './session';
-import { getDateTime } from './getDateTime';
 import GradeSelect from '../grade_select/GradeSelect';
+import { getDateTime } from './getDateTime';
 // import Star from '';
 
 
@@ -102,7 +101,7 @@ const ReviewWriteModal = (props) => {
 
     <div className='review_write_modal'>
 
-      <GradeSelect setStar={setStar} star={star}/>
+      <GradeSelect setStar={setStar} star={star} parseReviewDB={parseReviewDB} />
       <textarea cols="50" rows="5" vlaue={uReview} onChange={(e) => uReviewChangeHandler(e)}></textarea>
       <br />
 
