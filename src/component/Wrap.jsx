@@ -71,7 +71,7 @@ const Wrap = () => {
 
         festivalNo.map((el) => {
             let listStar = tempArr[el].list;
-            let star = tempArr[el].star;
+            let starList = tempArr[el].star;
             let sum = 0;
             listStar.map((n) => {
                 sum += parseFloat(n) || 0;
@@ -79,11 +79,12 @@ const Wrap = () => {
                 let avrStar = sum/listStar.length
                 let dpStar = avrStar.toFixed(1)
                 console.log(dpStar);
+                starList = dpStar
             })
 
         })
         localStorage.setItem('idReviewDB', JSON.stringify(tempArr));
-
+        console.log(tempArr);
     }, []);
 
     let loginInfo = {

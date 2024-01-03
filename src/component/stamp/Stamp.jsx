@@ -14,12 +14,7 @@ const Stamp = () => {
     useEffect(() => {
         console.log("useEffect CALLED");
 
-        let memberInStorage = localStorage.getItem("memberDB");
-        let reviewObjInStorage = localStorage.getItem("reviewDB");
-        let curMemberDBObj = JSON.parse(memberInStorage);
-        let curReviewDBObj = JSON.parse(reviewObjInStorage);
-        if (curReviewDBObj.rData.reviewNo.uId === curMemberDBObj.UId) {
-        }
+        
     }, []);
 
     // function
