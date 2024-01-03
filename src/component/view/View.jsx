@@ -6,11 +6,11 @@ import MainReview from "../review/MainReview";
 
 const ListView = (festivalData) => {
     
-    let calendar = <i class="fa-regular fa-calendar-days"></i>
-    let place = <i class="fa-solid fa-compass"></i>
-    let price = <i class="fa-solid fa-copyright"></i>
-    let name = <i class="fa-solid fa-building"></i>
-    let tel = <i class="fa-solid fa-phone-volume"></i>
+    let calendar = <i className="fa-regular fa-calendar-days"></i>
+    let place = <i className="fa-solid fa-compass"></i>
+    let price = <i className="fa-solid fa-copyright"></i>
+    let name = <i className="fa-solid fa-building"></i>
+    let tel = <i className="fa-solid fa-phone-volume"></i>
 
     const [eventsArr, setEventsArr] = useState([]);
 
@@ -52,17 +52,15 @@ const ListView = (festivalData) => {
                 </div>
                 
                 <div className="bottom">
-                    <div className="event">
+                    <ul className="event">
                         {
                                 eventsArr.map((event, idx) => {
                                     return(
-                                        <>
-                                            <h1 className="event_list" key={idx}>{event}</h1>
-                                        </>
+                                        <li className="event_list" key={idx}>{event}</li>
                                     )
                                 })
                         }
-                    </div>
+                    </ul>
                     <div className="info">
                         <ul>
                             <li>{calendar} &nbsp;{festivalData.festivalData[id].date} </li>

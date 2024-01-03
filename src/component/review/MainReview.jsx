@@ -238,36 +238,30 @@ const MainReview = (props) => {
                  ?
             <>
             <ul>
-                 { reviewsArr.map((reviews, idx) =>
-                    
-                <>
-                <li className='full_list'>{reviews.uId}
-                      <span>{reviews.fTitle}</span>
-                      <span>{`${[reviews.rDateTime.split('일', 1)]}${'일'}`}</span>
-                      <span>{reviews.uReview}</span>
-                      <span>{reviews.star}</span>
-                      <button onClick={(e) => mainReviewModifyBtnClickHandler(e, reviews.rNo)}>수정</button>
-                      <button onClick={(e) => mainReviewDelBtnClickHandler(e, reviews.rNo)}>삭제</button>
-                </li>
-                </>
-                   )}
+                { reviewsArr.map((reviews, idx) =>
+                  <li className='full_list' key={idx}>{reviews.uId}
+                        <span>{reviews.fTitle}</span>
+                        <span>{`${[reviews.rDateTime.split('일', 1)]}${'일'}`}</span>
+                        <span>{reviews.uReview}</span>
+                        <span>{reviews.star}</span>
+                        <button onClick={(e) => mainReviewModifyBtnClickHandler(e, reviews.rNo)}>수정</button>
+                        <button onClick={(e) => mainReviewDelBtnClickHandler(e, reviews.rNo)}>삭제</button>
+                  </li>
+                )}
 
             </ul>
             </>
                 :
             <>
            <ul>
-                { reviewsArr.map((reviews, idx) =>
-                    
-                    <>
-                    <li className='logined_list'><span>{reviews.uId}</span>
-                            <span>{reviews.fTitle}</span>
-                            <span>{`${[reviews.rDateTime.split('일', 1)]}${'일'}`}</span>
-                            <span>{reviews.uReview}</span>
-                            <span>{reviews.star}</span>
-                    </li>
-                    </>
-                     )}
+              { reviewsArr.map((reviews, idx) =>
+                <li className='logined_list' key={idx}><span>{reviews.uId}</span>
+                  <span>{reviews.fTitle}</span>
+                  <span>{`${[reviews.rDateTime.split('일', 1)]}${'일'}`}</span>
+                  <span>{reviews.uReview}</span>
+                  <span>{reviews.star}</span>
+                </li>
+              )}
             </ul>
             </> 
             }                      

@@ -3,9 +3,6 @@
 #listview_wrap {
     width: 1200px;
     margin: 0 auto;
-    background-image: radial-gradient(#d3eded 20%, transparent 0), radial-gradient(#d3dbdb 20%, transparent 0);
-    background-position: 0 0, 10px 10px;
-    background-size: 20px 20px;
 }
 
  #listview_wrap .title {
@@ -42,8 +39,6 @@
     width: 800px;
     font-size: 1.2em;
     padding: 5px;
-    font-style: oblique;
-    font-weight: bold;
     background-color: #fafafa;
     border: 2px solid #dadada;
     border-radius: 7px;
@@ -56,7 +51,7 @@
     padding: 10px;
     margin-top: 10px;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.0em;
     background-color: #fafafa;
 }
 
@@ -75,12 +70,13 @@
     width: 300px;
     border-radius: 10px;
     padding: 10px;
-    font-size: 0.6em;
+    font-size: 1em;
     white-space: pre-wrap;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     background-color: #fafafa;
+    font-weight: bolder;
 }
 
 #listview_wrap .middle {
@@ -91,7 +87,6 @@
 
 #listview_wrap .bottom .event .event_list {
     display: flex;
-
 }
 
 #listview_wrap .bottom .event .event_list:nth-child(2n-1),

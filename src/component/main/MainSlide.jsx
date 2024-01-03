@@ -22,7 +22,7 @@ const MainSlide = (props) => {
             let startDate = new Date(el.startDate),
                 endDate = new Date(el.endDate);
 
-            if (today > startDate && today < endDate) {
+            if (today >= startDate && today < endDate) {
                 return el;
             }
         });
