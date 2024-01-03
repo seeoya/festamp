@@ -105,12 +105,12 @@ const SignIn = (props) => {
                     </div>
 
                     <div>
-                        <Link to="/idfind" value={isfindIdClick} onClick={idFindClickHandler}>아이디찾기</Link>
-                        <Link to="/pwfind" value={isFindPwClick} onClick={fwFindClickHandler}>비밀번호찾기</Link>
+                        <Link to="/idfind" value={isfindIdClick} onClick={idFindClickHandler}>- 아이디찾기</Link> 
+                        <Link to="/pwfind" value={isFindPwClick} onClick={fwFindClickHandler}>- 비밀번호찾기</Link>
                     </div>
 
                     <div>
-                        <Link to="/signup" onClick={joinBtnHandler}>회원가입</Link>
+                        <Link to="/signup" onClick={joinBtnHandler}>- 회원가입</Link>
                     </div>
 
                     <button type="button" className="btn main" onClick={(props) => loginBtnHandler(props)}>로그인</button>
