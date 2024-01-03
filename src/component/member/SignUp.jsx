@@ -8,13 +8,13 @@ const SignUp = () => {
     const navigate = useNavigate();
 
     // Hook
-    const [UName, setUName] = useState("");
-    const [UId, setUId] = useState("");
-    const [UPw, setUPw] = useState("");
-    const [PwSame, setPwSame] = useState("");
-    const [UPhone, setUPhone] = useState("");
-    const [UEmail, setUEmail] = useState("");
-    const [UBirth, setUBirth] = useState("");
+    const [uName, setUName] = useState("");
+    const [uId, setUId] = useState("");
+    const [uPw, setUPw] = useState("");
+    const [pwSame, setPwSame] = useState("");
+    const [uPhone, setUPhone] = useState("");
+    const [uEmail, setUEmail] = useState("");
+    const [uBirth, setUBirth] = useState("");
 
     // 비밀번호 정규식
     const passwordRegEx = /^[A-Za-z0-9]{8,20}$/;
@@ -64,14 +64,14 @@ const SignUp = () => {
 
     // 중복확인 버튼
     const DuplicateTestBtnHandler = () => {
-        console.log(UId);
+        console.log(uId);
         let memberDB = JSON.parse(localStorage.getItem("memberDB"));
         let memDbId = Object.keys(memberDB);
-        console.log(memDbId.includes(UId));
+        console.log(memDbId.includes(uId));
         console.log(memDbId);
 
-        if (UId !== "" && UId !== null) {
-            if (memDbId.includes(UId)) {
+        if (uId !== "" && uId !== null) {
+            if (memDbId.includes(uId)) {
                 alert("이미 사용중인 아이디입니다.");
                 setUId("");
             } else {
@@ -86,7 +86,7 @@ const SignUp = () => {
     const formatCheckBtnHandler = () => {
         console.log("formatCheckBtnHandler() Clicked !!");
 
-        if (UPw.match(passwordRegEx) === null) {
+        if (uPw.match(passwordRegEx) === null) {
             alert("올바른 비밀번호를 입력해주세요.");
         } else {
             alert("사용 가능한 비밀번호 입니다.");
@@ -97,8 +97,8 @@ const SignUp = () => {
     const pwSameBntHandler = () => {
         console.log("pwSameBntHandler() Clicked!");
 
-        if (PwSame !== "") {
-            if (UPw === PwSame) {
+        if (pwSame !== "") {
+            if (uPw === pwSame) {
                 alert("비밀번호 일치합니다:)");
             } else {
                 alert("비밀번호가 일치하지 않습니다.");
@@ -117,21 +117,21 @@ const SignUp = () => {
         let memberInStorage = localStorage.getItem("memberDB");
 
         if (
-            UId !== "" &&
-            UName !== "" &&
-            UPw !== "" &&
-            UPhone !== "" &&
-            UEmail !== "" &&
-            UBirth !== ""
+            uId !== "" &&
+            uName !== "" &&
+            uPw !== "" &&
+            uPhone !== "" &&
+            uEmail !== "" &&
+            uBirth !== ""
         ) {
             if (memberInStorage === null) {
                 let newMemberDb = {
-                    [UId]: {
-                        name: UName,
-                        pw: UPw,
-                        phone: UPhone,
-                        email: UEmail,
-                        birth: UBirth,
+                    [uId]: {
+                        name: uName,
+                        pw: uPw,
+                        phone: uPhone,
+                        email: uEmail,
+                        birth: uBirth,
                     },
                 };
 
@@ -141,12 +141,12 @@ const SignUp = () => {
                 let memberDbObj = JSON.parse(memberInStorage);
                 console.log("memberInStorage");
 
-                memberDbObj[UId] = {
-                    name: UName,
-                    pw: UPw,
-                    phone: UPhone,
-                    email: UEmail,
-                    birth: UBirth,
+                memberDbObj[uId] = {
+                    name: uName,
+                    pw: uPw,
+                    phone: uPhone,
+                    email: uEmail,
+                    birth: uBirth,
                 };
 
                 let memberStr = JSON.stringify(memberDbObj);
@@ -185,7 +185,7 @@ const SignUp = () => {
                             type="text"
                             id="u_id"
                             name="u_id"
-                            value={UId}
+                            value={uId}
                             onChange={(e) => userIdHandler(e)}
                             placeholder="아이디"
                         />{" "}
@@ -202,7 +202,7 @@ const SignUp = () => {
                             type="password"
                             id="u_pw"
                             name="u_pw"
-                            value={UPw}
+                            value={uPw}
                             onChange={(e) => userPwHandler(e)}
                             placeholder="비밀번호 "
                         />{" "}
@@ -218,7 +218,7 @@ const SignUp = () => {
                             type="password"
                             id="pw_same"
                             name="pw_same"
-                            value={PwSame}
+                            value={pwSame}
                             onChange={(e) => userPwSameHandler(e)}
                             placeholder="비밀번호 확인"
                         />{" "}
@@ -235,7 +235,7 @@ const SignUp = () => {
                             type="text"
                             id="u_phone"
                             name="u_phone"
-                            value={UPhone}
+                            value={uPhone}
                             onChange={(e) => userPhoneHandler(e)}
                             placeholder="연락처"
                         />
@@ -247,7 +247,7 @@ const SignUp = () => {
                             type="text"
                             id="u_email"
                             name="u_email"
-                            value={UEmail}
+                            value={uEmail}
                             onChange={(e) => userEmailHandler(e)}
                             placeholder="E-mail"
                         />
@@ -259,7 +259,7 @@ const SignUp = () => {
                             type="date"
                             id="u_birth"
                             name="u_birth"
-                            value={UBirth}
+                            value={uBirth}
                             onChange={(e) => userBirthHandler(e)}
                             placeholder="생일"
                         />

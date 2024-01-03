@@ -19,10 +19,19 @@
     font-weight: bold;
 }
 
-.date {
+.stamp_wrap .date {
+    height: 50px;
     font-weight: bold;
     font-size: 18px;
 }
 
 .stamp_img {
+    height: 200px;
+}
+
+.stamp_img > img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #c9a9e9;
 }
