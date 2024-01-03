@@ -72,6 +72,12 @@
 #main_popular {
 }
 
+#main_popular .sec_item_title .sub {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
 #main_popular .list {
     display: flex;
     flex-direction: column;
@@ -82,7 +88,6 @@
     display: inline-block;
     width: 100%;
 }
-
 
 #main_popular .list .marker, #main_popular .list .title {
     font-size: 1.6rem;
@@ -108,19 +113,20 @@
 #main_random .item {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 }
 
 #main_random .item_intro {
     display: flex;
-    gap: 10px;
+    gap: 20px;
 }
 
 #main_random .item_title {
+    text-align: center;
 }
 
 #main_random .item_img {
-    width: 50%;
+    width: 300px;
     height: 150px;
     object-fit: cover;
 }
@@ -131,4 +137,5 @@
 
 #main_random .item_explain {
     text-indent: 1rem;
+    font-size: 1.6rem;
 }
