@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
+    let { isLogIned, setIsLogIned, logInId, setLogInId } = props.loginInfo;
+
     return (
         <header>
             <Link to="/" className="logo link">
@@ -19,31 +21,40 @@ const Header = () => {
                         LIST
                     </Link>
                 </li>
-                <li>
-                    <Link to="/signin" className="link">
-                        SIGN IN
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/signout" className="link">
-                        SIGN OUT
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/signup" className="link">
-                        SIGN UP
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/privacy" className="link">
-                        PRIVACY
-                    </Link>
-                </li>
+                {isLogIned ? (
+                    <>
+                        <li>
+                            <Link to="/privacy" className="link">
+                                PRIVACY
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/signout" className="link">
+                                SIGN OUT
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/myreview" className="link">
+                                {logInId}님
+                            </Link>
+                        </li>
+                    </>
+                ) : (
+                    <>
+                        <li>
+                            <Link to="/signup" className="link">
+                                SIGN UP
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/signin" className="link">
+                                SIGN IN
+                            </Link>
+                        </li>
+                    </>
+                )}
 
                 {/* #TODO 테스트용. 제거 예정. */}
-                <li>
-                    <Link to="/gradeselect">*GRADE SELECT</Link>
-                </li>
                 <li>
                     <Link to="/styleguide">STYLE GUIDE</Link>
                 </li>
