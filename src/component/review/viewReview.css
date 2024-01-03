@@ -1,32 +1,27 @@
 #review_wrap {
     position: relative;
-    
     width: 1200px;
     margin: 0 auto;
-    margin-top: 30px; 
- 
-    
+    margin-top: 30px;
 }
 
 #review_wrap .view_review {
-    width: 1110px;    
+    width: 1110px;
     margin-right: 30px;
     border: 2px solid #dadada;
     border-radius: 10px;
-    padding: 10px;    
+    padding: 10px;
     background-color: #fafafa;
-    text-align: center; 
-    
+    text-align: center;
 }
 
 #review_wrap .view_review_header {
     width: 100%;
     border-radius: 10px;
-    background-color:#d3eded;
+    background-color: #d3eded;
     text-align: left;
     padding-left: 50px;
 }
-
 
 #review_wrap .view_review_header span:nth-child(1) {
     font-weight: bold;
@@ -41,18 +36,15 @@
 
 #review_wrap .view_review_header .btn highlight {
     display: inline-block;
-    ;
     font-weight: bold;
     font-size: 1.4em;
     padding-left: 50px;
-    
 }
+
 #review_wrap .view_review_list {
-
 }
 
-.full_list span:nth-child(4){
+.full_list span:nth-child(4) {
     font-size: 22px;
     color: #faf61d;
 }
-

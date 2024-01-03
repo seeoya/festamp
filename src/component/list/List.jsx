@@ -25,9 +25,7 @@ const List = (props) => {
         setIngByDate(!ingByDate);
         console.log("toggleIngByDate click");
         console.log(ingByDate);
-    }
-
-
+    };
 
     // filter > 주어진 조건을 통과하는 요소를 새로운 배열로 반환 //
     // includes > 요소가 배열 안에 존재하는 경우에만 true 을 반환 //
@@ -38,13 +36,13 @@ const List = (props) => {
             if (!festival.title.includes(searchTerm)) {
                 flag = false;
             }
-        };
-    //flag >> 필요 없는 걸 if (flag) 여기서 false 를 줘서 배열에 안 넣고 버리기 위해
+        }
+        //flag >> 필요 없는 걸 if (flag) 여기서 false 를 줘서 배열에 안 넣고 버리기 위해
         if (ingByDate) {
             let today = new Date();
             let startDate = new Date(festival.startDate);
             let endDate = new Date(festival.endDate);
-        
+
             if (!(today >= startDate && today <= endDate)) {
                 flag = false;
             }
@@ -54,7 +52,6 @@ const List = (props) => {
             return festival;
         }
     });
-
 
     // 정렬 상태에 따라 데이터 정렬
     // 축제일순을 Click시 sortByDate가 false > true if문 동작
@@ -87,11 +84,17 @@ const List = (props) => {
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
                     <div className="filter_wrap">
-                        <p>축제일순
-                        <input type="checkbox" name="starting_date" onClick={toggleSortByDate}/>
+                        <p>
+                            축제일순
+                            <input
+                                type="checkbox"
+                                name="starting_date"
+                                onClick={toggleSortByDate}
+                            />
                         </p>
-                        <p>진행중인 축제
-                        <input type="checkbox" name="ing_date" onClick={toggleIngByDate}/>
+                        <p>
+                            진행중인 축제
+                            <input type="checkbox" name="ing_date" onClick={toggleIngByDate} />
                         </p>
                     </div>
                 </div>
