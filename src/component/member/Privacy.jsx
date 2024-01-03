@@ -25,53 +25,63 @@ const Privacy = (props) => {
         if (!isLogIned) {
             alert('로그인 하세요');
             navigate('/SignIn');
+        }  else {
+            console.log(memberInfo);
         }
+        // else {
+        //     setUName(memberInfo[logInId].name);
+        //     setUPw(memberInfo[logInId].pw);
+        //     setPwSame(memberInfo[logInId].pw);
+        //     setUPhone(memberInfo[logInId].phone);
+        //     setUEmail(memberInfo[logInId].email);
+        //     setUBirth(memberInfo[logInId].birth);
+        // }   
     }, []);
 
 
         // Input 입력창 수정 
-        const userNameHandler = (e) => {
-            console.log('userNameHandler() Write !!');
+        // const userNameHandler = (e) => {
+        //     console.log('userNameHandler() Write !!');
     
-            setUName(e.target.value);
-            console.log(UName)
+        //     setUName(e.target.value);
+        //     console.log(UName)
             
-        }
+        // }
     
-        const userPwHandler = (e) => {
-            console.log('userPwHandler() Write !!');
+        // const userPwHandler = (e) => {
+        //     console.log('userPwHandler() Write !!');
 
-            setUPw(e.target.value);
-            console.log(UPw)
-        }
+        //     setUPw(e.target.value);
+        //     console.log(UPw)
+        // }
     
-        const userPwSameHandler = (e) => {
-            console.log('userPwSameHandler() Write !!');
+        // const userPwSameHandler = (e) => {
+        //     console.log('userPwSameHandler() Write !!');
 
-            setPwSame(e.target.value);
-            console.log(PwSame)
-        }
+        //     setPwSame(e.target.value);
+        //     console.log(PwSame)
+        // }
     
-        const userPhoneHandler = (e) => {
-            console.log('userPhoneHandler() Write !!');
+        // const userPhoneHandler = (e) => {
+        //     console.log('userPhoneHandler() Write !!');
 
-            setUPhone(e.target.value);
-            console.log(UPhone)
-        }
+        //     setUPhone(e.target.value);
+        //     console.log(UPhone)
+        // }
         
-        const userEmailHandler = (e) => {
-            console.log('userEmailHandler() Write !!');
+        // const userEmailHandler = (e) => {
+        //     console.log('userEmailHandler() Write !!');
 
-            setUEmail(e.target.value);
-            console.log(UEmail)
-        }
+        //     setUEmail(e.target.value);
+        //     console.log(UEmail)
+        // }
     
-        const userBirthHandler = (e) => {
-            console.log('userBirthHandler() Write !!');
+        // const userBirthHandler = (e) => {
+        //     console.log('userBirthHandler() Write !!');
 
-            setUBirth(e.target.value);
-            console.log(UBirth)
-        }
+        //     setUBirth(e.target.value);
+        //     console.log(UBirth)
+        // }
     
         // const changeBtnHandler = () => {
         //     console.log('changeBtnHandler() Clicked !!');
@@ -89,8 +99,8 @@ const Privacy = (props) => {
                             <label htmlFor="u_name">
                                 <p>이름(닉네임) </p>
                             </label>
-                            <input type="text" id="u_name" name="u_name" value={UName} defaultValue={memberInfo[logInId].name} 
-                            onChange={(e) => userNameHandler(e)} placeholder="이름(닉네임)" />
+                            <input type="text" id="u_name" name="u_name" defaultValue={memberInfo[logInId].name} 
+                             placeholder="이름(닉네임)" />
                             <br />
                             <label htmlFor="u_id">
                                 <p>아이디</p>
@@ -100,8 +110,8 @@ const Privacy = (props) => {
                             <label htmlFor="u_pw">
                                 <p>비밀번호</p>
                             </label>
-                            <input type="password" id="u_pw" name="u_pw" value={UPw} defaultValue={memberInfo[logInId].pw}
-                            onChange={(e) => userPwHandler(e)} placeholder="비밀번호 " /> &nbsp;
+                            <input type="password" id="u_pw" name="u_pw"  defaultValue={memberInfo[logInId].pw}
+                             placeholder="비밀번호 " /> &nbsp;
                             <button type="button">
                             확인
                             </button>
@@ -114,29 +124,29 @@ const Privacy = (props) => {
                                 type="password"
                                 id="pw_same"
                                 name="pw_same" defaultValue={memberInfo[logInId].pw}
-                                onChange={(e) => userPwSameHandler(e)} value={PwSame} placeholder="비밀번호 확인"
+                                 placeholder="비밀번호 확인"
                             /> &nbsp;
                             <button type="button">확인</button>
                             <br />
                             <label htmlFor="u_phone">
                                 <p>연락처</p>
                             </label>
-                            <input type="text" id="u_phone" name="u_phone" value={UPhone} defaultValue={memberInfo[logInId].phone} 
-                            onChange={(e) => userPhoneHandler(e)} placeholder="연락처" />
+                            <input type="text" id="u_phone" name="u_phone"  defaultValue={memberInfo[logInId].phone} 
+                           placeholder="연락처" />
                             <br />
                             <label htmlFor="u_email">
                                 <p>이메일</p>
                             </label>
-                            <input type="email" id="u_email" name="u_email" value={UEmail} defaultValue={memberInfo[logInId].email}
-                            onChange={(e) => userEmailHandler(e)} placeholder="E-mail" />
+                            <input type="email" id="u_email" name="u_email" defaultValue={memberInfo[logInId].email}
+                           placeholder="E-mail" />
                             <br />
                             <label htmlFor="u_birth">
                                 <p>생년월일</p>
                             </label>
-                            <input type="date" id="u_birth" name="u_birth" value={UBirth} defaultValue={memberInfo[logInId].birth}
-                             onChange={(e) => userBirthHandler(e)} placeholder="생일" />
+                            <input type="date" id="u_birth" name="u_birth"  defaultValue={memberInfo[logInId].birth}
+                              placeholder="생일" />
                             <br />
-                            <button type="button" >수정</button>
+                            <button type="button"  >수정</button>
                         </div>
                     </form >
                     : null}

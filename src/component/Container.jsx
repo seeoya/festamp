@@ -14,6 +14,7 @@ import SignUp from "./member/SignUp";
 import Stamp from "./stamp/Stamp";
 import ListView from "./view/View";
 
+import NotFound from "./NotFound";
 import MyReview from "./review/MyReview";
 
 const Container = (props) => {
@@ -53,7 +54,7 @@ const Container = (props) => {
                 {/*  */}
 
                 {/* NOT FOUND */}
-                <Route path="*" element={<></>}></Route>
+                <Route path="*" element={<NotFound />}></Route>
             </Routes>
         </div>
     );
