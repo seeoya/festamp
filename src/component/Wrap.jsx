@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Container from "./Container";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -74,7 +74,7 @@ const Wrap = () => {
     //     // localStorage.setItem('idReviewDB', JSON.stringify(tempArr));
     //     // console.log(idReviewDB);
 
-    }, [])
+    }, []);
 
 
     let loginInfo = {

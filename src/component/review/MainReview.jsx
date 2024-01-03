@@ -84,26 +84,26 @@ const MainReview = (props) => {
     console.log('mainReviewWrite Btn Clicked!');
     
     // logined check
-    if(!checkLogined()) {
-      console.log(checkLogined());
-      alert('로그인이 필요합니다.');
+    // if(!checkLogined()) {
+    //   console.log(checkLogined());
+    //   alert('로그인이 필요합니다.');
 
-    } else {
-    console.log('reviewsArr: ', reviewsArr);
+    // } else {
+    // console.log('reviewsArr: ', reviewsArr);
 
-      let isReviewArr=[];
-      let isReview = JSON.stringify(reviewsArr);
+  //     let isReviewArr=[];
+  //     let isReview = JSON.stringify(reviewsArr);
   
-      if (isReview.includes(festivalTitle)) {
-        
-          alert(`${festivalTitle} 리뷰가 존재합니다.`);
-      } else {  
+  //     if (isReview.includes(festivalTitle)) {
+               
+  //         alert(`${festivalTitle} 리뷰가 존재합니다.`);
+  //     } else {  
                 // write modal show
             setIsShowWriteModal(true);
       }
     
-    }
-  }
+  //   // }
+  // }
 
   // 메인리스트 수정 버튼
   const mainReviewModifyBtnClickHandler = (e, rNo) => {
@@ -204,9 +204,9 @@ const MainReview = (props) => {
     <div id='review_wrap'>
 
       <div className='view_review'>
-          <div className='view_review_header'>
+          <div className='sec_item_title'>
             <ul>
-              <li><span>{festivalTitle} 리뷰</span><span>{starGradeDataId}</span>
+              <li><h1>{festivalTitle} 리뷰<span>{starGradeDataId}</span></h1>
                   <button onClick={mainReviewWriteBtnClickHandler} className="btn highlight">리뷰 쓰기</button>
               </li>
             </ul>                               

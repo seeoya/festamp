@@ -76,6 +76,7 @@ const ReviewWriteModal = (props) => {
     <div className='review_write_modal'>
 
       <GradeSelect setStar={setStar} star={star} parseReviewDB={parseReviewDB} />
+      <br />
       <textarea cols="50" rows="5" vlaue={uReview} onChange={(e) => uReviewChangeHandler(e)}></textarea>
       <br />
 
