@@ -1,12 +1,12 @@
- /* view style  */
-
+/* view style  */
 #listview_wrap {
     width: 1200px;
     margin: 0 auto;
 }
 
- #listview_wrap .title {
-    width: 500px; height: 50px;
+#listview_wrap .title {
+    width: 500px;
+    height: 50px;
     padding-left: 10px;
     font-size: 2em;
     margin-bottom: 1px;
@@ -14,7 +14,8 @@
 }
 
 #listview_wrap .date {
-    width: 300px; height: 25px;
+    width: 300px;
+    height: 25px;
     font-size: 0.5em;
     margin-bottom: 10px;
     padding-left: 10px;
@@ -84,20 +85,17 @@
     flex-direction: column;
 }
 
-
 #listview_wrap .bottom .event .event_list {
     display: flex;
 }
 
-#listview_wrap .bottom .event .event_list:nth-child(2n-1),
-#listview_wrap .info ul li:nth-child(2n-1) {
+#listview_wrap .bottom .event .event_list:nth-child(2n-1), #listview_wrap .info ul li:nth-child(2n-1) {
     background-color: #d3eded;
     border-radius: 10px;
     padding: 5px;
 }
 
-#listview_wrap .bottom .event .event_list:nth-child(2n),
-#listview_wrap .info ul li:nth-child(2n){
+#listview_wrap .bottom .event .event_list:nth-child(2n), #listview_wrap .info ul li:nth-child(2n) {
     padding: 5px;
     border-radius: 10px;
 }
