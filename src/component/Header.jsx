@@ -12,11 +12,6 @@ const Header = (props) => {
 
             <ul className="nav">
                 <li>
-                    <Link to="/" className="link">
-                        HOME
-                    </Link>
-                </li>
-                <li>
                     <Link to="/list" className="link">
                         LIST
                     </Link>
