@@ -7,14 +7,40 @@ import "./stamp.css";
 // switch문을 쓰는데 if(reviewNum=1,2,3,...)을 넣어야하는데 너무 길어지는거 아닌가?
 // 날짜는 map함수로 받아쓴다
 
-const Stamp = () => {
+const Stamp = (props) => {
     // hook
     const [myStampArr, setMyStampArr] = useState([]);
+    
+    let myReviewsArr = props.myReviewsArr;
+    let logInId = props.logInId;
 
     useEffect(() => {
         console.log("useEffect CALLED");
-
         
+        let reviewObjInStorage = localStorage.getItem("reviewDB");
+        let curReviewDBObj = JSON.parse(reviewObjInStorage);
+        let rDataObjs = curReviewDBObj.rData;
+
+        let reviewskeys = [];
+        for (let keys in rDataObjs) {
+            reviewskeys.push(keys);
+        }
+
+        let tempArr = [];
+
+        for (let i = 1; i < reviewskeys.length; i++) {
+            let reviews = rDataObjs[reviewskeys[i]];
+
+                if (reviews.uId === logInId) {     // 로그인 아이디와 일치하면
+                reviews["key"] = reviewskeys[i];
+                console.log("reviewskeys[i]:", reviewskeys[i]);
+
+                tempArr.push(reviews);                
+            }            
+        }
+        setMyStampArr(tempArr);
+
+
     }, []);
 
     // function

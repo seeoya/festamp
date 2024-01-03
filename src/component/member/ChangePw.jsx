@@ -59,40 +59,30 @@ const ChangePw = () => {
     };
 
     return (
-        <div>
-            <div>
-                <h3>비밀번호 변경</h3>
+        <div id="change_pw" className="sec member">
+            <div className="sec_item">
+                <h1 className="sec_item_title">비밀번호 변경</h1>
 
-                <div>
-                    <label htmlFor="new_pw">
-                        <p>NEW PASSWORD</p>
-                    </label>
-                    <input
-                        type="password"
-                        id="new_pw"
-                        defaultValue={(e) => newPw(e)}
-                        onChange={inputNewPW}
-                        placeholder="새 비밀번호 입력"
-                    />{" "}
-                    &nbsp;
-                    <button onClick={formatCheckBtnHandler}>확인</button>
-                    <br />
-                    <p>비밀번호는 영문 대소문자, 숫자를 혼합하여 8~20자로 입력해주세요</p>
-                    <label htmlFor="verify_pw">
-                        <p>VERIFY PASSWORD</p>
-                    </label>
-                    <input
-                        type="password"
-                        id="verify_pw"
-                        defaultValue={(e) => verifyPw(e)}
-                        onChange={inputVerifyPw}
-                        placeholder="새 비밀번호 확인"
-                    />{" "}
-                    &nbsp;
-                    <button onClick={pwCheckBtnHandler}>비밀번호 확인</button>
+                <div className="sec_item_content">
+                    <div>
+                        <label htmlFor="new_pw">새로운 비밀번호</label>
+
+                        <div className="btn_wrap">
+                            <input type="password" id="new_pw" className="input" defaultValue={(e) => newPw(e)} onChange={inputNewPW} placeholder="새 비밀번호 입력" />
+                            {/* <button type="button" className="btn main" onClick={formatCheckBtnHandler}>확인</button> */}
+                        </div>
+                        <p>비밀번호는 영문 대소문자, 숫자를 혼합하여 8~20자로 입력해주세요</p>
+                    </div>
+
+                    <div>
+                        <label htmlFor="verify_pw">비밀번호 확인</label>
+                        <div className="btn_wrap">
+                            <input type="password" id="verify_pw" className="input" defaultValue={(e) => verifyPw(e)} onChange={inputVerifyPw} placeholder="새 비밀번호 확인" />
+                            <button type="button" className="btn main" onClick={pwCheckBtnHandler}>확인</button>
+                        </div>
+                    </div>
+                    <button type="button" className="btn" onClick={ChangePwBtnHandler}>비밀번호 수정</button>
                 </div>
-
-                <button onClick={ChangePwBtnHandler}>비밀번호 수정</button>
             </div>
         </div>
     );

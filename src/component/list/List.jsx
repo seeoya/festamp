@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Map from "../map/Map";
 import "./listStyle.css";
@@ -12,13 +12,20 @@ const List = (props) => {
     const [ingByDate, setIngByDate] = useState(false);
     const [festData, setFestData] = useState(props.festivalData ?? []);
 
+    const listDivEle = useRef();
+
     useEffect(() => {
+        console.log('++++++++++++++++');
+        console.log('listDivEle: ', listDivEle.current);
+
         filterArray(props.festivalData);
-    }, [ingByDate, searchTerm, sortByDate]);
+
+    }, [ingByDate, searchTerm, sortByDate, visibleItems]);
 
     // useState 처음 6 > loadMoreHandler 동작 시 + 6 //
     const loadMoreHandler = () => {
         setVisibleItems((load) => load + 6);
+
     };
 
     // 버튼 클릭 시 정렬 상태 변경
@@ -111,7 +118,7 @@ const List = (props) => {
                 <div className="festival_wrap">
                     {/* slice > 첫번째 인자부터 ~ 두번째 인자 전까지 값을 새로운 배열로 만들 때 사용 */}
                     {/* slice 통과한 게 map에 들어가서 반복*/}
-                    <div className="festival_inner">
+                    <div className="festival_inner" ref={listDivEle}>
                         {festData.slice(0, visibleItems).map((festival, index) => (
                             <div className="festival_item" key={index}>
                                 <div>
@@ -145,7 +152,7 @@ const List = (props) => {
                     <Map
                         festivalData={props.festivalData}
                         width={"100%"}
-                        height={"2000%"}
+                        height={"100%"}
                         nowAddress={nowAddress}
                         setNowAddress={setNowAddress}
                         nowAddressTitle={nowAddressTitle}
@@ -155,7 +162,7 @@ const List = (props) => {
 
                 <div className="stamp">
                     {/* 스탬프 이미지 자리 */}
-                    <img src="imgs/festival/stamp2.jpg" />
+                    <img src="imgs/logo/stamp2.jpg" />
                 </div>
             </div>
         </div>
