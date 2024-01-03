@@ -97,6 +97,7 @@ const Privacy = (props) => {
             localStorage.setItem("memberDB", memberStr);
 
             alert('개인정보 변경 완료 !');
+            navigate("/");
         } else {
             alert ("정보를 입력해주세요.");
         }
