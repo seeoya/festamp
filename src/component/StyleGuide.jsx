@@ -2,67 +2,69 @@ import React from "react";
 
 const StyleGuide = () => {
     return (
-        <div id="styleguide">
+        <div id="styleguide" className="sec">
             <h1>스타일 가이드</h1>
+            <div>
+                <div className="sec_item">
+                    <h2 className="sec_item_title">색상</h2>
 
-            <div className="sec">
-                <h2>색상</h2>
-
-                <div className="box_wrap">
-                    <div className="box main">MAIN</div>
-                    <div className="box sub">SUB</div>
-                    <div className="box highlight">HIGHLIGHT</div>
+                    <div className="box_wrap">
+                        <div className="box main">MAIN</div>
+                        <div className="box sub">SUB</div>
+                        <div className="box highlight">HIGHLIGHT</div>
+                    </div>
                 </div>
-            </div>
 
-            <div className="sec">
-                <h2>헤딩</h2>
+                <div className="sec_item">
+                    <h2 className="sec_item_title">헤딩</h2>
 
-                <div>
-                    <h1>H1 헤더</h1>
-                    <h2>H2 헤더</h2>
-                    <h3>H3 헤더</h3>
-                    <h4>H4 헤더</h4>
-                    <h5>H5 헤더</h5>
-                    <h6>H6 헤더</h6>
+                    <div>
+                        <h1>H1 헤더</h1>
+                        <h2>H2 헤더</h2>
+                        <h3>H3 헤더</h3>
+                        <h4>H4 헤더</h4>
+                        <h5>H5 헤더</h5>
+                        <h6>H6 헤더</h6>
+                    </div>
                 </div>
-            </div>
 
-            <div className="sec">
-                <h1>버튼</h1>
 
-                <div>
-                    <button type="button" className="btn">
-                        버튼 (button.btn)
-                    </button>
-                    <button type="button" className="btn main">
-                        메인 버튼 (button.btn.main)
-                    </button>
-                    <button type="button" className="btn highlight">
-                        하이라이트 버튼 (button.btn.highlight)
-                    </button>
+                <div className="sec_item">
+                    <h2 className="sec_item_title">버튼</h2>
+
+                    <div>
+                        <button type="button" className="btn">
+                            버튼 (button.btn)
+                        </button>
+                        <button type="button" className="btn main">
+                            메인 버튼 (button.btn.main)
+                        </button>
+                        <button type="button" className="btn highlight">
+                            하이라이트 버튼 (button.btn.highlight)
+                        </button>
+                    </div>
                 </div>
-            </div>
 
-            <div className="sec">
-                <h1>인풋</h1>
+                <div className="sec_item">
+                    <h2 className="sec_item_title">인풋</h2>
 
-                <div>
-                    class "input"
-                    <br />
-                    <input type="text" className="input" placeholder="text" />
-                    <input type="password" className="input" placeholder="password" />
-                    <input type="email" className="input" placeholder="email" />
-                    <input type="tel" className="input" placeholder="tel" />
-                    <br />
-                    <textarea
-                        name=""
-                        id=""
-                        cols="30"
-                        rows="10"
-                        className="input"
-                        placeholder="textarea"
-                    ></textarea>
+                    <div>
+                        class "input"
+                        <br />
+                        <input type="text" className="input" placeholder="text" />
+                        <input type="password" className="input" placeholder="password" />
+                        <input type="email" className="input" placeholder="email" />
+                        <input type="tel" className="input" placeholder="tel" />
+                        <br />
+                        <textarea
+                            name=""
+                            id=""
+                            cols="30"
+                            rows="10"
+                            className="input"
+                            placeholder="textarea"
+                        ></textarea>
+                    </div>
                 </div>
             </div>
         </div>
