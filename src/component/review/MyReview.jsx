@@ -32,17 +32,19 @@ const MyReview = (props) => {
 
         let tempArr = [];
 
-        for (let i = 1; i <= reviewskeys.length; i++) {
+        for (let i = 1; i < reviewskeys.length; i++) {
             let reviews = rDataObjs[reviewskeys[i]];
             console.log(reviews);
-            // console.log(reviews.uId);
+            console.log(reviews.uId);
 
-            // if (reviews.uId === logInId) {
-            //     reviews["key"] = reviewskeys[i];
-            //     console.log("reviewskeys[i]:", reviewskeys[i]);
+            // let uId = props.loginInfo.logInId;
 
-            //     tempArr.push(reviews);
-            // }
+            if (reviews.uId === logInId) {
+                reviews["key"] = reviewskeys[i];
+                console.log("reviewskeys[i]:", reviewskeys[i]);
+
+                tempArr.push(reviews);
+            }
         }
         setMyReviewsArr(tempArr);
         currentPosts(myReviewsArr);
@@ -115,8 +117,7 @@ const MyReview = (props) => {
         console.log("currentPosts() Called");
 
         const indexOfLast = currentPage * postsPerPage;
-        //const indexOfFirst = indexOfLast - postsPerPage;
-
+       
         let currentPosts = 0;
         currentPosts = myReviewsArr.slice(currentPosts, indexOfLast);
         console.log(currentPosts);
@@ -125,20 +126,19 @@ const MyReview = (props) => {
 
     return (
         <div className="my_page">
-            {/* <div>
-            <h2>{props.loginInfo.logInId}님</h2>
-            </div>
-
+            
             <div className="my_stamp">
-            <>
-            <Stamp myReviewsArr={myReviewsArr}
-                   logInId={logInId}/>
-            </>
-            </div> */}
+                <p className="sec_item_title"><h2>MY STAMP</h2></p>               
+            
+                <>
+                <Stamp myReviewsArr={myReviewsArr}
+                    logInId={logInId}/>
+                </>
+            </div>
             <div className="my_review">
                 <>
                     <ul>
-                        <li className="sec_item_title">MY REVIEW</li>
+                        <li className="sec_item_title"><h2>MY REVIEW</h2></li>
 
                         {myReviewsArr.map((myReview, idx) => (
                             <>

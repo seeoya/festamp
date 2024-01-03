@@ -28,7 +28,7 @@ const Stamp = (props) => {
 
         let tempArr = [];
 
-        for (let i = 0; i < reviewskeys.length; i++) {
+        for (let i = 1; i < reviewskeys.length; i++) {
             let reviews = rDataObjs[reviewskeys[i]];
 
                 if (reviews.uId === logInId) {     // 로그인 아이디와 일치하면
@@ -39,12 +39,6 @@ const Stamp = (props) => {
             }            
         }
         setMyStampArr(tempArr);
-
-        // for (let i=0 ; i < tempArr.length; i++) {
-        //     let stamps = tempArr.includes[fDataId[i]];
-        //     stamps["key"] = my
-
-        // }
 
 
     }, []);
