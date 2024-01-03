@@ -58,15 +58,8 @@ const ReviewWriteModal = (props) => {
     const parseReviewDB = () => {
         console.log("parseReviewDB() Called!");
 
-<<<<<<< HEAD
-      <GradeSelect setStar={setStar} star={star} parseReviewDB={parseReviewDB} />
-      <br />
-      <textarea cols="50" rows="5" vlaue={uReview} onChange={(e) => uReviewChangeHandler(e)}></textarea>
-      <br />
-=======
         let reviewDBinStorage = localStorage.getItem("reviewDB");
         let reviewDBObjs = JSON.parse(reviewDBinStorage);
->>>>>>> 1ba682053232f363fda8cdd4ef15dd684674873d
 
         console.log("reviewDBObjs: ", reviewDBObjs);
         return reviewDBObjs;
