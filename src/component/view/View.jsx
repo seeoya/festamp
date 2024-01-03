@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import MainReview from "../review/MainReview";
 
 
-const ListView = (festivalData) => {
+const ListView = (festivalData, loginInfo) => {
     
     let calendar = <i class="fa-regular fa-calendar-days"></i>
     let place = <i class="fa-solid fa-compass"></i>
@@ -19,7 +19,8 @@ const ListView = (festivalData) => {
 
         let datas = festivalData.festivalData[id].event;
         setEventsArr(datas.split('\n'));
-
+       
+        
     }, []);
 
     // useParams > path="/view/:id" id 값을 가져옴 url 파라미터
@@ -78,6 +79,7 @@ const ListView = (festivalData) => {
                 <>
                     <MainReview festivalDataId={festivalData.festivalData[id].id}
                                 festivalTitle={festivalData.festivalData[id].title}
+                                loginInfo={loginInfo}
                     />
                 </>
             </div>

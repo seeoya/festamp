@@ -2,23 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./gradeSelect.css";
 
 const GradeSelect = (props) => {
-
     // hook
     const [inStar, setInStar] = useState('');
     const [isRewrite, setIsRewrite] = useState(false);
-   
-    
 
     // 리뷰 데이터 목록에 점수 넣기
     useEffect(() => {
-        console.log('useEffect() CALLED');
-
-        // let reviewDBObjs = props.parseReviewDB();
-        // let rDataObjs = reviewDBObjs.rData;
-        // let reviewStar = rDataObjs.reviewNo.star;
-
         // if (reviewStar === null) {
-        //     // 'star': curStar
+        // 'star': curStar
         // }
         // 'starDB' > 객체
         // starDB > [리뷰번호] : {별점: 5}
@@ -69,26 +60,26 @@ const GradeSelect = (props) => {
         setInStar(e.target.value);
         console.log(inStar);
 
-        props.setStar(inStar);         
+        props.setStar(inStar);
     }
 
     return (
         <>
             <div className="star_wrap">
                 {
-                
+
                     isRewrite
-                    ?
-                    null
-                    :
-                    
-                    <div className="star_rating space-x-4 mx-auto">
+                        ?
+                        null
+                        :
+
+                        <div className="star_rating space-x-4 mx-auto">
                             <input
                                 onClick={(e) => starClickHandler(e)}
                                 type="radio"
                                 id="5_stars"
                                 name="rating"
-                                value={"5.0"}
+                                value={5}
                             />
                             <label for="5_stars" className="star pr-4">
                                 ★
@@ -98,7 +89,7 @@ const GradeSelect = (props) => {
                                 type="radio"
                                 id="4_stars"
                                 name="rating"
-                                value={"4.0"}
+                                value={4}
                             />
                             <label for="4_stars" className="star">
                                 ★
@@ -108,7 +99,7 @@ const GradeSelect = (props) => {
                                 type="radio"
                                 id="3_stars"
                                 name="rating"
-                                value={"3.0"}
+                                value={3}
                             />
                             <label for="3_stars" className="star">
                                 ★
@@ -118,7 +109,7 @@ const GradeSelect = (props) => {
                                 type="radio"
                                 id="2_stars"
                                 name="rating"
-                                value={"2.0"}
+                                value={2}
                             />
                             <label for="2_stars" className="star">
                                 ★
@@ -128,15 +119,15 @@ const GradeSelect = (props) => {
                                 type="radio"
                                 id="1_star"
                                 name="rating"
-                                value={"1.0"}
+                                value={1}
                             />
                             <label for="1_star" className="star">
                                 ★
                             </label>
-                    
-                </div>
+
+                        </div>
                 }
-                
+
                 &nbsp;&nbsp;&nbsp;
                 <div className="star_rate">
                     <span>{inStar}</span>
@@ -145,12 +136,12 @@ const GradeSelect = (props) => {
                 <div className="selected_star">
                     {
                         isRewrite
-                        ?
-                        <>
-                        ★ <span>{props.star}</span>
-                        </>
-                        :
-                        null
+                            ?
+                            <>
+                                ★ <span>{props.star}</span>
+                            </>
+                            :
+                            null
                     }
                 </div>
             </div>
