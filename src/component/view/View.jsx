@@ -44,16 +44,16 @@ const ListView = (props) => {
                     {/* <div className="event">
                             <h1>{festData[id].event}</h1>
                     </div> */}
-                    <div className="explan">
+                    <div className="explain item_explain">
                         <p>{festData[id].explain}</p>
                     </div>
                 </div>
 
                 <div className="bottom">
-                    <ul className="event ">
+                    <ul className="event sec_item">
                         {eventsArr.map((event, idx) => {
                             return (
-                                <li className="event_list sec_item" key={idx}>
+                                <li className="event_list" key={idx}>
                                     {event}
                                 </li>
                             );
@@ -69,7 +69,7 @@ const ListView = (props) => {
                                 <Map
                                     festivalData={props.festivalData}
                                     width={"100%"}
-                                    height={"100%"}
+                                    height={"230px"}
                                     nowAddress={nowAddress}
                                     setNowAddress={setNowAddress}
                                     nowAddressTitle={nowAddressTitle}
