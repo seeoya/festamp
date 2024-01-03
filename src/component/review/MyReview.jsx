@@ -4,19 +4,22 @@ import { Link } from "react-router-dom";
 import Stamp from "../stamp/Stamp";
 
 const MyReview = (props) => {
+
+    let logInId = props.loginInfo.logInId;
+
     const [myReviewsArr, setMyReviewsArr] = useState([]);
     const [tempFlag, setTempFlag] = useState(true);
     const [modifyKey, setModifyKey] = useState("");
     const [isShowModifyModal, setIsShowModifyModal] = useState(false);
-    // const [stamp, setStamp] = useState
-
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(10);
-
-    let logInId = props.loginInfo.logInId;
-
+ 
     useEffect(() => {
         console.log("useEffect() CALLED!!");
+
+        console.log(props.loginInfo);
+
+        console.log(logInId);
 
         let reviewDBObjs = parseReviewDB();
         let rDataObjs = reviewDBObjs.rData;
@@ -29,21 +32,22 @@ const MyReview = (props) => {
 
         let tempArr = [];
 
-        for (let i = 0; i < reviewskeys.length; i++) {
+        for (let i = 1; i <= reviewskeys.length; i++) {
             let reviews = rDataObjs[reviewskeys[i]];
+            console.log(reviews);
+            // console.log(reviews.uId);
 
-            let uId = logInId; // 로그인 아이디
+            // if (reviews.uId === logInId) {
+            //     reviews["key"] = reviewskeys[i];
+            //     console.log("reviewskeys[i]:", reviewskeys[i]);
 
-            if (reviews.uId === uId) {
-                reviews["key"] = reviewskeys[i];
-                console.log("reviewskeys[i]:", reviewskeys[i]);
-
-                tempArr.push(reviews);
-            }
+            //     tempArr.push(reviews);
+            // }
         }
         setMyReviewsArr(tempArr);
         currentPosts(myReviewsArr);
         setMyReviewsArr(currentPosts);
+
     }, [tempFlag, isShowModifyModal, currentPage]);
 
     const myReviewModifyBtnClickHandler = (e, rNo) => {
@@ -121,19 +125,28 @@ const MyReview = (props) => {
 
     return (
         <div className="my_page">
-            <Stamp />
+            {/* <div>
+            <h2>{props.loginInfo.logInId}님</h2>
+            </div>
 
+            <div className="my_stamp">
+            <>
+            <Stamp myReviewsArr={myReviewsArr}
+                   logInId={logInId}/>
+            </>
+            </div> */}
             <div className="my_review">
                 <>
                     <ul>
                         <li className="sec_item_title">MY REVIEW</li>
+
                         {myReviewsArr.map((myReview, idx) => (
                             <>
                                 <li className="my_full_list">
                                     <span>{`${[myReview.rDateTime]}`}</span>
                                     <span>{myReview.fTitle}</span>
                                     <span>{myReview.uReview}</span>
-                                    <span>`★`</span>
+                                    <span>★</span>
                                     <span>{myReview.star}</span>
                                     <button
                                         onClick={(e) =>
