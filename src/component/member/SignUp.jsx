@@ -17,7 +17,8 @@ const SignUp = () => {
     const [UEmail, setUEmail] = useState('');
     const [UBirth, setUBirth] = useState('');
 
-    
+// 비밀번호 정규식
+const passwordRegEx = /^[A-Za-z0-9]{8,20}$/
 
 
 
@@ -86,6 +87,18 @@ const SignUp = () => {
         alert('아이디를 입력하세요.');
     }
     }
+
+    // 비밀번호 정규식
+     const formatCheckBtnHandler = () => {
+    console.log('formatCheckBtnHandler() Clicked !!');
+
+    if(UPw.match(passwordRegEx) === null){
+      
+      alert('올바른 비밀번호를 입력해주세요.');
+    } else {
+      alert('사용 가능한 비밀번호 입니다.');
+    }
+  }
 
     // 비밀번호 확인 버튼
     const pwSameBntHandler = () => {
@@ -168,11 +181,12 @@ const SignUp = () => {
                         <button type="button" name="same"  onClick={DuplicateTestBtnHandler}> 중복 확인</button>
                         <br />
                         <label htmlFor="u_pw"><p>비밀번호</p> </label>
-                        <input type="password" id="u_pw" name="u_pw" value={UPw} onChange={(e) => userPwHandler(e)} placeholder="비밀번호 " />
+                        <input type="password" id="u_pw" name="u_pw" value={UPw} onChange={(e) => userPwHandler(e)} placeholder="비밀번호 " /> &nbsp;
+                        <button type="button" onClick={formatCheckBtnHandler}>확인</button>
                         <br />
                         <label htmlFor="pw_same"><p>비밀번호 확인</p></label>
                         <input type="password" id="pw_same" name="pw_same" value={PwSame}  onChange={(e) => userPwSameHandler(e)} placeholder="비밀번호 확인" /> &nbsp;
-                        <button type="button" onClick={pwSameBntHandler}>확인</button>
+                        <button type="button" onClick={pwSameBntHandler}> 비밀번호 확인</button>
                         <br />
                         <label htmlFor="u_phone"><p>연락처</p></label>
                         <input type="text" id="u_phone" name="u_phone" value={UPhone}  onChange={(e) => userPhoneHandler(e)} placeholder="연락처" />

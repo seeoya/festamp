@@ -31,7 +31,7 @@ const ChangePw = () => {
 
     if(newPw.match(passwordRegEx) === null){
       
-      alert('비밀번호 형식을 확인해주세요.');
+      alert('올바른 비밀번호를 입력해주세요.');
     } else {
       alert('사용 가능한 비밀번호 입니다.');
     }
@@ -42,6 +42,9 @@ const ChangePw = () => {
 
     
     if(newPw !== "" && verifyPw !== ""){
+      if(verifyPw.match(passwordRegEx) === null){
+        alert('올바른 비밀번호를 입력해주세요.');
+      }
     if(newPw === verifyPw) {
       alert ('비밀번호가 일치합니다.');
     } else {
