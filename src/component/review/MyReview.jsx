@@ -6,6 +6,7 @@ const MyReview = (props) => {
     const [tempFlag, setTempFlag] = useState(true);
     const [modifyKey, setModifyKey] = useState("");
     const [isShowModifyModal, setIsShowModifyModal] = useState(false);
+    // const [stamp, setStamp] = useState
 
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(10);
@@ -117,18 +118,27 @@ const MyReview = (props) => {
     };
 
     return (
-        <div className="my_review">
-            <div className="my_review_list">
+        <div className="my_page">
+            <div className="my_stamp">
+                <ul>
+                    <li className="sec_item_title"><h1>MY STAMP</h1></li>
+                    <li></li>
+                </ul>
+
+
+            </div>
+
+            <div className="my_review">
                 <>
                     <ul>
-                        <li className="my_review_title">MY REVIEW</li>
+                        <li className="sec_item_title">MY REVIEW</li>
                         {myReviewsArr.map((myReview, idx) => (
                             <>
                                 <li className="my_full_list">
                                     <span>{`${[myReview.rDateTime]}`}</span>
                                     <span>{myReview.fTitle}</span>
                                     <span>{myReview.uReview}</span>
-                                    <span>★</span>
+                                    <span>`★`</span>
                                     <span>{myReview.star}</span>
                                     <button
                                         onClick={(e) =>
@@ -150,12 +160,12 @@ const MyReview = (props) => {
             </div>
 
             <div className="more_view_wrap">
-                <a href="#none" onClick={moreViewClickHandler}>
+                <Link to="#none" onClick={moreViewClickHandler} />
                     + 더보기
-                </a>
-                <a href="#none" onClick={moreViewCancleClickHandler}>
+               
+                <Link to="#none" onClick={moreViewCancleClickHandler} />
                     접기
-                </a>
+               
             </div>
 
             <div>
@@ -169,6 +179,7 @@ const MyReview = (props) => {
                 ) : null}
             </div>
         </div>
+        
     );
 };
 
