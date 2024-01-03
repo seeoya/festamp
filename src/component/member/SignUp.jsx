@@ -154,27 +154,7 @@ const passwordRegEx = /^[A-Za-z0-9]{8,20}$/
             localStorage.setItem('memberDB', memberStr);
         };
 
-            let reviewDBinStorage = localStorage.getItem('reviewDB');
-            if (reviewDBinStorage === null) {
-            let reviewNo= 0;
-            let newDBObj = {
-                ['count'] : reviewNo,
-                ['rData'] : {
-                [reviewNo] : {
-                    'uId' : '',
-                    'fDataId': '',
-                    'fTitle' : '',
-                    'rDateTime' : '',
-                    'uReview' : '',
-                    'rNo' : '',
-                    'star' : '',
-                }
-             }
-            }
-                            
-            reviewDBinStorage = JSON.stringify(newDBObj);
-            localStorage.setItem('reviewDB', reviewDBinStorage);           
-        }
+            
 
         alert('회원가입을 축하드립니다.');
 

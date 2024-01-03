@@ -14,10 +14,33 @@ const Wrap = () => {
     // let idReviewDB = localStorage.getItem('idReviewDB');
     // localStorage.setItem('idReviewDB', '')
 
-    // useEffect(() => {
-    //     console.log('useEffect() CALLED');
+    useEffect(() => {
+        console.log('useEffect() CALLED');
 
-    //     // let reviewDBObjs = parseReviewDB;
+    let reviewNo = 0;
+    let reviewDBinStorage = localStorage.getItem('reviewDB');
+            if (reviewDBinStorage === null) {
+            let reviewNo= 0;
+            let newDBObj = {
+                ['count'] : reviewNo,
+                ['rData'] : {
+                [reviewNo] : {
+                    'uId' : '',
+                    'fDataId': '',
+                    'fTitle' : '',
+                    'rDateTime' : '',
+                    'uReview' : '',
+                    'rNo' : '',
+                    'star' : '',
+                }
+             }
+            }
+                            
+            reviewDBinStorage = JSON.stringify(newDBObj);
+            localStorage.setItem('reviewDB', reviewDBinStorage);           
+        }
+
+    //     // let reviewDBObjs = parseReviewDB();
     //     // let rDataObjs = reviewDBObjs.rData;
 
     //     // console.log(rDataObjs);
@@ -51,7 +74,7 @@ const Wrap = () => {
     //     // localStorage.setItem('idReviewDB', JSON.stringify(tempArr));
     //     // console.log(idReviewDB);
 
-    // }, [])
+    }, [])
 
 
     let loginInfo = {
