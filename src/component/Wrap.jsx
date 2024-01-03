@@ -56,9 +56,9 @@ const Wrap = () => {
                     list: [...tempArr[arrFestivalNo].list, rDataObjs[el].star]
                 }
             } else {
-                tempArr[1] = {
+                tempArr[el] = {
                     star: "",
-                    list: [rDataObjs[el].star, 3, 5]
+                    list: [rDataObjs[el].star]
                 }
             }
         });
