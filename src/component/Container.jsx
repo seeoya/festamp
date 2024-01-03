@@ -40,9 +40,9 @@ const Container = (props) => {
                 <Route path="/signout" element={<SignOut loginInfo={props.loginInfo} />}></Route>
                 <Route path="/signup" element={<SignUp />}></Route>
                 <Route path="/privacy" element={<Privacy loginInfo={props.loginInfo} />}></Route>
-                <Route path="/IdFind" element={<IdFind />}></Route>
-                <Route path="/PwFind" element={<PwFind />}></Route>
-                <Route path="/ChangePw" element={<ChangePw />}></Route>
+                <Route path="/idfind" element={<IdFind />}></Route>
+                <Route path="/pwfind" element={<PwFind />}></Route>
+                <Route path="/changePw" element={<ChangePw />}></Route>
 
                 <Route path="/myreview" element={<MyReview loginInfo={props.loginInfo} />}></Route>
 

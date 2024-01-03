@@ -20,16 +20,6 @@ const Header = () => {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/view/1" className="link">
-                        VIEW(1)
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/view/11" className="link">
-                        VIEW(11)
-                    </Link>
-                </li>
-                <li>
                     <Link to="/signin" className="link">
                         SIGN IN
                     </Link>
@@ -42,6 +32,11 @@ const Header = () => {
                 <li>
                     <Link to="/signup" className="link">
                         SIGN UP
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/privacy" className="link">
+                        PRIVACY
                     </Link>
                 </li>
 

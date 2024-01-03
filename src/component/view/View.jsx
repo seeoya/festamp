@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import MainReview from "../review/MainReview";
 import "./viewStyle.css";
 
-const ListView = (festivalData, loginInfo) => {
+const ListView = (props) => {
     let calendar = <i className="fa-regular fa-calendar-days"></i>;
     let place = <i className="fa-solid fa-compass"></i>;
     let price = <i className="fa-solid fa-copyright"></i>;
@@ -15,7 +15,7 @@ const ListView = (festivalData, loginInfo) => {
     useEffect(() => {
         console.log("[ListView] useEffect!!");
 
-        let datas = festivalData.festivalData[id].event;
+        let datas = props.festivalData[id].event;
         setEventsArr(datas.split("\n"));
     }, []);
 
@@ -26,22 +26,22 @@ const ListView = (festivalData, loginInfo) => {
     return (
         <div id="listview_wrap" className="sec">
             <div className="title">
-                <p>{festivalData.festivalData[id].title}</p>
+                <p>{props.festivalData[id].title}</p>
             </div>
 
             <div className="date">
-                <h1>{festivalData.festivalData[id].date}</h1>
+                <h1>{props.festivalData[id].date}</h1>
             </div>
             <div className="flex_wrap">
                 <div className="middle">
                     <div className="img">
-                        <img src={`/${festivalData.festivalData[id].img}`} />
+                        <img src={`/${props.festivalData[id].img}`} />
                     </div>
                     {/* <div className="event">
-                            <h1>{festivalData.festivalData[id].event}</h1>
+                            <h1>{props.festivalData[id].event}</h1>
                     </div> */}
                     <div className="explan">
-                        <p>{festivalData.festivalData[id].explain}</p>
+                        <p>{props.festivalData[id].explain}</p>
                     </div>
                 </div>
 
@@ -58,19 +58,19 @@ const ListView = (festivalData, loginInfo) => {
                     <div className="info">
                         <ul>
                             <li>
-                                {calendar} &nbsp;{festivalData.festivalData[id].date}{" "}
+                                {calendar} &nbsp;{props.festivalData[id].date}{" "}
                             </li>
                             <li>
-                                {place} &nbsp;{festivalData.festivalData[id].location}{" "}
+                                {place} &nbsp;{props.festivalData[id].location}{" "}
                             </li>
                             <li>
-                                {price} &nbsp;{festivalData.festivalData[id].price}{" "}
+                                {price} &nbsp;{props.festivalData[id].price}{" "}
                             </li>
                             <li>
-                                {name} &nbsp;{festivalData.festivalData[id].store}{" "}
+                                {name} &nbsp;{props.festivalData[id].store}{" "}
                             </li>
                             <li>
-                                {tel} &nbsp;{festivalData.festivalData[id].tel}{" "}
+                                {tel} &nbsp;{props.festivalData[id].tel}{" "}
                             </li>
                         </ul>
                     </div>
@@ -79,9 +79,9 @@ const ListView = (festivalData, loginInfo) => {
             <div className="review">
                 <>
                     <MainReview
-                        festivalDataId={festivalData.festivalData[id].id}
-                        festivalTitle={festivalData.festivalData[id].title}
-                        loginInfo={loginInfo}
+                        festivalDataId={props.festivalData[id].id}
+                        festivalTitle={props.festivalData[id].title}
+                        loginInfo={props.loginInfo}
                     />
                 </>
             </div>
