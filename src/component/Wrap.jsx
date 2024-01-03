@@ -9,11 +9,6 @@ const Wrap = () => {
     const [isLogIned, setIsLogIned] = useState(false);
     const [logInId, setLogInId] = useState("");
 
-    // 별점 평균 구하기
-    // let parseReviewDB = JSON.parse(localStorage.getItem('reviewDB'));
-    // let idReviewDB = localStorage.getItem('idReviewDB');
-    // localStorage.setItem('idReviewDB', '')
-
     useEffect(() => {
         console.log("useEffect() CALLED");
 
@@ -40,39 +35,55 @@ const Wrap = () => {
             localStorage.setItem("reviewDB", reviewDBinStorage);
         }
 
-        //     // let reviewDBObjs = parseReviewDB();
-        //     // let rDataObjs = reviewDBObjs.rData;
+        // 별점 평균 구하기
+        let parseReviewDB = JSON.parse(reviewDBinStorage);
 
-        //     // console.log(rDataObjs);
-        //     let arr = Object.keys(rDataObjs);
-        //     //  [0 1,2,3,4,5,6,7] = key (리뷰넘버)
+        let reviewDBObjs = parseReviewDB;
+        let rDataObjs = reviewDBObjs.rData;
+        console.log(rDataObjs);
 
-        //     // 새로운 객체
-        //     let tempArr = {};
+        let arr = Object.keys(rDataObjs);
+        //  [0 1,2,3,4,5,6,7] = key (리뷰넘버)
+        console.log(arr);
+        // 새로운 객체
+        let tempArr = {};
 
-        //     arr.map((el) => {
-        //         let arrFestivalNo = rDataObjs[el].fDataId;
+        arr.map((el) => {
+            let arrFestivalNo = rDataObjs[el].fDataId;
+            if (tempArr[arrFestivalNo]) {
+                tempArr[arrFestivalNo] = {
+                    star: "",   // 평균 : 모든 star값 더하고 tempArr[arrFestivalNo].list.length로 나눠줌
+                    list: [...tempArr[arrFestivalNo].list, rDataObjs[el].star]
+                }
+            } else {
+                tempArr[1] = {
+                    star: "",
+                    list: [rDataObjs[el].star, 3, 5]
+                }
+            }
+        });
 
-        //         if (tempArr[arrFestivalNo]) {
-        //             tempArr[arrFestivalNo] = {
-        //                 star: '',   // 평균 : 모든 star값 더하고 tempArr[arrFestivalNo].list.length로 나눠줌
-        //                 list: [...tempArr[arrFestivalNo].list, rDataObjs[el].star]
-        //             }
-        //         } else {
-        //             tempArr[arrFestivalNo] = {
-        //                 star: "",
-        //                 list: [rDataObjs[el].star]
-        //             }
-        //         }
-        //     });
+        console.log("111111111111111", Object.keys(tempArr));
+        // console.log(tempArr);
 
-        //     // let averageStar = tempArr[rDataObjs[el].fDataId].list
+        let festivalNo = Object.keys(tempArr);
+        // [1,2,11]
 
-        //     console.log("111111111111111", Object.keys(tempArr));
-        //     // console.log(tempArr);
+        festivalNo.map((el) => {
+            let listStar = tempArr[el].list;
+            let star = tempArr[el].star;
+            let sum = 0;
+            listStar.map((n) => {
+                sum += parseFloat(n) || 0;
+                console.log(sum);
+                let avrStar = sum/listStar.length
+                let dpStar = avrStar.toFixed(1)
+                console.log(dpStar);
+            })
 
-        //     // localStorage.setItem('idReviewDB', JSON.stringify(tempArr));
-        //     // console.log(idReviewDB);
+        })
+        localStorage.setItem('idReviewDB', JSON.stringify(tempArr));
+
     }, []);
 
     let loginInfo = {
