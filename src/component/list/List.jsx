@@ -9,6 +9,7 @@ const List = (props) => {
     const [sortByDate, setSortByDate] = useState(false);
     const [nowAddress, setNowAddress] = useState("");
     const [nowAddressTitle, setNowAddressTitle] = useState("");
+    const [ingByDate, setIngByDate] = useState(false);
 
     // useState 처음 6 > loadMoreHandler 동작 시 + 6 //
     const loadMoreHandler = () => {
@@ -20,10 +21,36 @@ const List = (props) => {
         setSortByDate(!sortByDate);
     };
 
+    const toggleIngByDate = () => {
+        setIngByDate(!ingByDate);
+        console.log("toggleIngByDate click");
+        console.log(ingByDate);
+    };
+
     // filter > 주어진 조건을 통과하는 요소를 새로운 배열로 반환 //
+    // includes > 요소가 배열 안에 존재하는 경우에만 true 을 반환 //
     let festivalData = props.festivalData.filter((festival) => {
-        // toLowerCase > 소문자 변환         includes > 요소가 배열 안에 존재하는 경우에만 true 을 반환 //
-        return !searchTerm || festival.title.toLowerCase().includes(searchTerm.toLowerCase());
+        let flag = true;
+
+        if (searchTerm !== null) {
+            if (!festival.title.includes(searchTerm)) {
+                flag = false;
+            }
+        }
+        //flag >> 필요 없는 걸 if (flag) 여기서 false 를 줘서 배열에 안 넣고 버리기 위해
+        if (ingByDate) {
+            let today = new Date();
+            let startDate = new Date(festival.startDate);
+            let endDate = new Date(festival.endDate);
+
+            if (!(today >= startDate && today <= endDate)) {
+                flag = false;
+            }
+        }
+
+        if (flag) {
+            return festival;
+        }
     });
 
     // 정렬 상태에 따라 데이터 정렬
@@ -57,9 +84,18 @@ const List = (props) => {
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
                     <div className="filter_wrap">
-                        <a href="#none" onClick={toggleSortByDate}>
+                        <p>
                             축제일순
-                        </a>
+                            <input
+                                type="checkbox"
+                                name="starting_date"
+                                onClick={toggleSortByDate}
+                            />
+                        </p>
+                        <p>
+                            진행중인 축제
+                            <input type="checkbox" name="ing_date" onClick={toggleIngByDate} />
+                        </p>
                     </div>
                 </div>
 

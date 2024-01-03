@@ -14,7 +14,7 @@
 
 .stamp_item:nth-child(1) {
     grid-column-start: 1;
-	grid-column-end: 6;
+    grid-column-end: 6;
     font-size: 30px;
     font-weight: bold;
 }
@@ -25,5 +25,4 @@
 }
 
 .stamp_img {
-
 }

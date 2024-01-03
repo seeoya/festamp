@@ -4,13 +4,13 @@ import StyleGuide from "./StyleGuide";
 import GradeSelect from "./grade_select/GradeSelect";
 import List from "./list/List";
 import Main from "./main/Main";
+import ChangePw from "./member/ChangePw";
+import IdFind from "./member/IdFind";
 import Privacy from "./member/Privacy";
+import PwFind from "./member/PwFind";
 import SignIn from "./member/SignIn";
 import SignOut from "./member/SignOut";
 import SignUp from "./member/SignUp";
-import IdFind from "./member/IdFind";
-import PwFind from "./member/PwFind"
-import ChangePw from "./member/ChangePw"
 import Stamp from "./stamp/Stamp";
 import ListView from "./view/View";
 
@@ -32,17 +32,19 @@ const Container = (props) => {
                 <Route path="/list" element={<List festivalData={props.festivalData} />}></Route>
                 <Route
                     path="/view/:id"
-                    element={<ListView festivalData={props.festivalData} loginInfo={props.loginInfo}/>}
+                    element={
+                        <ListView festivalData={props.festivalData} loginInfo={props.loginInfo} />
+                    }
                 ></Route>
                 <Route path="/signin" element={<SignIn loginInfo={props.loginInfo} />}></Route>
                 <Route path="/signout" element={<SignOut loginInfo={props.loginInfo} />}></Route>
                 <Route path="/signup" element={<SignUp />}></Route>
                 <Route path="/privacy" element={<Privacy loginInfo={props.loginInfo} />}></Route>
-                <Route path="/IdFind" element={<IdFind  />}></Route>
-                <Route path="/PwFind" element={<PwFind  />}></Route>
-                <Route path="/ChangePw" element={<ChangePw  />}></Route>
+                <Route path="/IdFind" element={<IdFind />}></Route>
+                <Route path="/PwFind" element={<PwFind />}></Route>
+                <Route path="/ChangePw" element={<ChangePw />}></Route>
 
-                <Route path="/myreview" element={<MyReview loginInfo={props.loginInfo}/>}></Route>
+                <Route path="/myreview" element={<MyReview loginInfo={props.loginInfo} />}></Route>
 
                 {/* #TODO 테스트용. 제거 예정 */}
                 <Route path="/gradeselect" element={<GradeSelect />}></Route>
