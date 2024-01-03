@@ -59,8 +59,7 @@ const ChangePw = () => {
     };
 
     return (
-        <div id="change_pw" className="sec">
-
+        <div id="change_pw" className="sec member">
             <div className="sec_item">
                 <h1 className="sec_item_title">비밀번호 변경</h1>
 
@@ -70,17 +69,19 @@ const ChangePw = () => {
 
                         <div className="btn_wrap">
                             <input type="password" id="new_pw" className="input" defaultValue={(e) => newPw(e)} onChange={inputNewPW} placeholder="새 비밀번호 입력" />
-                            <button type="button" className="btn main" onClick={formatCheckBtnHandler}>확인</button>
+                            {/* <button type="button" className="btn main" onClick={formatCheckBtnHandler}>확인</button> */}
                         </div>
                         <p>비밀번호는 영문 대소문자, 숫자를 혼합하여 8~20자로 입력해주세요</p>
                     </div>
 
                     <div>
-                        <label htmlFor="verify_pw">VERIFY PASSWORD</label>
-                        <input type="password" id="verify_pw" className="input" defaultValue={(e) => verifyPw(e)} onChange={inputVerifyPw} placeholder="새 비밀번호 확인" />
-                        <button type="button" className="btn main" onClick={pwCheckBtnHandler}>비밀번호 확인</button>
+                        <label htmlFor="verify_pw">비밀번호 확인</label>
+                        <div className="btn_wrap">
+                            <input type="password" id="verify_pw" className="input" defaultValue={(e) => verifyPw(e)} onChange={inputVerifyPw} placeholder="새 비밀번호 확인" />
+                            <button type="button" className="btn main" onClick={pwCheckBtnHandler}>확인</button>
+                        </div>
                     </div>
-                    <button type="button" className="btn main" onClick={ChangePwBtnHandler}>비밀번호 수정</button>
+                    <button type="button" className="btn" onClick={ChangePwBtnHandler}>비밀번호 수정</button>
                 </div>
             </div>
         </div>

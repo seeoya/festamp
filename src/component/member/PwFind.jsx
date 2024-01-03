@@ -63,36 +63,30 @@ const PwFind = () => {
     };
 
     return (
-        <div>
-            <div>
-                <h3>비밀번호 찾기</h3>
-                <label htmlFor="u_id">
-                    <p>ID</p>{" "}
-                </label>
-                <input
-                    type="text"
-                    id="u_id"
-                    value={uId}
-                    onChange={(e) => inputIdHandler(e)}
-                    placeholder="ID를 입력하세요"
-                />
-                <label htmlFor="u_phone">
-                    <p>Phone Number</p>{" "}
-                </label>
-                <input
-                    type="text"
-                    id="u_phone"
-                    value={uPhone}
-                    onChange={(e) => inputphoneHandler(e)}
-                    placeholder="Phone Number를 입력하세요"
-                />
-                <br />
-                <button onClick={findPwBtnHandler}>비밀번호 변경</button> &nbsp;
-                <button value={isLoginView} onClick={signInView}>
-                    로그인 화면
-                </button>
-                {isUInfo ? <ChangePw /> : null}
+        <div id="pw_find" className="sec member">
+            <div className="sec_item">
+                <h1 className="sec_item_title">비밀번호 찾기</h1>
+
+                <div className="sec_item_content">
+                    <div>
+                        <label htmlFor="u_id">ID</label>
+                        <input type="text" id="u_id" className="input" value={uId} onChange={(e) => inputIdHandler(e)} placeholder="ID를 입력하세요" />
+                    </div>
+
+                    <div>
+                        <label htmlFor="u_phone">전화번호</label>
+                        <input type="text" id="u_phone" className="input" value={uPhone} onChange={(e) => inputphoneHandler(e)} placeholder="Phone Number를 입력하세요"
+                        />
+                    </div>
+
+                    <button className="btn main" onClick={findPwBtnHandler}>비밀번호 변경</button>
+
+                    <button className="btn" value={isLoginView} onClick={signInView}>로그인으로</button>
+                </div>
             </div>
+
+            {/* #TODO 필요한 내용인가? */}
+            {isUInfo ? <ChangePw /> : null}
         </div>
     );
 };
