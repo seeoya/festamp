@@ -9,7 +9,7 @@ const SignUp = () => {
 
     // Hook
     const [UName, setUName] = useState("");
-    const [UId, setUId] = useState("");
+    const [uId, setUId] = useState("");
     const [UPw, setUPw] = useState("");
     const [PwSame, setPwSame] = useState("");
     const [UPhone, setUPhone] = useState("");
@@ -64,14 +64,14 @@ const SignUp = () => {
 
     // 중복확인 버튼
     const DuplicateTestBtnHandler = () => {
-        console.log(UId);
+        console.log(uId);
         let memberDB = JSON.parse(localStorage.getItem("memberDB"));
         let memDbId = Object.keys(memberDB);
-        console.log(memDbId.includes(UId));
+        console.log(memDbId.includes(uId));
         console.log(memDbId);
 
-        if (UId !== "" && UId !== null) {
-            if (memDbId.includes(UId)) {
+        if (uId !== "" && uId !== null) {
+            if (memDbId.includes(uId)) {
                 alert("이미 사용중인 아이디입니다.");
                 setUId("");
             } else {
@@ -117,7 +117,7 @@ const SignUp = () => {
         let memberInStorage = localStorage.getItem("memberDB");
 
         if (
-            UId !== "" &&
+            uId !== "" &&
             UName !== "" &&
             UPw !== "" &&
             UPhone !== "" &&
@@ -126,7 +126,7 @@ const SignUp = () => {
         ) {
             if (memberInStorage === null) {
                 let newMemberDb = {
-                    [UId]: {
+                    [uId]: {
                         name: UName,
                         pw: UPw,
                         phone: UPhone,
@@ -141,7 +141,7 @@ const SignUp = () => {
                 let memberDbObj = JSON.parse(memberInStorage);
                 console.log("memberInStorage");
 
-                memberDbObj[UId] = {
+                memberDbObj[uId] = {
                     name: UName,
                     pw: UPw,
                     phone: UPhone,
@@ -185,7 +185,7 @@ const SignUp = () => {
                             type="text"
                             id="u_id"
                             name="u_id"
-                            value={UId}
+                            value={uId}
                             onChange={(e) => userIdHandler(e)}
                             placeholder="아이디"
                         />{" "}
