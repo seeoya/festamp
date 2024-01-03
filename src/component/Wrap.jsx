@@ -12,6 +12,7 @@ const Wrap = () => {
     // 별점 평균 구하기
     let parseReviewDB = JSON.parse(localStorage.getItem('reviewDB'));
     let idReviewDB = localStorage.getItem('idReviewDB');
+    localStorage.setItem('idReviewDB', '')
 
     useEffect(() => {
         console.log('useEffect() CALLED');
