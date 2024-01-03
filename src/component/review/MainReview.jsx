@@ -83,13 +83,12 @@ const MainReview = (props) => {
             navigate("/signin");
             
         } else {
-            console.log("reviewsArr: ", reviewsArr);
-
+            
             let isReviewArr = [];
             let isReview = JSON.stringify(reviewsArr);
 
             if (isReview.includes(festivalTitle)) {
-                alert(`${festivalTitle} 리뷰가 존재합니다.`);
+                alert(`${festivalTitle} 리뷰를 이미 작성하셨습니다!`);
             } else {
                 // write modal show
                 setIsShowWriteModal(true);
@@ -212,7 +211,7 @@ const MainReview = (props) => {
                                                 reviews.rDateTime.split("일", 1),
                                             ]}${"일"}`}</span>
                                             <span>{reviews.uReview}</span>
-                                            <span>★</span>
+                                            <span>`★`</span>
                                             <span>{reviews.star}</span>
                                             <button
                                                 onClick={(e) =>

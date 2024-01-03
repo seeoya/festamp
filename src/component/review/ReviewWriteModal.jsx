@@ -7,6 +7,7 @@ const ReviewWriteModal = (props) => {
 
     const [reviewNo, setReviewNo] = useState(0);
     const [uReview, setUReview] = useState("");
+    // const [stamp, setStamp] = useState
 
     const [star, setStar] = useState("");
     const [festivalDataId, setFestivalDataId] = useState("");
@@ -31,8 +32,7 @@ const ReviewWriteModal = (props) => {
         console.log("writeModalWrite Btn Clicked!");
 
         let uId = logInId; // 로그인한 아이디
-        setStar(props.inStar);
-
+        
         let reviewDBObjs = parseReviewDB();
         let reviewObjs = reviewDBObjs.rData;
         let reviewCnt = reviewDBObjs.count + 1;
@@ -51,24 +51,23 @@ const ReviewWriteModal = (props) => {
         reviewDBObjs["rData"] = reviewObjs;
         reviewDBObjs["count"] = reviewCnt;
 
-        // let nullCheck = reviewDBObjs.rData.rNo;
+        let nullCheck = reviewDBObjs.rData[reviewCnt];
 
-        // if (nullCheck.star === null || nullCheck.star === "") {
-        //     alert("별점을 선택해 주세요!");
-        // } else {
-        //     if (nullCheck.uReview === null || nullCheck.uReview === "") {
-        //         alert("리뷰를 작성해 주세요!");
-        //     } else {
+        if (nullCheck.star === null || nullCheck.star === "") {
+            alert("별점을 선택해 주세요!");
+        } else {
+            if (nullCheck.uReview === null || nullCheck.uReview === "") {
+                alert("리뷰를 작성해 주세요!");
+            } else {
 
                 let addReviewStr = JSON.stringify(reviewDBObjs);
-
-
                 localStorage.setItem("reviewDB", addReviewStr);
 
                 console.log("Review write success!");
+                alert('리뷰가 저장되었습니다!');
                 props.setIsShowWriteModal(false);
-            // }
-        // }
+            }
+        }
         };
 
         // reviewDB 가져오는 함수

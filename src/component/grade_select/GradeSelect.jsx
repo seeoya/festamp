@@ -14,7 +14,7 @@ const GradeSelect = (props) => {
         // 'starDB' > 객체
         // starDB > [리뷰번호] : {별점: 5}
         // starDB[리뷰번호].별점 = 5
-    }, [inStar]);
+    }, []);
 
     // 별점 DB에 따로 넣어놓기
     useEffect(() => {
@@ -42,7 +42,9 @@ const GradeSelect = (props) => {
 
             let newStarStr = JSON.stringify(starObj);
             localStorage.setItem("newStarObj", newStarStr);
+            props.setStar(inStar);
         }
+
     }, [inStar]);
 
     // handler
@@ -50,8 +52,8 @@ const GradeSelect = (props) => {
         console.log("starClickHandler() CALLED");
 
         setInStar(e.target.value);
-        props.setStar(inStar);
-       
+        props.setStar(e.target.value);
+         
     };
 
     return (
