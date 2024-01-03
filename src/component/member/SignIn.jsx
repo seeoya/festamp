@@ -8,6 +8,7 @@ import PwFind from "./PwFind";
 const SignIn = (props) => {
     console.log("SignIn() Called!");
 
+    //props 변수 할당
     let setIsLogined = props.loginInfo.setIsLogIned;
     let setLogInId = props.loginInfo.setLogInId;
 
@@ -42,6 +43,8 @@ const SignIn = (props) => {
                 navigate("/");
                 setIsLogined(true);
                 setLogInId(uId);
+               
+
             } else {
                 alert("회원정보가 없습니다.");
                 setUId("");
