@@ -47,38 +47,52 @@ const ReviewWriteModal = (props) => {
 
         reviewDBObjs["rData"] = reviewObjs;
         reviewDBObjs["count"] = reviewCnt;
-        let addReviewStr = JSON.stringify(reviewDBObjs);
-        localStorage.setItem("reviewDB", addReviewStr);
 
-        console.log("Review write success!");
-        props.setIsShowWriteModal(false);
+        // let nullCheck = reviewDBObjs.rData.rNo;
+
+        // if (nullCheck.star === null || nullCheck.star === '') {
+        //     alert('별점을 선택해 주세요!');
+        // } else {
+        //     if (nullCheck.uReview === null || nullCheck.uReview === '') {
+        //         alert('리뷰를 작성해 주세요!');
+        //     } else {
+
+        //         let addReviewStr = JSON.stringify(reviewDBObjs);
+
+
+        //         localStorage.setItem("reviewDB", addReviewStr);
+
+        //         console.log("Review write success!");
+        //         props.setIsShowWriteModal(false);
+        //     }
+        // }
+        };
+
+        // reviewDB 가져오는 함수
+        const parseReviewDB = () => {
+            console.log("parseReviewDB() Called!");
+
+            let reviewDBinStorage = localStorage.getItem("reviewDB");
+            let reviewDBObjs = JSON.parse(reviewDBinStorage);
+
+            console.log("reviewDBObjs: ", reviewDBObjs);
+            return reviewDBObjs;
+        };
+
+        return (
+            <div className="review_write_modal">
+                <GradeSelect setStar={setStar} star={star} parseReviewDB={parseReviewDB} />
+                <textarea
+                    cols="50"
+                    rows="5"
+                    vlaue={uReview}
+                    onChange={(e) => uReviewChangeHandler(e)}
+                ></textarea>
+                <br />
+
+                <button onClick={writeModalBtnClickHandler}>저장</button>
+            </div>
+        );
     };
 
-    // reviewDB 가져오는 함수
-    const parseReviewDB = () => {
-        console.log("parseReviewDB() Called!");
-
-        let reviewDBinStorage = localStorage.getItem("reviewDB");
-        let reviewDBObjs = JSON.parse(reviewDBinStorage);
-
-        console.log("reviewDBObjs: ", reviewDBObjs);
-        return reviewDBObjs;
-    };
-
-    return (
-        <div className="review_write_modal">
-            <GradeSelect setStar={setStar} star={star} parseReviewDB={parseReviewDB} />
-            <textarea
-                cols="50"
-                rows="5"
-                vlaue={uReview}
-                onChange={(e) => uReviewChangeHandler(e)}
-            ></textarea>
-            <br />
-
-            <button onClick={writeModalBtnClickHandler}>저장</button>
-        </div>
-    );
-};
-
-export default ReviewWriteModal;
+    export default ReviewWriteModal;
