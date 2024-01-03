@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from "react";
 import ReviewModifyModal from "./ReviewModifyModal";
+import { Link } from "react-router-dom";
+import Stamp from "../stamp/Stamp";
 
 const MyReview = (props) => {
+
+    let logInId = props.loginInfo.logInId;
+
     const [myReviewsArr, setMyReviewsArr] = useState([]);
     const [tempFlag, setTempFlag] = useState(true);
     const [modifyKey, setModifyKey] = useState("");
     const [isShowModifyModal, setIsShowModifyModal] = useState(false);
-
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(10);
-
-    let logInId = props.loginInfo.logInId;
-
+ 
     useEffect(() => {
         console.log("useEffect() CALLED!!");
+
+        console.log(props.loginInfo);
+
+        console.log(logInId);
 
         let reviewDBObjs = parseReviewDB();
         let rDataObjs = reviewDBObjs.rData;
@@ -26,21 +32,22 @@ const MyReview = (props) => {
 
         let tempArr = [];
 
-        for (let i = 0; i < reviewskeys.length; i++) {
+        for (let i = 1; i <= reviewskeys.length; i++) {
             let reviews = rDataObjs[reviewskeys[i]];
+            console.log(reviews);
+            // console.log(reviews.uId);
 
-            let uId = logInId; // 로그인 아이디
+            // if (reviews.uId === logInId) {
+            //     reviews["key"] = reviewskeys[i];
+            //     console.log("reviewskeys[i]:", reviewskeys[i]);
 
-            if (reviews.uId === uId) {
-                reviews["key"] = reviewskeys[i];
-                console.log("reviewskeys[i]:", reviewskeys[i]);
-
-                tempArr.push(reviews);
-            }
+            //     tempArr.push(reviews);
+            // }
         }
         setMyReviewsArr(tempArr);
         currentPosts(myReviewsArr);
         setMyReviewsArr(currentPosts);
+
     }, [tempFlag, isShowModifyModal, currentPage]);
 
     const myReviewModifyBtnClickHandler = (e, rNo) => {
@@ -117,11 +124,22 @@ const MyReview = (props) => {
     };
 
     return (
-        <div className="my_review">
-            <div className="my_review_list">
+        <div className="my_page">
+            {/* <div>
+            <h2>{props.loginInfo.logInId}님</h2>
+            </div>
+
+            <div className="my_stamp">
+            <>
+            <Stamp myReviewsArr={myReviewsArr}
+                   logInId={logInId}/>
+            </>
+            </div> */}
+            <div className="my_review">
                 <>
                     <ul>
-                        <li className="my_review_title">MY REVIEW</li>
+                        <li className="sec_item_title">MY REVIEW</li>
+
                         {myReviewsArr.map((myReview, idx) => (
                             <>
                                 <li className="my_full_list">
@@ -150,12 +168,12 @@ const MyReview = (props) => {
             </div>
 
             <div className="more_view_wrap">
-                <a href="#none" onClick={moreViewClickHandler}>
+                <Link to="#none" onClick={moreViewClickHandler} />
                     + 더보기
-                </a>
-                <a href="#none" onClick={moreViewCancleClickHandler}>
+               
+                <Link to="#none" onClick={moreViewCancleClickHandler} />
                     접기
-                </a>
+               
             </div>
 
             <div>
@@ -169,6 +187,7 @@ const MyReview = (props) => {
                 ) : null}
             </div>
         </div>
+        
     );
 };
 

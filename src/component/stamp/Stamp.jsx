@@ -7,19 +7,46 @@ import "./stamp.css";
 // switch문을 쓰는데 if(reviewNum=1,2,3,...)을 넣어야하는데 너무 길어지는거 아닌가?
 // 날짜는 map함수로 받아쓴다
 
-const Stamp = () => {
+const Stamp = (props) => {
     // hook
     const [myStampArr, setMyStampArr] = useState([]);
+    
+    let myReviewsArr = props.myReviewsArr;
+    let logInId = props.logInId;
 
     useEffect(() => {
         console.log("useEffect CALLED");
-
-        let memberInStorage = localStorage.getItem("memberDB");
+        
         let reviewObjInStorage = localStorage.getItem("reviewDB");
-        let curMemberDBObj = JSON.parse(memberInStorage);
         let curReviewDBObj = JSON.parse(reviewObjInStorage);
-        if (curReviewDBObj.rData.reviewNo.uId === curMemberDBObj.UId) {
+        let rDataObjs = curReviewDBObj.rData;
+
+        let reviewskeys = [];
+        for (let keys in rDataObjs) {
+            reviewskeys.push(keys);
         }
+
+        let tempArr = [];
+
+        for (let i = 0; i < reviewskeys.length; i++) {
+            let reviews = rDataObjs[reviewskeys[i]];
+
+                if (reviews.uId === logInId) {     // 로그인 아이디와 일치하면
+                reviews["key"] = reviewskeys[i];
+                console.log("reviewskeys[i]:", reviewskeys[i]);
+
+                tempArr.push(reviews);                
+            }            
+        }
+        setMyStampArr(tempArr);
+
+        // for (let i=0 ; i < tempArr.length; i++) {
+        //     let stamps = tempArr.includes[fDataId[i]];
+        //     stamps["key"] = my
+
+        // }
+
+
     }, []);
 
     // function
