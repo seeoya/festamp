@@ -19,7 +19,13 @@ const Popular = (props) => {
 
     return (
         <div id="main_popular" className="sec_item">
-            <h1 className="sec_item_title">인기 축제 순위</h1>
+            <h1 className="sec_item_title">
+                인기 축제 순위
+                <div className="sub">
+                    <Link to="#">더보기</Link>
+
+                </div>
+            </h1>
 
             <ul className="list">
                 {popFestival.slice(0, maxFestivalCount).map((el, i) => {
@@ -33,6 +39,9 @@ const Popular = (props) => {
                     );
                 })}
             </ul>
+
+            <div className="sec_item_footer">
+            </div>
         </div>
     );
 };

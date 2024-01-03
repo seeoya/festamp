@@ -1,0 +1,35 @@
+.sec_item_content {
+    gap: 15px;
+}
+
+.sec_item_content > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sec_item_content label {
+    font-size: 1.6rem;
+}
+
+.btn_wrap {
+    display: flex;
+    gap: 5px;
+}
+
+.btn_wrap input {
+    width: 100%;
+}
+
+.btn_wrap button {
+    width: 100px;
+}
+
+#sign_up {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#sign_up {
+}

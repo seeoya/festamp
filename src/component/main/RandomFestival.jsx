@@ -48,7 +48,6 @@ const RandomFestival = (props) => {
                             <div className="item-info">
                                 <div className="item_date">{festivalData[resNum].date}</div>
                                 <div className="item_city">{festivalData[resNum].city}</div>
-                                <div className="item_name">{festivalData[resNum].price}</div>
                             </div>
                         </div>
 

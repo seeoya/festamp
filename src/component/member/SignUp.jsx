@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import styles from './SignUp.module.css';
+import './SignUp.css';
 
 const SignUp = () => {
     console.log("SignUp() Called!");
@@ -162,117 +162,51 @@ const SignUp = () => {
     };
 
     return (
-        <div>
-            <form>
-                <div>
-                    <h3>회원가입</h3>
+        <div id="sign_up" className="sec">
+            <div className="sec_item">
+                <h1 className="sec_item_title">회원가입</h1>
+
+                <div className="sec_item_content">
+                    <label htmlFor="u_name">이름(닉네임)</label>
+                    <input type="text" id="u_name" className="input" name="u_name" onChange={(e) => userNameHandler(e)} placeholder="이름(닉네임)" />
+
+
+                    <label htmlFor="u_id">아이디</label>
                     <div>
-                        <label htmlFor="u_name">
-                            <p>이름(닉네임) </p>
-                        </label>
-                        <input
-                            type="text"
-                            id="u_name"
-                            name="u_name"
-                            onChange={(e) => userNameHandler(e)}
-                            placeholder="이름(닉네임)"
-                        />
-                        <br />
-                        <label htmlFor="u_id">
-                            <p>아이디</p>
-                        </label>
-                        <input
-                            type="text"
-                            id="u_id"
-                            name="u_id"
-                            value={uId}
-                            onChange={(e) => userIdHandler(e)}
-                            placeholder="아이디"
-                        />{" "}
-                        &nbsp;
-                        <button type="button" name="same" onClick={DuplicateTestBtnHandler}>
-                            {" "}
-                            중복 확인
-                        </button>
-                        <br />
-                        <label htmlFor="u_pw">
-                            <p>비밀번호</p>{" "}
-                        </label>
-                        <input
-                            type="password"
-                            id="u_pw"
-                            name="u_pw"
-                            value={uPw}
-                            onChange={(e) => userPwHandler(e)}
-                            placeholder="비밀번호 "
-                        />{" "}
-                        &nbsp;
-                        <button type="button" onClick={formatCheckBtnHandler}>
-                            확인
-                        </button>
-                        <p>비밀번호는 영문 대소문자, 숫자를 혼합하여 8~20자로 입력해주세요</p>
-                        <label htmlFor="pw_same">
-                            <p>비밀번호 확인</p>
-                        </label>
-                        <input
-                            type="password"
-                            id="pw_same"
-                            name="pw_same"
-                            value={pwSame}
-                            onChange={(e) => userPwSameHandler(e)}
-                            placeholder="비밀번호 확인"
-                        />{" "}
-                        &nbsp;
-                        <button type="button" onClick={pwSameBntHandler}>
-                            {" "}
-                            비밀번호 확인
-                        </button>
-                        <br />
-                        <label htmlFor="u_phone">
-                            <p>연락처</p>
-                        </label>
-                        <input
-                            type="text"
-                            id="u_phone"
-                            name="u_phone"
-                            value={uPhone}
-                            onChange={(e) => userPhoneHandler(e)}
-                            placeholder="연락처"
-                        />
-                        <br />
-                        <label htmlFor="u_email">
-                            <p>이메일</p>
-                        </label>
-                        <input
-                            type="text"
-                            id="u_email"
-                            name="u_email"
-                            value={uEmail}
-                            onChange={(e) => userEmailHandler(e)}
-                            placeholder="E-mail"
-                        />
-                        <br />
-                        <label htmlFor="u_birth">
-                            <p>생년월일</p>
-                        </label>
-                        <input
-                            type="date"
-                            id="u_birth"
-                            name="u_birth"
-                            value={uBirth}
-                            onChange={(e) => userBirthHandler(e)}
-                            placeholder="생일"
-                        />
-                        <br />
+                        <input type="text" id="u_id" name="u_id" className="input" value={uId} onChange={(e) => userIdHandler(e)} placeholder="아이디" />
+                        <button type="button" name="same" className="btn main" onClick={DuplicateTestBtnHandler}>중복 확인</button>
                     </div>
+
+                    <label htmlFor="u_pw">
+                        비밀번호
+                    </label>
+                    <label htmlFor="u_pw">
+                        비밀번호는 영문 대소문자, 숫자를 혼합하여 8~20자로 입력해주세요
+                    </label>
                     <div>
-                        <button type="button" onClick={joinBtn}>
-                            회원가입
-                        </button>
+                        <input type="password" id="u_pw" name="u_pw" className="input" value={uPw} onChange={(e) => userPwHandler(e)} placeholder="비밀번호" />
+                        <button type="button" className="btn main" onClick={formatCheckBtnHandler}>확인</button>
                     </div>
+
+                    <label htmlFor="pw_same">비밀번호 확인</label>
+                    <div>
+                        <input type="password" id="pw_same" name="pw_same" className="input" value={pwSame} onChange={(e) => userPwSameHandler(e)} placeholder="비밀번호 확인" />
+                        <button type="button" className="btn main" onClick={pwSameBntHandler}>비밀번호 확인</button>
+                    </div>
+
+                    <label htmlFor="u_phone">연락처</label>
+                    <input type="text" id="u_phone" name="u_phone" className="input" value={uPhone} onChange={(e) => userPhoneHandler(e)} placeholder="연락처" />
+
+                    <label htmlFor="u_email">이메일</label>
+                    <input type="text" id="u_email" name="u_email" className="input" value={uEmail} onChange={(e) => userEmailHandler(e)} placeholder="E-mail" />
+
+                    <label htmlFor="u_birth">생년월일</label>
+                    <input type="date" id="u_birth" name="u_birth" className="input" value={uBirth} onChange={(e) => userBirthHandler(e)} placeholder="생년월일" />
                 </div>
-            </form>
-        </div>
+
+                <button type="button" className="btn main" onClick={joinBtn}>회원가입</button>
+            </div>
+        </div >
     );
 };
 

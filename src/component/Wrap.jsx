@@ -12,7 +12,6 @@ const Wrap = () => {
     useEffect(() => {
         console.log("useEffect() CALLED");
 
-        let reviewNo = 0;
         let reviewDBinStorage = localStorage.getItem("reviewDB");
         if (reviewDBinStorage === null) {
             let reviewNo = 0;
@@ -35,7 +34,6 @@ const Wrap = () => {
             localStorage.setItem("reviewDB", reviewDBinStorage);
         }
 
-        // 별점 평균 구하기
         let parseReviewDB = JSON.parse(reviewDBinStorage);
 
         let reviewDBObjs = parseReviewDB;
@@ -50,40 +48,52 @@ const Wrap = () => {
 
         arr.map((el) => {
             let arrFestivalNo = rDataObjs[el].fDataId;
+
             if (tempArr[arrFestivalNo]) {
                 tempArr[arrFestivalNo] = {
                     star: "",   // 평균 : 모든 star값 더하고 tempArr[arrFestivalNo].list.length로 나눠줌
                     list: [...tempArr[arrFestivalNo].list, rDataObjs[el].star]
                 }
             } else {
-                tempArr[el] = {
+                tempArr[arrFestivalNo] = {
                     star: "",
                     list: [rDataObjs[el].star]
                 }
             }
         });
 
-        console.log("111111111111111", Object.keys(tempArr));
-        // console.log(tempArr);
-
         let festivalNo = Object.keys(tempArr);
-        // [1,2,11]
-
+        // [0, 2, 26, 22]
+        // 
+        // el = festivalNo
         festivalNo.map((el) => {
             let listStar = tempArr[el].list;
+            // ["", "5", "4", "3", "", ""]
             let starList = tempArr[el].star;
+            // ""
+
             let sum = 0;
-            listStar.map((n) => {
-                sum += parseFloat(n) || 0;
-                console.log(sum);
-                let avrStar = sum/listStar.length
-                let dpStar = avrStar.toFixed(1)
-                console.log(dpStar);
-                starList = dpStar
+            // n = listStar
+            let newList = listStar.filter((n) => {
+                if (n !== "") {
+                    return n;
+                }
             })
 
+            newList.map((n) => {
+                sum += parseFloat(n) || 0;
+                console.log(sum);
+
+                if (n !== "") {
+                    let avrStar = sum / listStar.length;
+                    let dpStar = avrStar.toFixed(1);
+                    // starList에 dpStar값 넣기
+                    console.log(dpStar);
+                } else
+                
+                console.log(tempArr);
+            })
         })
-        localStorage.setItem('idReviewDB', JSON.stringify(tempArr));
         console.log(tempArr);
     }, []);
 
