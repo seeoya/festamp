@@ -50,3 +50,7 @@
     font-size: 22px;
     color: #faf61d;
 }
+
+#review_wrap div.view_review div.view_review_list ul li span {
+    padding-right: 5px;
+}
