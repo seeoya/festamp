@@ -184,24 +184,24 @@ const SignUp = () => {
                         비밀번호는 영문 대소문자, 숫자를 혼합하여 8~20자로 입력해주세요
                     </label>
                     <div>
-                        <input type="password" id="u_pw" name="u_pw" className="input" value={UPw} onChange={(e) => userPwHandler(e)} placeholder="비밀번호" />
+                        <input type="password" id="u_pw" name="u_pw" className="input" value={uPw} onChange={(e) => userPwHandler(e)} placeholder="비밀번호" />
                         <button type="button" className="btn main" onClick={formatCheckBtnHandler}>확인</button>
                     </div>
 
                     <label htmlFor="pw_same">비밀번호 확인</label>
                     <div>
-                        <input type="password" id="pw_same" name="pw_same" className="input" value={PwSame} onChange={(e) => userPwSameHandler(e)} placeholder="비밀번호 확인" />
+                        <input type="password" id="pw_same" name="pw_same" className="input" value={pwSame} onChange={(e) => userPwSameHandler(e)} placeholder="비밀번호 확인" />
                         <button type="button" className="btn main" onClick={pwSameBntHandler}>비밀번호 확인</button>
                     </div>
 
                     <label htmlFor="u_phone">연락처</label>
-                    <input type="text" id="u_phone" name="u_phone" className="input" value={UPhone} onChange={(e) => userPhoneHandler(e)} placeholder="연락처" />
+                    <input type="text" id="u_phone" name="u_phone" className="input" value={uPhone} onChange={(e) => userPhoneHandler(e)} placeholder="연락처" />
 
                     <label htmlFor="u_email">이메일</label>
-                    <input type="text" id="u_email" name="u_email" className="input" value={UEmail} onChange={(e) => userEmailHandler(e)} placeholder="E-mail" />
+                    <input type="text" id="u_email" name="u_email" className="input" value={uEmail} onChange={(e) => userEmailHandler(e)} placeholder="E-mail" />
 
                     <label htmlFor="u_birth">생년월일</label>
-                    <input type="date" id="u_birth" name="u_birth" className="input" value={UBirth} onChange={(e) => userBirthHandler(e)} placeholder="생년월일" />
+                    <input type="date" id="u_birth" name="u_birth" className="input" value={uBirth} onChange={(e) => userBirthHandler(e)} placeholder="생년월일" />
                 </div>
 
                 <button type="button" className="btn main" onClick={joinBtn}>회원가입</button>
