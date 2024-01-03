@@ -123,7 +123,7 @@ const SignUp = () => {
             uPhone !== "" &&
             uEmail !== "" &&
             uBirth !== ""
-        ) {
+        ) { if(uPw === pwSame){
             if (memberInStorage === null) {
                 let newMemberDb = {
                     [uId]: {
@@ -156,6 +156,9 @@ const SignUp = () => {
             alert("회원가입을 축하드립니다.");
 
             navigate("/SignIn");
+        }else {
+            alert('비밀번호를 확인해주세요.');
+        }
         } else {
             alert("정보를 입력해주세요");
         }
