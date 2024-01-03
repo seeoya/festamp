@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ReviewModifyModal from "./ReviewModifyModal";
 import ReviewWriteModal from "./ReviewWriteModal";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./viewReview.css";
+
 
 const MainReview = (props) => {
 

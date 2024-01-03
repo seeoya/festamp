@@ -105,7 +105,7 @@ const Wrap = () => {
     // props.평점세팅()
     return (
         <div id="wrap">
-            <Header />
+            <Header loginInfo={loginInfo} />
             <Container festivalData={festivalData} loginInfo={loginInfo} />
             <Footer />
         </div>

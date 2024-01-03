@@ -78,6 +78,12 @@
     gap: 5px;
 }
 
+#main_popular .item a {
+    display: inline-block;
+    width: 100%;
+}
+
+
 #main_popular .list .marker, #main_popular .list .title {
     font-size: 1.6rem;
     vertical-align: middle;
@@ -115,6 +121,8 @@
 
 #main_random .item_img {
     width: 50%;
+    height: 150px;
+    object-fit: cover;
 }
 
 #main_random .item_intro {
