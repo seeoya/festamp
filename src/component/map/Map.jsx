@@ -8,8 +8,6 @@ const Map = (props) => {
 
     const [mapObj, setMapObj] = useState("");
     const [isMap, setIsMap] = useState(false);
-    // const [mapAddress, setMapAddress] = useState("경기도 수원시 영통구 도청로 30 (이의동)");
-    // const [mapAddressTitle, setMapAddressTitle] = useState("경기도청");
 
     let nowAddress = props.nowAddress,
         nowAddressTitle = props.nowAddressTitle;
@@ -18,6 +16,8 @@ const Map = (props) => {
         let map = setMap();
 
         if (nowAddress == null || nowAddress == "") {
+            props.setNowAddress("경기도 수원시 영통구 도청로 30 (이의동)");
+            props.setNowAddressTitle("경기도청");
         }
 
         addAddressMarker(nowAddress, nowAddressTitle);
@@ -37,8 +37,7 @@ const Map = (props) => {
         let map = new kakao.maps.Map(container, options);
         setMapObj(map);
         setIsMap(true);
-
-        addAddressMarker("경기도 수원시 영통구 도청로 30 (이의동)", "경기도청");
+        addAddressMarker(nowAddress, nowAddressTitle);
         return map;
     };
 

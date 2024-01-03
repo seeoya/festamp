@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import ReviewModifyModal from './ReviewModifyModal';
-import { getLoginedId, setLoginedId } from './session';
 
 
 
@@ -11,9 +10,11 @@ const MyReview = (props) => {
     const [tempFlag, setTempFlag] = useState(true);
     const [modifyKey, setModifyKey] = useState('');
     const [isShowModifyModal, setIsShowModifyModal] = useState(false);
-
+    
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(10);
+
+    let logInId = props.loginInfo.logInId;
     
 
     useEffect(( ) => {
@@ -37,9 +38,9 @@ const MyReview = (props) => {
       for (let i = 0; i < reviewskeys.length; i++) {
           let reviews = rDataObjs[reviewskeys[i]];
 
-          let uId = 'jin';    // 로그인 아이디
+          let uId = logInId;    // 로그인 아이디
          
-          if(reviews.uId === uId) {    // getLoginedId()
+          if(reviews.uId === uId) {     
               reviews['key'] = reviewskeys[i];
               console.log('reviewskeys[i]:', reviewskeys[i]);
                   
@@ -145,6 +146,7 @@ const MyReview = (props) => {
                       <span>{`${[myReview.rDateTime]}`}</span>
                       <span>{myReview.fTitle}</span>
                       <span>{myReview.uReview}</span>
+                      <span>★</span>
                       <span>{myReview.star}</span>
                       <button onClick={(e) => myReviewModifyBtnClickHandler(e, myReview.rNo)}>수정</button>
                       <button onClick={(e) => myReviewDelBtnClickHandler(e, myReview.rNo)}>삭제</button>
