@@ -35,23 +35,43 @@ const PwFind = () => {
         console.log("findPwBtnHandler() Clicked !!");
 
         let memberInStorage = JSON.parse(localStorage.getItem("memberDB"));
-        let memIdObjarr = Object.keys(memberInStorage);
-        console.log(memberInStorage[uId].phone);
-        console.log(memIdObjarr);
+        let memIdObjArr = Object.keys(memberInStorage);
+        let memPhoneArr = memberInStorage[uId].phone;
+        let memberIdStr = memIdObjArr.toString()
+        console.log(memberInStorage);
+        console.log(memIdObjArr,"찍히는거");
         console.log(uPhone);
-
-        if (uId !== "" && uPhone !== "") {
-            if (uId !== null && uId !== undefined) {
-                if (uPhone !== null && uPhone !== undefined) {
-                    setIsUInfo(true);
-                    navigate("/ChangePw");
-                }
+        console.log(!!uId);
+        console.log(!!uPhone);
+        console.log( memIdObjArr.includes(uId));
+        
+        
+        
+    
+        if(!!uId && !!uPhone){
+            if(memIdObjArr.includes(uId) && uPhone !== undefined &&memPhoneArr === uPhone){
+                alert('회원 ID입니다.');
+                navigate("/ChangePw")
             } else {
-                alert("존재하지 않는 ID입니다.");
+                alert('존재하지 않는 회원입니다.');
             }
         } else {
-            alert("정보를 입력해주세요.");
-        }
+            alert('정보를 입력해주세요');
+        };
+
+    
+        // if (uId !== "" && uPhone !== "") {
+        //     if (uId !== null && uId !== undefined) {
+        //         if (uPhone !== null && uPhone !== undefined) {
+        //             setIsUInfo(true);
+        //             navigate("/ChangePw");
+        //         }
+        //     } else {
+        //         alert("존재하지 않는 ID입니다.");
+        //     }
+        // } else {
+        //     alert("정보를 입력해주세요.");
+        // }
     };
     // 로그인화면 버튼 클릭시 이동
     const signInView = () => {
@@ -86,7 +106,7 @@ const PwFind = () => {
             </div>
 
             {/* #TODO 필요한 내용인가? */}
-            {isUInfo ? <ChangePw /> : null}
+            {/* {isUInfo ? <ChangePw /> : null} */}
         </div>
     );
 };
