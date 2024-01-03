@@ -70,7 +70,7 @@ const SignUp = () => {
         console.log(memDbId.includes(UId));
         console.log(memDbId);
 
-        if (UId !== "" && !null) {
+        if (UId !== "" && UId !== null) {
             if (memDbId.includes(UId)) {
                 alert("이미 사용중인 아이디입니다.");
                 setUId("");
@@ -210,7 +210,7 @@ const SignUp = () => {
                         <button type="button" onClick={formatCheckBtnHandler}>
                             확인
                         </button>
-                        <br />
+                        <p>비밀번호는 영문 대소문자, 숫자를 혼합하여 8~20자로 입력해주세요</p>
                         <label htmlFor="pw_same">
                             <p>비밀번호 확인</p>
                         </label>
