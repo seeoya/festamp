@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import GradeSelect from "../grade_select/GradeSelect";
 import { getDateTime } from "./getDateTime";
-// import Star from '';
+
 
 const ReviewWriteModal = (props) => {
+
     const [reviewNo, setReviewNo] = useState(0);
     const [uReview, setUReview] = useState("");
 
@@ -18,6 +19,7 @@ const ReviewWriteModal = (props) => {
 
         setFestivalDataId(props.festivalDataId);
         setFestivalTitle(props.festivalTitle);
+
     }, [festivalDataId, festivalTitle, star]);
 
     const uReviewChangeHandler = (e) => {
@@ -29,6 +31,7 @@ const ReviewWriteModal = (props) => {
         console.log("writeModalWrite Btn Clicked!");
 
         let uId = logInId; // 로그인한 아이디
+        setStar(props.inStar);
 
         let reviewDBObjs = parseReviewDB();
         let reviewObjs = reviewDBObjs.rData;
@@ -36,13 +39,13 @@ const ReviewWriteModal = (props) => {
         console.log("reviewObjs: ", reviewObjs);
 
         reviewObjs[reviewCnt] = {
-            uId: uId,
-            fDataId: festivalDataId,
-            fTitle: festivalTitle,
-            rDateTime: getDateTime(),
-            uReview: uReview,
-            rNo: reviewCnt,
-            star: star,
+            "uId": uId,
+            "fDataId": festivalDataId,
+            "fTitle": festivalTitle,
+            "rDateTime": getDateTime(),
+            "uReview": uReview,
+            "rNo": reviewCnt,
+            "star": star,
         };
 
         reviewDBObjs["rData"] = reviewObjs;
@@ -50,21 +53,21 @@ const ReviewWriteModal = (props) => {
 
         // let nullCheck = reviewDBObjs.rData.rNo;
 
-        // if (nullCheck.star === null || nullCheck.star === '') {
-        //     alert('별점을 선택해 주세요!');
+        // if (nullCheck.star === null || nullCheck.star === "") {
+        //     alert("별점을 선택해 주세요!");
         // } else {
-        //     if (nullCheck.uReview === null || nullCheck.uReview === '') {
-        //         alert('리뷰를 작성해 주세요!');
+        //     if (nullCheck.uReview === null || nullCheck.uReview === "") {
+        //         alert("리뷰를 작성해 주세요!");
         //     } else {
 
-        //         let addReviewStr = JSON.stringify(reviewDBObjs);
+                let addReviewStr = JSON.stringify(reviewDBObjs);
 
 
-        //         localStorage.setItem("reviewDB", addReviewStr);
+                localStorage.setItem("reviewDB", addReviewStr);
 
-        //         console.log("Review write success!");
-        //         props.setIsShowWriteModal(false);
-        //     }
+                console.log("Review write success!");
+                props.setIsShowWriteModal(false);
+            // }
         // }
         };
 
@@ -81,7 +84,9 @@ const ReviewWriteModal = (props) => {
 
         return (
             <div className="review_write_modal">
-                <GradeSelect setStar={setStar} star={star} parseReviewDB={parseReviewDB} />
+                <GradeSelect setStar={setStar}
+                             parseReviewDB={parseReviewDB}
+                             festivalNo={festivalDataId} />
                 <textarea
                     cols="50"
                     rows="5"

@@ -4,6 +4,7 @@ import "./gradeSelect.css";
 const GradeSelect = (props) => {
     // hook
     const [inStar, setInStar] = useState("");
+  
 
     // 리뷰 데이터 목록에 점수 넣기
     useEffect(() => {
@@ -26,8 +27,8 @@ const GradeSelect = (props) => {
         if (starDBInStorage === null) {
             let newStarObj = {
                 [reviewNo]: {
-                    festivalNo: festivalNo,
-                    star: inStar,
+                    'festivalNo': festivalNo,
+                    'star': inStar,
                 },
             };
             let newStarStr = JSON.stringify(newStarObj);
@@ -35,8 +36,8 @@ const GradeSelect = (props) => {
         } else {
             let starObj = JSON.parse(starDBInStorage);
             starObj[reviewNo] = {
-                festivalNo: festivalNo,
-                star: inStar,
+                'festivalNo': festivalNo,
+                'star': inStar,
             };
 
             let newStarStr = JSON.stringify(starObj);
@@ -48,9 +49,9 @@ const GradeSelect = (props) => {
     const starClickHandler = (e) => {
         console.log("starClickHandler() CALLED");
 
-
         setInStar(e.target.value);
         props.setStar(inStar);
+       
     };
 
     return (
