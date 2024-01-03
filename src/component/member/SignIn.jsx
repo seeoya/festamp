@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import SignUp from './SignUp';
 import { useNavigate } from 'react-router-dom';
-import styles from './SignIn.module.css';
+// import styles from './SignIn.module.css';
+import IdFind from './IdFind';
+import PwFind from './PwFind';
+
 
 const SignIn = (props) => {
   console.log('SignIn() Called!');
@@ -17,6 +20,10 @@ const SignIn = (props) => {
 
   // 로그인 btn Hook
   const [isJoin, setIsJoin] = useState('');
+
+  //아이디 찾기 , 비밀번호 찾기
+  const[isfindIdClick, setIsfindIdClick] = useState(false);
+  const[isFindPwClick, setIsFindPwClick] = useState(false);
 
 
 
@@ -76,6 +83,23 @@ const SignIn = (props) => {
   }
 
   // 아이디 찾기 
+  const idFindClickHandler = () => {
+    console.log('idFindHandler() Clicked!');
+
+    setIsfindIdClick(true);
+    console.log('isfindIdClick()' ,'이거거거거거거')
+
+    navigate("/IdFind");
+  }
+
+  //비밀번호 찾기
+  const fwFindClickHandler = () => {
+    console.log('fwFindClickHandler() Clicked!!! 야ㅑㅑㅑ');
+
+    setIsFindPwClick(false);
+    
+    navigate("/PwFind");
+  }
 
 
   return (
@@ -83,17 +107,17 @@ const SignIn = (props) => {
 
       < >
 
-        <div className={styles.nanumgothic}>
-          <div className={styles.title}><h3 className={styles.titleName}>로그인</h3>
-            <input type="text" className={styles.enterInformation} value={uId} onChange={loginIdHandler} placeholder='ID를 입력하세요' />
+        <div>
+          <div><h3>로그인</h3>
+            <input type="text"  value={uId} onChange={loginIdHandler} placeholder='ID를 입력하세요' />
             <br />
-            <input type="password" className={styles.enterInformation} value={uPw} onChange={loginPwHandler} placeholder='PASSWORD를 입력하세요' />
+            <input type="password"  value={uPw} onChange={loginPwHandler} placeholder='PASSWORD를 입력하세요' />
             <br />
-            <a href="#none" >아이디찾기</a> / <a href="#none">비밀번호찾기</a>
+            <a href="#none" value={isfindIdClick} onClick={idFindClickHandler}>아이디찾기</a> / <a href="#none" value={isFindPwClick} onClick={fwFindClickHandler}>비밀번호찾기</a>
             <br />
             <a href="#none" onClick={joinBtnHandler}>회원가입</a>
             <br />
-            <button type='button' className={styles.logInBtn} onClick={(props) => loginBtnHandler(props)}>로그인</button></div>
+            <button type='button'  onClick={(props) => loginBtnHandler(props)}>로그인</button></div>
         </div>
       </>
 
@@ -102,6 +126,18 @@ const SignIn = (props) => {
         <SignUp />
         :
         null
+      }
+      {isfindIdClick
+        ?
+        <IdFind />
+        :
+        null
+      }
+      {isFindPwClick
+      ?
+      <PwFind />
+      :
+      null
       }
 
     </div>
