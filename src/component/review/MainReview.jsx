@@ -72,23 +72,23 @@ const MainReview = (props) => {
         console.log("mainReviewWrite Btn Clicked!");
 
         // logined check
-        if (!checkLogined()) {
-            console.log(checkLogined());
-            alert("로그인이 필요합니다.");
-        } else {
-            console.log("reviewsArr: ", reviewsArr);
+        // if (!checkLogined()) {
+        //     console.log(checkLogined());
+        //     alert("로그인이 필요합니다.");
+        // } else {
+        //     console.log("reviewsArr: ", reviewsArr);
 
-            let isReviewArr = [];
-            let isReview = JSON.stringify(reviewsArr);
+        //     let isReviewArr = [];
+        //     let isReview = JSON.stringify(reviewsArr);
 
-            if (isReview.includes(festivalTitle)) {
-                alert(`${festivalTitle} 리뷰가 존재합니다.`);
-            } else {
+        //     if (isReview.includes(festivalTitle)) {
+        //         alert(`${festivalTitle} 리뷰가 존재합니다.`);
+        //     } else {
                 // write modal show
                 setIsShowWriteModal(true);
             }
-        }
-    };
+        // }
+    
 
     // 메인리스트 수정 버튼
     const mainReviewModifyBtnClickHandler = (e, rNo) => {
