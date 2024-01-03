@@ -48,7 +48,7 @@ const MainReview = (props) => {
 
         let tempArr = [];
 
-        for (let i = 0; i < reviewskeys.length; i++) {
+        for (let i = 1; i < reviewskeys.length; i++) {
             let reviews = rDataObjs[reviewskeys[i]];
 
             if (reviews.fDataId === festivalDataId) {
