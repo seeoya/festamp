@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Container from "./Container";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -10,48 +10,48 @@ const Wrap = () => {
     const [logInId, setLogInId] = useState("");
 
     // 별점 평균 구하기
-    let parseReviewDB = JSON.parse(localStorage.getItem('reviewDB'));
+    // let parseReviewDB = JSON.parse(localStorage.getItem('reviewDB'));
     // let idReviewDB = localStorage.getItem('idReviewDB');
     // localStorage.setItem('idReviewDB', '')
 
-    useEffect(() => {
-        console.log('useEffect() CALLED');
+    // useEffect(() => {
+    //     console.log('useEffect() CALLED');
 
-        let reviewDBObjs = parseReviewDB;
-        let rDataObjs = reviewDBObjs.rData;
+    //     // let reviewDBObjs = parseReviewDB;
+    //     // let rDataObjs = reviewDBObjs.rData;
 
-        // console.log(rDataObjs);
-        let arr = Object.keys(rDataObjs);
-        //  [0 1,2,3,4,5,6,7] = key (리뷰넘버)
+    //     // console.log(rDataObjs);
+    //     let arr = Object.keys(rDataObjs);
+    //     //  [0 1,2,3,4,5,6,7] = key (리뷰넘버)
 
-        // 새로운 객체
-        let tempArr = {};
+    //     // 새로운 객체
+    //     let tempArr = {};
 
-        arr.map((el) => {
-            let arrFestivalNo = rDataObjs[el].fDataId;
+    //     arr.map((el) => {
+    //         let arrFestivalNo = rDataObjs[el].fDataId;
 
-            if (tempArr[arrFestivalNo]) {
-                tempArr[arrFestivalNo] = {
-                    star: '',   // 평균 : 모든 star값 더하고 tempArr[arrFestivalNo].list.length로 나눠줌
-                    list: [...tempArr[arrFestivalNo].list, rDataObjs[el].star]
-                }
-            } else {
-                tempArr[arrFestivalNo] = {
-                    star: "",
-                    list: [rDataObjs[el].star]
-                }
-            }
-        });
+    //         if (tempArr[arrFestivalNo]) {
+    //             tempArr[arrFestivalNo] = {
+    //                 star: '',   // 평균 : 모든 star값 더하고 tempArr[arrFestivalNo].list.length로 나눠줌
+    //                 list: [...tempArr[arrFestivalNo].list, rDataObjs[el].star]
+    //             }
+    //         } else {
+    //             tempArr[arrFestivalNo] = {
+    //                 star: "",
+    //                 list: [rDataObjs[el].star]
+    //             }
+    //         }
+    //     });
 
-        // let averageStar = tempArr[rDataObjs[el].fDataId].list
+    //     // let averageStar = tempArr[rDataObjs[el].fDataId].list
 
-        console.log("111111111111111", Object.keys(tempArr));
-        // console.log(tempArr);
+    //     console.log("111111111111111", Object.keys(tempArr));
+    //     // console.log(tempArr);
 
-        // localStorage.setItem('idReviewDB', JSON.stringify(tempArr));
-        // console.log(idReviewDB);
+    //     // localStorage.setItem('idReviewDB', JSON.stringify(tempArr));
+    //     // console.log(idReviewDB);
 
-    }, [])
+    // }, [])
 
 
     let loginInfo = {
