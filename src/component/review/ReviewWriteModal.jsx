@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getDateTime } from './getDateTime';
 import GradeSelect from '../grade_select/GradeSelect';
-import { getDateTime } from './getDateTime';
 // import Star from '';
 
 
