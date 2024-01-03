@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ReviewModifyModal from "./ReviewModifyModal";
 import ReviewWriteModal from "./ReviewWriteModal";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./viewReview.css";
+
 
 const MainReview = (props) => {
 
@@ -251,12 +252,12 @@ const MainReview = (props) => {
                     </div>
 
                     <div className="more_view_wrap">
-                        <a href="#none" onClick={moreViewClickHandler}>
+                        <Link to="#none" onClick={moreViewClickHandler} />
                             + 더보기
-                        </a>
-                        <a href="#none" onClick={moreViewCancleClickHandler}>
+                        
+                        <Link to="#none" onClick={moreViewCancleClickHandler} />
                             접기
-                        </a>
+                        
                     </div>
 
                     <div className="modal_wrap">
