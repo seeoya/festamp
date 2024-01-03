@@ -253,12 +253,82 @@ const MainReview = (props) => {
                     </a>
                 </div>
 
+<<<<<<< HEAD
+    <div id='review_wrap'>
+
+      <div className='view_review'>
+          <div className='sec_item_title'>
+            <ul>
+              <li><h1>{festivalTitle} 리뷰<span>{starGradeDataId}</span></h1>
+                  <button onClick={mainReviewWriteBtnClickHandler} className="btn highlight">리뷰 쓰기</button>
+              </li>
+            </ul>                               
+          
+          </div>
+
+          <div className='view_review_list'>
+            
+             {
+                 isLogIned
+                 ?
+            <>
+            <ul>
+                 { reviewsArr.map((reviews, idx) =>
+                    
+                <>
+                <li className='full_list'>{reviews.uId}
+                      <span>{reviews.fTitle}</span>
+                      <span>{`${[reviews.rDateTime.split('일', 1)]}${'일'}`}</span>
+                      <span>{reviews.uReview}</span>
+                      <span>★</span>
+                      <span>{reviews.star}</span>
+                      <button onClick={(e) => mainReviewModifyBtnClickHandler(e, reviews.rNo)}>수정</button>
+                      <button onClick={(e) => mainReviewDelBtnClickHandler(e, reviews.rNo)}>삭제</button>
+                </li>
+                </>
+                   )}
+
+            </ul>
+            </>
+                :
+            <>
+           <ul>
+                { reviewsArr.map((reviews, idx) =>
+                    
+                    <>
+                    <li className='logined_list'><span>{reviews.uId}</span>
+                            <span>{reviews.fTitle}</span>
+                            <span>{`${[reviews.rDateTime.split('일', 1)]}${'일'}`}</span>
+                            <span>{reviews.uReview}</span>
+                            <span>{reviews.star}</span>
+                    </li>
+                    </>
+                     )}
+            </ul>
+            </> 
+            }                      
+          </div>
+
+          <div className='more_view_wrap'>
+            <a href='#none' onClick={moreViewClickHandler}>+ 더보기</a>
+            <a href='#none' onClick={moreViewCancleClickHandler}>접기</a>
+
+          </div>
+
+          <div className='modal_wrap'>
+            {
+              isShowWriteModal
+              ?
+            <>
+              <ReviewWriteModal festivalDataId={festivalDataId} festivalTitle={festivalTitle}
+=======
                 <div className="modal_wrap">
                     {isShowWriteModal ? (
                         <>
                             <ReviewWriteModal
                                 festivalDataId={festivalDataId}
                                 festivalTitle={festivalTitle}
+>>>>>>> 1ba682053232f363fda8cdd4ef15dd684674873d
                                 setIsShowWriteModal={setIsShowWriteModal}
                                 logInId={props.loginInfo.logInId}
                             />
