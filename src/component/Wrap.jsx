@@ -11,8 +11,8 @@ const Wrap = () => {
 
     // 별점 평균 구하기
     let parseReviewDB = JSON.parse(localStorage.getItem('reviewDB'));
-    let idReviewDB = localStorage.getItem('idReviewDB');
-    localStorage.setItem('idReviewDB', '')
+    // let idReviewDB = localStorage.getItem('idReviewDB');
+    // localStorage.setItem('idReviewDB', '')
 
     useEffect(() => {
         console.log('useEffect() CALLED');
@@ -48,8 +48,8 @@ const Wrap = () => {
         console.log("111111111111111", Object.keys(tempArr));
         // console.log(tempArr);
 
-        localStorage.setItem('idReviewDB', JSON.stringify(tempArr));
-        console.log(idReviewDB);
+        // localStorage.setItem('idReviewDB', JSON.stringify(tempArr));
+        // console.log(idReviewDB);
 
     }, [])
 
