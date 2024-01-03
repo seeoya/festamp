@@ -54,8 +54,13 @@ const ChangePw = () => {
     };
 
     // 수정 버튼 핸들러 작업 마저 하기
-    const ChangePwBtnHandler = () => {
+    const ChangePwBtnHandler = () => {              //비밀번호 찾기에서 들어 올 때 로그인된 아이디를 갖고 와야하나???
         console.log("pwChangeBtnHandler() Clicked !!");
+
+        let memberInfo = JSON.parse(localStorage.getItem('memberDB')) ;
+        console.log(memberInfo);
+
+
     };
 
     return (
