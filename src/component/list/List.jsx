@@ -145,7 +145,7 @@ const List = (props) => {
                     <Map
                         festivalData={props.festivalData}
                         width={"100%"}
-                        height={"2000%"}
+                        height={"100%"}
                         nowAddress={nowAddress}
                         setNowAddress={setNowAddress}
                         nowAddressTitle={nowAddressTitle}
