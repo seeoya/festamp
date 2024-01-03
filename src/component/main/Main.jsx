@@ -1,5 +1,4 @@
 import React from "react";
-import Map from "../map/Map";
 import MainSlide from "./MainSlide";
 import Popular from "./Popular";
 import RandomFestival from "./RandomFestival";
@@ -17,11 +16,6 @@ const Main = (props) => {
                     <Popular festivalData={festivalData} />
                     <RandomFestival festivalData={festivalData} />
                 </div>
-            </div>
-
-            {/* 지도 테스트용. 제거 예정 */}
-            <div>
-                <Map festivalData={festivalData} width={"400px"} height={"500px"} />
             </div>
         </>
     );
