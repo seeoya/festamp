@@ -4,6 +4,7 @@ import "./gradeSelect.css";
 const GradeSelect = (props) => {
     // hook
     const [inStar, setInStar] = useState("");
+  
 
     // 리뷰 데이터 목록에 점수 넣기
     useEffect(() => {
@@ -13,7 +14,7 @@ const GradeSelect = (props) => {
         // 'starDB' > 객체
         // starDB > [리뷰번호] : {별점: 5}
         // starDB[리뷰번호].별점 = 5
-    }, [inStar]);
+    }, []);
 
     // 별점 DB에 따로 넣어놓기
     useEffect(() => {
@@ -26,8 +27,8 @@ const GradeSelect = (props) => {
         if (starDBInStorage === null) {
             let newStarObj = {
                 [reviewNo]: {
-                    festivalNo: festivalNo,
-                    star: inStar,
+                    'festivalNo': festivalNo,
+                    'star': inStar,
                 },
             };
             let newStarStr = JSON.stringify(newStarObj);
@@ -35,22 +36,24 @@ const GradeSelect = (props) => {
         } else {
             let starObj = JSON.parse(starDBInStorage);
             starObj[reviewNo] = {
-                festivalNo: festivalNo,
-                star: inStar,
+                'festivalNo': festivalNo,
+                'star': inStar,
             };
 
             let newStarStr = JSON.stringify(starObj);
             localStorage.setItem("newStarObj", newStarStr);
+            props.setStar(inStar);
         }
+
     }, [inStar]);
 
     // handler
     const starClickHandler = (e) => {
         console.log("starClickHandler() CALLED");
 
-
         setInStar(e.target.value);
-        props.setStar(inStar);
+        props.setStar(e.target.value);
+         
     };
 
     return (
