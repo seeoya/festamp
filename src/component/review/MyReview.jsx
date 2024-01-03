@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReviewModifyModal from "./ReviewModifyModal";
+import { Link } from "react-router-dom";
+import Stamp from "../stamp/Stamp";
 
 const MyReview = (props) => {
     const [myReviewsArr, setMyReviewsArr] = useState([]);
@@ -119,14 +121,7 @@ const MyReview = (props) => {
 
     return (
         <div className="my_page">
-            <div className="my_stamp">
-                <ul>
-                    <li className="sec_item_title"><h1>MY STAMP</h1></li>
-                    <li></li>
-                </ul>
-
-
-            </div>
+            <Stamp />
 
             <div className="my_review">
                 <>
