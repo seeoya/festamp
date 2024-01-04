@@ -9,7 +9,7 @@ const ReviewWriteModal = (props) => {
     const [uReview, setUReview] = useState("");
     
 
-    const [star, setStar] = useState("");
+    const [star, setStar] = useState('');
     const [festivalDataId, setFestivalDataId] = useState("");
     const [festivalTitle, setFestivalTitle] = useState("");
 
