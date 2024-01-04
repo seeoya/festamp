@@ -62,13 +62,16 @@ const ChangePw = (props) => {
         console.log(!!verifyPw);
 
         if(!!newPw && !!verifyPw){
-
+            if(newPw === verifyPw){
             memberInfo[props.uId].pw = newPw;
             localStorage.setItem('memberDB', JSON.stringify(memberInfo));  
 
             alert('비밀번호가 변경되었습니다.');
+            } else {
+                alert('비밀번호가 일치하지 않습니다.')
+            }
         } else {
-            alert('새 비밀번호를 입력해주세요.');
+            alert('새로운 비밀번호를 입력해주세요.');
         }
 
 
