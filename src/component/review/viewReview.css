@@ -1,6 +1,5 @@
 #review_wrap {
     position: relative;
-    width: 1200px;
     margin: 0 auto;
     margin-top: 30px;
 }
@@ -52,7 +51,8 @@
 textarea.review_text,
 textarea.review_modify_text {
     max-width: 500px; min-width: 500px;
-    max-height: 110px; min-height: 110px; 
+    max-height: 110px; min-height: 110px;
+    padding: 10px;
 }
 
 .review_write_modal  {
@@ -120,4 +120,18 @@ textarea.review_modify_text {
     width: 100%;
     justify-content: start;
     padding: 5px 0;
+}
+
+.review_modify_text {
+    font-size: 16px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.review_modify_modal span {
+    margin-right: 10px;
+}
+
+.review_modify_modal span:nth-child(1) {
+    font-weight: bold;
 }

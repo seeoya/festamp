@@ -71,7 +71,7 @@ const ReviewModifyModal = (props) => {
 
     return (
         <div className="review_modify_modal">
-            <span>{`${oldRDateTime} | ${oldFTitle} | ★ ${oldStar}`}</span>
+            <span>{oldFTitle}</span><span>{oldRDateTime}</span>★&nbsp;<span>{oldStar}</span>
             <br />
             <textarea className="review_modify_text"
                 name="oldUReview"
