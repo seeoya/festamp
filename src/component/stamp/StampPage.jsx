@@ -35,6 +35,7 @@ const Stamp = (props) => {
             }
         }
         setMyStampArr(tempArr);
+        alretTen()
     }, []);
 
     // function
@@ -50,7 +51,9 @@ const Stamp = (props) => {
         if (myStampArr[idx]) {
             return (
                 <div className="stamp_item" key={idx}>
-                    <div className="fes_title">{myStampArr[idx].fTitle}</div>
+                    <Link to={`/view/${myStampArr[idx].fDataId}`}>
+                        <div className="fes_title">{myStampArr[idx].fTitle}</div>
+                    </Link>
                     <div className="stmap_img_wrap">
                         <Link to={`/view/${myStampArr[idx].fDataId}`}>
                             <img className="stmap_img" src={fData[myStampArr[idx].fDataId].img} alt={myStampArr[idx].fTitle} />
@@ -67,6 +70,14 @@ const Stamp = (props) => {
             );
         }
     });
+
+    const alretTen = () => {
+        for(let i = 1; i <= Math.ceil(myStampArr.length / 10) * 10; i++) {
+            if(myStampArr = 10 * i) {
+                alert("스탬프 10개를를 채우셨네요 가까운 주민센터에 가셔서 물품을 받으세요!");
+            }
+        }
+    }
 
     return (
         <>

@@ -44,9 +44,10 @@ const MainSlide = (props) => {
                 modules={[Navigation, Pagination]}
                 className="main-slide"
             >
-                {nowFestival.map((el) => {
+
+                {nowFestival.map((el, idx) => {
                     return (
-                        <SwiperSlide className="slide_item">
+                        <SwiperSlide className="slide_item" key={idx}>
                             <Link to={"/view/" + el.id}>
                                 <img src={el.img} alt={el.title} className="item_title" />
                                 <div className="item_content">

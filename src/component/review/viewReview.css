@@ -105,10 +105,12 @@ textarea.review_modify_text {
     gap: 5px;
 }
 
-.view_review_list button,
+.view_review_list .modify_bt,
+.view_review_list .delete_bt,
 .review_modify_modal button {
-    width: 50px;
-    height: 30px;
+    width: 40px;
+    height: 20px;
+    font-size: 10px;
 }
 
 .review_modify_modal {
@@ -156,4 +158,13 @@ textarea.review_modify_text {
 
 .modify_btn {
     margin-left: 20px;
+}
+
+#review_wrap .more_view_wrap .more_btn,
+#review_wrap .more_view_wrap .hide_btn{
+    border: none;
+    background: none;
+    border-radius: 0px;
+    color: black;
+    border-bottom:1px solid #dadada;
 }

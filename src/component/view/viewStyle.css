@@ -37,9 +37,10 @@
 #listview_wrap .explain {
     width: 800px;
     font-size: 1.2em;
-    padding: 15px;
+    padding: 20px;
     border: 2px solid #dadada;
     border-radius: 7px;
+    text-indent: 1rem;
 }
 
 #listview_wrap .info {
@@ -88,4 +89,11 @@
 #listview_wrap .bottom .event .event_list:nth-child(2n), #listview_wrap .info ul li:nth-child(2n) {
     padding: 5px;
     border-radius: 10px;
+}
+
+.review_null {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 65px 0 40px 0;
 }
