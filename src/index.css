@@ -59,7 +59,7 @@ a, a:visited, a:link {
     text-decoration: none;
 }
 
-input[type="checkbox"], input[type="submit"], button, a {
+input[type="checkbox"], input[type="submit"], button, a, label {
     cursor: pointer;
 }
 
