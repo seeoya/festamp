@@ -127,7 +127,7 @@ table {
     align-items: center;
 }
 
-.btn {
+a.btn, button.btn {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -170,4 +170,9 @@ table {
     padding: 0 10px;
     border: 1px solid var(--sec-border-color);
     border-radius: var(--btn-border-radius);
+}
+
+input[type="checkbox"].input {
+    padding: 0;
+    height: auto;
 }

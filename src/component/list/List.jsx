@@ -35,7 +35,7 @@ const List = (props) => {
         let list = document.getElementById("festival_inner");
         list.scrollTop = list.scrollHeight;
     }
-    
+
     // 버튼 클릭 시 정렬 상태 변경
     const toggleSortByDate = () => {
         setSortByDate(!sortByDate);
@@ -99,15 +99,15 @@ const List = (props) => {
         <div id="list_wrap" className="sec">
             <div className="festival_container">
                 <div className="search_wrap">
-                    <input type="text" placeholder="검색어를 입력해 주세요." name="uSearch" className="input" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+                    <input type="search" placeholder="검색어를 입력해 주세요." name="uSearch" className="input" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
 
                     <div className="filter_wrap">
                         <div>
-                            <input type="checkbox" id="starting_date" name="starting_date" onClick={toggleSortByDate} />
+                            <input type="checkbox" id="starting_date" className="input" name="starting_date" onClick={toggleSortByDate} />
                             <label htmlFor="starting_date">축제일순으로 보기</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="ing_date" name="ing_date" onClick={toggleIngByDate} />
+                            <input type="checkbox" id="ing_date" className="input" name="ing_date" onClick={toggleIngByDate} />
                             <label htmlFor="ing_date">진행중인 축제 보기</label>
                         </div>
                     </div>

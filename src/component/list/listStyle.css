@@ -16,10 +16,12 @@
     align-content: center;
     grid-column: 1 / 4;
     grid-row: 1 / 2;
+    gap: 10px;
 }
 
-#list_wrap .search_wrap input[type="text"] {
-    width: 80%;
+
+#list_wrap .search_wrap input[type="search"] {
+    width: 100%;
     text-align: center;
 }
 
@@ -38,12 +40,13 @@
 #list_wrap .festival_inner {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 50px;
+    grid-gap: 40px 30px;
     padding: 10px;
     padding-bottom: 40px;
     height: 540px;
     text-align: center;
     overflow: auto;
+    scroll-behavior: smooth;
 }
 
 #list_wrap .festival_inner img {

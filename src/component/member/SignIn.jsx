@@ -104,16 +104,13 @@ const SignIn = (props) => {
                         <input type="password" className="input" value={uPw} onChange={loginPwHandler} placeholder="PASSWORD를 입력하세요" />
                     </div>
 
-                    <div>
-                        <Link to="/idfind" value={isfindIdClick} onClick={idFindClickHandler}>- 아이디찾기</Link> 
+                    <div className="links">
+                        <Link to="/idfind" value={isfindIdClick} onClick={idFindClickHandler}>- 아이디찾기</Link>
                         <Link to="/pwfind" value={isFindPwClick} onClick={fwFindClickHandler}>- 비밀번호찾기</Link>
                     </div>
 
-                    <div>
-                        <Link to="/signup" onClick={joinBtnHandler}>- 회원가입</Link>
-                    </div>
-
                     <button type="button" className="btn main" onClick={(props) => loginBtnHandler(props)}>로그인</button>
+                    <Link to="/signup" className="btn" onClick={joinBtnHandler}>회원가입</Link>
                 </div>
             </div>
 
