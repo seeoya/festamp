@@ -33,7 +33,10 @@ const PwFind = () => {
     const findPwBtnHandler = () => {
         console.log("findPwBtnHandler() Clicked !!");
 
-        let memberInStorage = JSON.parse(localStorage.getItem("memberDB"));
+        let StorageDB = localStorage.getItem("memberDB");
+        if (StorageDB !== null) {
+            let memberInStorage = JSON.parse(StorageDB);
+            // let memIdObj = Object.keys(memberInStorage);
 
         let memPhone;
         if (memberInStorage[(uId.trim())] !== undefined && memberInStorage[(uId.trim())].phone === uPhone.trim()) {
@@ -50,6 +53,9 @@ const PwFind = () => {
 
             return;
         }
+    } else {
+        alert('존재하지 않는 회원입니다.');
+    }
 
     };
 

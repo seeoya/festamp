@@ -9,7 +9,7 @@ const ReviewWriteModal = (props) => {
     const [uReview, setUReview] = useState("");
     
 
-    const [star, setStar] = useState("");
+    const [star, setStar] = useState('');
     const [festivalDataId, setFestivalDataId] = useState("");
     const [festivalTitle, setFestivalTitle] = useState("");
 
@@ -66,6 +66,7 @@ const ReviewWriteModal = (props) => {
                 console.log("Review write success!");
                 alert('리뷰가 저장되었습니다!');
                 props.setIsShowWriteModal(false);
+                props.starMinF();
             }
         }
         };
