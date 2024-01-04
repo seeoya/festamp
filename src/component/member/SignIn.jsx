@@ -26,28 +26,39 @@ const SignIn = (props) => {
     const loginBtnHandler = () => {
         console.log("loginBtnHandler() Clicked!!");
 
-        let memberInStorage = JSON.parse(localStorage.getItem("memberDB"));
-        let memIdObj = Object.keys(memberInStorage);
-        console.log(memberInStorage[uId]);
+        let StorageDB = localStorage.getItem("memberDB");
+        if (StorageDB !== null) {
+            let memberInStorage = JSON.parse(StorageDB);
+            let memIdObj = Object.keys(memberInStorage);
 
-        if (uId !== "" && uPw !== "") {
-            if (
-                memberInStorage !== null &&
-                memIdObj.includes(uId) &&
-                memberInStorage[uId].pw === uPw
-            ) {
-                alert("FESTAMP에 오신 걸 환영합니다. :)");
-                navigate("/");
-                setIsLogined(true);
-                setLogInId(uId);
+            if ( uId !== "" && uPw !== "") {
+            
+                if (
+                    memIdObj.includes(uId) &&
+                    memberInStorage[uId].pw === uPw
+                ) {
+                    alert("FESTAMP에 오신 걸 환영합니다. :)");
+                    navigate("/");
+                    setIsLogined(true);
+                    setLogInId(uId);
+                } else {
+                    alert("회원정보가 없습니다.");
+                    setUId("");
+                    setPw("");
+                }
             } else {
-                alert("회원정보가 없습니다.");
-                setUId("");
-                setPw("");
+                alert("회원이 존재하지 않습니다.");
+                
             }
+
         } else {
-            alert("정보를 입력해주세요.");
+            alert("회원이 존재하지 않습니다.");
         }
+
+        // let memberInStorage = JSON.parse(localStorage.getItem("memberDB"));      DB가 없으니까 파싱자체를 못해와서 오류가 남. 
+        // let memIdObj = Object.keys(memberInStorage);
+        // console.log(memberInStorage[uId]);
+        
     };
 
     // onChange handler
