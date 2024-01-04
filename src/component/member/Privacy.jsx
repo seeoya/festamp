@@ -19,7 +19,7 @@ const Privacy = (props) => {
     const [uEmail, setUEmail] = useState(memberInfo[logInId].email ?? "");
     const [uBirth, setUBirth] = useState(memberInfo[logInId].birth ?? "");
 
-    const passwordRegEx = /^[A-Za-z0-9]{8,20}$/;
+    const passwordRegEx = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/;
 
 
     useEffect(() => {
@@ -74,15 +74,15 @@ const Privacy = (props) => {
     }
 
     const changeBtnHandler = () => {
-        console.log('changeBtnHandler() Clicked!!');
-        console.log(logInId, '얘는 아이디');
-        console.log(memberInfo, '정보');
-        console.log(memberInfo[logInId], "얘는 뭐야야야야야 ");
+        // console.log('changeBtnHandler() Clicked!!');
+        // console.log(logInId, '얘는 아이디');
+        // console.log(memberInfo, '정보');
+        // console.log(memberInfo[logInId], "얘는 뭐야야야야야 ");
 
         let currentMemInfo = memberInfo;
 
-        console.log(currentMemInfo, '이거 머야야야야야양');
-        console.log(uName, uPw, uPhone, uEmail, uBirth);
+        // console.log(currentMemInfo, '이거 머야야야야야양');
+        // console.log(uName, uPw, uPhone, uEmail, uBirth);
 
         if (uName !== "" && uPw !== "" && uPhone !== "" && uEmail !== "" && uBirth !== "") {
            if(uPw === pwSame){
@@ -129,7 +129,7 @@ const Privacy = (props) => {
         console.log("formatCheckBtnHandler() Clicked !!");
 
         if (uPw.match(passwordRegEx) === null) {
-            alert("올바른 비밀번호를 입력해주세요.");
+            alert("형식에 맞는 비밀번호를 입력해주세요.");
         } else {
             alert("사용 가능한 비밀번호 입니다.");
         }
@@ -151,7 +151,7 @@ const Privacy = (props) => {
                               </div>
                               <div>
                                 <label htmlFor="u_id">아이디</label>
-                                <input type="text" readOnly id="u_id" name="u_id" className="input"  defaultValue={memberInfo[logInId].name} />
+                                <input type="text" readOnly id="u_id" name="u_id" className="input"  defaultValue={logInId} />
                               </div>
                               <div>
                                 <label htmlFor="u_pw">
@@ -164,7 +164,7 @@ const Privacy = (props) => {
                                       확인
                                   </button>
                                 </div>
-                                <label htmlFor="u_pw" className="desc">비밀번호는 영문 대소문자, 숫자를 혼합하여 8~20자로 입력해주세요</label>
+                                <label htmlFor="u_pw" className="desc">비밀번호는 영문 대소문자, 숫자, 특수문자를 혼합하여 8~20자로 입력해주세요</label>
                               </div>
                               <div>
                                 <label htmlFor="pw_same">비밀번호 확인</label>
