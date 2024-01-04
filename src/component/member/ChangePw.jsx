@@ -58,9 +58,7 @@ const ChangePw = (props) => {
         let StorageDB = localStorage.getItem("memberDB");
         if (StorageDB !== null) {
             let memberInStorage = JSON.parse(StorageDB);
-            let memberPw = memberInStorage[props.uId].pw
-      
-
+       
         if(!!newPw && !!verifyPw){
             if(newPw === verifyPw){
             memberInStorage[props.uId].pw = newPw;
