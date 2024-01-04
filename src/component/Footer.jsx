@@ -37,7 +37,7 @@ const Footer = () => {
                         <ul className="footer_img">
                             <li className="festamp_logo">
                                 <Link to="/" className="link">
-                                    <img src="imgs/logo/blackstamp.jpg"/>
+                                    <img src="/imgs/logo/blackstamp.jpg"/>
                                 </Link>
                                 <span>
                                 © FESTAMP
@@ -45,17 +45,17 @@ const Footer = () => {
                             </li>
                             <li>
                                 <Link to="https://conlab.visitkorea.or.kr/" target="_blank" className="link">
-                                    <img src="imgs/logo/korea_logo1.png"/>
+                                    <img src="/imgs/logo/korea_logo1.png"/>
                                 </Link>
                             </li>
                             <li>
                                 <Link to="https://knto.or.kr/index" target="_blank" className="link">
-                                    <img src="imgs/logo/korea_logo2.png"/>
+                                    <img src="/imgs/logo/korea_logo2.png"/>
                                 </Link>
                             </li>
                             <li>
                                 <Link to="https://www.mcst.go.kr/kor/main.jsp" target="_blank" className="link">
-                                    <img src="imgs/logo/korea_logo3.png"/>
+                                    <img src="/imgs/logo/korea_logo3.png"/>
                                 </Link>
                             </li>
                         </ul>

@@ -86,15 +86,16 @@ const ReviewWriteModal = (props) => {
                 <GradeSelect setStar={setStar}
                              parseReviewDB={parseReviewDB}
                              festivalNo={festivalDataId} />
-                <textarea
-                    cols="50"
-                    rows="5"
-                    vlaue={uReview}
-                    onChange={(e) => uReviewChangeHandler(e)}
-                ></textarea>
-                <br />
-
-                <button onClick={writeModalBtnClickHandler}>저장</button>
+                <div className="write_bottom">    
+                    <textarea className="review_text"
+                        cols="50"
+                        rows="5"
+                        vlaue={uReview}
+                        onChange={(e) => uReviewChangeHandler(e)}
+                    ></textarea>
+                    <br />
+                    <button className="btn main" onClick={writeModalBtnClickHandler}>저장</button>
+                </div>
             </div>
         );
     };
