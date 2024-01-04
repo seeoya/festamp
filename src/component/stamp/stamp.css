@@ -1,37 +1,40 @@
 .stamp_wrap {
     margin: 0 auto;
-    height: 500px;
-    background-color: #c9a9e9;
     text-align: center;
-    border: 1px solid #000;
-    border-radius: 20px;
     display: grid;
 }
 
 .stamp_item {
-    background-color: bisque;
+    background-color: rgb(238, 238, 238);
+    border: 1px solid black;
 }
 
 .stamp_item:nth-child(1) {
+    height: 80px;
+    padding: 10px;
     grid-column-start: 1;
     grid-column-end: 6;
     font-size: 30px;
     font-weight: bold;
+    border-radius: 10px 10px 0 0;
 }
 
-.stamp_wrap .date {
-    height: 50px;
+.stamp_item:nth-child(n + 2) {
+    height: 210px;
+}
+
+.stamp_item > .fes_title {
+    height: 60px;
+    margin-bottom: 10px;
+    font-size: 16px;
     font-weight: bold;
-    font-size: 18px;
+    border-bottom: 2px solid #dadada;
 }
 
-.stamp_img {
-    height: 200px;
-}
-
-.stamp_img > img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #c9a9e9;
+.stmap_img_wrap > img {
+    min-width: 200px;
+    max-width: 200px;
+    min-height: 150px;
+    max-height: 150px;
+    border-radius: 10px;
 }
