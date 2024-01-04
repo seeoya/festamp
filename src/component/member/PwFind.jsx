@@ -35,29 +35,45 @@ const PwFind = () => {
         console.log("findPwBtnHandler() Clicked !!");
 
         let memberInStorage = JSON.parse(localStorage.getItem("memberDB"));
-        let memIdObjArr = Object.keys(memberInStorage);
-        let memPhoneArr = memberInStorage[uId].phone;
-        let memberIdStr = memIdObjArr.toString()
-        console.log(memberInStorage);
-        console.log(memIdObjArr,"찍히는거");
-        console.log(uPhone);
-        console.log(!!uId);
-        console.log(!!uPhone);
-        console.log( memIdObjArr.includes(uId));
-        
-        
-        
-    
-        if(!!uId && !!uPhone){
-            if(memIdObjArr.includes(uId) && uPhone !== undefined &&memPhoneArr === uPhone){
-                alert('회원 ID입니다.');
-                navigate("/ChangePw")
-            } else {
-                alert('존재하지 않는 회원입니다.');
-            }
+               
+        let memPhone;
+        if (memberInStorage[(uId.trim())] !== undefined && memberInStorage[(uId.trim())].phone === uPhone.trim()) {
+            memPhone = memberInStorage[(uId.trim())].phone;
+
+            alert('일치');
+            navigate("/ChangePw");
+
+
+            return;
+
         } else {
-            alert('정보를 입력해주세요');
-        };
+            alert('회원 ID 또는 전화번호를 확인하세요.');
+
+            return;
+        }
+
+        // console.log('memberInStorage[uId]: ', memberInStorage[uId]);
+
+        // console.log('memPhone: ', memPhone);
+        // let memberIdStr = memIdObjArr.toString();
+        // console.log(memberInStorage);
+        // console.log(memIdObjArr,"찍히는거");
+        // console.log(uPhone);
+        // console.log(!!uId);
+        // console.log(!!uPhone);
+        // console.log( memIdObjArr.includes(uId));
+        
+
+        // if(!!uId && !!uPhone){
+        //     if(memIdObjArr.includes(uId) && uPhone !== undefined &&memPhone === uPhone){
+        //         alert('회원 ID입니다.');
+        //         navigate("/ChangePw")
+        //     } else {
+        //         alert('존재하지 않는 회원입니다.');
+        //     }
+        // } else {
+        //     alert('정보를 입력해주세요');
+        // };
 
     
         // if (uId !== "" && uPhone !== "") {
