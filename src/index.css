@@ -11,6 +11,7 @@
     --highlight: #ff9e43;
     --highlight-sub: #ffbb7b;
     --sec-bg: #fafafa;
+    --sec-hover-bg: #eaeaea;
     --sec-border-color: #dcdcdc;
     --border-color: #242424;
     --btn-bg: #0c0c0c;
@@ -104,7 +105,7 @@ table {
     justify-content: space-between;
     align-items: center;
     padding-bottom: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border-bottom: 1px solid var(--sec-border-color);
 }
 
