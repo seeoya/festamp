@@ -20,8 +20,8 @@ const MainReview = (props) => {
     const [reviewNo, setReviewNo] = useState(0);
     const [uReview, setUReview] = useState("");
     const [rStar, setRStar] = useState("");
-    const [festivalDataId, setFestivalDataId] = useState("");
-    const [festivalTitle, setFestivalTitle] = useState("");
+    const [festivalDataId, setFestivalDataId] = useState(props.festivalDataId??"");
+    const [festivalTitle, setFestivalTitle] = useState(props.festivalTitle??"");
     const [starGrade, setStarGrade] = useState("");
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -30,16 +30,7 @@ const MainReview = (props) => {
 
     useEffect(() => {
         console.log("useEffect() CALLED!!");
-
-        setFestivalDataId(props.festivalDataId);
-        setFestivalTitle(props.festivalTitle);
-
-
-        setStarGrade("****");
-
-        console.log(logInId);
-        console.log(isLogIned);
-
+        
         let reviewDBObjs = parseReviewDB();
         let rDataObjs = reviewDBObjs.rData;
 
@@ -78,19 +69,32 @@ const MainReview = (props) => {
         }
         console.log(rStarArr);
 
-       
-        // const starSum = rStarArr.reduce((prev, cur) => {return prev + cur;
-        // }, 0) 
-        
-        // let starMin = Math.ceil(((starSum *10) / rStarArr.length)/10);
-        // console.log(starMin); 
-        // setStarGrade(starMin);
         setReviewsArr(fullArr);
         currentPosts(reviewsArr);
         setReviewsArr(currentPosts);
 
+        console.log(festivalDataId);
+
+        // let starDBInStorage = localStorage.getItem("starDB");           
+        // let starDBObj = JSON.parse(starDBInStorage);
+        // let starObj = starDBObj.sData;
+        // let starFIdObj = starObj[festivalDataId];
+        // let starMinObj = starFIdObj.starMin;
+        // // setStarGrade(starMinObj);
+        // console.log(starObj);
+        // console.log(starMinObj);
+        // console.log(starFIdObj.starMin);
+
         
     }, [festivalDataId, festivalTitle, tempFlag, isShowWriteModal, isShowModifyModal, currentPage]);
+
+    
+    
+    
+    
+    // console.log(starMinObj);   
+
+    // setStarGrade(starMinObj);
 
     // 메인리스트 리뷰쓰기 버튼
     const mainReviewWriteBtnClickHandler = () => {
@@ -109,10 +113,12 @@ const MainReview = (props) => {
             let isReview = JSON.stringify(reviewsArr);
 
             if (isReview.includes(festivalTitle)) {
+                if(isReview.includes(logInId)){
                 alert(`${festivalTitle} 리뷰를 이미 작성하셨습니다!`);
-            } else {
+                } else {
                 // write modal show
                 setIsShowWriteModal(true);
+                }
             }
         }
     }
@@ -158,7 +164,7 @@ const MainReview = (props) => {
             starDBObj.sData = starObj;
             starDBInStorage = JSON.stringify(starDBObj);
             localStorage.setItem("starDB", starDBInStorage);
-            props.starMin();
+            props.starMinF();
 
             alert("삭제되었습니다.");                  
             setTempFlag((pv) => !pv);
@@ -274,7 +280,7 @@ const MainReview = (props) => {
                                 festivalTitle={festivalTitle}
                                 setIsShowWriteModal={setIsShowWriteModal}
                                 logInId={props.loginInfo.logInId}
-                                starMin={props.starMin}
+                                starMinF={props.starMinF}
                             />
                         </>
                     ) : null}

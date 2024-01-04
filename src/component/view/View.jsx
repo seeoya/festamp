@@ -95,7 +95,7 @@ const ListView = (props) => {
                         festivalDataId={festData[id].id}
                         festivalTitle={festData[id].title}
                         loginInfo={props.loginInfo}
-                        starMin={props.starMin}
+                        starMinF={props.starMinF}
                     />
                 </>
             </div>

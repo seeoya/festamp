@@ -66,7 +66,7 @@ const ReviewWriteModal = (props) => {
                 console.log("Review write success!");
                 alert('리뷰가 저장되었습니다!');
                 props.setIsShowWriteModal(false);
-                props.starMin();
+                props.starMinF();
             }
         }
         };

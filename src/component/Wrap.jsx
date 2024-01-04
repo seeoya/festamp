@@ -54,12 +54,12 @@ const Wrap = () => {
            
         }
 
-        starMin();
+        starMinF();
         
     }, []);
 
 
-    const starMin = () => {
+    const starMinF = () => {
         console.log('starMin() Called!');
     
         // reviewDB 가져오기
@@ -176,7 +176,7 @@ const Wrap = () => {
     return (
         <div id="wrap">
             <Header loginInfo={loginInfo} />
-            <Container festivalData={festivalData} loginInfo={loginInfo} starMin={starMin}/>
+            <Container festivalData={festivalData} loginInfo={loginInfo} starMinF={starMinF}/>
             <Footer />
         </div>
     );
