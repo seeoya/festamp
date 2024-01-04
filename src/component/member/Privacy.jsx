@@ -151,7 +151,7 @@ const Privacy = (props) => {
                               </div>
                               <div>
                                 <label htmlFor="u_id">아이디</label>
-                                <input type="text" readOnly id="u_id" name="u_id" className="input"  defaultValue={memberInfo[logInId].name} />
+                                <input type="text" readOnly id="u_id" name="u_id" className="input"  defaultValue={logInId} />
                               </div>
                               <div>
                                 <label htmlFor="u_pw">
