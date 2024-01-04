@@ -77,7 +77,6 @@ textarea.review_modify_text {
     gap: 5px;
     border-bottom: 2px dotted #dadada;
     padding: 25px;
-    margin-bottom: 25px;
 }
 
 .write_info {
@@ -134,4 +133,8 @@ textarea.review_modify_text {
 
 .review_modify_modal span:nth-child(1) {
     font-weight: bold;
+}
+
+.more_view_wrap {
+    margin-top: 20px;
 }
