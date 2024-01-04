@@ -58,10 +58,19 @@ const ChangePw = (props) => {
         let memberInfo = JSON.parse(localStorage.getItem('memberDB'));
         let memberPw = memberInfo[props.uId].pw
         console.log(memberPw);
-        console.log(memberInfo[props.uId]);
+        console.log(!!newPw);
+        console.log(!!verifyPw);
 
-        memberInfo[props.uId].pw = newPw;
-        localStorage.setItem('memberDB', JSON.stringify(memberInfo));  
+        if(!!newPw && !!verifyPw){
+
+            memberInfo[props.uId].pw = newPw;
+            localStorage.setItem('memberDB', JSON.stringify(memberInfo));  
+
+            alert('비밀번호가 변경되었습니다.');
+        } else {
+            alert('새 비밀번호를 입력해주세요.');
+        }
+
 
     };
 
