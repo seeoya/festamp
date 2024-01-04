@@ -87,7 +87,7 @@ const ReviewWriteModal = (props) => {
                              parseReviewDB={parseReviewDB}
                              festivalNo={festivalDataId} />
                 <div className="write_bottom">    
-                    <textarea className="review_text"
+                    <textarea className="review_text input"
                         cols="50"
                         rows="5"
                         vlaue={uReview}
