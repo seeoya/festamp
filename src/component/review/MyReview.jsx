@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Stamp from "../stamp/StampPage";
 import ReviewModifyModal from "./ReviewModifyModal";
+import "./myReview.css";
 
 const MyReview = (props) => {
 
@@ -13,6 +14,18 @@ const MyReview = (props) => {
     const [isShowModifyModal, setIsShowModifyModal] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(10);
+
+    // 로그인 확인
+    let navigate = useNavigate('');
+    useEffect(() => {
+
+        if (!logInId) {
+            alert('로그인 하세요');
+            navigate('/SignIn');
+        } else {
+            
+        }
+    }, []);
 
     useEffect(() => {
         console.log("useEffect() CALLED!!");
@@ -125,40 +138,44 @@ const MyReview = (props) => {
     };
 
     return (
-        <div className="my_page">
+        <div className="my_page sec">
 
-            <div className="my_stamp">
-                <p className="sec_item_title"><h2>MY STAMP</h2></p>
+            <div className="my_stamp ">
+                <p className="sec_item_title"><h1>MY STAMP</h1></p>
 
                 <Stamp myReviewsArr={myReviewsArr} logInId={logInId} festivalData={props.festivalData} />
             </div>
 
-            <div className="my_review">
+            <div id="review_wrap" className="view_review_list">
                 <ul>
-                    <li className="sec_item_title"><h2>MY REVIEW</h2></li>
+                    <li className="sec_item_title"><h1>MY REVIEW</h1></li>
                     {myReviewsArr.map((myReview, idx) => (
-                        <li className="my_full_list">
-                            <span>{`${[myReview.rDateTime]}`}</span>
-                            <span>{myReview.fTitle}</span>
-                            <span>{myReview.uReview}</span>
-                            <span>★</span>
-                            <span>{myReview.star}</span>
-                            <button onClick={(e) => myReviewModifyBtnClickHandler(e, myReview.rNo)}>
-                                수정
-                            </button>
-                            <button onClick={(e) => myReviewDelBtnClickHandler(e, myReview.rNo)}>
-                                삭제
-                            </button>
+                        <li className="full_list">
+                            <div className="write_info">
+                                <span> {myReview.fTitle}</span>
+                                <span>{`${[myReview.rDateTime]}`}</span>
+                                <span>★</span>
+                                <span>{myReview.star}</span>
+                            </div>
+                            <div className="review_value">
+                                <span>{myReview.uReview}</span>
+                                <button className="btn main" onClick={(e) => myReviewModifyBtnClickHandler(e, myReview.rNo)}>
+                                    수정
+                                </button>
+                                <button className="btn main" onClick={(e) => myReviewDelBtnClickHandler(e, myReview.rNo)}>
+                                    삭제
+                                </button>
+                            </div>
+                            
                         </li>
-
                     ))}
                 </ul>
 
             </div>
 
             <div className="more_view_wrap">
-                <Link to="#none" onClick={moreViewClickHandler}>+ 더보기 </Link>
-                <Link to="#none" onClick={moreViewCancleClickHandler}>접기</Link>
+                <Link className="underline" to="#none" onClick={moreViewClickHandler}>+ 더보기 </Link>
+                <Link className="underline" to="#none" onClick={moreViewCancleClickHandler}>접기</Link>
             </div>
 
             <div>

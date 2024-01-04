@@ -2,11 +2,11 @@
     margin: 0 auto;
     text-align: center;
     display: grid;
-    grid-template-columns: 240px 240px 240px 240px 240px;
+    grid-template-columns: 223px 223px 223px 223px 223px;
 }
 
 .stamp_item {
-    background-color: rgb(238, 238, 238);
+    background-color: rgb(241, 241, 241);
     border: 1px solid black;
 }
 
@@ -20,7 +20,7 @@
     border-radius: 10px 10px 0 0;
 }
 
-.stamp_item > .fes_title {
+.stamp_item .fes_title {
     height: 60px;
     margin-bottom: 10px;
     font-size: 18px;
@@ -32,7 +32,7 @@
     border-bottom: 2px solid #dadada;
 }
 
-.stamp_item > .fes_title:hover {
+.stamp_item .fes_title:hover {
     text-decoration: underline;
     color: #3f3f3f;
     cursor: pointer;
@@ -47,5 +47,7 @@
     max-width: 180px;
     min-height: 120px;
     max-height: 120px;
+    border: 1px solid #dadada;
+    box-shadow: 1px 1px 1px #dadada;
     border-radius: 10px;
 }
