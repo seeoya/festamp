@@ -71,17 +71,17 @@ const ReviewModifyModal = (props) => {
 
     return (
         <div className="review_modify_modal">
-            <span>{oldFTitle}</span><span>{oldRDateTime}</span>★&nbsp;<span>{oldStar}</span>
-            <br />
-            <textarea className="review_modify_text"
-                name="oldUReview"
-                defaultValue={oldUReview}
-                value={uReview}
-                onChange={uReviewChangeHandler}
-                rows="5"
-                cols="50"
-            />
-            <br />
+            <div className="modify_info">
+                <span>{oldFTitle}</span><span>{oldRDateTime}</span>★&nbsp;<span>{oldStar}</span>
+            </div>
+            <textarea className="review_modify_text input"
+                    name="oldUReview"
+                    defaultValue={oldUReview}
+                    value={uReview}
+                    onChange={uReviewChangeHandler}
+                    rows="5"
+                    cols="50"
+                />
             <button className="main btn" onClick={modifyModalBtnClickHandler}>수정</button>
         </div>
     );

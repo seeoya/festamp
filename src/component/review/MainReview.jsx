@@ -198,7 +198,7 @@ const MainReview = (props) => {
         <div id="review_wrap">
             <div className="view_review">
                 <div className="view_review_header">
-                            <span>{festivalTitle} 리뷰</span>
+                            <span>{festivalTitle}</span>
                             <span>{starGrade}</span>
                             <button
                                 onClick={mainReviewWriteBtnClickHandler}
@@ -209,6 +209,7 @@ const MainReview = (props) => {
                 </div>
 
                 <div className="view_review_list">
+                { reviewsArr.length > 0 ? 
                     <ul>
                         {reviewsArr.map((reviews, idx) =>
                             <li className="full_list" key={idx}>
@@ -223,7 +224,7 @@ const MainReview = (props) => {
                                     <div className="review_value">
                                         <span>{reviews.uReview}</span>
                                 {isLogIned ? (<>
-                                    <button className="btn main" onClick={(e) =>  mainReviewModifyBtnClickHandler(e, reviews.rNo)}>
+                                    <button className="btn main modify_btn" onClick={(e) =>  mainReviewModifyBtnClickHandler(e, reviews.rNo)}>
                                         수정
                                     </button>
                                     <button className="btn main" onClick={(e) => mainReviewDelBtnClickHandler(e, reviews.rNo)}>
@@ -236,6 +237,11 @@ const MainReview = (props) => {
                             </li>
                         )}
                     </ul>
+                    :
+                    <div>
+                        아무것도 없으니까 작성 부탁드려요~~
+                    </div>
+                }
                 </div>
 
                 
@@ -262,14 +268,20 @@ const MainReview = (props) => {
                     ) : null}
                 </div>
                 
+                {reviewsArr.length > 0 ?
+
                 <div className="more_view_wrap">
-                    <Link to="#none" onClick={moreViewClickHandler} />
+                    <button type="button" className="btn main" onClick={moreViewClickHandler}>
                     + 더보기
+                    </button>
 
-                    <Link to="#none" onClick={moreViewCancleClickHandler} />
+                    <button type="button" className="btn main" onClick={moreViewCancleClickHandler}>
                     접기
+                    </button>
                 </div>
-
+                :
+                null}
+                
             </div>
         </div>
     );

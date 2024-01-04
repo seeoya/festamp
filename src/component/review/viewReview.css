@@ -127,6 +127,11 @@ textarea.review_modify_text {
     margin: 10px 0;
 }
 
+.review_modify_modal {
+    display: flex;
+    flex-direction: column;
+}
+
 .review_modify_modal span {
     margin-right: 10px;
 }
@@ -137,4 +142,18 @@ textarea.review_modify_text {
 
 .more_view_wrap {
     margin-top: 20px;
+}
+
+.modify_info {
+    display: flex;
+    padding: 10px 0 0;
+}
+
+.more_view_wrap {
+    display: flex;
+    gap: 10px;
+}
+
+.modify_btn {
+    margin-left: 20px;
 }
