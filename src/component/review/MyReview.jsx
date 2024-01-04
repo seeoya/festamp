@@ -13,6 +13,7 @@ const MyReview = (props) => {
     const [isShowModifyModal, setIsShowModifyModal] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(10);
+    const [rStar, setRStar] = useState("");
 
     useEffect(() => {
         console.log("useEffect() CALLED!!");
@@ -52,14 +53,15 @@ const MyReview = (props) => {
 
     }, [tempFlag, isShowModifyModal, currentPage]);
 
-    const myReviewModifyBtnClickHandler = (e, rNo) => {
+    const myReviewModifyBtnClickHandler = (e, rNo, rStar) => {
         console.log("reviewModifyBtnClickHandler() Called!");
 
         setModifyKey(rNo);
+        setRStar(rStar);
         setIsShowModifyModal(true);
     };
 
-    const myReviewDelBtnClickHandler = (e, rNo) => {
+    const myReviewDelBtnClickHandler = (e, rNo, fNo) => {
         console.log("reviewDelBtnClickHandler() Called!");
 
         let result = window.confirm("리뷰를 삭제하시겠습니까?");
@@ -77,6 +79,18 @@ const MyReview = (props) => {
             localStorage.setItem("reviewDB", reviewDBInStorage);
 
             console.log("reviewDBInStorage: ", reviewDBInStorage);
+
+             // starDB 업데이트
+             let starDBInStorage = localStorage.getItem("starDB");           
+             let starDBObj = JSON.parse(starDBInStorage);
+             let starObj = starDBObj.sData;
+             
+             delete starObj[fNo];
+ 
+             starDBObj.sData = starObj;
+             starDBInStorage = JSON.stringify(starDBObj);
+             localStorage.setItem("starDB", starDBInStorage);
+             props.starMinF();
 
             alert("삭제되었습니다.");
 
@@ -143,10 +157,10 @@ const MyReview = (props) => {
                             <span>{myReview.uReview}</span>
                             <span>★</span>
                             <span>{myReview.star}</span>
-                            <button onClick={(e) => myReviewModifyBtnClickHandler(e, myReview.rNo)}>
+                            <button onClick={(e) => myReviewModifyBtnClickHandler(e, myReview.rNo, myReview.star)}>
                                 수정
                             </button>
-                            <button onClick={(e) => myReviewDelBtnClickHandler(e, myReview.rNo)}>
+                            <button onClick={(e) => myReviewDelBtnClickHandler(e, myReview.rNo, myReview.fDataId)}>
                                 삭제
                             </button>
                         </li>
@@ -167,6 +181,7 @@ const MyReview = (props) => {
                         <ReviewModifyModal
                             setIsShowModifyModal={setIsShowModifyModal}
                             modifyKey={modifyKey}
+                            rStar={rStar}
                         />
                     </>
                 ) : null}

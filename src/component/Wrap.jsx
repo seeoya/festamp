@@ -53,9 +53,17 @@ const Wrap = () => {
             localStorage.setItem("starDB", starDBInStorage);
            
         }
-        
 
+        starMinF();
+        
+    }, []);
+
+
+    const starMinF = () => {
+        console.log('starMin() Called!');
+    
         // reviewDB 가져오기
+        let reviewDBinStorage = localStorage.getItem("reviewDB");
         let parseReviewDB = JSON.parse(reviewDBinStorage);
         let reviewDBObjs = parseReviewDB;
         let rDataObjs = reviewDBObjs.rData;
@@ -132,8 +140,8 @@ const Wrap = () => {
        
         let festNoArr = Object.keys(tempArr);
         console.log(festNoArr);
-        
-        starDBInStorage = localStorage.getItem("starDB");        
+
+        let starDBInStorage = localStorage.getItem("starDB");                      
         let starDBObj = JSON.parse(starDBInStorage);
         let starObj = starDBObj['sData'];
         console.log('starObj: ', starObj);
@@ -155,7 +163,7 @@ const Wrap = () => {
         });
        
 
-    }, []);
+    }
 
     let loginInfo = {
         isLogIned: isLogIned,
@@ -168,7 +176,7 @@ const Wrap = () => {
     return (
         <div id="wrap">
             <Header loginInfo={loginInfo} />
-            <Container festivalData={festivalData} loginInfo={loginInfo} />
+            <Container festivalData={festivalData} loginInfo={loginInfo} starMinF={starMinF}/>
             <Footer />
         </div>
     );
