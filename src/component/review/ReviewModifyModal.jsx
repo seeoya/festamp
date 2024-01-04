@@ -7,9 +7,9 @@ const ReviewModifyModal = (props) => {
     const [oldRDateTime, setOldRDateTime] = useState("");
     const [uReview, setUReview] = useState("");
     const [oldUReview, setOldUReview] = useState("");
-    const [oldStar, setOldStar] = useState();
-
-    let modifyKey = props.modifyKey;
+    const [oldStar, setOldStar] = useState("");
+    
+    let modifyKey = props.modifyKey;    
 
     useEffect(() => {
         console.log("modifyKey: ", props.modifyKey);
@@ -17,9 +17,11 @@ const ReviewModifyModal = (props) => {
         let reviewDBObjs = parseReviewDB();
         let reviewObjs = reviewDBObjs.rData;
         let modifyMyReview = reviewObjs[modifyKey];
+       
         console.log("modifyMyReview: ", modifyMyReview);
 
-        setOldStar(modifyMyReview.star); 
+        setOldStar(props.rStar);
+        console.log(oldStar);
         setOldFTitle(modifyMyReview.fTitle);
         setOldRDateTime(modifyMyReview.rDateTime);
         setOldUReview(modifyMyReview.uReview);
@@ -49,7 +51,7 @@ const ReviewModifyModal = (props) => {
             'rDateTime': getDateTime(),
             'uReview': uReview,
             'rNo': modifyKey,
-            'star': modifyMyReview['oldStar'],
+            'star': props.rStar,
         };
 
         reviewDBObjs.rData = reviewObjs;
@@ -58,6 +60,7 @@ const ReviewModifyModal = (props) => {
         localStorage.setItem("reviewDB", modifiedReviewStr);
 
         console.log("Review modified success!");
+        
         props.setIsShowModifyModal(false);
     };
 

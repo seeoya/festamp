@@ -18,7 +18,7 @@ const MainReview = (props) => {
     const [reviewsArr, setReviewsArr] = useState([]);
     const [reviewNo, setReviewNo] = useState(0);
     const [uReview, setUReview] = useState("");
-
+    const [rStar, setRStar] = useState("");
     const [festivalDataId, setFestivalDataId] = useState("");
     const [festivalTitle, setFestivalTitle] = useState("");
     const [starGrade, setStarGrade] = useState("");
@@ -32,6 +32,8 @@ const MainReview = (props) => {
 
         setFestivalDataId(props.festivalDataId);
         setFestivalTitle(props.festivalTitle);
+
+
         setStarGrade("****");
 
         console.log(logInId);
@@ -48,6 +50,7 @@ const MainReview = (props) => {
 
         let tempArr = [];
         let rStarArr = [];
+        let fullArr = [];
 
         for (let i = 1; i < reviewskeys.length; i++) {
             let reviews = rDataObjs[reviewskeys[i]];
@@ -59,7 +62,7 @@ const MainReview = (props) => {
                     let rStar = reviews.star;
                     console.log("reviewskeys[i]:", reviewskeys[i]);
 
-                    tempArr.push(reviews);
+                    tempArr.push(reviews);                    
                     rStarArr.push(rStar);
                                        
                 } else if (reviews.uId === logInId) {
@@ -69,6 +72,7 @@ const MainReview = (props) => {
 
                     tempArr.push(reviews);
                 }
+                
             }
         }
         console.log(rStarArr);
@@ -111,10 +115,12 @@ const MainReview = (props) => {
     }
 
     // 메인리스트 수정 버튼
-    const mainReviewModifyBtnClickHandler = (e, rNo) => {
+    const mainReviewModifyBtnClickHandler = (e, rNo, rStar) => {
         console.log("mainReviewModify Btn Clicked()!");
         setModifyKey(rNo);
+        setRStar(rStar);
         console.log("modifykey: ", modifyKey);
+        console.log("rStar: ", rStar);
         // modify modal show
         setIsShowModifyModal(true);
     };
@@ -224,7 +230,7 @@ const MainReview = (props) => {
                                     <div className="review_value">
                                         <span>{reviews.uReview}</span>
                                 {isLogIned ? (<>
-                                    <button className="btn main modify_btn" onClick={(e) =>  mainReviewModifyBtnClickHandler(e, reviews.rNo)}>
+                                    <button className="btn main modify_btn" onClick={(e) =>  mainReviewModifyBtnClickHandler(e, reviews.rNo, reviews.star)}>
                                         수정
                                     </button>
                                     <button className="btn main" onClick={(e) => mainReviewDelBtnClickHandler(e, reviews.rNo)}>
@@ -263,6 +269,7 @@ const MainReview = (props) => {
                             <ReviewModifyModal
                                 setIsShowModifyModal={setIsShowModifyModal}
                                 modifyKey={modifyKey}
+                                rStar={rStar}
                             />
                         </>
                     ) : null}

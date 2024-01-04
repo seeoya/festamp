@@ -134,7 +134,7 @@ const Wrap = () => {
         
         starDBInStorage = localStorage.getItem("starDB");        
         let starDBObj = JSON.parse(starDBInStorage);
-        let starObj = starDBObj.sData;
+        let starObj = starDBObj['sData'];
         console.log('starObj: ', starObj);
         
         festNoArr.map((el) => {   // festNo 객체 키배열을 맵으로 돌림
@@ -147,7 +147,7 @@ const Wrap = () => {
                 }
             
             starDBObj['sData'] = starObj;
-            let addStarObj = JSON.stringify(starObj);
+            let addStarObj = JSON.stringify(starDBObj);
             localStorage.setItem("starDB", addStarObj);
         });
        
