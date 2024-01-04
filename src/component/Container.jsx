@@ -15,6 +15,7 @@ import Stamp from "./stamp/Stamp";
 import ListView from "./view/View";
 
 import NotFound from "./NotFound";
+import PopularPage from "./main/PopularPage";
 import MyReview from "./review/MyReview";
 
 const Container = (props) => {
@@ -31,12 +32,8 @@ const Container = (props) => {
                 {/* MAIN */}
                 <Route path="/" element={<Main festivalData={props.festivalData} />}></Route>
                 <Route path="/list" element={<List festivalData={props.festivalData} />}></Route>
-                <Route
-                    path="/view/:id"
-                    element={
-                        <ListView festivalData={props.festivalData} loginInfo={props.loginInfo} />
-                    }
-                ></Route>
+                <Route path="/view/:id" element={<ListView festivalData={props.festivalData} loginInfo={props.loginInfo} />}></Route>
+                <Route path="/popular" element={<PopularPage festivalData={props.festivalData} />}></Route>
                 <Route path="/signin" element={<SignIn loginInfo={props.loginInfo} />}></Route>
                 <Route path="/signout" element={<SignOut loginInfo={props.loginInfo} />}></Route>
                 <Route path="/signup" element={<SignUp />}></Route>
