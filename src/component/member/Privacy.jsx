@@ -21,6 +21,9 @@ const Privacy = (props) => {
 
     const passwordRegEx = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/;
 
+    const [isPass, setIsPass] = useState(false);
+    const [isFormat, setIsFormat] = useState(false);
+
 
     useEffect(() => {
         if (!isLogIned) {
@@ -73,20 +76,35 @@ const Privacy = (props) => {
         console.log(uBirth);
     }
 
+      // 비밀번호 정규식
+      const formatCheck = () => {
+        console.log("formatCheckBtnHandler() Clicked !!");
+
+        if (uPw.match(passwordRegEx) !== null) {
+            setIsFormat(true);
+        }
+    };
+
+    // 비밀번호 확인 버튼
+    const pwSameCheck = () => {
+        console.log("pwSameBntHandler() Clicked!");
+
+        if (pwSame !== "" && uPw === pwSame) {
+            setIsPass(true);
+        }
+
+    };
+
+    //정보수정 버튼
     const changeBtnHandler = () => {
-        // console.log('changeBtnHandler() Clicked!!');
-        // console.log(logInId, '얘는 아이디');
-        // console.log(memberInfo, '정보');
-        // console.log(memberInfo[logInId], "얘는 뭐야야야야야 ");
+        console.log('changeBtnHandler() Clicked!!');
 
-        let currentMemInfo = memberInfo;
-
-        // console.log(currentMemInfo, '이거 머야야야야야양');
-        // console.log(uName, uPw, uPhone, uEmail, uBirth);
-
+        pwSameCheck();
+        formatCheck();
+        
         if (uName !== "" && uPw !== "" && uPhone !== "" && uEmail !== "" && uBirth !== "") {
-           if(uPw === pwSame){
-            currentMemInfo[logInId] = {
+            if (isPass && isFormat){
+                memberInfo[logInId] = {
                 name: uName,
                 pw: uPw,
                 phone: uPhone,
@@ -94,46 +112,22 @@ const Privacy = (props) => {
                 birth: uBirth
             };
 
-            let memberStr = JSON.stringify(currentMemInfo);
+            let memberStr = JSON.stringify(memberInfo);
             localStorage.setItem("memberDB", memberStr);
 
             alert('개인정보 변경 완료 !');
             navigate("/");
         } else {
-                alert('비밀번호가 일치하지 않습니다.');
-            }
+            alert('정확한 정보를 입력해주세요.');
+        }
+       
         } else {
             alert ("정보를 입력해주세요.");
         }
 
 
-    }
-    // 비밀번호 확인 버튼
-    const pwSameBntHandler = () => {
-        console.log("pwSameBntHandler() Clicked!");
-
-        if (pwSame !== "") {
-            if (uPw === pwSame) {
-                alert("비밀번호 일치합니다:)");
-            } else {
-                alert("비밀번호가 일치하지 않습니다.");
-                setPwSame("");
-            }
-        } else {
-            alert("비밀번호를 입력하세요.");
-            setPwSame("");
-        }
     };
-
-    const formatCheckBtnHandler = () => {
-        console.log("formatCheckBtnHandler() Clicked !!");
-
-        if (uPw.match(passwordRegEx) === null) {
-            alert("형식에 맞는 비밀번호를 입력해주세요.");
-        } else {
-            alert("사용 가능한 비밀번호 입니다.");
-        }
-    };
+   
 
     return (
         <>
@@ -160,9 +154,7 @@ const Privacy = (props) => {
                                 <div className="btn_wrap" >
                                   <input type="password" id="u_pw" name="u_pw" className="input"  defaultValue={memberInfo[logInId].pw}
                                       onChange={pwChangeHadler} placeholder="비밀번호 " />
-                                  <button type="button" className="btn main"  onClick={formatCheckBtnHandler}>
-                                      확인
-                                  </button>
+                                  
                                 </div>
                                 <label htmlFor="u_pw" className="desc">비밀번호는 영문 대소문자, 숫자, 특수문자를 혼합하여 8~20자로 입력해주세요</label>
                               </div>
@@ -175,7 +167,7 @@ const Privacy = (props) => {
                                       name="pw_same" className="input"  defaultValue={memberInfo[logInId].pw}
                                       onChange={pwSameChangeHadler} placeholder="비밀번호 확인"
                                   />
-                                  <button type="button" className="btn main"  onClick={pwSameBntHandler}>비밀번호 확인</button>
+                                 
                                 </div>
                               </div>
                               <div>
