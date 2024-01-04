@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './SignUp.css';
+import Secession from "./Secession";
 
 const Privacy = (props) => {
     console.log("Privacy() Called!!");
+    console.log(logInId);
+    
 
     let navigate = useNavigate('');
 
     let isLogIned = props.loginInfo.isLogIned;
     let logInId = props.loginInfo.logInId;
+    
 
     // Hook
     const [memberInfo, setMemberInfo] = useState(JSON.parse(localStorage.getItem('memberDB')) ?? "");
@@ -24,6 +28,7 @@ const Privacy = (props) => {
     const [isPass, setIsPass] = useState(false);
     const [isFormat, setIsFormat] = useState(false);
 
+    const [isSecession, setIsSecession] = useState(false);
 
     useEffect(() => {
         if (!isLogIned) {
@@ -128,6 +133,11 @@ const Privacy = (props) => {
 
     };
    
+    const secessinoViewHandler = () =>{
+        console.log('secessinoViewHandler() Clicked!!');
+        
+        setIsSecession(true);
+    }
 
     return (
         <>
@@ -185,11 +195,20 @@ const Privacy = (props) => {
                                 <input type="date" id="u_birth" name="u_birth" className="input"  defaultValue={memberInfo[logInId].birth}
                                     onChange={birthChangeHandler} placeholder="생일" />
                               </div>
-                              <button type="button" className="btn"  onClick={changeBtnHandler}>수정</button>
+                              <button type="button" className="btn"  onClick={changeBtnHandler}>정보수정</button>
+                              <button type="button" className="btn"  onClick={(props) => secessinoViewHandler(props)}>회원탈퇴</button>
+
                                                       </div>
                             </div>
                     </div >
                     : null}
+                    {
+                        isSecession
+                        ?
+                        <Secession/>
+                        :
+                        null
+                    }
         </>
     );
 };
