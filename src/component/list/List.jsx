@@ -26,7 +26,15 @@ const List = (props) => {
     const loadMoreHandler = () => {
         setVisibleItems((load) => load + 6);
 
+        setTimeout(() => {
+            scrollBottom();
+        }, [1])
     };
+
+    const scrollBottom = () => {
+        let list = document.getElementById("festival_inner");
+        list.scrollTop = list.scrollHeight;
+    }
 
     // 버튼 클릭 시 정렬 상태 변경
     const toggleSortByDate = () => {
@@ -91,34 +99,24 @@ const List = (props) => {
         <div id="list_wrap" className="sec">
             <div className="festival_container">
                 <div className="search_wrap">
-                    <input
-                        type="text"
-                        placeholder="검색어를 입력해 주세요."
-                        name="uSearch"
-                        className="input"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
+                    <input type="search" placeholder="검색어를 입력해 주세요." name="uSearch" className="input" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+
                     <div className="filter_wrap">
-                        <p>
-                            축제일순
-                            <input
-                                type="checkbox"
-                                name="starting_date"
-                                onClick={toggleSortByDate}
-                            />
-                        </p>
-                        <p>
-                            진행중인 축제
-                            <input type="checkbox" name="ing_date" onClick={toggleIngByDate} />
-                        </p>
+                        <div>
+                            <input type="checkbox" id="starting_date" className="input" name="starting_date" onClick={toggleSortByDate} />
+                            <label htmlFor="starting_date">축제일순으로 보기</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="ing_date" className="input" name="ing_date" onClick={toggleIngByDate} />
+                            <label htmlFor="ing_date">진행중인 축제 보기</label>
+                        </div>
                     </div>
                 </div>
 
                 <div className="festival_wrap">
                     {/* slice > 첫번째 인자부터 ~ 두번째 인자 전까지 값을 새로운 배열로 만들 때 사용 */}
                     {/* slice 통과한 게 map에 들어가서 반복*/}
-                    <div className="festival_inner" ref={listDivEle}>
+                    <div id="festival_inner" className="festival_inner" ref={listDivEle}>
                         {festData.slice(0, visibleItems).map((festival, index) => (
                             <div className="festival_item" key={index}>
                                 <div>
@@ -165,7 +163,7 @@ const List = (props) => {
                     <img src="imgs/logo/stamp2.jpg" />
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

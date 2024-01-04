@@ -21,7 +21,7 @@ const MainReview = (props) => {
 
     const [festivalDataId, setFestivalDataId] = useState("");
     const [festivalTitle, setFestivalTitle] = useState("");
-    const [starGradeDataId, setStarGradeDataId] = useState("");
+    const [starGrade, setStarGrade] = useState("");
 
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(10);
@@ -32,7 +32,7 @@ const MainReview = (props) => {
 
         setFestivalDataId(props.festivalDataId);
         setFestivalTitle(props.festivalTitle);
-        setStarGradeDataId("****");
+        setStarGrade("****");
 
         console.log(logInId);
         console.log(isLogIned);
@@ -47,6 +47,7 @@ const MainReview = (props) => {
         console.log(reviewskeys);
 
         let tempArr = [];
+        let rStarArr = [];
 
         for (let i = 1; i < reviewskeys.length; i++) {
             let reviews = rDataObjs[reviewskeys[i]];
@@ -55,9 +56,12 @@ const MainReview = (props) => {
                 if (!isLogIned) {
                     // 로그인 상태가 아니라면
                     reviews["key"] = reviewskeys[i];
+                    let rStar = reviews.star;
                     console.log("reviewskeys[i]:", reviewskeys[i]);
 
                     tempArr.push(reviews);
+                    rStarArr.push(rStar);
+                                       
                 } else if (reviews.uId === logInId) {
                     // 로그인 상태라면
                     reviews["key"] = reviewskeys[i];
@@ -67,9 +71,18 @@ const MainReview = (props) => {
                 }
             }
         }
+        console.log(rStarArr);
+        const starSum = rStarArr.reduce((prev, cur) => {return prev + cur;
+        }, 0) 
+        
+        let starMin = Math.ceil(((starSum *10) / rStarArr.length)/10);
+        console.log(starMin); 
+        setStarGrade(starMin);
         setReviewsArr(tempArr);
         currentPosts(reviewsArr);
         setReviewsArr(currentPosts);
+
+        
     }, [festivalDataId, festivalTitle, tempFlag, isShowWriteModal, isShowModifyModal, currentPage]);
 
     // 메인리스트 리뷰쓰기 버튼
@@ -186,7 +199,7 @@ const MainReview = (props) => {
             <div className="view_review">
                 <div className="view_review_header">
                             <span>{festivalTitle} 리뷰</span>
-                            <span>{starGradeDataId}</span>
+                            <span>{starGrade}</span>
                             <button
                                 onClick={mainReviewWriteBtnClickHandler}
                                 className="write_btn btn highlight"
@@ -201,15 +214,14 @@ const MainReview = (props) => {
                             <li className="full_list" key={idx}>
                                 <div className="write_info">
                                     <span>{reviews.uId}</span>
-                                    {/* <span>{reviews.fTitle}</span> */}
                                     <span>{`${[
                                         reviews.rDateTime.split("일", 1),
-                                    ]}${"일"}`}</span>
-                                    <span>★</span>
+                                        ]}${"일"}`}</span>
+                                        <span>★</span>
                                     <span>{reviews.star}</span>
-                                </div>
-                                <div className="review_value">
-                                    <span>{reviews.uReview}</span>
+                                    </div>
+                                    <div className="review_value">
+                                        <span>{reviews.uReview}</span>
                                 {isLogIned ? (<>
                                     <button className="btn main" onClick={(e) =>  mainReviewModifyBtnClickHandler(e, reviews.rNo)}>
                                         수정

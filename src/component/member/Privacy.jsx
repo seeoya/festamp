@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import './SignUp.css';
 
 const Privacy = (props) => {
     console.log("Privacy() Called!!");
@@ -18,7 +19,7 @@ const Privacy = (props) => {
     const [uEmail, setUEmail] = useState(memberInfo[logInId].email ?? "");
     const [uBirth, setUBirth] = useState(memberInfo[logInId].birth ?? "");
 
-    const passwordRegEx = /^[A-Za-z0-9]{8,20}$/;
+    const passwordRegEx = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/;
 
 
     useEffect(() => {
@@ -73,15 +74,15 @@ const Privacy = (props) => {
     }
 
     const changeBtnHandler = () => {
-        console.log('changeBtnHandler() Clicked!!');
-        console.log(logInId, '얘는 아이디');
-        console.log(memberInfo, '정보');
-        console.log(memberInfo[logInId], "얘는 뭐야야야야야 ");
+        // console.log('changeBtnHandler() Clicked!!');
+        // console.log(logInId, '얘는 아이디');
+        // console.log(memberInfo, '정보');
+        // console.log(memberInfo[logInId], "얘는 뭐야야야야야 ");
 
         let currentMemInfo = memberInfo;
 
-        console.log(currentMemInfo, '이거 머야야야야야양');
-        console.log(uName, uPw, uPhone, uEmail, uBirth);
+        // console.log(currentMemInfo, '이거 머야야야야야양');
+        // console.log(uName, uPw, uPhone, uEmail, uBirth);
 
         if (uName !== "" && uPw !== "" && uPhone !== "" && uEmail !== "" && uBirth !== "") {
            if(uPw === pwSame){
@@ -128,7 +129,7 @@ const Privacy = (props) => {
         console.log("formatCheckBtnHandler() Clicked !!");
 
         if (uPw.match(passwordRegEx) === null) {
-            alert("올바른 비밀번호를 입력해주세요.");
+            alert("형식에 맞는 비밀번호를 입력해주세요.");
         } else {
             alert("사용 가능한 비밀번호 입니다.");
         }
@@ -138,61 +139,64 @@ const Privacy = (props) => {
         <>
             {
                 isLogIned ?
-                    <form>
-                        <div>
-                            <h3>개인정보수정</h3>
-                            <label htmlFor="u_name">
-                                <p>이름(닉네임) </p>
-                            </label>
-                            <input type="text" id="u_name" name="u_name" defaultValue={memberInfo[logInId].name}
-                                onChange={nickChageHandler} placeholder="이름(닉네임)" />
-                            <br />
-                            <label htmlFor="u_id">
-                                <p>아이디</p>
-                            </label>
-                            <input type="text" readOnly id="u_id" name="u_id" defaultValue={memberInfo[logInId].name} />
-                            <br />
-                            <label htmlFor="u_pw">
-                                <p>비밀번호</p>
-                            </label>
-                            <input type="password" id="u_pw" name="u_pw" defaultValue={memberInfo[logInId].pw}
-                                onChange={pwChangeHadler} placeholder="비밀번호 " /> &nbsp;
-                            <button type="button" onClick={formatCheckBtnHandler}>
-                                확인
-                            </button>
-                            <p>비밀번호는 영문 대소문자, 숫자를 혼합하여 8~20자로 입력해주세요</p>
-                            <label htmlFor="pw_same">
-                                <p>비밀번호 확인</p>
-                            </label>
-                            <input
-                                type="password"
-                                id="pw_same"
-                                name="pw_same" defaultValue={memberInfo[logInId].pw}
-                                onChange={pwSameChangeHadler} placeholder="비밀번호 확인"
-                            /> &nbsp;
-                            <button type="button" onClick={pwSameBntHandler}>비밀번호 확인</button>
-                            <br />
-                            <label htmlFor="u_phone">
-                                <p>연락처</p>
-                            </label>
-                            <input type="text" id="u_phone" name="u_phone" defaultValue={memberInfo[logInId].phone}
-                                onChange={phoneChangeHandler} placeholder="연락처" />
-                            <br />
-                            <label htmlFor="u_email">
-                                <p>이메일</p>
-                            </label>
-                            <input type="email" id="u_email" name="u_email" defaultValue={memberInfo[logInId].email}
-                                onChange={eMailChangeHandler} placeholder="E-mail" />
-                            <br />
-                            <label htmlFor="u_birth">
-                                <p>생년월일</p>
-                            </label>
-                            <input type="date" id="u_birth" name="u_birth" defaultValue={memberInfo[logInId].birth}
-                                onChange={birthChangeHandler} placeholder="생일" />
-                            <br />
-                            <button type="button" onClick={changeBtnHandler}>수정</button>
-                        </div>
-                    </form >
+                    <div id="sign_up" className="sec member" > 
+                        <div className="sec_item">
+                            <h1 className="sec_item_title">개인정보수정</h1>
+
+                            <div className="sec_item_content">
+                              <div>
+                                <label htmlFor="u_name">이름(닉네임) </label>
+                                <input type="text" id="u_name" name="u_name" className="input"  defaultValue={memberInfo[logInId].name}
+                                    onChange={nickChageHandler} placeholder="이름(닉네임)" />
+                              </div>
+                              <div>
+                                <label htmlFor="u_id">아이디</label>
+                                <input type="text" readOnly id="u_id" name="u_id" className="input"  defaultValue={logInId} />
+                              </div>
+                              <div>
+                                <label htmlFor="u_pw">
+                                    비밀번호
+                                </label>
+                                <div className="btn_wrap" >
+                                  <input type="password" id="u_pw" name="u_pw" className="input"  defaultValue={memberInfo[logInId].pw}
+                                      onChange={pwChangeHadler} placeholder="비밀번호 " />
+                                  <button type="button" className="btn main"  onClick={formatCheckBtnHandler}>
+                                      확인
+                                  </button>
+                                </div>
+                                <label htmlFor="u_pw" className="desc">비밀번호는 영문 대소문자, 숫자, 특수문자를 혼합하여 8~20자로 입력해주세요</label>
+                              </div>
+                              <div>
+                                <label htmlFor="pw_same">비밀번호 확인</label>
+                                <div className="btn_wrap">
+                                  <input
+                                      type="password"
+                                      id="pw_same"
+                                      name="pw_same" className="input"  defaultValue={memberInfo[logInId].pw}
+                                      onChange={pwSameChangeHadler} placeholder="비밀번호 확인"
+                                  />
+                                  <button type="button" className="btn main"  onClick={pwSameBntHandler}>비밀번호 확인</button>
+                                </div>
+                              </div>
+                              <div>
+                                <label htmlFor="u_phone">연락처</label>
+                                <input type="text" id="u_phone" name="u_phone" className="input"  defaultValue={memberInfo[logInId].phone}
+                                    onChange={phoneChangeHandler} placeholder="연락처" />
+                              </div>
+                              <div>
+                                <label htmlFor="u_email">이메일</label>
+                                <input type="email" id="u_email" name="u_email" className="input"  defaultValue={memberInfo[logInId].email}
+                                    onChange={eMailChangeHandler} placeholder="E-mail" />
+                              </div>
+                              <div>
+                                <label htmlFor="u_birth">생년월일</label>
+                                <input type="date" id="u_birth" name="u_birth" className="input"  defaultValue={memberInfo[logInId].birth}
+                                    onChange={birthChangeHandler} placeholder="생일" />
+                              </div>
+                              <button type="button" className="btn"  onClick={changeBtnHandler}>수정</button>
+                                                      </div>
+                            </div>
+                    </div >
                     : null}
         </>
     );
