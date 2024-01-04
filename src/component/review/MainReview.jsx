@@ -10,6 +10,7 @@ const MainReview = (props) => {
     const navigate = useNavigate();
     let logInId = props.loginInfo.logInId; // 로그인 아이디
     let isLogIned = props.loginInfo.isLogIned;
+    
 
     const [isShowWriteModal, setIsShowWriteModal] = useState(false);
     const [isShowModifyModal, setIsShowModifyModal] = useState(false);
@@ -72,17 +73,19 @@ const MainReview = (props) => {
 
                     tempArr.push(reviews);
                 }
-                
+                fullArr.push(reviews);
             }
         }
         console.log(rStarArr);
-        const starSum = rStarArr.reduce((prev, cur) => {return prev + cur;
-        }, 0) 
+
+       
+        // const starSum = rStarArr.reduce((prev, cur) => {return prev + cur;
+        // }, 0) 
         
-        let starMin = Math.ceil(((starSum *10) / rStarArr.length)/10);
-        console.log(starMin); 
-        setStarGrade(starMin);
-        setReviewsArr(tempArr);
+        // let starMin = Math.ceil(((starSum *10) / rStarArr.length)/10);
+        // console.log(starMin); 
+        // setStarGrade(starMin);
+        setReviewsArr(fullArr);
         currentPosts(reviewsArr);
         setReviewsArr(currentPosts);
 
@@ -123,10 +126,11 @@ const MainReview = (props) => {
         console.log("rStar: ", rStar);
         // modify modal show
         setIsShowModifyModal(true);
+        
     };
 
     // 메인리스트 삭제 버튼
-    const mainReviewDelBtnClickHandler = (e, rNo) => {
+    const mainReviewDelBtnClickHandler = (e, rNo, fNo) => {
         console.log("mainReviewDel Btn Clicked!");
 
         let result = window.confirm("리뷰를 삭제하시겠습니까?");
@@ -139,18 +143,30 @@ const MainReview = (props) => {
 
             reviewDBObjs.rData = myReviews;
             console.log("reviewDBObjs.rData: ", reviewDBObjs.rData);
-
+            // reviewDB 업데이트
             let reviewDBInStorage = JSON.stringify(reviewDBObjs);
             localStorage.setItem("reviewDB", reviewDBInStorage);
 
             console.log("reviewDBInStorage: ", reviewDBInStorage);
+            // starDB 업데이트
+            let starDBInStorage = localStorage.getItem("starDB");           
+            let starDBObj = JSON.parse(starDBInStorage);
+            let starObj = starDBObj.sData;
+            
+            delete starObj[fNo];
 
-            alert("삭제되었습니다.");
+            starDBObj.sData = starObj;
+            starDBInStorage = JSON.stringify(starDBObj);
+            localStorage.setItem("starDB", starDBInStorage);
+            props.starMin();
 
+            alert("삭제되었습니다.");                  
             setTempFlag((pv) => !pv);
+            
         } else {
             alert("취소되었습니다.");
         }
+        
     };
 
     // 메인리뷰 더보기 클릭핸들러
@@ -215,16 +231,14 @@ const MainReview = (props) => {
                 </div>
 
                 <div className="view_review_list">
-                { reviewsArr.length > 0 ? 
+                             { reviewsArr.length > 0 ? 
                     <ul>
                         {reviewsArr.map((reviews, idx) =>
                             <li className="full_list" key={idx}>
                                 <div className="write_info">
                                     <span>{reviews.uId}</span>
-                                    <span>{`${[
-                                        reviews.rDateTime.split("일", 1),
-                                        ]}${"일"}`}</span>
-                                        <span>★</span>
+                                    <span>{`${[reviews.rDateTime.split("일", 1),]}${"일"}`}</span>
+                                    <span>★</span>
                                     <span>{reviews.star}</span>
                                     </div>
                                     <div className="review_value">
@@ -233,7 +247,7 @@ const MainReview = (props) => {
                                     <button className="btn main modify_btn" onClick={(e) =>  mainReviewModifyBtnClickHandler(e, reviews.rNo, reviews.star)}>
                                         수정
                                     </button>
-                                    <button className="btn main" onClick={(e) => mainReviewDelBtnClickHandler(e, reviews.rNo)}>
+                                    <button className="btn main" onClick={(e) => mainReviewDelBtnClickHandler(e, reviews.rNo, reviews.fDataId)}>
                                         삭제
                                     </button>
                                 </>
@@ -260,6 +274,7 @@ const MainReview = (props) => {
                                 festivalTitle={festivalTitle}
                                 setIsShowWriteModal={setIsShowWriteModal}
                                 logInId={props.loginInfo.logInId}
+                                starMin={props.starMin}
                             />
                         </>
                     ) : null}
