@@ -39,7 +39,7 @@ const PwFind = () => {
         if (memberInStorage[(uId.trim())] !== undefined && memberInStorage[(uId.trim())].phone === uPhone.trim()) {
             memPhone = memberInStorage[(uId.trim())].phone;
 
-            alert('일치');
+            alert('비밀번호 변경 페이지로 이동합니다.');
 
             setIsFindPwBtn(true);
             // setIsPwFindShow(false);
