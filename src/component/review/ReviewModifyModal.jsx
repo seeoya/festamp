@@ -73,7 +73,7 @@ const ReviewModifyModal = (props) => {
         <div className="review_modify_modal">
             <span>{`${oldRDateTime} | ${oldFTitle} | ★ ${oldStar}`}</span>
             <br />
-            <textarea
+            <textarea className="review_modify_text"
                 name="oldUReview"
                 defaultValue={oldUReview}
                 value={uReview}
@@ -82,7 +82,7 @@ const ReviewModifyModal = (props) => {
                 cols="50"
             />
             <br />
-            <button onClick={modifyModalBtnClickHandler}>수정</button>
+            <button className="main btn" onClick={modifyModalBtnClickHandler}>수정</button>
         </div>
     );
 };
