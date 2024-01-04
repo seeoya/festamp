@@ -171,3 +171,8 @@ table {
     border: 1px solid var(--sec-border-color);
     border-radius: var(--btn-border-radius);
 }
+
+input[type="checkbox"].input {
+    padding: 0;
+    height: auto;
+}
