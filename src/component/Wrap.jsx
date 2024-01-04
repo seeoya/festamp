@@ -44,6 +44,7 @@ const Wrap = () => {
                 ['sData'] : {
                 [festivalNo]: {
                     'starMin': '',
+                    'list': '',
                     },
                 },
             };
@@ -120,7 +121,7 @@ const Wrap = () => {
                         // starList에 dpStar값 넣기
                         tempArr[el] = {
                         starMin: dpStar,    // 평점 input
-                        list: [listStar]      // 해당 리스트 값 input
+                        list: listStar      // 해당 리스트 값 input
                         }
                    
                 }); 
@@ -140,10 +141,12 @@ const Wrap = () => {
         festNoArr.map((el) => {   // festNo 객체 키배열을 맵으로 돌림
             
             let starMinObj = tempArr[el].starMin;
+            let listStarObj = tempArr[el].list;
             console.log('starMinObj: ', starMinObj);
                          
             starObj[el] = {
-                'starMin': starMinObj            
+                'starMin': starMinObj,
+                'list': listStarObj,            
                 }
             
             starDBObj['sData'] = starObj;
