@@ -47,12 +47,12 @@ const SignIn = (props) => {
                     setPw("");
                 }
             } else {
-                alert("회원이 존재하지 않습니다.");
+                alert("정확한 정보를 입력해주세요.");
                 
             }
 
         } else {
-            alert("회원이 존재하지 않습니다.");
+            alert("정확한 정보를 입력해주세요.");
         }
 
         // let memberInStorage = JSON.parse(localStorage.getItem("memberDB"));      DB가 없으니까 파싱자체를 못해와서 오류가 남. 
