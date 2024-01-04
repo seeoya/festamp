@@ -1,8 +1,4 @@
 /* view style  */
-#listview_wrap {
-    width: 1200px;
-    margin: 0 auto;
-}
 
 #listview_wrap .title {
     width: 100%;
@@ -92,8 +88,4 @@
 #listview_wrap .bottom .event .event_list:nth-child(2n), #listview_wrap .info ul li:nth-child(2n) {
     padding: 5px;
     border-radius: 10px;
-}
-
-#listview_wrap .review {
-    width: 1000px;
 }

@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import SignUp from "./SignUp";
+import { Link, useNavigate } from "react-router-dom";
 // import styles from './SignIn.module.css';
-import IdFind from "./IdFind";
-import PwFind from "./PwFind";
 
 const SignIn = (props) => {
     console.log("SignIn() Called!");
@@ -43,8 +40,6 @@ const SignIn = (props) => {
                 navigate("/");
                 setIsLogined(true);
                 setLogInId(uId);
-               
-
             } else {
                 alert("회원정보가 없습니다.");
                 setUId("");
@@ -92,52 +87,36 @@ const SignIn = (props) => {
         console.log("fwFindClickHandler() Clicked!!! 야ㅑㅑㅑ");
 
         setIsFindPwClick(false);
-
         navigate("/PwFind");
     };
 
     return (
-        <div>
-            <>
-                <div>
-                    <div>
-                        <h3>로그인</h3>
-                        <input
-                            type="text"
-                            value={uId}
-                            onChange={loginIdHandler}
-                            placeholder="ID를 입력하세요"
-                        />
-                        <br />
-                        <input
-                            type="password"
-                            value={uPw}
-                            onChange={loginPwHandler}
-                            placeholder="PASSWORD를 입력하세요"
-                        />
-                        <br />
-                        <a href="#none" value={isfindIdClick} onClick={idFindClickHandler}>
-                            아이디찾기
-                        </a>{" "}
-                        /{" "}
-                        <a href="#none" value={isFindPwClick} onClick={fwFindClickHandler}>
-                            비밀번호찾기
-                        </a>
-                        <br />
-                        <a href="#none" onClick={joinBtnHandler}>
-                            회원가입
-                        </a>
-                        <br />
-                        <button type="button" onClick={(props) => loginBtnHandler(props)}>
-                            로그인
-                        </button>
-                    </div>
-                </div>
-            </>
+        <div id="sign_in" className="sec member">
+            <div className="sec_item">
+                <h1 className="sec_item_title">로그인</h1>
 
-            {isJoin ? <SignUp /> : null}
+                <div className="sec_item_content">
+                    <div>
+                        <input type="text" className="input" value={uId} onChange={loginIdHandler} placeholder="ID를 입력하세요" />
+                    </div>
+
+                    <div>
+                        <input type="password" className="input" value={uPw} onChange={loginPwHandler} placeholder="PASSWORD를 입력하세요" />
+                    </div>
+
+                    <div className="links">
+                        <Link to="/idfind" value={isfindIdClick} onClick={idFindClickHandler}>- 아이디찾기</Link>
+                        <Link to="/pwfind" value={isFindPwClick} onClick={fwFindClickHandler}>- 비밀번호찾기</Link>
+                    </div>
+
+                    <button type="button" className="btn main" onClick={(props) => loginBtnHandler(props)}>로그인</button>
+                    <Link to="/signup" className="btn" onClick={joinBtnHandler}>회원가입</Link>
+                </div>
+            </div>
+
+            {/* {isJoin ? <SignUp /> : null}
             {isfindIdClick ? <IdFind /> : null}
-            {isFindPwClick ? <PwFind /> : null}
+            {isFindPwClick ? <PwFind /> : null} */}
         </div>
     );
 };

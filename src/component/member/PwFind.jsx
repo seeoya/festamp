@@ -2,20 +2,19 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ChangePw from "./ChangePw";
 
+
 const PwFind = () => {
     console.log("IdFind() !!!!!!!!!");
+
+    // 뷰체인지 
+    const [isFindPwBtn, setIsFindPwBtn] = useState(false);
+
 
     const [uId, setUId] = useState("");
     const [uPhone, setUphone] = useState("");
 
-    // change password 화면
-    const [isUInfo, setIsUInfo] = useState(false);
-
     // 네비게이트
     const navigate = useNavigate();
-
-    // 로그인뷰
-    const [isLoginView, setIsLoginView] = useState(false);
 
     // input 입력값
     const inputIdHandler = (e) => {
@@ -35,65 +34,64 @@ const PwFind = () => {
         console.log("findPwBtnHandler() Clicked !!");
 
         let memberInStorage = JSON.parse(localStorage.getItem("memberDB"));
-        let memIdObjarr = Object.keys(memberInStorage);
-        console.log(memberInStorage[uId].phone);
-        console.log(memIdObjarr);
-        console.log(uPhone);
 
-        if (uId !== "" && uPhone !== "") {
-            if (uId !== null && uId !== undefined) {
-                if (uPhone !== null && uPhone !== undefined) {
-                    setIsUInfo(true);
-                    navigate("/ChangePw");
-                }
-            } else {
-                alert("존재하지 않는 ID입니다.");
-            }
+        let memPhone;
+        if (memberInStorage[(uId.trim())] !== undefined && memberInStorage[(uId.trim())].phone === uPhone.trim()) {
+            memPhone = memberInStorage[(uId.trim())].phone;
+
+            alert('비밀번호 변경 페이지로 이동합니다.');
+
+            setIsFindPwBtn(true);
+            // setIsPwFindShow(false);
+            return;
+
         } else {
-            alert("정보를 입력해주세요.");
+            alert('회원 ID 또는 전화번호를 확인하세요.');
+
+            return;
         }
+
     };
+
+
     // 로그인화면 버튼 클릭시 이동
     const signInView = () => {
         console.log("signInView() Clicked!!!!");
-
-        setIsLoginView(true);
 
         navigate("/SignIn");
     };
 
     return (
-        <div>
-            <div>
-                <h3>비밀번호 찾기</h3>
-                <label htmlFor="u_id">
-                    <p>ID</p>{" "}
-                </label>
-                <input
-                    type="text"
-                    id="u_id"
-                    value={uId}
-                    onChange={(e) => inputIdHandler(e)}
-                    placeholder="ID를 입력하세요"
-                />
-                <label htmlFor="u_phone">
-                    <p>Phone Number</p>{" "}
-                </label>
-                <input
-                    type="text"
-                    id="u_phone"
-                    value={uPhone}
-                    onChange={(e) => inputphoneHandler(e)}
-                    placeholder="Phone Number를 입력하세요"
-                />
-                <br />
-                <button onClick={findPwBtnHandler}>비밀번호 변경</button> &nbsp;
-                <button value={isLoginView} onClick={signInView}>
-                    로그인 화면
-                </button>
-                {isUInfo ? <ChangePw /> : null}
-            </div>
-        </div>
+        <>
+            {
+                isFindPwBtn ?
+                    <ChangePw uId={uId} />
+                    :
+                    <div id="pw_find" className="sec member">
+                        <div className="sec_item">
+                            <h1 className="sec_item_title">비밀번호 찾기</h1>
+
+                            <div className="sec_item_content">
+                                <div>
+                                    <label htmlFor="u_id">ID</label>
+                                    <input type="text" id="u_id" className="input" value={uId} onChange={(e) => inputIdHandler(e)} placeholder="ID를 입력하세요" />
+                                </div>
+
+                                <div>
+                                    <label htmlFor="u_phone">전화번호</label>
+                                    <input type="password" id="u_phone" className="input" value={uPhone} onChange={(e) => inputphoneHandler(e)} placeholder="Phone Number를 입력하세요"
+                                    />
+                                </div>
+
+                                <button className="btn main" onClick={findPwBtnHandler}>비밀번호 변경</button>
+
+                                <button className="btn" onClick={signInView}>로그인으로</button>
+                            </div>
+                        </div>
+                    </div>
+            }
+
+        </>
     );
 };
 
