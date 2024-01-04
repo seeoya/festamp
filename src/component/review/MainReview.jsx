@@ -25,6 +25,9 @@ const MainReview = (props) => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(10);
+    
+    
+    const [memberDBObjs,setMemberDBObjs] = useState("");
 
 
     useEffect(() => {
@@ -85,6 +88,10 @@ const MainReview = (props) => {
         
     }, [festivalDataId, festivalTitle, tempFlag, isShowWriteModal, isShowModifyModal, currentPage]);
 
+    useEffect(() => {
+        parseMemberDB()
+    },[])
+
     // 메인리스트 리뷰쓰기 버튼
     const mainReviewWriteBtnClickHandler = () => {
         console.log("mainReviewWrite Btn Clicked!");
@@ -117,6 +124,7 @@ const MainReview = (props) => {
         console.log("modifykey: ", modifyKey);
         // modify modal show
         setIsShowModifyModal(true);
+
     };
 
     // 메인리스트 삭제 버튼
@@ -173,6 +181,16 @@ const MainReview = (props) => {
         return reviewDBObjs;
     };
 
+    // memberDB 가져오는 함수
+    const parseMemberDB = () => {
+        console.log("getparseMemberDB() Called!");
+
+        let reviewDBinStorage = localStorage.getItem("memberDB");
+        let memberDBObjs = JSON.parse(reviewDBinStorage);
+        setMemberDBObjs(memberDBObjs);
+        return memberDBObjs;
+    };
+
     const checkLogined = () => {
         if (logInId === undefined || logInId === "" || logInId === null) {
             return false;
@@ -207,14 +225,13 @@ const MainReview = (props) => {
                                 리뷰 쓰기
                             </button>
                 </div>
-
                 <div className="view_review_list">
                 { reviewsArr.length > 0 ? 
                     <ul>
                         {reviewsArr.map((reviews, idx) =>
                             <li className="full_list" key={idx}>
                                 <div className="write_info">
-                                    <span>{reviews.uId}</span>
+                                    <span>{memberDBObjs[reviews.uId].name}</span>
                                     <span>{`${[
                                         reviews.rDateTime.split("일", 1),
                                         ]}${"일"}`}</span>
@@ -224,10 +241,10 @@ const MainReview = (props) => {
                                     <div className="review_value">
                                         <span>{reviews.uReview}</span>
                                 {isLogIned ? (<>
-                                    <button className="btn main modify_btn" onClick={(e) =>  mainReviewModifyBtnClickHandler(e, reviews.rNo)}>
+                                    <button className="btn main modify_bt" onClick={(e) =>  mainReviewModifyBtnClickHandler(e, reviews.rNo)}>
                                         수정
                                     </button>
-                                    <button className="btn main" onClick={(e) => mainReviewDelBtnClickHandler(e, reviews.rNo)}>
+                                    <button className="btn main delete_bt" onClick={(e) => mainReviewDelBtnClickHandler(e, reviews.rNo)}>
                                         삭제
                                     </button>
                                 </>
@@ -238,8 +255,8 @@ const MainReview = (props) => {
                         )}
                     </ul>
                     :
-                    <div>
-                        아무것도 없으니까 작성 부탁드려요~~
+                    <div className="review_null">
+                        현재 작성된 리뷰가 없습니다.
                     </div>
                 }
                 </div>
@@ -271,11 +288,11 @@ const MainReview = (props) => {
                 {reviewsArr.length > 0 ?
 
                 <div className="more_view_wrap">
-                    <button type="button" className="btn main" onClick={moreViewClickHandler}>
+                    <button type="button" className="more_btn" onClick={moreViewClickHandler}>
                     + 더보기
                     </button>
 
-                    <button type="button" className="btn main" onClick={moreViewCancleClickHandler}>
+                    <button type="button" className="hide_btn" onClick={moreViewCancleClickHandler}>
                     접기
                     </button>
                 </div>
