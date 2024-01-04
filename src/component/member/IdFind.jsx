@@ -24,12 +24,13 @@ const IdFind = () => {
         setUPhone(e.target.value);
     };
 
-    const findIdHandler = () => {
+    const findIdClickHandler = () => {
         console.log("findIdHandler() Click!!!!!!");
 
-        let memberInStorage = JSON.parse(localStorage.getItem("memberDB"));
-        let memIdObjarr = Object.keys(memberInStorage);
-        console.log(memberInStorage);
+        let StorageDB = localStorage.getItem("memberDB");
+        if (StorageDB !== null) {
+            let memberInStorage = JSON.parse(StorageDB);
+            let memIdObjarr = Object.keys(memberInStorage);
 
         // console.log(memberInStorage[uId].email);
         // console.log(memberInStorage[uId].pw);
@@ -38,7 +39,7 @@ const IdFind = () => {
         let flagId = "";
 
         memIdObjarr.map((el) => {
-            console.log(el, "여기!!!!!!!!!!");
+            console.log(el, "요기기!!!!!!!!!!");
             console.log(memberInStorage[el].email, uPhone);
 
             if (memberInStorage[el].email == uEmail && memberInStorage[el].phone == uPhone) {
@@ -46,6 +47,8 @@ const IdFind = () => {
                 flagId = el;
             }
         });
+
+        
         if (uEmail !== "" && uPhone !== "") {
             if (uEmail !== null && uEmail !== undefined) {
                 if (uPhone !== null && uPhone !== undefined) {
@@ -63,6 +66,9 @@ const IdFind = () => {
         } else {
             alert("정보를 입력해주세요.");
         }
+    } else {
+        alert('존재하지 않는 회원입니다.');
+    }
     };
 
     const signInView = () => {
@@ -88,7 +94,7 @@ const IdFind = () => {
                         <input type="text" id="u_phone" className="input" value={uPhone} onChange={(e) => inputPhoneHandler(e)} placeholder="Phone Number를 입력하세요" />
                     </div>
 
-                    <button className="btn main" onClick={findIdHandler}>아이디 찾기</button>
+                    <button className="btn main" onClick={findIdClickHandler}>아이디 찾기</button>
                     <button className="btn" value={isLoginView} onClick={signInView}>로그인으로</button>
                 </div>
             </div>

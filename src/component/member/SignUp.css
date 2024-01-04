@@ -50,3 +50,9 @@
 #sign_out .sec_item_title {
     justify-content: center;
 }
+
+#sign_in .links {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}

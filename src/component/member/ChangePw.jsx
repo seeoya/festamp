@@ -1,34 +1,32 @@
-import React, { useState } from "react";
+import React, { useId, useState } from "react";
 
-const ChangePw = () => {
+const ChangePw = (props) => {
     console.log("ChangePw() Called !!");
 
     const [newPw, setNewPw] = useState("");
     const [verifyPw, setVerifyPw] = useState("");
 
     //정규식
-    const passwordRegEx = /^[A-Za-z0-9]{8,20}$/;
+    const passwordRegEx = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/;
 
     // 입력창
     const inputNewPW = (e) => {
         console.log("inputNewPW() Input !!");
 
         setNewPw(e.target.value);
-        console.log(newPw);
     };
 
     const inputVerifyPw = (e) => {
         console.log("inputVerifyPw() Input !!");
 
         setVerifyPw(e.target.value);
-        console.log(verifyPw);
     };
     // 비밀번호 형식체크
     const formatCheckBtnHandler = () => {
         console.log("formatCheckBtnHandler() Clicked !!");
 
         if (newPw.match(passwordRegEx) === null) {
-            alert("올바른 비밀번호를 입력해주세요.");
+            alert("형식에 맞는 비밀번호를 입력해주세요.");
         } else {
             alert("사용 가능한 비밀번호 입니다.");
         }
@@ -57,16 +55,34 @@ const ChangePw = () => {
     const ChangePwBtnHandler = () => {              //비밀번호 찾기에서 들어 올 때 로그인된 아이디를 갖고 와야하나???
         console.log("pwChangeBtnHandler() Clicked !!");
 
-        let memberInfo = JSON.parse(localStorage.getItem('memberDB')) ;
-        console.log(memberInfo);
+        let StorageDB = localStorage.getItem("memberDB");
+        if (StorageDB !== null) {
+            let memberInStorage = JSON.parse(StorageDB);
+            let memberPw = memberInStorage[props.uId].pw
+      
 
+        if(!!newPw && !!verifyPw){
+            if(newPw === verifyPw){
+            memberInStorage[props.uId].pw = newPw;
+            localStorage.setItem('memberDB', JSON.stringify(memberInStorage));  
+
+            alert('비밀번호가 변경되었습니다.');
+            } else {
+                alert('비밀번호가 일치하지 않습니다.')
+            }
+        } else {
+            alert('새 비밀번호를 입력해주세요.');
+        }
+    } else {
+        alert('존재하지 않는 회원입니다.');
+    }
 
     };
 
     return (
         <div id="change_pw" className="sec member">
             <div className="sec_item">
-                <h1 className="sec_item_title">비밀번호 변경</h1>
+                <h1 className="sec_item_title">비밀번호 변경 </h1>
 
                 <div className="sec_item_content">
                     <div>
@@ -74,9 +90,9 @@ const ChangePw = () => {
 
                         <div className="btn_wrap">
                             <input type="password" id="new_pw" className="input" defaultValue={(e) => newPw(e)} onChange={inputNewPW} placeholder="새 비밀번호 입력" />
-                            {/* <button type="button" className="btn main" onClick={formatCheckBtnHandler}>확인</button> */}
+                            <button type="button" className="btn main" onClick={formatCheckBtnHandler}>확인</button>
                         </div>
-                        <p>비밀번호는 영문 대소문자, 숫자를 혼합하여 8~20자로 입력해주세요</p>
+                        <p>비밀번호는 영문 대소문자, 숫자, 특수기호를 혼합하여 8~20자로 입력해주세요</p>
                     </div>
 
                     <div>

@@ -16,6 +16,11 @@ const Header = (props) => {
                         LIST
                     </Link>
                 </li>
+                <li>
+                    <Link to="/popular" className="link">
+                        RANKING
+                    </Link>
+                </li>
                 {isLogIned ? (
                     <>
                         <li>

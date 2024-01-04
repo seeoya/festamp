@@ -11,10 +11,11 @@ import PwFind from "./member/PwFind";
 import SignIn from "./member/SignIn";
 import SignOut from "./member/SignOut";
 import SignUp from "./member/SignUp";
-import Stamp from "./stamp/Stamp";
+import Stamp from "./stamp/StampPage";
 import ListView from "./view/View";
 
 import NotFound from "./NotFound";
+import PopularPage from "./main/PopularPage";
 import MyReview from "./review/MyReview";
 
 const Container = (props) => {
@@ -31,12 +32,8 @@ const Container = (props) => {
                 {/* MAIN */}
                 <Route path="/" element={<Main festivalData={props.festivalData} />}></Route>
                 <Route path="/list" element={<List festivalData={props.festivalData} />}></Route>
-                <Route
-                    path="/view/:id"
-                    element={
-                        <ListView festivalData={props.festivalData} loginInfo={props.loginInfo} />
-                    }
-                ></Route>
+                <Route path="/view/:id" element={<ListView festivalData={props.festivalData} loginInfo={props.loginInfo} />}></Route>
+                <Route path="/popular" element={<PopularPage festivalData={props.festivalData} />}></Route>
                 <Route path="/signin" element={<SignIn loginInfo={props.loginInfo} />}></Route>
                 <Route path="/signout" element={<SignOut loginInfo={props.loginInfo} />}></Route>
                 <Route path="/signup" element={<SignUp />}></Route>
@@ -45,7 +42,7 @@ const Container = (props) => {
                 <Route path="/pwfind" element={<PwFind />}></Route>
                 <Route path="/changePw" element={<ChangePw />}></Route>
 
-                <Route path="/myreview" element={<MyReview loginInfo={props.loginInfo} />}></Route>
+                <Route path="/myreview" element={<MyReview festivalData={props.festivalData} loginInfo={props.loginInfo} />}></Route>
 
                 {/* #TODO 테스트용. 제거 예정 */}
                 <Route path="/gradeselect" element={<GradeSelect />}></Route>

@@ -113,7 +113,6 @@ const MainReview = (props) => {
     // 메인리스트 수정 버튼
     const mainReviewModifyBtnClickHandler = (e, rNo) => {
         console.log("mainReviewModify Btn Clicked()!");
-
         setModifyKey(rNo);
         console.log("modifykey: ", modifyKey);
         // modify modal show
@@ -199,57 +198,53 @@ const MainReview = (props) => {
         <div id="review_wrap">
             <div className="view_review">
                 <div className="view_review_header">
-                    <ul>
-                        <li>
-                            <span>{festivalTitle} 리뷰</span>
+                            <span>{festivalTitle}</span>
                             <span>{starGrade}</span>
                             <button
                                 onClick={mainReviewWriteBtnClickHandler}
-                                className="btn highlight"
+                                className="write_btn btn highlight"
                             >
                                 리뷰 쓰기
                             </button>
-                        </li>
-                    </ul>
                 </div>
 
                 <div className="view_review_list">
-
+                { reviewsArr.length > 0 ? 
                     <ul>
                         {reviewsArr.map((reviews, idx) =>
                             <li className="full_list" key={idx}>
-                                <span>{reviews.uId}</span>
-                                {/* <span>{reviews.fTitle}</span> */}
-                                <span>{`${[
-                                    reviews.rDateTime.split("일", 1),
-                                ]}${"일"}`}</span>
-                                <span>{reviews.uReview}</span>
-                                <span>★</span>
-                                <span>{reviews.star}</span>
-
+                                <div className="write_info">
+                                    <span>{reviews.uId}</span>
+                                    <span>{`${[
+                                        reviews.rDateTime.split("일", 1),
+                                        ]}${"일"}`}</span>
+                                        <span>★</span>
+                                    <span>{reviews.star}</span>
+                                    </div>
+                                    <div className="review_value">
+                                        <span>{reviews.uReview}</span>
                                 {isLogIned ? (<>
-                                    <button onClick={(e) =>  mainReviewModifyBtnClickHandler(e, reviews.rNo)}>
+                                    <button className="btn main modify_btn" onClick={(e) =>  mainReviewModifyBtnClickHandler(e, reviews.rNo)}>
                                         수정
                                     </button>
-                                    <button onClick={(e) => mainReviewDelBtnClickHandler(e, reviews.rNo)}>
+                                    <button className="btn main" onClick={(e) => mainReviewDelBtnClickHandler(e, reviews.rNo)}>
                                         삭제
                                     </button>
                                 </>
                                 )
                                 : null}
+                                </div>
                             </li>
                         )}
                     </ul>
+                    :
+                    <div>
+                        아무것도 없으니까 작성 부탁드려요~~
+                    </div>
+                }
                 </div>
 
-                <div className="more_view_wrap">
-                    <Link to="#none" onClick={moreViewClickHandler} />
-                    + 더보기
-
-                    <Link to="#none" onClick={moreViewCancleClickHandler} />
-                    접기
-
-                </div>
+                
 
                 <div className="modal_wrap">
                     {isShowWriteModal ? (
@@ -272,6 +267,21 @@ const MainReview = (props) => {
                         </>
                     ) : null}
                 </div>
+                
+                {reviewsArr.length > 0 ?
+
+                <div className="more_view_wrap">
+                    <button type="button" className="btn main" onClick={moreViewClickHandler}>
+                    + 더보기
+                    </button>
+
+                    <button type="button" className="btn main" onClick={moreViewCancleClickHandler}>
+                    접기
+                    </button>
+                </div>
+                :
+                null}
+                
             </div>
         </div>
     );
