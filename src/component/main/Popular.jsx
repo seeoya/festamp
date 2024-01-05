@@ -14,29 +14,31 @@ const Popular = (props) => {
     }, []);
 
     const sortFestival = () => {
-        let starDB = JSON.parse(localStorage.getItem("starDB")).sData;
-        let tmpFesList = [];
-        let tmpStarList = [];
+        if (localStorage.getItem("starDB")) {
+            let starDB = JSON.parse(localStorage.getItem("starDB")).sData;
+            let tmpFesList = [];
+            let tmpStarList = [];
 
-        Object.keys(starDB).map((el) => {
-            tmpStarList.push({ fNo: el, star: starDB[el].starMin, count: starDB[el].list.length });
-        })
+            Object.keys(starDB).map((el) => {
+                tmpStarList.push({ fNo: el, star: starDB[el].starMin, count: starDB[el].list.length });
+            })
 
-        tmpStarList.sort((a, b) => {
-            if (a.star > b.star) return -1;
-            if (a.star < b.star) return +1;
-            return 0;
-        });
+            tmpStarList.sort((a, b) => {
+                if (a.star > b.star) return -1;
+                if (a.star < b.star) return +1;
+                return 0;
+            });
 
-        tmpStarList.map((el) => {
-            tmpFesList.push(festivalData[el.fNo])
-        })
+            tmpStarList.map((el) => {
+                tmpFesList.push(festivalData[el.fNo])
+            })
 
-        setFesList(tmpFesList);
-        setStarList(tmpStarList);
+            setFesList(tmpFesList);
+            setStarList(tmpStarList);
 
-        console.log(tmpFesList);
-        console.log(tmpStarList);
+            console.log(tmpFesList);
+            console.log(tmpStarList);
+        }
     };
 
     return (
@@ -51,23 +53,26 @@ const Popular = (props) => {
                 }
             </h1>
 
-            <ul className="list">
-                {fesList.slice(0, maxFestivalCount).map((el, i) => {
-                    if (el) {
-                        return (
-                            <li className="item" key={i}>
-                                <Link to={"/view/" + el.id}>
-                                    <div>
-                                        <span className="marker">{`${i + 1}`}</span>
-                                        <span className="title">{`${el.title}`}</span>
-                                    </div>
-                                    <span className="star">★ {starList[i].star}</span>
-                                </Link>
-                            </li>
-                        );
-                    }
-                })}
-            </ul>
+            {fesList.length >= 1 ?
+                <ul className="list">
+                    {fesList.slice(0, maxFestivalCount).map((el, i) => {
+                        if (el) {
+                            return (
+                                <li className="item" key={i}>
+                                    <Link to={"/view/" + el.id}>
+                                        <div>
+                                            <span className="marker">{`${i + 1}`}</span>
+                                            <span className="title">{`${el.title}`}</span>
+                                        </div>
+                                        <span className="star">★ {starList[i].star}</span>
+                                    </Link>
+                                </li>
+                            );
+                        }
+                    })}
+                </ul>
+                : <div className="empty">리뷰가 없어요!</div>
+            }
         </div>
     );
 };
