@@ -24,7 +24,7 @@ const Privacy = (props) => {
 
     useEffect(() => {
         if (!isLogIned) {
-            alert('로그인 하세요');
+            alert('로그인 해주세요.');
             navigate('/signin');
         }
     }, []);
@@ -70,16 +70,16 @@ const Privacy = (props) => {
                     let memberStr = JSON.stringify(memberInfo);
                     localStorage.setItem("memberDB", memberStr);
 
-                    alert('개인정보 변경 완료 !');
+                    alert('개인정보가 변경되었습니다.');
                     navigate("/");
                 } else {
-                    alert('같은 비밀번호를 입력해주세요');
+                    alert('비밀번호가 일치하지 않습니다.');
                 }
             } else {
-                alert('올바른 비밀번호를 입력해주세요.');
+                alert('비밀번호를 다시 확인해 주세요.');
             }
         } else {
-            alert("정보를 입력해주세요.");
+            alert("정보를 입력해 주세요.");
         }
     };
 
@@ -97,13 +97,13 @@ const Privacy = (props) => {
 
                     <div id="sign_up" className="sec member" >
                         <div className="sec_item">
-                            <h1 className="sec_item_title">개인정보수정</h1>
+                            <h1 className="sec_item_title">개인정보 수정</h1>
 
                             <div className="sec_item_content">
                                 <div>
-                                    <label htmlFor="u_name">이름(닉네임) </label>
+                                    <label htmlFor="u_name">닉네임</label>
                                     <input type="text" id="u_name" name="u_name" className="input" defaultValue={memberInfo[logInId].name}
-                                        onChange={nickChageHandler} placeholder="이름(닉네임)" />
+                                        onChange={nickChageHandler} placeholder="닉네임을 입력해 주세요." />
                                 </div>
                                 <div>
                                     <label htmlFor="u_id">아이디</label>
@@ -115,10 +115,10 @@ const Privacy = (props) => {
                                     </label>
                                     <div className="btn_wrap" >
                                         <input type="password" id="u_pw" name="u_pw" className="input" defaultValue={memberInfo[logInId].pw}
-                                            onChange={pwChangeHadler} placeholder="비밀번호 " />
+                                            onChange={pwChangeHadler} placeholder="비밀번호를 입력해 주세요." />
 
                                     </div>
-                                    <label htmlFor="u_pw" className="desc">비밀번호는 영어 소문자,  최소 1개 이상의 숫자 혹은 특수문자를 혼합하여 6~12자로 입력해주세요.</label>
+                                    <label htmlFor="u_pw" className="desc">비밀번호는 영어 소문자, 최소 1개 이상의 숫자 혹은 특수문자를 혼합하여 6~12자로 입력해 주세요.</label>
                                 </div>
                                 <div>
                                     <label htmlFor="pw_same">비밀번호 확인</label>
@@ -127,27 +127,27 @@ const Privacy = (props) => {
                                             type="password"
                                             id="pw_same"
                                             name="pw_same" className="input" defaultValue={memberInfo[logInId].pw}
-                                            onChange={pwSameChangeHadler} placeholder="비밀번호 확인"
+                                            onChange={pwSameChangeHadler} placeholder="비밀번호를 다시 입력해 주세요."
                                         />
                                     </div>
                                 </div>
                                 <div>
-                                    <label htmlFor="u_phone">연락처</label>
+                                    <label htmlFor="u_phone">전화번호</label>
                                     <input type="text" id="u_phone" name="u_phone" className="input" defaultValue={memberInfo[logInId].phone}
-                                        onChange={phoneChangeHandler} placeholder="연락처" />
+                                        onChange={phoneChangeHandler} placeholder="전화번호를 입력해 주세요." />
                                 </div>
                                 <div>
                                     <label htmlFor="u_email">이메일</label>
                                     <input type="email" id="u_email" name="u_email" className="input" defaultValue={memberInfo[logInId].email}
-                                        onChange={eMailChangeHandler} placeholder="E-mail" />
+                                        onChange={eMailChangeHandler} placeholder="이메일을 입력해 주세요." />
                                 </div>
                                 <div>
                                     <label htmlFor="u_birth">생년월일</label>
                                     <input type="date" id="u_birth" name="u_birth" className="input" defaultValue={memberInfo[logInId].birth}
-                                        onChange={birthChangeHandler} placeholder="생일" />
+                                        onChange={birthChangeHandler} placeholder="생년월일을 입력해 주세요." />
                                 </div>
-                                <button type="button" className="btn" onClick={changeBtnHandler}>정보수정</button>
-                                <button type="button" className="btn" onClick={secessinoViewHandler}>회원탈퇴</button>
+                                <button type="button" className="btn main" onClick={changeBtnHandler}>정보 수정</button>
+                                <button type="button" className="btn" onClick={secessinoViewHandler}>회원 탈퇴</button>
                             </div>
                         </div>
                     </div >

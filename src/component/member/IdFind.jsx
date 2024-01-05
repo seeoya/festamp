@@ -39,21 +39,21 @@ const IdFind = () => {
                 if (uEmail !== null && uEmail !== undefined) {
                     if (uPhone !== null && uPhone !== undefined) {
                         if (flag) {
-                            alert(`ID : ${flagId}`);
+                            alert(`아이디 : ${flagId}`);
                         } else {
-                            alert("없는 정보입니다.");
+                            alert("일치하는 아이디가 없습니다.");
                         }
                     } else {
-                        alert("잘못된 Phone 번호 입니다.");
+                        alert("잘못된 전화번호입니다.");
                     }
                 } else {
-                    alert("잘못된 E-mail주소 입니다.");
+                    alert("잘못된 이메일입니다.");
                 }
             } else {
-                alert("정보를 입력해주세요.");
+                alert("정보를 입력해 주세요.");
             }
         } else {
-            alert('존재하지 않는 회원입니다.');
+            alert("일치하는 아이디가 없습니다.");
         }
     };
 
@@ -70,12 +70,12 @@ const IdFind = () => {
                 <div className="sec_item_content">
                     <div>
                         <label htmlFor="u_email">이메일</label>
-                        <input type="text" id="u_email" className="input" value={uEmail} onChange={(e) => inputEmailHandler(e)} placeholder="E-mail을 입력하세요" />
+                        <input type="text" id="u_email" className="input" value={uEmail} onChange={(e) => inputEmailHandler(e)} placeholder="이메일을 입력해 주세요." />
                     </div>
 
                     <div>
                         <label htmlFor="u_phone">전화번호</label>
-                        <input type="text" id="u_phone" className="input" value={uPhone} onChange={(e) => inputPhoneHandler(e)} placeholder="Phone Number를 입력하세요" />
+                        <input type="text" id="u_phone" className="input" value={uPhone} onChange={(e) => inputPhoneHandler(e)} placeholder="전화번호를 입력해 주세요" />
                     </div>
 
                     <button className="btn main" onClick={findIdClickHandler}>아이디 찾기</button>

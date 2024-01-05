@@ -31,17 +31,14 @@ const PwFind = () => {
             if (memberInStorage[(uId.trim())] !== undefined && memberInStorage[(uId.trim())].phone === uPhone.trim()) {
                 memPhone = memberInStorage[(uId.trim())].phone;
 
-                alert('비밀번호 변경 페이지로 이동합니다.');
-
                 setIsFindPwBtn(true);
                 return;
-
             } else {
-                alert('정확한 정보를 입력해주세요.');
+                alert('일치하는 회원 정보가 없습니다.');
                 return;
             }
         } else {
-            alert('정보를 입력해주세요.');
+            alert('일치하는 회원 정보가 없습니다.');
         }
     };
 
@@ -57,13 +54,13 @@ const PwFind = () => {
 
                             <div className="sec_item_content">
                                 <div>
-                                    <label htmlFor="u_id">ID</label>
-                                    <input type="text" id="u_id" className="input" value={uId} onChange={(e) => inputIdHandler(e)} placeholder="ID를 입력하세요" />
+                                    <label htmlFor="u_id">아이디</label>
+                                    <input type="text" id="u_id" className="input" value={uId} onChange={(e) => inputIdHandler(e)} placeholder="아이디를 입력해 주세요." />
                                 </div>
 
                                 <div>
                                     <label htmlFor="u_phone">전화번호</label>
-                                    <input type="password" id="u_phone" className="input" value={uPhone} onChange={(e) => inputphoneHandler(e)} placeholder="Phone Number를 입력하세요"
+                                    <input type="password" id="u_phone" className="input" value={uPhone} onChange={(e) => inputphoneHandler(e)} placeholder="전화번호를 입력해 주세요."
                                     />
                                 </div>
 

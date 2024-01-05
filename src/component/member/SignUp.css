@@ -12,7 +12,7 @@
     gap: 20px;
 }
 
-.sec_item_content > div {
+.sec_item_content>div {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -33,7 +33,7 @@
     width: 100%;
 }
 
-.btn_wrap button {
+.btn_wrap .btn {
     width: 100px;
 }
 
@@ -61,4 +61,26 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.btn_wrap {
+    position: relative;
+}
+
+button.eye {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    width: 60px;
+    height: 40px;
+    background: none;
+    border: none;
+    color: var(--btn-bg-hover);
+    font-size: 1.6rem;
+}
+
+button.eye:hover {
+    color: var(--sec-hover-bg);
 }

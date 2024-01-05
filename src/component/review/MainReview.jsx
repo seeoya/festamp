@@ -70,7 +70,7 @@ const MainReview = (props) => {
         // logined check
         if (!checkLogined()) {
             console.log(checkLogined());
-            alert("로그인이 필요합니다.");
+            alert("로그인 해주세요.");
             // 로그인 페이지로 이동
             navigate("/signin");
         } else {
@@ -79,7 +79,7 @@ const MainReview = (props) => {
 
             if (isReview.includes(festivalTitle)) {
                 if (isReview == logInId) {
-                    alert(`${festivalTitle} 리뷰를 이미 작성하셨습니다!`);
+                    alert(`이미 ${festivalTitle} 리뷰를 작성하셨습니다!`);
                 } else {
                     setIsShowWriteModal(true);
                 }

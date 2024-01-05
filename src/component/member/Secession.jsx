@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Secession = (props) => {
 
@@ -11,13 +11,13 @@ const Secession = (props) => {
 
     useEffect(() => {
         if (!islogiend) {
-            alert('로그인 하세요');
+            alert('로그인 해주세요.');
             navigate('/signin');
         }
     }, []);
 
     const deleteInfoHandeler = () => {
-        if (window.confirm("정말 탈퇴하시겠습니까?")) {
+        if (window.confirm("탈퇴하시겠습니까?")) {
             alert("이용해주셔서 감사합니다.");
             let storageMem = JSON.parse(localStorage.getItem("memberDB"));
 
@@ -27,14 +27,7 @@ const Secession = (props) => {
             localStorage.setItem("memberDB", newmemInfo);
             logiend(false);
             navigate("/");
-        } else {
-            alert("메인으로 돌아갑니다");
-            navigate("/");
         }
-    }
-
-    const showMainHandelr = () => {
-        navigate("/")
     }
 
     return (
@@ -51,8 +44,8 @@ const Secession = (props) => {
                             </div>
 
                             <div className="btn_wrap">
-                                <button onClick={deleteInfoHandeler} className="btn main" >예</button>
-                                <button onClick={showMainHandelr} className="btn" >아니오</button>
+                                <button onClick={deleteInfoHandeler} className="btn">예</button>
+                                <Link to="/" className="btn main">아니오</Link>
                             </div>
                         </div >
                     </div >

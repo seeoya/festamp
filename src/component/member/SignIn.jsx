@@ -35,15 +35,15 @@ const SignIn = (props) => {
                     setIsLogined(true);
                     setLogInId(uId);
                 } else {
-                    alert("회원정보가 없습니다.");
+                    alert("회원 정보가 없습니다.");
                     setUId("");
                     setPw("");
                 }
             } else {
-                alert("정확한 정보를 입력해주세요.");
+                alert("정확한 정보를 입력해 주세요.");
             }
         } else {
-            alert("정확한 정보를 입력해주세요.");
+            alert("정확한 정보를 입력해 주세요.");
         }
     };
 
@@ -80,17 +80,17 @@ const SignIn = (props) => {
                 <h1 className="sec_item_title">로그인</h1>
 
                 <div className="sec_item_content">
-                    <input type="text" className="input" value={uId} onChange={loginIdHandler} placeholder="ID를 입력하세요" />
+                    <input type="text" className="input" value={uId} onChange={loginIdHandler} placeholder="아이디를 입력해 주세요." />
 
-                    <input type="password" className="input" value={uPw} onChange={loginPwHandler} placeholder="PASSWORD를 입력하세요" />
+                    <input type="password" className="input" value={uPw} onChange={loginPwHandler} placeholder="비밀번호를 입력해 주세요." />
 
                     <div className="links">
-                        <Link to="/idfind" value={isfindIdClick} onClick={idFindClickHandler}>- 아이디찾기</Link>
-                        <Link to="/pwfind" value={isFindPwClick} onClick={fwFindClickHandler}>- 비밀번호찾기</Link>
+                        <Link to="/idfind" value={isfindIdClick} onClick={idFindClickHandler}>- 아이디 찾기</Link>
+                        <Link to="/pwfind" value={isFindPwClick} onClick={fwFindClickHandler}>- 비밀번호 찾기</Link>
                     </div>
 
                     <button type="button" className="btn main" onClick={(props) => loginBtnHandler(props)}>로그인</button>
-                    <Link to="/signup" className="btn" onClick={joinBtnHandler}>회원가입</Link>
+                    <Link to="/signup" className="btn" onClick={joinBtnHandler}>회원 가입</Link>
                 </div>
             </div>
         </div>

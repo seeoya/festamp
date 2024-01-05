@@ -37,10 +37,10 @@ const ChangePw = (props) => {
                         alert('비밀번호가 일치하지 않습니다.')
                     }
                 } else {
-                    alert('올바른 비밀번호를 입력해주세요.');
+                    alert('비밀번호를 다시 확인해 주세요.');
                 }
             } else {
-                alert('비밀번호를 입력해주세요.');
+                alert('비밀번호를 입력해 주세요.');
             }
         }
     };
@@ -48,22 +48,22 @@ const ChangePw = (props) => {
     return (
         <div id="change_pw" className="sec member">
             <div className="sec_item">
-                <h1 className="sec_item_title">비밀번호 변경 </h1>
+                <h1 className="sec_item_title">비밀번호 변경</h1>
 
                 <div className="sec_item_content">
                     <div>
                         <label htmlFor="new_pw">새로운 비밀번호</label>
 
                         <div className="btn_wrap">
-                            <input type="password" id="new_pw" className="input" defaultValue={(e) => newPw(e)} onChange={inputNewPW} placeholder="새 비밀번호 입력" />
+                            <input type="password" id="new_pw" className="input" defaultValue={(e) => newPw(e)} onChange={inputNewPW} placeholder="새 비밀번호를 입력해 주세요." />
                         </div>
-                        <p>비밀번호는 영어 소문자,  최소 1개 이상의 숫자 혹은 특수문자를 혼합하여 6~12자로 입력해주세요.</p>
+                        <p>비밀번호는 영어 소문자,  최소 1개 이상의 숫자 혹은 특수문자를 혼합하여 6~12자로 입력해 주세요.</p>
                     </div>
 
                     <div>
                         <label htmlFor="verify_pw">비밀번호 확인</label>
                         <div className="btn_wrap">
-                            <input type="password" id="verify_pw" className="input" defaultValue={(e) => verifyPw(e)} onChange={inputVerifyPw} placeholder="새 비밀번호 확인" />
+                            <input type="password" id="verify_pw" className="input" defaultValue={(e) => verifyPw(e)} onChange={inputVerifyPw} placeholder="새 비밀번호를 확인해 주세요." />
                         </div>
                     </div>
 
