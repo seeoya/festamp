@@ -16,7 +16,8 @@ const SignUp = () => {
     const [uEmail, setUEmail] = useState("");
     const [uBirth, setUBirth] = useState("");
 
-    const[isCheck, setIsCheck] = useState(false);
+    const [isCheck, setIsCheck] = useState(false);
+    const [isemptyValue, setIsemptyValue] = useState(false);
 
 
      // 비밀번호 정규식
@@ -102,7 +103,7 @@ const SignUp = () => {
         if (!!emptyValue) {
             if(!!isCheck){
             if (uPw.match(passwordRegEx) !== null) {
-                if(pwSame !== "" && uPw === pwSame ){
+                if(!!pwSame  && uPw === pwSame ){
                 if (memberInStorage === null) {
                     let newMemberDb = {
                         [uId]: {
