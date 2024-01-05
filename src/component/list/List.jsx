@@ -158,7 +158,7 @@ const List = (props) => {
                     />
                 </div>
 
-                <Link to="/myreview" className="stamp">
+                <Link to="/mypage" className="stamp">
                     {/* 스탬프 이미지 자리 */}
                     <img src="imgs/logo/stamp2.jpg" />
                 </Link>

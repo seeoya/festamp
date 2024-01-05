@@ -35,7 +35,7 @@ const Header = (props) => {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/myreview" className="link">
+                            <Link to="/mypage" className="link">
                                 {logInId}님
                             </Link>
                         </li>

@@ -13,7 +13,7 @@ import Secession from './member/Secession';
 import SignIn from "./member/SignIn";
 import SignOut from "./member/SignOut";
 import SignUp from "./member/SignUp";
-import MyReview from "./review/MyReview";
+import MyPage from "./review/MyPage";
 import ListView from "./view/View";
 
 const Container = (props) => {
@@ -39,7 +39,7 @@ const Container = (props) => {
                 <Route path="/secession" element={<Secession loginInfo={props.loginInfo} />}></Route>
 
                 {/* MYPAGE */}
-                <Route path="/myreview" element={<MyReview festivalData={props.festivalData} loginInfo={props.loginInfo} />}></Route>
+                <Route path="/mypage" element={<MyPage festivalData={props.festivalData} loginInfo={props.loginInfo} />}></Route>
 
                 {/* STYLE GUIDE */}
                 <Route path="/styleguide" element={<StyleGuide />}></Route>
