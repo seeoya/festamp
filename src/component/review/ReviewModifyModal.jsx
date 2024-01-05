@@ -13,6 +13,10 @@ const ReviewModifyModal = (props) => {
     let modifyKey = props.modifyKey;
 
     useEffect(() => {
+        document.getElementById("modify_input").focus();
+    }, []);
+
+    useEffect(() => {
         let reviewDBObjs = parseReviewDB();
         let reviewObjs = reviewDBObjs.rData;
         let modifyMyReview = reviewObjs[modifyKey];
@@ -59,12 +63,12 @@ const ReviewModifyModal = (props) => {
     };
 
     return (
-        <div className="review_modify_modal full_list">
+        <div id="modify_wrap" className="review_modify_modal full_list">
             <div className="modify_info write_info">
                 <span>{oldFTitle}</span><span>{oldRDateTime}</span><span>★</span>&nbsp;<span>{oldStar}</span>
             </div>
 
-            <textarea className="review_modify_text input"
+            <textarea id="modify_input" className="review_modify_text input"
                 name="oldUReview"
                 defaultValue={oldUReview}
                 value={uReview}

@@ -146,6 +146,7 @@ const MainReview = (props) => {
 
             alert("삭제되었습니다.");
             setTempFlag((pv) => !pv);
+            setIsShowModifyModal(false);
         } else {
             alert("취소되었습니다.");
         }
