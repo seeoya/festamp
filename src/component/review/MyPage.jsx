@@ -184,7 +184,7 @@ const MyPage = (props) => {
                         <Stamp myReviewsArr={myReviewsArr} logInId={logInId} festivalData={props.festivalData} />
                     </div>
 
-                    <div id="review_wrap" className="view_review_list sec">
+                    <div id="review_wrap" className="view_review_list sec_item">
                         <ul>
                             <li className="sec_item_title"><h1>MY REVIEW</h1></li>
 
