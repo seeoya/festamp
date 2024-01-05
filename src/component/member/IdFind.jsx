@@ -75,7 +75,7 @@ const IdFind = () => {
         console.log("signInView() Clicked!!!!");
 
         setIsLoginView(true);
-        navigate("/SignIn");
+        navigate("/signin");
     };
 
     return (

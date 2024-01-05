@@ -1,41 +1,34 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Route, Routes } from "react-router";
+import NotFound from "./NotFound";
 import StyleGuide from "./StyleGuide";
-import GradeSelect from "./grade_select/GradeSelect";
 import List from "./list/List";
 import Main from "./main/Main";
+import PopularPage from "./main/PopularPage";
 import ChangePw from "./member/ChangePw";
 import IdFind from "./member/IdFind";
 import Privacy from "./member/Privacy";
 import PwFind from "./member/PwFind";
+import Secession from './member/Secession';
 import SignIn from "./member/SignIn";
 import SignOut from "./member/SignOut";
 import SignUp from "./member/SignUp";
-import Secession from './member/Secession'
-import Stamp from "./stamp/StampPage";
+import MyPage from "./review/MyPage";
 import ListView from "./view/View";
 
-import NotFound from "./NotFound";
-import PopularPage from "./main/PopularPage";
-import MyReview from "./review/MyReview";
-
 const Container = (props) => {
-    useEffect(() => {
-        // 데이터 가져오는 법
-        console.log(props.festivalData);
-        console.log(props.festivalData[0].title);
-    }, []);
-
     return (
         <div id="container">
-            {/* 여기에 본문 컴포넌트 삽입 */}
             <Routes>
                 {/* MAIN */}
                 <Route path="/" element={<Main festivalData={props.festivalData} />}></Route>
+                {/* LIST */}
                 <Route path="/list" element={<List festivalData={props.festivalData} />}></Route>
-                <Route path="/view/:id" element={<ListView festivalData={props.festivalData}
-                                                           loginInfo={props.loginInfo} starMinF={props.starMinF} />}></Route>
+                {/* VIEW */}
+                <Route path="/view/:id" element={<ListView festivalData={props.festivalData} loginInfo={props.loginInfo} starMinF={props.starMinF} />}></Route>
+                {/* POPULAR */}
                 <Route path="/popular" element={<PopularPage festivalData={props.festivalData} />}></Route>
+                {/* SIGN */}
                 <Route path="/signin" element={<SignIn loginInfo={props.loginInfo} />}></Route>
                 <Route path="/signout" element={<SignOut loginInfo={props.loginInfo} />}></Route>
                 <Route path="/signup" element={<SignUp />}></Route>
@@ -45,13 +38,11 @@ const Container = (props) => {
                 <Route path="/changePw" element={<ChangePw />}></Route>
                 <Route path="/secession" element={<Secession loginInfo={props.loginInfo} />}></Route>
 
-                <Route path="/myreview" element={<MyReview festivalData={props.festivalData} loginInfo={props.loginInfo} />}></Route>
+                {/* MYPAGE */}
+                <Route path="/mypage" element={<MyPage festivalData={props.festivalData} loginInfo={props.loginInfo} />}></Route>
 
-                {/* #TODO 테스트용. 제거 예정 */}
-                <Route path="/gradeselect" element={<GradeSelect />}></Route>
-                <Route path="/stamp" element={<Stamp />}></Route>
+                {/* STYLE GUIDE */}
                 <Route path="/styleguide" element={<StyleGuide />}></Route>
-                {/*  */}
 
                 {/* NOT FOUND */}
                 <Route path="*" element={<NotFound />}></Route>

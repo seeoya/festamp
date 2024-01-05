@@ -90,7 +90,7 @@ const SignIn = (props) => {
         setIsfindIdClick(true);
         console.log("isfindIdClick()", "이거거거거거거");
 
-        navigate("/IdFind");
+        navigate("/idfind");
     };
 
     //비밀번호 찾기
@@ -98,7 +98,7 @@ const SignIn = (props) => {
         console.log("fwFindClickHandler() Clicked!!! 야ㅑㅑㅑ");
 
         setIsFindPwClick(false);
-        navigate("/PwFind");
+        navigate("/pwfind");
     };
 
     return (

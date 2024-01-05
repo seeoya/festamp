@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Stamp from "../stamp/StampPage";
 import ReviewModifyModal from "./ReviewModifyModal";
-import "./myReview.css";
+import "./mypage.css";
 
-const MyReview = (props) => {
+const MyPage = (props) => {
 
     let logInId = props.loginInfo.logInId;
 
@@ -24,9 +24,9 @@ const MyReview = (props) => {
 
         if (!logInId) {
             alert('로그인 하세요');
-            navigate('/SignIn');
+            navigate('/signin');
         } else {
-            
+
         }
     }, []);
 
@@ -96,14 +96,14 @@ const MyReview = (props) => {
 
             console.log("reviewDBInStorage: ", reviewDBInStorage);
 
-             // starDB 업데이트
-            let starDBInStorage = localStorage.getItem("starDB");           
+            // starDB 업데이트
+            let starDBInStorage = localStorage.getItem("starDB");
             let starDBObj = JSON.parse(starDBInStorage);
-            
-            
+
+
             delete starDBObj[fNo];
 
-            
+
             starDBInStorage = JSON.stringify(starDBObj);
             localStorage.setItem("starDB", starDBInStorage);
             props.starMinF();
@@ -183,7 +183,7 @@ const MyReview = (props) => {
                                     삭제
                                 </button>
                             </div>
-                            
+
                         </li>
                     ))}
                 </ul>
@@ -211,4 +211,4 @@ const MyReview = (props) => {
     );
 };
 
-export default MyReview;
+export default MyPage;
