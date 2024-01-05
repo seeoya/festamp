@@ -18,6 +18,7 @@ const SignUp = () => {
 
     const[isCheck, setIsCheck] = useState(false);
 
+
      // 비밀번호 정규식
     const passwordRegEx =  /^(?=.*[a-z])((?=.*\d)|(?=.*\W)).{6,12}$/;
 
@@ -79,7 +80,7 @@ const SignUp = () => {
                     setUId("");
                 } else {
                     alert("사용 가능한 아이디입니다.");
-                    setIsCheck(!false);
+                    setIsCheck(true);
                 }
             } else {
                 alert("아이디를 입력하세요.");
@@ -99,8 +100,9 @@ const SignUp = () => {
         let emptyValue = (uId !== "" && uName !== "" && uPw !== "" && uPhone !== "" && uEmail !== "" && uBirth !== "");
 
         if (emptyValue) {
+            if(!!isCheck){
             if (uPw.match(passwordRegEx) !== null) {
-                if(pwSame !== "" && uPw === pwSame && !isCheck){
+                if(pwSame !== "" && uPw === pwSame ){
                 if (memberInStorage === null) {
                     let newMemberDb = {
                         [uId]: {
@@ -138,6 +140,9 @@ const SignUp = () => {
             } else {
                 alert('올바른 비밀번호를 입력해주세요.');
             }
+        } else {
+            alert('아이디를 중복체크 해주세요.');
+        }
         } else {
             alert("정보를 입력해주세요");
         }
