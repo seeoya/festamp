@@ -229,7 +229,7 @@ const MyPage = (props) => {
                                 <button className="btn main" onClick={(e) => myReviewModifyBtnClickHandler(e, myReview.rNo, myReview.star)}>
                                     수정
                                 </button>
-                                <button className="btn main" onClick={(e) => myReviewDelBtnClickHandler(e, myReview.rNo, myReview.fDataId, myReview.star)}>
+                                <button className="btn alert" onClick={(e) => myReviewDelBtnClickHandler(e, myReview.rNo, myReview.fDataId, myReview.star)}>
                                     삭제
                                 </button>
                             </div>
