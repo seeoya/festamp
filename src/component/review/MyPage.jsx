@@ -15,6 +15,7 @@ const MyPage = (props) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(10);
     const [rStar, setRStar] = useState("");
+    
 
     // 네비게이터 설정
     let navigate = useNavigate('');
@@ -33,9 +34,7 @@ const MyPage = (props) => {
     useEffect(() => {
         console.log("useEffect() CALLED!!");
 
-        console.log(props.loginInfo);
-
-        console.log(logInId);
+        // reviewDB 가져와서 리스트 배열 생성
 
         let reviewDBObjs = parseReviewDB();
         let rDataObjs = reviewDBObjs.rData;
@@ -53,8 +52,6 @@ const MyPage = (props) => {
             console.log(reviews);
             console.log(reviews.uId);
 
-            // let uId = props.loginInfo.logInId;
-
             if (reviews.uId === logInId) {
                 reviews["key"] = reviewskeys[i];
                 console.log("reviewskeys[i]:", reviewskeys[i]);
@@ -68,6 +65,8 @@ const MyPage = (props) => {
 
     }, [tempFlag, isShowModifyModal, currentPage]);
 
+
+    // MY리뷰 수정 버튼 이벤트 핸들러
     const myReviewModifyBtnClickHandler = (e, rNo, rStar) => {
         console.log("reviewModifyBtnClickHandler() Called!");
 
@@ -83,6 +82,8 @@ const MyPage = (props) => {
         let result = window.confirm("리뷰를 삭제하시겠습니까?");
 
         if (result) {
+
+            // reviewDB에서 해당 리뷰 번호 삭제
             let reviewDBObjs = parseReviewDB();
             let myReviews = reviewDBObjs.rData;
 
@@ -96,21 +97,22 @@ const MyPage = (props) => {
 
             console.log("reviewDBInStorage: ", reviewDBInStorage);
 
-            // starDB 업데이트
+            // starDB에서 해당 별점 삭제와 평점 초기화 및 업데이트
             let starDBInStorage = localStorage.getItem("starDB");
             let starDBObj = JSON.parse(starDBInStorage);
 
-            const findNumber = (el) => {
-                if(el === rStar) {
-                  return true;
+                const findNumber = (el) => {
+                    if(el === rStar) {
+                    return true;
+                    }
                 }
-            }
             let delIdx =  starDBObj[fNo].list.findIndex(findNumber);
             if (delIdx !== null && delIdx !== '' || delIdx !== undefined ) {
                 delete starDBObj[fNo].list[delIdx];            
+            }
                 starDBInStorage = JSON.stringify(starDBObj);
                 localStorage.setItem("starDB", starDBInStorage);
-            }
+            
                 
                 starDBInStorage = localStorage.getItem("starDB");
                 starDBObj = JSON.parse(starDBInStorage);
@@ -124,13 +126,12 @@ const MyPage = (props) => {
                 }
 
                 starDBInStorage = JSON.stringify(starDBObj);
-                localStorage.setItem("starDB", starDBInStorage);            
-            
-            props.starMinF();
+                localStorage.setItem("starDB", starDBInStorage); 
+                props.starMinF();
 
             alert("삭제되었습니다.");
-
             setTempFlag((pv) => !pv);
+
         } else {
             alert("취소되었습니다.");
         }
@@ -157,9 +158,33 @@ const MyPage = (props) => {
         console.log("getReviewDBObjs() Called!");
 
         let reviewDBinStorage = localStorage.getItem("reviewDB");
-        let reviewDBObjs = JSON.parse(reviewDBinStorage);
+        if (reviewDBinStorage === null) {
+            let reviewNo = 0;
+            let newDBObj = {
+                ["count"]: reviewNo,
+                ["rData"]: {
+                    [reviewNo]: {
+                        "uId": "",
+                        "fDataId": "",
+                        "fTitle": "",
+                        "rDateTime": "",
+                        "uReview": "",
+                        "rNo": "",
+                        "star": "",
+                    },
+                },
+            };
 
+            reviewDBinStorage = JSON.stringify(newDBObj);
+            localStorage.setItem("reviewDB", reviewDBinStorage);
+            reviewDBinStorage = localStorage.getItem("reviewDB");
+            let reviewDBObjs = JSON.parse(reviewDBinStorage);
+            return reviewDBObjs;
+        } else {
+
+        let reviewDBObjs = JSON.parse(reviewDBinStorage);
         return reviewDBObjs;
+        }
     };
 
     // 해당 page에 보여줄 리스트 담는 함수
@@ -204,7 +229,7 @@ const MyPage = (props) => {
                                 <button className="btn main" onClick={(e) => myReviewModifyBtnClickHandler(e, myReview.rNo, myReview.star)}>
                                     수정
                                 </button>
-                                <button className="btn main" onClick={(e) => myReviewDelBtnClickHandler(e, myReview.rNo, myReview.star)}>
+                                <button className="btn main" onClick={(e) => myReviewDelBtnClickHandler(e, myReview.rNo, myReview.fDataId, myReview.star)}>
                                     삭제
                                 </button>
                             </div>

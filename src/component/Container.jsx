@@ -39,7 +39,7 @@ const Container = (props) => {
                 <Route path="/secession" element={<Secession loginInfo={props.loginInfo} />}></Route>
 
                 {/* MYPAGE */}
-                <Route path="/mypage" element={<MyPage festivalData={props.festivalData} loginInfo={props.loginInfo} />}></Route>
+                <Route path="/mypage" element={<MyPage festivalData={props.festivalData} loginInfo={props.loginInfo} starMinF={props.starMinF} />}></Route>
 
                 {/* STYLE GUIDE */}
                 <Route path="/styleguide" element={<StyleGuide />}></Route>
