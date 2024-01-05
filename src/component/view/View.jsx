@@ -5,11 +5,7 @@ import MainReview from "../review/MainReview";
 import "./viewStyle.css";
 
 const ListView = (props) => {
-    let calendar = <i className="fa-regular fa-calendar-days"></i>;
-    let place = <i className="fa-solid fa-compass"></i>;
-    let price = <i className="fa-solid fa-copyright"></i>;
-    let name = <i className="fa-solid fa-building"></i>;
-    let tel = <i className="fa-solid fa-phone-volume"></i>;
+
     let festData = props.festivalData;
     let { id } = useParams();
     console.log(id);
@@ -61,10 +57,12 @@ const ListView = (props) => {
                     <div className="info sec_item">
                         <ul>
                             <li>
-                                {calendar} &nbsp;{festData[id].date}{" "}
+                                <i className="fa-regular fa-calendar-days"></i>
+                                <span>{festData[id].date}</span>
                             </li>
                             <li>
-                                {place} &nbsp;{festData[id].location}{" "}
+                                <i className="fa-solid fa-compass"></i>
+                                <span>{festData[id].location}</span>
                                 <Map
                                     festivalData={props.festivalData}
                                     width={"100%"}
@@ -76,13 +74,16 @@ const ListView = (props) => {
                                 />
                             </li>
                             <li>
-                                {price} &nbsp;{festData[id].price}{" "}
+                                <i className="fa-solid fa-copyright"></i>
+                                <span>{festData[id].price}</span>
                             </li>
                             <li>
-                                {name} &nbsp;{festData[id].store}{" "}
+                                <i className="fa-solid fa-building"></i>
+                                <span>{festData[id].store}</span>
                             </li>
                             <li>
-                                {tel} &nbsp;{festData[id].tel}{" "}
+                                <i className="fa-solid fa-phone-volume"></i>
+                                <span>{festData[id].tel}</span>
                             </li>
                         </ul>
                     </div>

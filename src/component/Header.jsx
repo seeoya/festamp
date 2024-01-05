@@ -17,61 +17,63 @@ const Header = (props) => {
 
     return (
         <header>
-            <Link to="/" className="logo link">
-                FESTAMP
-            </Link>
+            <div className="header_wrap">
+                <Link to="/" className="logo link">
+                    FESTAMP
+                </Link>
 
-            <ul className="nav">
-                <li>
-                    <Link to="/list" className="link">
-                        LIST
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/popular" className="link">
-                        RANKING
-                    </Link>
-                </li>
+                <ul className="nav">
+                    <li>
+                        <Link to="/list" className="link">
+                            LIST
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/popular" className="link">
+                            RANKING
+                        </Link>
+                    </li>
 
-                {isLogIned ? (
-                    <>
-                        <li>
-                            <Link to="/privacy" className="link">
-                                PRIVACY
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/signout" className="link">
-                                SIGN OUT
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/mypage" className="link">
-                                {memberData ? `${memberData.name}님` : `${logInId}님`}
-                            </Link>
-                        </li>
-                    </>
-                ) : (
-                    <>
-                        <li>
-                            <Link to="/signup" className="link">
-                                SIGN UP
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/signin" className="link">
-                                SIGN IN
-                            </Link>
-                        </li>
-                    </>
-                )}
+                    {isLogIned ? (
+                        <>
+                            <li>
+                                <Link to="/privacy" className="link">
+                                    PRIVACY
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/signout" className="link">
+                                    SIGN OUT
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/mypage" className="link">
+                                    {memberData ? `${memberData.name}님` : `${logInId}님`}
+                                </Link>
+                            </li>
+                        </>
+                    ) : (
+                        <>
+                            <li>
+                                <Link to="/signup" className="link">
+                                    SIGN UP
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/signin" className="link">
+                                    SIGN IN
+                                </Link>
+                            </li>
+                        </>
+                    )}
 
-                {/* #TODO 테스트용. 제거 예정. */}
-                <li>
-                    <Link to="/styleguide">STYLE GUIDE</Link>
-                </li>
-                {/*  */}
-            </ul>
+                    {/* #TODO 테스트용. 제거 예정. */}
+                    <li>
+                        <Link to="/styleguide">STYLE GUIDE</Link>
+                    </li>
+                    {/*  */}
+                </ul>
+            </div>
         </header>
     );
 };
