@@ -83,10 +83,12 @@ textarea.review_modify_text {
     display: flex;
     gap: 8px;
     align-items: center;
+    
 }
 
 .full_list .write_info span:nth-child(1) {
     font-weight: bold;
+    
 }
 
 .full_list .write_info span:nth-child(2) {
@@ -103,14 +105,23 @@ textarea.review_modify_text {
     font-size: 17px;
     display: flex;
     gap: 5px;
+    justify-content: ;
+}
+
+.review_value span {
+    width: 800px;
+    word-break:break-all;
+}
+
+.review_value button {
+    width: 50px;
 }
 
 .view_review_list .modify_bt,
 .view_review_list .delete_bt,
 .review_modify_modal button {
-    width: 40px;
-    height: 20px;
-    font-size: 10px;
+    width: 50px;
+    font-size: 14px;
 }
 
 .review_modify_modal {

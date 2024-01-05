@@ -320,7 +320,7 @@ const MainReview = (props) => {
                                                     <button className="btn main modify_btn" onClick={(e) => mainReviewModifyBtnClickHandler(e, reviews.rNo, reviews.star)}>
                                                         수정
                                                     </button>
-                                                    <button className="btn main delete_btn" onClick={(e) => 
+                                                    <button className="btn alert delete_btn" onClick={(e) => 
                                                                                 mainReviewDelBtnClickHandler(e, reviews.rNo, reviews.fDataId, reviews.star)}>
                                                         삭제
                                                     </button>

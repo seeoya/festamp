@@ -54,7 +54,7 @@ const PwFind = () => {
                 return;
             }
         } else {
-            alert('존재하지 않는 회원입니다.');
+            alert('정보를 입력해주세요.');
         }
 
     };

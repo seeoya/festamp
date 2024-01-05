@@ -16,11 +16,11 @@ const SignUp = () => {
     const [uEmail, setUEmail] = useState("");
     const [uBirth, setUBirth] = useState("");
 
-    const [isPass, setIsPass] = useState(false);
-    const [isFormat, setIsFormat] = useState(false);
+    const[isCheck, setIsCheck] = useState(false);
 
-    // 비밀번호 정규식
-    const passwordRegEx = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/;
+
+     // 비밀번호 정규식
+    const passwordRegEx =  /^(?=.*[a-z])((?=.*\d)|(?=.*\W)).{6,12}$/;
 
     // handleer
     const userNameHandler = (e) => {
@@ -80,6 +80,7 @@ const SignUp = () => {
                     setUId("");
                 } else {
                     alert("사용 가능한 아이디입니다.");
+                    setIsCheck(true);
                 }
             } else {
                 alert("아이디를 입력하세요.");
@@ -89,37 +90,19 @@ const SignUp = () => {
         }
     };
 
-    // 비밀번호 정규식
-    const formatCheck = () => {
-        console.log("formatCheckBtnHandler() Clicked !!");
-
-        if (uPw.match(passwordRegEx) !== null) {
-            setIsFormat(true);
-        }
-    };
-
-    // 비밀번호 확인 버튼
-    const pwSameCheck = () => {
-        console.log("pwSameBntHandler() Clicked!");
-
-        if (pwSame !== "" && uPw === pwSame) {
-            setIsPass(true);
-        }
-
-    };
-
+  
     // 회원가입 버튼
     const joinBtn = () => {
         console.log("joinBtn() Clicked!");
+        console.log(isCheck)
 
         let memberInStorage = localStorage.getItem("memberDB");
         let emptyValue = (uId !== "" && uName !== "" && uPw !== "" && uPhone !== "" && uEmail !== "" && uBirth !== "");
-       
-        pwSameCheck();
-        formatCheck();
 
         if (emptyValue) {
-            if (isPass && isFormat) {
+            if(!!isCheck){
+            if (uPw.match(passwordRegEx) !== null) {
+                if(pwSame !== "" && uPw === pwSame ){
                 if (memberInStorage === null) {
                     let newMemberDb = {
                         [uId]: {
@@ -152,8 +135,14 @@ const SignUp = () => {
                 alert("회원가입을 축하드립니다.");
                 navigate("/signin");
             } else {
-                alert('비밀번호를 확인해주세요.');
+                alert('같은 비밀번호를 입력해주세요');
             }
+            } else {
+                alert('올바른 비밀번호를 입력해주세요.');
+            }
+        } else {
+            alert('아이디를 중복체크 해주세요.');
+        }
         } else {
             alert("정보를 입력해주세요");
         }
@@ -188,7 +177,7 @@ const SignUp = () => {
 
                         </div>
 
-                        <label htmlFor="u_pw" className="desc">비밀번호는 영문 대소문자, 숫자, 특수기호를 혼합하여 8~20자로 입력해주세요</label>
+                        <label htmlFor="u_pw" className="desc">비밀번호는 영어 소문자,  최소 1개 이상의 숫자 혹은 특수문자를 혼합하여 6~12자로 입력해주세요.</label>
                     </div>
 
                     <div>
