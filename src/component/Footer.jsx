@@ -38,9 +38,6 @@ const Footer = () => {
                     <Link to="/" className="link">
                         <img src="/imgs/logo/blackstamp.jpg" alt="메인으로" />
                     </Link>
-                    <span>
-                        © FESTAMP
-                    </span>
                 </li>
                 <li>
                     <Link to="https://conlab.visitkorea.or.kr/" target="_blank" className="link">
@@ -55,6 +52,11 @@ const Footer = () => {
                 <li>
                     <Link to="https://www.mcst.go.kr/kor/main.jsp" target="_blank" className="link">
                         <img src="/imgs/logo/korea_logo3.png" alt="문화체육관광부" />
+                    </Link>
+                </li>
+                <li>
+                    <Link to="https://www.gg.go.kr/" target="_blank" className="link">
+                        <img src="/imgs/logo/korea_logo4.png" alt="경기도 사이트" />
                     </Link>
                 </li>
             </ul>
