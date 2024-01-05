@@ -14,29 +14,31 @@ const Popular = (props) => {
     }, []);
 
     const sortFestival = () => {
-        let starDB = JSON.parse(localStorage.getItem("starDB")).sData;
-        let tmpFesList = [];
-        let tmpStarList = [];
+        if (localStorage.getItem("starDB")) {
+            let starDB = JSON.parse(localStorage.getItem("starDB")).sData;
+            let tmpFesList = [];
+            let tmpStarList = [];
 
-        Object.keys(starDB).map((el) => {
-            tmpStarList.push({ fNo: el, star: starDB[el].starMin, count: starDB[el].list.length });
-        })
+            Object.keys(starDB).map((el) => {
+                tmpStarList.push({ fNo: el, star: starDB[el].starMin, count: starDB[el].list.length });
+            })
 
-        tmpStarList.sort((a, b) => {
-            if (a.star > b.star) return -1;
-            if (a.star < b.star) return +1;
-            return 0;
-        });
+            tmpStarList.sort((a, b) => {
+                if (a.star > b.star) return -1;
+                if (a.star < b.star) return +1;
+                return 0;
+            });
 
-        tmpStarList.map((el) => {
-            tmpFesList.push(festivalData[el.fNo])
-        })
+            tmpStarList.map((el) => {
+                tmpFesList.push(festivalData[el.fNo])
+            })
 
-        setFesList(tmpFesList);
-        setStarList(tmpStarList);
+            setFesList(tmpFesList);
+            setStarList(tmpStarList);
 
-        console.log(tmpFesList);
-        console.log(tmpStarList);
+            console.log(tmpFesList);
+            console.log(tmpStarList);
+        }
     };
 
     return (
