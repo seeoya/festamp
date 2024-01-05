@@ -47,36 +47,32 @@ const Stamp = (props) => {
     ));
     // 리뷰 배열에 일의 자리수를 올림하여 10, 20, 30,... 빈 배열을 생성한다.
     const remainStampItems = Array.from({ length: (0, Math.ceil(myStampArr.length / 10) * 10) }).map((el, idx) => {
-        console.log((idx + 1) % 10);
         const isMultipleOfTen = (idx + 1) % 10 === 0;
+        // const isTenthImage = idx === 9;
+        // if (isMultipleOfTen) {
+        //     alert("스탬프 10개를를 채우셨습니다. 가까운 주민센터에 가셔서 물품을 받으세요!");
+        // }
         if (myStampArr[idx]) {
             return (
-                <div className={`stamp_item ${isMultipleOfTen ? 'black-background' : ''}`} key={idx}>
+                <div className={`stamp_item ${isMultipleOfTen ? 'black_background' : ''}`} key={idx}>
                     <Link to={`/view/${myStampArr[idx].fDataId}`}>
                         <div className="fes_title">{myStampArr[idx].fTitle}</div>
-                        <div className="stmap_img_wrap">
+                        <div className="stamp_img_wrap">
                             <img className="stmap_img" src={fData[myStampArr[idx].fDataId].img} alt={myStampArr[idx].fTitle} />
                         </div>
                     </Link>
+                    {/* {isTenthImage && alert('축하합니다!')} */}
                 </div>
             );
         } else {
             return (
-                <div className={`stamp_item ${isMultipleOfTen ? 'black-background' : ''}`} key={idx}>
+                <div className={`stamp_item ${isMultipleOfTen ? 'black_background' : ''}`} key={idx}>
                     <div className="fes_title"></div>
                     <div className="stamp_img_wrap"></div>
                 </div>
             );
         }
     });
-    // 스탬프 10단위의 알림
-    const alretPerTen = () => {
-        for(let i = 1; i <= Math.ceil(myStampArr.length / 10) * 10; i++) {
-            if(myStampArr = 10 * i) {
-                alert("스탬프 10개를를 채우셨습니다. 가까운 주민센터에 가셔서 물품을 받으세요!");
-            }
-        }
-    }
 
     return (
         <>
