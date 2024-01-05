@@ -48,14 +48,7 @@ const Wrap = () => {
                     },
                 },
             ];
-            // let newStarObj = {
-            //     ['sData'] : {
-            //     [festivalNo]: {
-            //         'starMin': '',
-            //         'list': '',
-            //         },
-            //     },
-            // };
+            
             console.log(festivalNo);
             
             let starDBInStorage = JSON.stringify(newStarObj);

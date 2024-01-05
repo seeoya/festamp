@@ -281,7 +281,7 @@ const MainReview = (props) => {
                  {reviewsArr.length > 0 ?
                     <>
                     <ul>
-                        {reviewsArr.map((reviews, idx) => 
+                        {reviewsArr.map((reviews, idx) => {
                            
                             <li className="full_list" key={idx}>
                                 <div className="write_info">
@@ -306,7 +306,7 @@ const MainReview = (props) => {
                                  : null}
                                 </div>
                             </li>                           
-                        )}
+                        })}
                     </ul>
                     </>    
                     :
