@@ -13,15 +13,14 @@ const Secession = (props) => {
 
     const memdelete = () => {
           console.log('memdelete() !!');
-
-          let storageMem = JSON.parse(localStorage.getItem("memberDB"));
-       
-           if (window.confirm("정말 탈퇴하시겠습니까?")) {
-              
-            let changeInfo = delete storageMem[logiendId];
-
+          
+          if (window.confirm("정말 탈퇴하시겠습니까?")) {
+            
             alert("이용해주셔서 감사합니다.");
-
+            let storageMem = JSON.parse(localStorage.getItem("memberDB"));
+            
+             let changeInfo = delete storageMem[logiendId];
+             
             let newmemInfo = JSON.stringify(storageMem)
             localStorage.setItem("memberDB" ,newmemInfo);
             logiend(false);
