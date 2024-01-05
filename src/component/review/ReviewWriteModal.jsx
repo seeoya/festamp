@@ -13,6 +13,10 @@ const ReviewWriteModal = (props) => {
     let logInId = props.logInId;
 
     useEffect(() => {
+        document.getElementById("write_input").focus();
+    }, []);
+
+    useEffect(() => {
         setFestivalDataId(props.festivalDataId);
         setFestivalTitle(props.festivalTitle);
     }, [festivalDataId, festivalTitle, star]);
@@ -75,6 +79,7 @@ const ReviewWriteModal = (props) => {
                 <textarea className="review_text input"
                     cols="50"
                     rows="5"
+                    id="write_input"
                     vlaue={uReview}
                     onChange={(e) => uReviewChangeHandler(e)}
                 ></textarea>
