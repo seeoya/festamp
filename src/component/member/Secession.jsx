@@ -10,11 +10,20 @@ const Secession = (props) => {
 
     const [isSecession, setIsSecession] = useState(false);
 
-    const onRemove = () => {
+    const memdelete = () => {
+          console.log('memdelete() !!');
 
-        if (window.confirm("정말 탈퇴하시겠습니까?")) {
+          let storageMem = JSON.parse(localStorage.getItem("memberDB"));
+       
+           if (window.confirm("정말 탈퇴하시겠습니까?")) {
+              
+            let changeInfo = delete storageMem[logiendId];
 
             alert("이용해주셔서 감사합니다.");
+
+            let newmemInfo = JSON.stringify(storageMem)
+            localStorage.setItem("memberDB" ,newmemInfo);
+            navigate("/");
 
         } else {
 
@@ -32,7 +41,7 @@ const Secession = (props) => {
         setIsSecession(true);
 
         if (isSecession) {
-            onRemove();
+          memdelete();
         }
 
         // let memInfo = JSON.parse(localStorage.getItem("memberDB"))
