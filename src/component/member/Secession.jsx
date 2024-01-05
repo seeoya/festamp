@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 const Secession = (props) => {
-
-    let logiend = props.loginInfo.isLogIned;
+  
+ 
+    let logiend = props.loginInfo.setIsLogIned;
     let logiendId = props.loginInfo.logInId;
 
     let navigate = useNavigate();
@@ -23,6 +24,7 @@ const Secession = (props) => {
 
             let newmemInfo = JSON.stringify(storageMem)
             localStorage.setItem("memberDB" ,newmemInfo);
+            logiend(false);
             navigate("/");
 
         } else {
