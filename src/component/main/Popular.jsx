@@ -53,23 +53,26 @@ const Popular = (props) => {
                 }
             </h1>
 
-            <ul className="list">
-                {fesList.slice(0, maxFestivalCount).map((el, i) => {
-                    if (el) {
-                        return (
-                            <li className="item" key={i}>
-                                <Link to={"/view/" + el.id}>
-                                    <div>
-                                        <span className="marker">{`${i + 1}`}</span>
-                                        <span className="title">{`${el.title}`}</span>
-                                    </div>
-                                    <span className="star">★ {starList[i].star}</span>
-                                </Link>
-                            </li>
-                        );
-                    }
-                })}
-            </ul>
+            {fesList.length >= 1 ?
+                <ul className="list">
+                    {fesList.slice(0, maxFestivalCount).map((el, i) => {
+                        if (el) {
+                            return (
+                                <li className="item" key={i}>
+                                    <Link to={"/view/" + el.id}>
+                                        <div>
+                                            <span className="marker">{`${i + 1}`}</span>
+                                            <span className="title">{`${el.title}`}</span>
+                                        </div>
+                                        <span className="star">★ {starList[i].star}</span>
+                                    </Link>
+                                </li>
+                            );
+                        }
+                    })}
+                </ul>
+                : <div className="empty">리뷰가 없어요!</div>
+            }
         </div>
     );
 };
