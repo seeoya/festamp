@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Header = (props) => {
     let { isLogIned, setIsLogIned, logInId, setLogInId } = props.loginInfo;
+    const [memberData, setMemberData] = useState("");
+
+    useEffect(() => {
+        let memberDB = localStorage.getItem("memberDB");
+        if (memberDB) {
+            memberDB = JSON.parse(localStorage.getItem("memberDB"));
+            if (memberDB[logInId]) {
+                setMemberData(memberDB[logInId]);
+            }
+        }
+    }, [])
 
     return (
         <header>
@@ -21,7 +32,7 @@ const Header = (props) => {
                         RANKING
                     </Link>
                 </li>
-                
+
                 {isLogIned ? (
                     <>
                         <li>
@@ -36,7 +47,7 @@ const Header = (props) => {
                         </li>
                         <li>
                             <Link to="/mypage" className="link">
-                                {logInId}님
+                                {memberData ? `${memberData.name}님` : `${logInId}님`}
                             </Link>
                         </li>
                     </>

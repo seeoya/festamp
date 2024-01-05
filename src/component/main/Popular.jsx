@@ -18,29 +18,29 @@ const Popular = (props) => {
         setFesList(festivalData);
 
         if (localStorage.getItem("starDB")) {
-            // let starDB = JSON.parse(localStorage.getItem("starDB"));
-            // let tmpFesList = [];
-            // let tmpStarList = [];
+            let starDB = JSON.parse(localStorage.getItem("starDB"));
+            let tmpFesList = [];
+            let tmpStarList = [];
 
-            // Object.keys(starDB).map((el) => {
-            //     tmpStarList.push({ fNo: starDB[el], star: starDB[el].starMin, count: starDB[el].list.length });
-            // })
+            starDB.map((el, i) => {
+                console.log(el.starMin);
+                if (el.starMin && el.starMin > 0) {
+                    tmpStarList.push({ fNo: i, star: el.starMin, count: el.list.length });
+                }
+            })
 
-            // tmpStarList.sort((a, b) => {
-            //     if (a.star > b.star) return -1;
-            //     if (a.star < b.star) return +1;
-            //     return 0;
-            // });
+            tmpStarList.sort((a, b) => {
+                if (a.star > b.star) return -1;
+                if (a.star < b.star) return +1;
+                return 0;
+            });
 
-            // tmpStarList.map((el) => {
-            //     tmpFesList.push(festivalData[el.fNo])
-            // })
+            tmpStarList.map((el) => {
+                tmpFesList.push(festivalData[el.fNo])
+            })
 
-            // setFesList(tmpFesList);
-            // setStarList(tmpStarList);
-
-            // console.log(tmpFesList);
-            // console.log(tmpStarList);
+            setFesList(tmpFesList);
+            setStarList(tmpStarList);
         }
     };
 
@@ -56,7 +56,7 @@ const Popular = (props) => {
                 }
             </h1>
 
-            {fesList.length >= 1 ?
+            {starList[0] ?
                 <ul className="list">
                     {fesList.slice(0, maxFestivalCount).map((el, i) => {
                         if (el) {
@@ -67,7 +67,11 @@ const Popular = (props) => {
                                             <span className="marker">{`${i + 1}`}</span>
                                             <span className="title">{`${el.title}`}</span>
                                         </div>
-                                        {/* <span className="star">★ {starList[i].star}</span> */}
+
+                                        <div className="info">
+                                            <span className="comment"><i class="fa-regular fa-comment-dots"></i>{starList[i].count}</span>
+                                            <span className="star"><i class="fa-solid fa-star"></i>{starList[i].star}</span>
+                                        </div>
                                     </Link>
                                 </li>
                             );

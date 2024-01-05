@@ -183,6 +183,11 @@ a.btn, button.btn {
     border-radius: var(--btn-border-radius);
 }
 
+textarea.input {
+    padding: 10px;
+    height: auto;
+}
+
 input[type="checkbox"].input {
     padding: 0;
     height: auto;

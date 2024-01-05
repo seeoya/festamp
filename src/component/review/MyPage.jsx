@@ -213,7 +213,7 @@ const MyPage = (props) => {
                 <Stamp myReviewsArr={myReviewsArr} logInId={logInId} festivalData={props.festivalData} />
             </div>
 
-            <div id="review_wrap" className="view_review_list">
+            <div id="review_wrap" className="view_review_list sec">
                 <ul>
                     <li className="sec_item_title"><h1>MY REVIEW</h1></li>
                     {myReviewsArr.map((myReview, idx) => (
