@@ -53,7 +53,7 @@ const Wrap = () => {
                 starDBInStorage = JSON.stringify(newStarObj);
                 localStorage.setItem("starDB", starDBInStorage);
 
-                for(let i=1; i < festivalData.length; i++){  
+                for(let i=0; i < festivalData.length; i++){  
                    starDBInStorage = localStorage.getItem("starDB");
                    let starDBObj = JSON.parse(starDBInStorage);
                    starDBObj[i] = {
