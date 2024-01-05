@@ -11,6 +11,7 @@ import PwFind from "./member/PwFind";
 import SignIn from "./member/SignIn";
 import SignOut from "./member/SignOut";
 import SignUp from "./member/SignUp";
+import Secession from './member/Secession'
 import Stamp from "./stamp/StampPage";
 import ListView from "./view/View";
 
@@ -42,6 +43,7 @@ const Container = (props) => {
                 <Route path="/idfind" element={<IdFind />}></Route>
                 <Route path="/pwfind" element={<PwFind />}></Route>
                 <Route path="/changePw" element={<ChangePw />}></Route>
+                <Route path="/secession" element={<Secession loginInfo={props.loginInfo} />}></Route>
 
                 <Route path="/myreview" element={<MyReview festivalData={props.festivalData} loginInfo={props.loginInfo} />}></Route>
 

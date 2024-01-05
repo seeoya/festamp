@@ -39,16 +39,25 @@ const Wrap = () => {
         // starDB 생성
         let starDBInStorage = localStorage.getItem("starDB");
         if (starDBInStorage === null) {
-            let festivalNo = 0;
-            let newStarObj = {
-                ['sData'] : {
-                [festivalNo]: {
+            let festivalNo = '';
+            
+            let newStarObj = [{           
+                [festivalNo] : {
                     'starMin': '',
                     'list': '',
                     },
                 },
-            };
+            ];
+            // let newStarObj = {
+            //     ['sData'] : {
+            //     [festivalNo]: {
+            //         'starMin': '',
+            //         'list': '',
+            //         },
+            //     },
+            // };
             console.log(festivalNo);
+            
             let starDBInStorage = JSON.stringify(newStarObj);
             localStorage.setItem("starDB", starDBInStorage);
            
@@ -143,21 +152,21 @@ const Wrap = () => {
 
         let starDBInStorage = localStorage.getItem("starDB");                      
         let starDBObj = JSON.parse(starDBInStorage);
-        let starObj = starDBObj['sData'];
-        console.log('starObj: ', starObj);
+        // let starObj = starDBObj['sData'];
+        console.log('starDBObj: ', starDBObj);
         
         festNoArr.map((el) => {   // festNo 객체 키배열을 맵으로 돌림
             
-            let starMinObj = tempArr[el].starMin;
+            let starObj = tempArr[el].starMin;
             let listStarObj = tempArr[el].list;
-            console.log('starMinObj: ', starMinObj);
+            console.log('starMinObj: ', starObj);
                          
-            starObj[el] = {
-                'starMin': starMinObj,
+            starDBObj[el] = {
+                'starMin': starObj,
                 'list': listStarObj,            
                 }
             
-            starDBObj['sData'] = starObj;
+            // starDBObj = starObj;
             let addStarObj = JSON.stringify(starDBObj);
             localStorage.setItem("starDB", addStarObj);
         });

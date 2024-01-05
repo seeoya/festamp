@@ -58,9 +58,7 @@ const ChangePw = (props) => {
         let StorageDB = localStorage.getItem("memberDB");
         if (StorageDB !== null) {
             let memberInStorage = JSON.parse(StorageDB);
-            let memberPw = memberInStorage[props.uId].pw
-      
-
+       
         if(!!newPw && !!verifyPw){
             if(newPw === verifyPw){
             memberInStorage[props.uId].pw = newPw;
@@ -71,7 +69,7 @@ const ChangePw = (props) => {
                 alert('비밀번호가 일치하지 않습니다.')
             }
         } else {
-            alert('새 비밀번호를 입력해주세요.');
+            alert('정확한 정보를 입력해주세요.');
         }
     } else {
         alert('존재하지 않는 회원입니다.');

@@ -28,13 +28,18 @@ const MainReview = (props) => {
     const [postsPerPage, setPostsPerPage] = useState(10);
     
     
-    const [memberDBObjs,setMemberDBObjs] = useState("");
+    const [memberDBObjs, setMemberDBObjs] = useState("");
 
-
+    let reviewsCheck;
     useEffect(() => {
         console.log("useEffect() CALLED!!");
+        let paseMemDB = parseMemberDB();
+        setMemberDBObjs(paseMemDB);
+
+        console.log(memberDBObjs);
         
-        let reviewDBObjs = parseReviewDB();
+        // reviewDB에서 리스트 가져오기
+        let reviewDBObjs = parseReviewDB();        
         let rDataObjs = reviewDBObjs.rData;
 
         let reviewskeys = [];
@@ -43,58 +48,52 @@ const MainReview = (props) => {
         }
         console.log(reviewskeys);
 
-        let tempArr = [];
-        let rStarArr = [];
-        let fullArr = [];
+        let tempArr = [];        
+        // let fullArr = [];
 
         for (let i = 1; i < reviewskeys.length; i++) {
             let reviews = rDataObjs[reviewskeys[i]];
 
             if (reviews.fDataId === festivalDataId) {
-                if (!isLogIned) {
+                // if (!isLogIned) {
                     // 로그인 상태가 아니라면
                     reviews["key"] = reviewskeys[i];
-                    let rStar = reviews.star;
+                    
                     console.log("reviewskeys[i]:", reviewskeys[i]);
 
                     tempArr.push(reviews);                    
-                    rStarArr.push(rStar);
+                    
                                        
-                } else if (reviews.uId === logInId) {
-                    // 로그인 상태라면
-                    reviews["key"] = reviewskeys[i];
-                    console.log("reviewskeys[i]:", reviewskeys[i]);
+                // } else if (reviews.uId === logInId) {
+                //     // 로그인 상태라면
+                //     reviews["key"] = reviewskeys[i];
+                //     console.log("reviewskeys[i]:", reviewskeys[i]);
 
-                    tempArr.push(reviews);
-                }
-                fullArr.push(reviews);
+                //     tempArr.push(reviews);
+                // }
+                console.log(reviews);
+                // fullArr.push(reviews);
             }
         }
-        console.log(rStarArr);
+        
 
-        setReviewsArr(fullArr);
+        setReviewsArr(tempArr);
         currentPosts(reviewsArr);
         setReviewsArr(currentPosts);
 
         console.log(festivalDataId);
 
-        // let starDBInStorage = localStorage.getItem("starDB");           
-        // let starDBObj = JSON.parse(starDBInStorage);
-        // let starObj = starDBObj.sData;
-        // let starFIdObj = starObj[festivalDataId];
-        // let starMinObj = starFIdObj.starMin;
-        // // setStarGrade(starMinObj);
-        // console.log(starObj);
-        // console.log(starMinObj);
-        // console.log(starFIdObj.starMin);
+        let temp = getStarGrade(festivalDataId);
+        setStarGrade(temp);
 
         
-    }, [festivalDataId, festivalTitle, tempFlag, isShowWriteModal, isShowModifyModal, currentPage]);
+        
+       
 
-    useEffect(() => {
-        parseMemberDB()
-    },[])
+        
+    }, [tempFlag, isShowWriteModal, isShowModifyModal, currentPage, starGrade]);
 
+    
     // 메인리스트 리뷰쓰기 버튼
     const mainReviewWriteBtnClickHandler = () => {
         console.log("mainReviewWrite Btn Clicked!");
@@ -155,11 +154,9 @@ const MainReview = (props) => {
             // starDB 업데이트
             let starDBInStorage = localStorage.getItem("starDB");           
             let starDBObj = JSON.parse(starDBInStorage);
-            let starObj = starDBObj.sData;
+                        
+            delete starDBObj[fNo];
             
-            delete starObj[fNo];
-
-            starDBObj.sData = starObj;
             starDBInStorage = JSON.stringify(starDBObj);
             localStorage.setItem("starDB", starDBInStorage);
             props.starMinF();
@@ -189,19 +186,55 @@ const MainReview = (props) => {
         setReviewsArr(currentPosts(reviewsArr));
     };
 
+    // starDB에서 별평점 가져오기
+    const getStarGrade = (fId) => {
+    let starDBInStorage = localStorage.getItem("starDB");           
+    let starDBObj = JSON.parse(starDBInStorage);
+    let starFIdObj = starDBObj[fId];
+    let starMinObj = starFIdObj.starMin;
+    console.log(starMinObj);
+    console.log(starFIdObj.starMin);
+    return starMinObj;
+    }
+
     // reviewDB 가져오는 함수
     const parseReviewDB = () => {
         console.log("getReviewDBObjs() Called!");
 
         let reviewDBinStorage = localStorage.getItem("reviewDB");
-        let reviewDBObjs = JSON.parse(reviewDBinStorage);
+        if (reviewDBinStorage === null) {
+            let reviewNo = 0;
+            let newDBObj = {
+                ["count"]: reviewNo,
+                ["rData"]: {
+                    [reviewNo]: {
+                        "uId": "",
+                        "fDataId": "",
+                        "fTitle": "",
+                        "rDateTime": "",
+                        "uReview": "",
+                        "rNo": "",
+                        "star": "",
+                    },
+                },
+            };
 
-        return reviewDBObjs;
+            reviewDBinStorage = JSON.stringify(newDBObj);
+            localStorage.setItem("reviewDB", reviewDBinStorage);
+            reviewDBinStorage = localStorage.getItem("reviewDB");
+            let reviewDBObjs = JSON.parse(reviewDBinStorage);
+            return reviewDBObjs;
+        } else {
+            let reviewDBObjs = JSON.parse(reviewDBinStorage);
+            return reviewDBObjs;
+        }
+        
+           
     };
 
     // memberDB 가져오는 함수
     const parseMemberDB = () => {
-        console.log("getparseMemberDB() Called!");
+        console.log("parseMemberDB() Called!");
 
         let reviewDBinStorage = localStorage.getItem("memberDB");
         let memberDBObjs = JSON.parse(reviewDBinStorage);
@@ -229,6 +262,7 @@ const MainReview = (props) => {
         console.log(currentPosts);
         return currentPosts;
     };
+   
 
     return (
         <div id="review_wrap">
@@ -244,9 +278,11 @@ const MainReview = (props) => {
                             </button>
                 </div>
                 <div className="view_review_list">
-                             { reviewsArr.length > 0 ? 
+                 {reviewsArr.length > 0 ?
+                    <>
                     <ul>
-                        {reviewsArr.map((reviews, idx) =>
+                        {reviewsArr.map((reviews, idx) => 
+                           
                             <li className="full_list" key={idx}>
                                 <div className="write_info">
                                     <span>{memberDBObjs[reviews.uId].name}</span>
@@ -256,7 +292,10 @@ const MainReview = (props) => {
                                     </div>
                                     <div className="review_value">
                                         <span>{reviews.uReview}</span>
-                                {isLogIned ? (<>
+                                    
+                                {reviewsCheck = reviews.uId.includes(logInId) 
+                                 ?
+                                 <>
                                     <button className="btn main modify_btn" onClick={(e) =>  mainReviewModifyBtnClickHandler(e, reviews.rNo, reviews.star)}>
                                         수정
                                     </button>
@@ -264,17 +303,19 @@ const MainReview = (props) => {
                                         삭제
                                     </button>
                                 </>
-                                )
-                                : null}
+                                 : null}
                                 </div>
-                            </li>
+                            </li>                           
                         )}
                     </ul>
+                    </>    
                     :
+                    <>
                     <div className="review_null">
                         현재 작성된 리뷰가 없습니다.
                     </div>
-                }
+                    </>
+                    }
                 </div>
 
                 
@@ -303,7 +344,7 @@ const MainReview = (props) => {
                     ) : null}
                 </div>
                 
-                {reviewsArr.length > 0 ?
+                {reviewsArr.length > 10 ?
 
                 <div className="more_view_wrap">
                     <button type="button" className="more_btn" onClick={moreViewClickHandler}>

@@ -49,7 +49,7 @@ const PwFind = () => {
             return;
 
         } else {
-            alert('회원 ID 또는 전화번호를 확인하세요.');
+            alert('정확한 정보를 입력해주세요.');
 
             return;
         }
