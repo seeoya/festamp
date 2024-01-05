@@ -16,6 +16,8 @@ const SignUp = () => {
     const [uEmail, setUEmail] = useState("");
     const [uBirth, setUBirth] = useState("");
 
+    const[isCheck, setIsCheck] = useState(false);
+
      // 비밀번호 정규식
     const passwordRegEx =  /^(?=.*[a-z])((?=.*\d)|(?=.*\W)).{6,12}$/;
 
@@ -77,6 +79,7 @@ const SignUp = () => {
                     setUId("");
                 } else {
                     alert("사용 가능한 아이디입니다.");
+                    setIsCheck(!false);
                 }
             } else {
                 alert("아이디를 입력하세요.");
@@ -90,13 +93,14 @@ const SignUp = () => {
     // 회원가입 버튼
     const joinBtn = () => {
         console.log("joinBtn() Clicked!");
+        console.log(isCheck)
 
         let memberInStorage = localStorage.getItem("memberDB");
         let emptyValue = (uId !== "" && uName !== "" && uPw !== "" && uPhone !== "" && uEmail !== "" && uBirth !== "");
 
         if (emptyValue) {
             if (uPw.match(passwordRegEx) !== null) {
-                if(pwSame !== "" && uPw === pwSame){
+                if(pwSame !== "" && uPw === pwSame && isCheck){
                 if (memberInStorage === null) {
                     let newMemberDb = {
                         [uId]: {
