@@ -104,6 +104,10 @@ header .link:hover {
     background-color: var(--highlight);
 }
 
+#styleguide .box.alert {
+    background-color: var(--alert);
+}
+
 #notfound.sec {
     display: flex;
     justify-content: center;

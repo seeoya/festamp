@@ -5,15 +5,17 @@
     --bg: #fffdfd;
     --text: #0c0c0c;
     --main: #4fa2c9;
-    --sub: #9fe1ff;
-    --highlight: #ff9e43;
-    --highlight-sub: #ffbb7b;
+    --sub: #88c7e4;
+    --highlight: #ffad42;
+    --highlight-sub: #ffbe68;
+    --alert: #e02525;
+    --alert-sub: #e34949;
     --sec-bg: #fafafa;
     --sec-hover-bg: #eaeaea;
     --sec-border-color: #dcdcdc;
     --border-color: #242424;
     --btn-bg: #0c0c0c;
-    --btn-bg-hover: #727272;
+    --btn-bg-hover: #4e4e4e;
     --btn-border-color: var(--border-color);
     --btn-border-radius: 10px;
     --btn-color: #fff;
@@ -162,6 +164,16 @@ a.btn, button.btn {
 .btn.highlight:hover {
     background-color: var(--highlight-sub);
     border: 1px solid var(--highlight-sub);
+}
+
+.btn.alert {
+    background-color: var(--alert);
+    border: 1px solid var(--alert);
+}
+
+.btn.alert:hover {
+    background-color: var(--alert-sub);
+    border: 1px solid var(--alert-sub);
 }
 
 .input {
