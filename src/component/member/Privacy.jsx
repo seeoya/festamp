@@ -5,9 +5,7 @@ import './SignUp.css';
 
 const Privacy = (props) => {
     console.log("Privacy() Called!!");
-    // console.log(logInId);
-
-
+ 
     let navigate = useNavigate('');
 
     let isLogIned = props.loginInfo.isLogIned;
@@ -23,10 +21,7 @@ const Privacy = (props) => {
     const [uEmail, setUEmail] = useState(memberInfo[logInId].email ?? "");
     const [uBirth, setUBirth] = useState(memberInfo[logInId].birth ?? "");
 
-    const passwordRegEx = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/;
-
-    const [isPass, setIsPass] = useState(false);
-    const [isFormat, setIsFormat] = useState(false);
+    const passwordRegEx = /^(?=.*[a-z])((?=.*\d)|(?=.*\W)).{6,12}$/;
 
     const [isSecession, setIsSecession] = useState(false);
 
@@ -81,34 +76,14 @@ const Privacy = (props) => {
         console.log(uBirth);
     }
 
-    // 비밀번호 정규식
-    const formatCheck = () => {
-        console.log("formatCheckBtnHandler() Clicked !!");
-
-        if (uPw.match(passwordRegEx) !== null) {
-            setIsFormat(true);
-        }
-    };
-
-    // 비밀번호 확인 버튼
-    const pwSameCheck = () => {
-        console.log("pwSameBntHandler() Clicked!");
-
-        if (pwSame !== "" && uPw === pwSame) {
-            setIsPass(true);
-        }
-
-    };
 
     //정보수정 버튼
     const changeBtnHandler = () => {
         console.log('changeBtnHandler() Clicked!!');
 
-        pwSameCheck();
-        formatCheck();
-
-        if (uName !== "" && uPw !== "" && uPhone !== "" && uEmail !== "" && uBirth !== "") {
-            if (isPass && isFormat) {
+          if (uName !== "" && uPw !== "" && uPhone !== "" && uEmail !== "" && uBirth !== "") {
+            if (uPw.match(passwordRegEx) !== null) {
+                if(pwSame !== "" && uPw === pwSame){
                 memberInfo[logInId] = {
                     name: uName,
                     pw: uPw,
@@ -122,8 +97,12 @@ const Privacy = (props) => {
 
                 alert('개인정보 변경 완료 !');
                 navigate("/");
+                
+            }  else {
+                alert('같은 비밀번호를 입력해주세요');
+            }
             } else {
-                alert('정확한 정보를 입력해주세요.');
+                alert('올바른 비밀번호를 입력해주세요.');
             }
 
         } else {
@@ -170,7 +149,7 @@ const Privacy = (props) => {
                                             onChange={pwChangeHadler} placeholder="비밀번호 " />
 
                                     </div>
-                                    <label htmlFor="u_pw" className="desc">비밀번호는 영문 대소문자, 숫자, 특수문자를 혼합하여 8~20자로 입력해주세요</label>
+                                    <label htmlFor="u_pw" className="desc">비밀번호는 영어 소문자,  최소 1개 이상의 숫자 혹은 특수문자를 혼합하여 6~12자로 입력해주세요.</label>
                                 </div>
                                 <div>
                                     <label htmlFor="pw_same">비밀번호 확인</label>
