@@ -8,6 +8,8 @@ import { festivalData } from "../data/festivalData";
 const Wrap = () => {
     const [isLogIned, setIsLogIned] = useState(false);
     const [logInId, setLogInId] = useState("");
+    const [starMin, setStarMin] = useState(0);
+    const [festivalNo, setFestivalNo] = useState('');
     let festivalDataId = festivalData.id;
 
     useEffect(() => {
@@ -37,24 +39,32 @@ const Wrap = () => {
         }
 
         // starDB 생성
-        let starDBInStorage = localStorage.getItem("starDB");
-        if (starDBInStorage === null) {
-            let festivalNo = '';
+        
+            let starDBInStorage = localStorage.getItem("starDB");
             
-            let newStarObj = [{           
-                [festivalNo] : {
-                    'starMin': '',
-                    'list': '',
-                    },
-                },
-            ];
-            
-            console.log(festivalNo);
-            
-            let starDBInStorage = JSON.stringify(newStarObj);
-            localStorage.setItem("starDB", starDBInStorage);
-           
-        }
+                if (starDBInStorage === null) {
+                    let newStarObj = [{           
+                        [festivalNo] : {
+                            'starMin': starMin,
+                            'list': '',
+                            },
+                        },
+                    ];
+                starDBInStorage = JSON.stringify(newStarObj);
+                localStorage.setItem("starDB", starDBInStorage);
+
+                for(let i=1; i < festivalData.length; i++){  
+                   starDBInStorage = localStorage.getItem("starDB");
+                   let starDBObj = JSON.parse(starDBInStorage);
+                   starDBObj[i] = {
+                    'starMin': starMin,
+                    'list': '',            
+                    }
+                            
+                let addStarObj = JSON.stringify(starDBObj);
+                localStorage.setItem("starDB", addStarObj);
+                    }
+            }
 
         starMinF();
         
@@ -145,7 +155,7 @@ const Wrap = () => {
 
         let starDBInStorage = localStorage.getItem("starDB");                      
         let starDBObj = JSON.parse(starDBInStorage);
-        // let starObj = starDBObj['sData'];
+       
         console.log('starDBObj: ', starDBObj);
         
         festNoArr.map((el) => {   // festNo 객체 키배열을 맵으로 돌림
