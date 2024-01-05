@@ -33,13 +33,15 @@
 }
 
 .stamp_item .fes_title:hover {
-    text-decoration: underline;
-    color: #3f3f3f;
-    cursor: pointer;
+    color: #707070;
 }
 
 .stamp_item:nth-child(n + 2) {
     height: 210px;
+}
+
+.stamp_img_wrap {
+    height: 135px;
 }
 
 .stmap_img {
@@ -50,4 +52,8 @@
     border: 6px solid rgb(255, 123, 0);
     box-shadow: 1px 1px 1px #dadada;
     border-radius: 50%;
+}
+
+.black_background .stamp_img_wrap {
+    background-color: #000;
 }
