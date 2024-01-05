@@ -24,7 +24,7 @@ const MyPage = (props) => {
 
         if (!logInId) {
             alert('로그인 하세요');
-            navigate('/SignIn');
+            navigate('/signin');
         } else {
 
         }

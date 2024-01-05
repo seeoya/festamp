@@ -38,24 +38,24 @@ const PwFind = () => {
             let memberInStorage = JSON.parse(StorageDB);
             // let memIdObj = Object.keys(memberInStorage);
 
-        let memPhone;
-        if (memberInStorage[(uId.trim())] !== undefined && memberInStorage[(uId.trim())].phone === uPhone.trim()) {
-            memPhone = memberInStorage[(uId.trim())].phone;
+            let memPhone;
+            if (memberInStorage[(uId.trim())] !== undefined && memberInStorage[(uId.trim())].phone === uPhone.trim()) {
+                memPhone = memberInStorage[(uId.trim())].phone;
 
-            alert('비밀번호 변경 페이지로 이동합니다.');
+                alert('비밀번호 변경 페이지로 이동합니다.');
 
-            setIsFindPwBtn(true);
-            // setIsPwFindShow(false);
-            return;
+                setIsFindPwBtn(true);
+                // setIsPwFindShow(false);
+                return;
 
+            } else {
+                alert('정확한 정보를 입력해주세요.');
+
+                return;
+            }
         } else {
-            alert('정확한 정보를 입력해주세요.');
-
-            return;
+            alert('존재하지 않는 회원입니다.');
         }
-    } else {
-        alert('존재하지 않는 회원입니다.');
-    }
 
     };
 
@@ -64,7 +64,7 @@ const PwFind = () => {
     const signInView = () => {
         console.log("signInView() Clicked!!!!");
 
-        navigate("/SignIn");
+        navigate("/signin");
     };
 
     return (

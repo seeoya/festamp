@@ -150,7 +150,7 @@ const SignUp = () => {
                 }
 
                 alert("회원가입을 축하드립니다.");
-                navigate("/SignIn");
+                navigate("/signin");
             } else {
                 alert('비밀번호를 확인해주세요.');
             }
