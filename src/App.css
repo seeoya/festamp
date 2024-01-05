@@ -149,7 +149,7 @@ footer {
 footer div.bottom_footer ul.footer_img {
     margin-top: 10px;
     display: flex;
-    gap: 70px;
+    gap: 30px;
 }
 
 footer img {
@@ -164,8 +164,3 @@ footer img {
     margin-bottom: 20px;
 }
 
-footer div.bottom_footer ul.footer_img li.festamp_logo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
