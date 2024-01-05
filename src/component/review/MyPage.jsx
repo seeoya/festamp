@@ -33,6 +33,10 @@ const MyPage = (props) => {
     useEffect(() => {
         console.log("useEffect() CALLED!!");
 
+        let paseMemDB = parseMemberDB();
+        setMemberDBObjs(paseMemDB);
+
+
         console.log(props.loginInfo);
 
         console.log(logInId);
@@ -174,7 +178,10 @@ const MyPage = (props) => {
         return currentPosts;
     };
 
-    return (<>
+    
+
+    return (
+    <>
         {logInId
         ?
         <div className="my_page sec">
@@ -201,11 +208,7 @@ const MyPage = (props) => {
                                 <button className="btn main" onClick={(e) => myReviewModifyBtnClickHandler(e, myReview.rNo, myReview.star)}>
                                     수정
                                 </button>
-<<<<<<< HEAD
-                                <button className="btn main" onClick={(e) => myReviewDelBtnClickHandler(e, myReview.rNo, myReview.rStar)}>
-=======
-                                <button className="btn alert" onClick={(e) => myReviewDelBtnClickHandler(e, myReview.rNo)}>
->>>>>>> 0ba1ebd44ebd312c95a8b1f6bcb654a6624e994d
+                                <button className="btn main" onClick={(e) => myReviewDelBtnClickHandler(e, myReview.rNo, myReview.star)}>
                                     삭제
                                 </button>
                             </div>
