@@ -4,13 +4,10 @@ import Secession from "./Secession";
 import './SignUp.css';
 
 const Privacy = (props) => {
-    console.log("Privacy() Called!!");
- 
     let navigate = useNavigate('');
 
     let isLogIned = props.loginInfo.isLogIned;
     let logInId = props.loginInfo.logInId;
-
 
     // Hook
     const [memberInfo, setMemberInfo] = useState(JSON.parse(localStorage.getItem('memberDB')) ?? "");
@@ -29,92 +26,64 @@ const Privacy = (props) => {
         if (!isLogIned) {
             alert('로그인 하세요');
             navigate('/signin');
-        } else {
-            console.log(memberInfo);
         }
     }, []);
 
     const nickChageHandler = (e) => {
-        console.log('nickChageHandler() Changed!!');
-
         setUName(e.target.value);
-        console.log(e.target.value);
     }
 
     const pwChangeHadler = (e) => {
-        console.log('pwChangeHadler() Changed!!');
-
         setUPw(e.target.value);
-        console.log(uPw);
     }
 
     const pwSameChangeHadler = (e) => {
-        console.log('pwSameChangeHadler() Changed!!');
-
         setPwSame(e.target.value);
-        console.log(pwSame);
     }
 
     const phoneChangeHandler = (e) => {
-        console.log('phoneChangeHandler() Changed!!');
-
         setUPhone(e.target.value);
-        console.log(uPhone);
     }
 
     const eMailChangeHandler = (e) => {
-        console.log('eMailChangeHandler() Changed!!');
-
         setUEmail(e.target.value);
-        console.log(uEmail);
     }
 
     const birthChangeHandler = (e) => {
-        console.log('birthChangeHandler() Changed!!');
-
         setUBirth(e.target.value);
-        console.log(uBirth);
     }
 
 
     //정보수정 버튼
     const changeBtnHandler = () => {
-        console.log('changeBtnHandler() Clicked!!');
-
-          if (uName !== "" && uPw !== "" && uPhone !== "" && uEmail !== "" && uBirth !== "") {
+        if (uName !== "" && uPw !== "" && uPhone !== "" && uEmail !== "" && uBirth !== "") {
             if (uPw.match(passwordRegEx) !== null) {
-                if(pwSame !== "" && uPw === pwSame){
-                memberInfo[logInId] = {
-                    name: uName,
-                    pw: uPw,
-                    phone: uPhone,
-                    email: uEmail,
-                    birth: uBirth
-                };
+                if (pwSame !== "" && uPw === pwSame) {
+                    memberInfo[logInId] = {
+                        name: uName,
+                        pw: uPw,
+                        phone: uPhone,
+                        email: uEmail,
+                        birth: uBirth
+                    };
 
-                let memberStr = JSON.stringify(memberInfo);
-                localStorage.setItem("memberDB", memberStr);
+                    let memberStr = JSON.stringify(memberInfo);
+                    localStorage.setItem("memberDB", memberStr);
 
-                alert('개인정보 변경 완료 !');
-                navigate("/");
-                
-            }  else {
-                alert('같은 비밀번호를 입력해주세요');
-            }
+                    alert('개인정보 변경 완료 !');
+                    navigate("/");
+                } else {
+                    alert('같은 비밀번호를 입력해주세요');
+                }
             } else {
                 alert('올바른 비밀번호를 입력해주세요.');
             }
-
         } else {
             alert("정보를 입력해주세요.");
         }
-
-
     };
 
     const secessinoViewHandler = () => {
-        console.log('secessinoViewHandler() Clicked!!');
-
         setIsSecession(true);
     }
 
@@ -160,7 +129,6 @@ const Privacy = (props) => {
                                             name="pw_same" className="input" defaultValue={memberInfo[logInId].pw}
                                             onChange={pwSameChangeHadler} placeholder="비밀번호 확인"
                                         />
-
                                     </div>
                                 </div>
                                 <div>

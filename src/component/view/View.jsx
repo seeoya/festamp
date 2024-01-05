@@ -8,19 +8,14 @@ const ListView = (props) => {
 
     let festData = props.festivalData;
     let { id } = useParams();
-    console.log(id);
     const [eventsArr, setEventsArr] = useState([]);
     const [nowAddress, setNowAddress] = useState(festData[id].location);
     const [nowAddressTitle, setNowAddressTitle] = useState(festData[id].title)
 
     useEffect(() => {
-        console.log("[ListView] useEffect!!");
-
         let datas = props.festivalData[id].event;
         setEventsArr(datas.split("\n"));
     }, []);
-
-    // useParams > path="/view/:id" id 값을 가져옴 url 파라미터
 
     return (
         <div id="listview_wrap" className="sec">
@@ -36,9 +31,7 @@ const ListView = (props) => {
                     <div className="img">
                         <img src={`/${festData[id].img}`} />
                     </div>
-                    {/* <div className="event">
-                            <h1>{festData[id].event}</h1>
-                    </div> */}
+
                     <div className="explain item_explain">
                         <p>{festData[id].explain}</p>
                     </div>
@@ -48,9 +41,7 @@ const ListView = (props) => {
                     <ul className="event sec_item">
                         {eventsArr.map((event, idx) => {
                             return (
-                                <li className="event_list" key={idx}>
-                                    {event}
-                                </li>
+                                <li className="event_list" key={idx}>{event}</li>
                             );
                         })}
                     </ul>
@@ -60,6 +51,7 @@ const ListView = (props) => {
                                 <i className="fa-regular fa-calendar-days"></i>
                                 <span>{festData[id].date}</span>
                             </li>
+
                             <li>
                                 <i className="fa-solid fa-compass"></i>
                                 <span>{festData[id].location}</span>
@@ -73,14 +65,17 @@ const ListView = (props) => {
                                     setNowAddressTitle={setNowAddressTitle}
                                 />
                             </li>
+
                             <li>
                                 <i className="fa-solid fa-copyright"></i>
                                 <span>{festData[id].price}</span>
                             </li>
+
                             <li>
                                 <i className="fa-solid fa-building"></i>
                                 <span>{festData[id].store}</span>
                             </li>
+
                             <li>
                                 <i className="fa-solid fa-phone-volume"></i>
                                 <span>{festData[id].tel}</span>
@@ -89,16 +84,15 @@ const ListView = (props) => {
                     </div>
                 </div>
             </div>
+
             <div className="review">
-                <>
-                    <MainReview
-                        festData={festData}
-                        festivalDataId={festData[id].id}
-                        festivalTitle={festData[id].title}
-                        loginInfo={props.loginInfo}
-                        starMinF={props.starMinF}
-                    />
-                </>
+                <MainReview
+                    festData={festData}
+                    festivalDataId={festData[id].id}
+                    festivalTitle={festData[id].title}
+                    loginInfo={props.loginInfo}
+                    starMinF={props.starMinF}
+                />
             </div>
         </div>
     );

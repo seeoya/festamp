@@ -66,12 +66,6 @@ const Header = (props) => {
                             </li>
                         </>
                     )}
-
-                    {/* #TODO 테스트용. 제거 예정. */}
-                    {/* <li>
-                        <Link to="/styleguide">STYLE GUIDE</Link>
-                    </li> */}
-                    {/*  */}
                 </ul>
             </div>
         </header>

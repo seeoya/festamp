@@ -67,13 +67,7 @@ const Map = (props) => {
 
     return (
         <>
-            <div
-                id="map"
-                style={{
-                    width: width,
-                    height: height,
-                }}
-            ></div>
+            <div id="map" style={{ width: width, height: height, }}></div>
         </>
     );
 };

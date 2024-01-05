@@ -5,12 +5,9 @@ const SignOut = (props) => {
     let setIsLogined = props.loginInfo.setIsLogIned;
     let setLogInId = props.loginInfo.setLogInId;
 
-    console.log("SignOut() Called!");
     let navigate = useNavigate();
 
     const SignOutBntHandler = () => {
-        console.log("SignOutBntHandler() Clicked!");
-
         setIsLogined(false);
         setLogInId("");
 
@@ -18,8 +15,6 @@ const SignOut = (props) => {
     };
 
     const NoSignOutBntHandler = () => {
-        console.log("NoSignOutBntHandler() Clicked!");
-
         navigate("/");
     };
 

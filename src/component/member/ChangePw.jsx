@@ -1,79 +1,48 @@
-import React, { useId, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const ChangePw = (props) => {
-    console.log("ChangePw() Called !!");
-
     const [newPw, setNewPw] = useState("");
     const [verifyPw, setVerifyPw] = useState("");
 
     //정규식
     const passwordRegEx = /^(?=.*[a-z])((?=.*\d)|(?=.*\W)).{6,12}$/;
 
-    const navigate =useNavigate();
+    const navigate = useNavigate();
 
     // 입력창
     const inputNewPW = (e) => {
-        console.log("inputNewPW() Input !!");
-
         setNewPw(e.target.value);
     };
 
     const inputVerifyPw = (e) => {
-        console.log("inputVerifyPw() Input !!");
-
         setVerifyPw(e.target.value);
     };
 
-
-    // const pwCheckBtnHandler = () => {
-    //     console.log("pwCheckBtnHandler() Clicked !!");
-
-    //     if (newPw !== "" && verifyPw !== "") {
-    //         if (verifyPw.match(passwordRegEx) === null) {
-    //             alert("올바른 비밀번호를 입력해주세요.");
-    //         }
-    //         if (newPw === verifyPw) {
-    //             alert("비밀번호가 일치합니다.");
-    //         } else {
-    //             alert("비밀번호가 일치하지 않습니다.");
-    //             setVerifyPw(""); //이거 왜 안날아가지??
-    //             console.log(verifyPw, "여기");
-    //         }
-    //     } else {
-    //         alert("비밀번호를 입력해주세요.");
-    //     }
-    // };
-
     // 수정 버튼 핸들러 작업 마저 하기
-    const ChangePwBtnHandler = () => {              //비밀번호 찾기에서 들어 올 때 로그인된 아이디를 갖고 와야하나???
-        console.log("pwChangeBtnHandler() Clicked !!");
-
+    const ChangePwBtnHandler = () => {
         let StorageDB = localStorage.getItem("memberDB");
         if (StorageDB !== null) {
             let memberInStorage = JSON.parse(StorageDB);
-       
-        if(newPw !== "" && verifyPw !== ""){
-            if (newPw.match(passwordRegEx) !== null){
-            if(newPw === verifyPw){
-            memberInStorage[props.uId].pw = newPw;
-            localStorage.setItem('memberDB', JSON.stringify(memberInStorage));  
 
-            alert('비밀번호가 변경되었습니다.');
-            navigate('/signin');
-            
+            if (newPw !== "" && verifyPw !== "") {
+                if (newPw.match(passwordRegEx) !== null) {
+                    if (newPw === verifyPw) {
+                        memberInStorage[props.uId].pw = newPw;
+                        localStorage.setItem('memberDB', JSON.stringify(memberInStorage));
+
+                        alert('비밀번호가 변경되었습니다.');
+                        navigate('/signin');
+                    } else {
+                        alert('비밀번호가 일치하지 않습니다.')
+                    }
+                } else {
+                    alert('올바른 비밀번호를 입력해주세요.');
+                }
             } else {
-                alert('비밀번호가 일치하지 않습니다.')
+                alert('비밀번호를 입력해주세요.');
             }
-        } else {
-            alert('올바른 비밀번호를 입력해주세요.');
         }
-        } else {
-            alert('비밀번호를 입력해주세요.');
-        }
-    
-    }
-
     };
 
     return (
@@ -87,7 +56,6 @@ const ChangePw = (props) => {
 
                         <div className="btn_wrap">
                             <input type="password" id="new_pw" className="input" defaultValue={(e) => newPw(e)} onChange={inputNewPW} placeholder="새 비밀번호 입력" />
-                         
                         </div>
                         <p>비밀번호는 영어 소문자,  최소 1개 이상의 숫자 혹은 특수문자를 혼합하여 6~12자로 입력해주세요.</p>
                     </div>
@@ -96,9 +64,9 @@ const ChangePw = (props) => {
                         <label htmlFor="verify_pw">비밀번호 확인</label>
                         <div className="btn_wrap">
                             <input type="password" id="verify_pw" className="input" defaultValue={(e) => verifyPw(e)} onChange={inputVerifyPw} placeholder="새 비밀번호 확인" />
-                           
                         </div>
                     </div>
+
                     <button type="button" className="btn" onClick={ChangePwBtnHandler}>비밀번호 수정</button>
                 </div>
             </div>

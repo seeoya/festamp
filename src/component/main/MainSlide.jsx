@@ -50,6 +50,7 @@ const MainSlide = (props) => {
                         <SwiperSlide className="slide_item" key={idx}>
                             <Link to={"/view/" + el.id}>
                                 <img src={el.img} alt={el.title} className="item_title" />
+                                
                                 <div className="item_content">
                                     <div className="item_city">[{el.city}]</div>
                                     <div className="item_header">

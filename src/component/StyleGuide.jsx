@@ -6,8 +6,8 @@ const StyleGuide = () => {
         <div id="styleguide" className="sec">
             <h1>스타일 가이드</h1>
 
-
             <h2>기본 구조</h2>
+
             <div className="sec">
                 <h1>섹션 (.sec)</h1>
 
@@ -42,7 +42,6 @@ const StyleGuide = () => {
                     <h6>H6 헤더</h6>
                 </div>
             </div>
-
 
             <div className="sec_item">
                 <h2 className="sec_item_title">버튼</h2>

@@ -9,42 +9,30 @@ const ReviewModifyModal = (props) => {
     const [uReview, setUReview] = useState("");
     const [oldUReview, setOldUReview] = useState("");
     const [oldStar, setOldStar] = useState("");
-    
-    let modifyKey = props.modifyKey;    
+
+    let modifyKey = props.modifyKey;
 
     useEffect(() => {
-        console.log("modifyKey: ", props.modifyKey);
-
         let reviewDBObjs = parseReviewDB();
         let reviewObjs = reviewDBObjs.rData;
         let modifyMyReview = reviewObjs[modifyKey];
-       
-        console.log("modifyMyReview: ", modifyMyReview);
 
         setOldStar(props.rStar);
-        console.log(oldStar);
         setOldFTitle(modifyMyReview.fTitle);
         setOldRDateTime(modifyMyReview.rDateTime);
         setOldUReview(modifyMyReview.uReview);
-           
     }, [oldFTitle, oldRDateTime, oldUReview, oldStar]);
 
     const uReviewChangeHandler = (e) => {
-        console.log("uReviewChangeHandler() Called!");
         setUReview(e.target.value);
     };
 
     const modifyModalBtnClickHandler = () => {
-        console.log("modifyModal Btn Clicked!");
-
         let reviewDBinStorage = localStorage.getItem("reviewDB");
         let reviewDBObjs = JSON.parse(reviewDBinStorage);
         let reviewObjs = reviewDBObjs.rData;
         let modifyMyReview = reviewObjs[modifyKey];
 
-        console.log("modifyMyReview: ", modifyMyReview);
-
-        // let modifyMyReview = reviewObjs[modifyKey];
         reviewObjs[modifyKey] = {
             'uId': modifyMyReview['uId'],
             'fDataId': modifyMyReview['fDataId'],
@@ -60,14 +48,10 @@ const ReviewModifyModal = (props) => {
         let modifiedReviewStr = JSON.stringify(reviewDBObjs);
         localStorage.setItem("reviewDB", modifiedReviewStr);
 
-        console.log("Review modified success!");
-        
         props.setIsShowModifyModal(false);
     };
 
     const parseReviewDB = () => {
-        console.log("getReviewDBObjs() Called!");
-
         let reviewDBinStorage = localStorage.getItem("reviewDB");
         let reviewDBObjs = JSON.parse(reviewDBinStorage);
 
@@ -79,14 +63,16 @@ const ReviewModifyModal = (props) => {
             <div className="modify_info write_info">
                 <span>{oldFTitle}</span><span>{oldRDateTime}</span><span>★</span>&nbsp;<span>{oldStar}</span>
             </div>
+
             <textarea className="review_modify_text input"
-                    name="oldUReview"
-                    defaultValue={oldUReview}
-                    value={uReview}
-                    onChange={uReviewChangeHandler}
-                    rows="5"
-                    cols="50"
-                />
+                name="oldUReview"
+                defaultValue={oldUReview}
+                value={uReview}
+                onChange={uReviewChangeHandler}
+                rows="5"
+                cols="50"
+            />
+
             <button className="main btn" onClick={modifyModalBtnClickHandler}>수정</button>
         </div>
     );

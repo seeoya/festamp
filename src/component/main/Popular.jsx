@@ -14,7 +14,6 @@ const Popular = (props) => {
     }, []);
 
     const sortFestival = () => {
-
         setFesList(festivalData);
 
         if (localStorage.getItem("starDB")) {
@@ -23,7 +22,6 @@ const Popular = (props) => {
             let tmpStarList = [];
 
             starDB.map((el, i) => {
-                console.log(el.starMin);
                 if (el.starMin && el.starMin > 0) {
                     tmpStarList.push({ fNo: i, star: el.starMin, count: el.list.length });
                 }

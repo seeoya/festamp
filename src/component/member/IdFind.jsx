@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const IdFind = () => {
-    console.log("IdFind() !!!!!!!!!");
-
     const navigate = useNavigate();
 
     const [uEmail, setUEmail] = useState("");
@@ -13,67 +11,53 @@ const IdFind = () => {
     const [isLoginView, setIsLoginView] = useState(false);
 
     const inputEmailHandler = (e) => {
-        console.log("inputEmailHandler() input");
-
         setUEmail(e.target.value);
     };
 
     const inputPhoneHandler = (e) => {
-        console.log("inputPasswordHandler() input");
-
         setUPhone(e.target.value);
     };
 
     const findIdClickHandler = () => {
-        console.log("findIdHandler() Click!!!!!!");
-
         let StorageDB = localStorage.getItem("memberDB");
         if (StorageDB !== null) {
             let memberInStorage = JSON.parse(StorageDB);
             let memIdObjarr = Object.keys(memberInStorage);
 
-        // console.log(memberInStorage[uId].email);
-        // console.log(memberInStorage[uId].pw);
+            let flag = false;
+            let flagId = "";
 
-        let flag = false;
-        let flagId = "";
+            memIdObjarr.map((el) => {
+                if (memberInStorage[el].email == uEmail && memberInStorage[el].phone == uPhone) {
+                    flag = true;
+                    flagId = el;
+                }
+            });
 
-        memIdObjarr.map((el) => {
-            console.log(el, "요기기!!!!!!!!!!");
-            console.log(memberInStorage[el].email, uPhone);
 
-            if (memberInStorage[el].email == uEmail && memberInStorage[el].phone == uPhone) {
-                flag = true;
-                flagId = el;
-            }
-        });
-
-        
-        if (uEmail !== "" && uPhone !== "") {
-            if (uEmail !== null && uEmail !== undefined) {
-                if (uPhone !== null && uPhone !== undefined) {
-                    if (flag) {
-                        alert(`ID : ${flagId}`);
+            if (uEmail !== "" && uPhone !== "") {
+                if (uEmail !== null && uEmail !== undefined) {
+                    if (uPhone !== null && uPhone !== undefined) {
+                        if (flag) {
+                            alert(`ID : ${flagId}`);
+                        } else {
+                            alert("없는 정보입니다.");
+                        }
                     } else {
-                        alert("없는 정보입니다.");
+                        alert("잘못된 Phone 번호 입니다.");
                     }
                 } else {
-                    alert("잘못된 Phone 번호 입니다.");
+                    alert("잘못된 E-mail주소 입니다.");
                 }
             } else {
-                alert("잘못된 E-mail주소 입니다.");
+                alert("정보를 입력해주세요.");
             }
         } else {
-            alert("정보를 입력해주세요.");
+            alert('존재하지 않는 회원입니다.');
         }
-    } else {
-        alert('존재하지 않는 회원입니다.');
-    }
     };
 
     const signInView = () => {
-        console.log("signInView() Clicked!!!!");
-
         setIsLoginView(true);
         navigate("/signin");
     };

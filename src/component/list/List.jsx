@@ -15,11 +15,7 @@ const List = (props) => {
     const listDivEle = useRef();
 
     useEffect(() => {
-        console.log('++++++++++++++++');
-        console.log('listDivEle: ', listDivEle.current);
-
         filterArray(props.festivalData);
-
     }, [ingByDate, searchTerm, sortByDate, visibleItems]);
 
     // useState 처음 6 > loadMoreHandler 동작 시 + 6 //
@@ -43,8 +39,6 @@ const List = (props) => {
 
     const toggleIngByDate = () => {
         setIngByDate(!ingByDate);
-        console.log("toggleIngByDate click");
-        console.log(ingByDate);
     };
 
     const filterArray = (data) => {
@@ -92,7 +86,6 @@ const List = (props) => {
     const changeNowAddress = (location, title) => {
         setNowAddress(location);
         setNowAddressTitle(title);
-        console.log(location, title);
     };
 
     return (
@@ -106,6 +99,7 @@ const List = (props) => {
                             <input type="checkbox" id="starting_date" className="input" name="starting_date" onClick={toggleSortByDate} />
                             <label htmlFor="starting_date">축제일순으로 보기</label>
                         </div>
+
                         <div>
                             <input type="checkbox" id="ing_date" className="input" name="ing_date" onClick={toggleIngByDate} />
                             <label htmlFor="ing_date">진행중인 축제 보기</label>
@@ -120,12 +114,7 @@ const List = (props) => {
                         {festData.slice(0, visibleItems).map((festival, index) => (
                             <div className="festival_item" key={index}>
                                 <div>
-                                    <Link
-                                        to={`/view/${festival.id}`}
-                                        onMouseOver={() =>
-                                            changeNowAddress(festival.location, festival.title)
-                                        }
-                                    >
+                                    <Link to={`/view/${festival.id}`} onMouseOver={() => changeNowAddress(festival.location, festival.title)}>
                                         <img src={festival.img} alt={festival.title} />
                                         <h3>{festival.title}</h3>
                                         <h5>{festival.date}</h5>
@@ -139,9 +128,7 @@ const List = (props) => {
                     {/* visibleItems이 남아있는 festivalData 크고 버튼이 눌리면  */}
                     {visibleItems < festData.length && (
                         <div className="load_more">
-                            <button onClick={loadMoreHandler} className="btn main">
-                                더 보기
-                            </button>
+                            <button onClick={loadMoreHandler} className="btn main">더 보기</button>
                         </div>
                     )}
                 </div>
@@ -159,7 +146,6 @@ const List = (props) => {
                 </div>
 
                 <Link to="/mypage" className="stamp">
-                    {/* 스탬프 이미지 자리 */}
                     <img src="imgs/logo/stamp2.png" alt="마이페이지로" />
                 </Link>
             </div>

@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import './SignUp.css';
 
 const SignUp = () => {
-    console.log("SignUp() Called!");
-
     const navigate = useNavigate();
 
     // Hook
@@ -19,58 +17,42 @@ const SignUp = () => {
     const [isCheck, setIsCheck] = useState(false);
     const [isemptyValue, setIsemptyValue] = useState(false);
 
-
     // 비밀번호 정규식
     const passwordRegEx = /^(?=.*[a-z])((?=.*\d)|(?=.*\W)).{6,12}$/;
 
     // handleer
     const userNameHandler = (e) => {
-        console.log("userNameHandler() Called!");
-
         setUName(e.target.value);
     };
 
     const userIdHandler = (e) => {
-        console.log("userIdHandler() Called!");
-
         setUId(e.target.value);
     };
 
     const userPwHandler = (e) => {
-        console.log("userPassWord() Called!");
-
         setUPw(e.target.value);
     };
 
     const userPwSameHandler = (e) => {
-        console.log("userPwSameHandler() Called!");
-
         setPwSame(e.target.value);
     };
 
     const userPhoneHandler = (e) => {
-        console.log("userPhoneHandler() Called!");
-
         setUPhone(e.target.value);
     };
 
     const userEmailHandler = (e) => {
-        console.log("userEmailHandler() Called!");
-
         setUEmail(e.target.value);
     };
 
     const userBirthHandler = (e) => {
-        console.log("userBirthHandler() Called!");
-
         setUBirth(e.target.value);
     };
 
     // 중복확인 버튼
     const DuplicateTestBtnHandler = () => {
-        console.log(uId);
-
         let StorageDB = localStorage.getItem("memberDB");
+
         if (StorageDB !== null) {
             let memberInStorage = JSON.parse(StorageDB);
             let memDbId = Object.keys(memberInStorage);
@@ -92,12 +74,8 @@ const SignUp = () => {
         }
     };
 
-
     // 회원가입 버튼
     const joinBtn = () => {
-        console.log("joinBtn() Clicked!");
-        console.log(isCheck)
-
         let memberInStorage = localStorage.getItem("memberDB");
         let emptyValue = (uId !== "" && uName !== "" && uPw !== "" && uPhone !== "" && uEmail !== "" && uBirth !== "");
 
@@ -120,7 +98,6 @@ const SignUp = () => {
                             localStorage.setItem("memberDB", memberStr);
                         } else {
                             let memberDbObj = JSON.parse(memberInStorage);
-                            console.log("memberInStorage");
 
                             memberDbObj[uId] = {
                                 name: uName,
@@ -170,15 +147,10 @@ const SignUp = () => {
                     </div>
 
                     <div>
-                        <label htmlFor="u_pw">
-                            비밀번호
-                        </label>
-
+                        <label htmlFor="u_pw">비밀번호</label>
                         <div className="btn_wrap">
                             <input type="password" id="u_pw" name="u_pw" className="input" value={uPw} onChange={(e) => userPwHandler(e)} placeholder="비밀번호" />
-
                         </div>
-
                         <label htmlFor="u_pw" className="desc">비밀번호는 영어 소문자,  최소 1개 이상의 숫자 혹은 특수문자를 혼합하여 6~12자로 입력해주세요.</label>
                     </div>
 
@@ -186,7 +158,6 @@ const SignUp = () => {
                         <label htmlFor="pw_same">비밀번호 확인</label>
                         <div className="btn_wrap">
                             <input type="password" id="pw_same" name="pw_same" className="input" value={pwSame} onChange={(e) => userPwSameHandler(e)} placeholder="비밀번호 확인" />
-
                         </div>
                     </div>
 

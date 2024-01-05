@@ -1,14 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ChangePw from "./ChangePw";
 
-
 const PwFind = () => {
-    console.log("IdFind() !!!!!!!!!");
-
     // 뷰체인지 
     const [isFindPwBtn, setIsFindPwBtn] = useState(false);
-
 
     const [uId, setUId] = useState("");
     const [uPhone, setUphone] = useState("");
@@ -18,25 +14,18 @@ const PwFind = () => {
 
     // input 입력값
     const inputIdHandler = (e) => {
-        console.log("inputphoneHandler() input");
-
         setUId(e.target.value);
     };
 
     const inputphoneHandler = (e) => {
-        console.log("inputPasswordHandler() input");
-
         setUphone(e.target.value);
     };
 
     // 비밀번호 찾기 버튼 클릭시
     const findPwBtnHandler = () => {
-        console.log("findPwBtnHandler() Clicked !!");
-
         let StorageDB = localStorage.getItem("memberDB");
         if (StorageDB !== null) {
             let memberInStorage = JSON.parse(StorageDB);
-            // let memIdObj = Object.keys(memberInStorage);
 
             let memPhone;
             if (memberInStorage[(uId.trim())] !== undefined && memberInStorage[(uId.trim())].phone === uPhone.trim()) {
@@ -45,26 +34,15 @@ const PwFind = () => {
                 alert('비밀번호 변경 페이지로 이동합니다.');
 
                 setIsFindPwBtn(true);
-                // setIsPwFindShow(false);
                 return;
 
             } else {
                 alert('정확한 정보를 입력해주세요.');
-
                 return;
             }
         } else {
             alert('정보를 입력해주세요.');
         }
-
-    };
-
-
-    // 로그인화면 버튼 클릭시 이동
-    const signInView = () => {
-        console.log("signInView() Clicked!!!!");
-
-        navigate("/signin");
     };
 
     return (
@@ -91,7 +69,7 @@ const PwFind = () => {
 
                                 <button className="btn main" onClick={findPwBtnHandler}>비밀번호 변경</button>
 
-                                <button className="btn" onClick={signInView}>로그인으로</button>
+                                <Link to="/signin" className="btn">로그인으로</Link>
                             </div>
                         </div>
                     </div>

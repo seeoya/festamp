@@ -44,18 +44,18 @@
 }
 
 #review_wrap .view_review_list {
-
 }
 
 /* 리뷰 쓰는 칸 사이즈 */
-textarea.review_text,
-textarea.review_modify_text {
-    max-width: 500px; min-width: 500px;
-    max-height: 110px; min-height: 110px;
+textarea.review_text, textarea.review_modify_text {
+    max-width: 500px;
+    min-width: 500px;
+    max-height: 110px;
+    min-height: 110px;
     padding: 10px;
 }
 
-.review_write_modal  {
+.review_write_modal {
     display: flex;
     flex-direction: column;
 }
@@ -83,12 +83,10 @@ textarea.review_modify_text {
     display: flex;
     gap: 8px;
     align-items: center;
-    
 }
 
 .full_list .write_info span:nth-child(1) {
     font-weight: bold;
-    
 }
 
 .full_list .write_info span:nth-child(2) {
@@ -98,28 +96,25 @@ textarea.review_modify_text {
 
 .full_list .write_info span:nth-child(3) {
     font-size: 22px;
-    color: #faf61d;
+    color: var(--highlight);
 }
 
 .review_value {
     font-size: 17px;
     display: flex;
     gap: 5px;
-    justify-content: ;
 }
 
 .review_value span {
     width: 800px;
-    word-break:break-all;
+    word-break: break-all;
 }
 
 .review_value button {
     width: 50px;
 }
 
-.view_review_list .modify_bt,
-.view_review_list .delete_bt,
-.review_modify_modal button {
+.view_review_list .modify_bt, .view_review_list .delete_bt, .review_modify_modal button {
     width: 50px;
     font-size: 14px;
 }
@@ -171,11 +166,10 @@ textarea.review_modify_text {
     margin-left: 20px;
 }
 
-#review_wrap .more_view_wrap .more_btn,
-#review_wrap .more_view_wrap .hide_btn{
+#review_wrap .more_view_wrap .more_btn, #review_wrap .more_view_wrap .hide_btn {
     border: none;
     background: none;
     border-radius: 0px;
     color: black;
-    border-bottom:1px solid #dadada;
+    border-bottom: 1px solid #dadada;
 }
