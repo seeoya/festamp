@@ -38,7 +38,8 @@ const MainReview = (props) => {
 
         console.log(memberDBObjs);
         
-        let reviewDBObjs = parseReviewDB();
+        // reviewDB에서 리스트 가져오기
+        let reviewDBObjs = parseReviewDB();        
         let rDataObjs = reviewDBObjs.rData;
 
         let reviewskeys = [];
@@ -82,17 +83,12 @@ const MainReview = (props) => {
 
         console.log(festivalDataId);
 
-        
+        let temp = getStarGrade(festivalDataId);
+        setStarGrade(temp);
 
-        let starDBInStorage = localStorage.getItem("starDB");           
-        let starDBObj = JSON.parse(starDBInStorage);
-        let starObj = starDBObj.sData;
-        let starFIdObj = starObj[festivalDataId];
-        let starMinObj = starFIdObj.starMin;
-        setStarGrade(starMinObj);
         
-        console.log(starMinObj);
-        console.log(starFIdObj.starMin);
+        
+       
 
         
     }, [tempFlag, isShowWriteModal, isShowModifyModal, currentPage, starGrade]);
@@ -158,11 +154,9 @@ const MainReview = (props) => {
             // starDB 업데이트
             let starDBInStorage = localStorage.getItem("starDB");           
             let starDBObj = JSON.parse(starDBInStorage);
-            let starObj = starDBObj.sData;
+                        
+            delete starDBObj[fNo];
             
-            delete starObj[fNo];
-
-            starDBObj.sData = starObj;
             starDBInStorage = JSON.stringify(starDBObj);
             localStorage.setItem("starDB", starDBInStorage);
             props.starMinF();
@@ -192,14 +186,50 @@ const MainReview = (props) => {
         setReviewsArr(currentPosts(reviewsArr));
     };
 
+    // starDB에서 별평점 가져오기
+    const getStarGrade = (fId) => {
+    let starDBInStorage = localStorage.getItem("starDB");           
+    let starDBObj = JSON.parse(starDBInStorage);
+    let starFIdObj = starDBObj[fId];
+    let starMinObj = starFIdObj.starMin;
+    console.log(starMinObj);
+    console.log(starFIdObj.starMin);
+    return starMinObj;
+    }
+
     // reviewDB 가져오는 함수
     const parseReviewDB = () => {
         console.log("getReviewDBObjs() Called!");
 
         let reviewDBinStorage = localStorage.getItem("reviewDB");
-        let reviewDBObjs = JSON.parse(reviewDBinStorage);
+        if (reviewDBinStorage === null) {
+            let reviewNo = 0;
+            let newDBObj = {
+                ["count"]: reviewNo,
+                ["rData"]: {
+                    [reviewNo]: {
+                        "uId": "",
+                        "fDataId": "",
+                        "fTitle": "",
+                        "rDateTime": "",
+                        "uReview": "",
+                        "rNo": "",
+                        "star": "",
+                    },
+                },
+            };
 
-        return reviewDBObjs;
+            reviewDBinStorage = JSON.stringify(newDBObj);
+            localStorage.setItem("reviewDB", reviewDBinStorage);
+            reviewDBinStorage = localStorage.getItem("reviewDB");
+            let reviewDBObjs = JSON.parse(reviewDBinStorage);
+            return reviewDBObjs;
+        } else {
+            let reviewDBObjs = JSON.parse(reviewDBinStorage);
+            return reviewDBObjs;
+        }
+        
+           
     };
 
     // memberDB 가져오는 함수
