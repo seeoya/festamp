@@ -89,6 +89,7 @@
 
 #main_popular .sec_item {
     width: 800px;
+    min-height: 500px;
 }
 
 #main_popular .sec_item_title .sub {
@@ -162,7 +163,7 @@
 }
 
 #main_random .item_img {
-    width: 300px;
+    width: 100%;
     height: 150px;
     object-fit: cover;
 }
