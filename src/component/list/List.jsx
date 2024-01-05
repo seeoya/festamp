@@ -160,7 +160,7 @@ const List = (props) => {
 
                 <Link to="/mypage" className="stamp">
                     {/* 스탬프 이미지 자리 */}
-                    <img src="imgs/logo/stamp2.jpg" alt="마이페이지로" />
+                    <img src="imgs/logo/stamp2.png" alt="마이페이지로" />
                 </Link>
             </div>
         </div >
