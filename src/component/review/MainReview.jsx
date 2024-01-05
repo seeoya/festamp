@@ -29,6 +29,8 @@ const MainReview = (props) => {
     const [memberDBObjs, setMemberDBObjs] = useState("");
 
     let reviewsCheck;
+    let festData = props.festData;
+    
     useEffect(() => {
         console.log("useEffect() CALLED!!");
         let paseMemDB = parseMemberDB();
@@ -47,41 +49,30 @@ const MainReview = (props) => {
         console.log(reviewskeys);
 
         let tempArr = [];
-        // let fullArr = [];
-
+        
         for (let i = 1; i < reviewskeys.length; i++) {
             let reviews = rDataObjs[reviewskeys[i]];
 
             if (reviews.fDataId === festivalDataId) {
-                // if (!isLogIned) {
-                // 로그인 상태가 아니라면
                 reviews["key"] = reviewskeys[i];
 
                 console.log("reviewskeys[i]:", reviewskeys[i]);
 
                 tempArr.push(reviews);
-
-                // } else if (reviews.uId === logInId) {
-                //     // 로그인 상태라면
-                //     reviews["key"] = reviewskeys[i];
-                //     console.log("reviewskeys[i]:", reviewskeys[i]);
-
-                //     tempArr.push(reviews);
-                // }
-                console.log(reviews);
-                // fullArr.push(reviews);
+                
             }
         }
-
-
         setReviewsArr(tempArr);
+        console.log(reviewsArr);
+        console.log(tempArr);
+
         currentPosts(reviewsArr);
         setReviewsArr(currentPosts);
-
-        console.log(festivalDataId);
-
+    
+        // 별평점 함수 호출해서 set
         let temp = getStarGrade(festivalDataId);
         setStarGrade(temp);
+
     }, [tempFlag, isShowWriteModal, isShowModifyModal, currentPage, starGrade]);
 
     // 메인리스트 리뷰쓰기 버튼
@@ -121,7 +112,7 @@ const MainReview = (props) => {
     };
 
     // 메인리스트 삭제 버튼
-    const mainReviewDelBtnClickHandler = (e, rNo, fNo) => {
+    const mainReviewDelBtnClickHandler = (e, rNo, fNo, rStar) => {
         console.log("mainReviewDel Btn Clicked!");
 
         let result = window.confirm("리뷰를 삭제하시겠습니까?");
@@ -139,11 +130,32 @@ const MainReview = (props) => {
             localStorage.setItem("reviewDB", reviewDBInStorage);
 
             console.log("reviewDBInStorage: ", reviewDBInStorage);
+            
             // starDB 업데이트
             let starDBInStorage = localStorage.getItem("starDB");
             let starDBObj = JSON.parse(starDBInStorage);
 
-            delete starDBObj[fNo];
+            const findNumber = (el) => {
+                if(el === rStar) {
+                  return true;
+                }
+            }
+            let delIdx =  starDBObj[fNo].list.findIndex(findNumber);
+            if (delIdx !== null){
+                delete starDBObj[fNo].list[delIdx];
+                }
+            
+            starDBInStorage = JSON.stringify(starDBObj);
+            localStorage.setItem("starDB", starDBInStorage);
+            starDBInStorage = localStorage.getItem("starDB");
+            starDBObj = JSON.parse(starDBInStorage);
+            let starDBList = starDBObj[fNo].list;
+            console.log(starDBList);
+
+            starDBObj[fNo] = {
+                'starMin' : 0,
+                'list' : starDBList,
+            }
 
             starDBInStorage = JSON.stringify(starDBObj);
             localStorage.setItem("starDB", starDBInStorage);
@@ -173,15 +185,41 @@ const MainReview = (props) => {
         setReviewsArr(currentPosts(reviewsArr));
     };
 
-    // starDB에서 별평점 가져오기
+    // starDB에서 별평점 가져오는 함수
     const getStarGrade = (fId) => {
         let starDBInStorage = localStorage.getItem("starDB");
-        let starDBObj = JSON.parse(starDBInStorage);
-        let starFIdObj = starDBObj[fId];
-        let starMinObj = starFIdObj.starMin;
-        console.log(starMinObj);
-        console.log(starFIdObj.starMin);
-        return starMinObj;
+        if (starDBInStorage !== null) {
+            let starDBObj = JSON.parse(starDBInStorage);
+            let starFIdObj = starDBObj[fId];
+            let starMinObj = starFIdObj.starMin;
+            console.log(starMinObj);
+            console.log(starFIdObj.starMin);
+            return starMinObj;
+        } else {
+            let festivalNo = '';    
+            let newStarObj = [{           
+                [festivalNo] : {
+                    'starMin': '',
+                    'list': '',
+                    },
+                },
+            ];
+        
+            starDBInStorage = JSON.stringify(newStarObj);
+            localStorage.setItem("starDB", starDBInStorage);
+
+            for(let i=0; i < festData.length; i++){  
+                starDBInStorage = localStorage.getItem("starDB");
+                let starDBObj = JSON.parse(starDBInStorage);
+                starDBObj[i] = {
+                'starMin': 0,
+                'list': '',            
+                }
+                        
+            let addStarObj = JSON.stringify(starDBObj);
+            localStorage.setItem("starDB", addStarObj);
+            }
+        }
     }
 
     // reviewDB 가져오는 함수
@@ -262,10 +300,10 @@ const MainReview = (props) => {
                     </button>
                 </div>
                 <div className="view_review_list">
-                    {reviewsArr.length > 0 ?
+                    {reviewsArr.length > 0 ? 
                         <>
                             <ul>
-                                {reviewsArr.map((reviews, idx) => {
+                                {reviewsArr.map((reviews, idx) => 
                                     <li className="full_list" key={idx}>
                                         <div className="write_info">
                                             <span>{memberDBObjs[reviews.uId].name}</span>
@@ -282,23 +320,24 @@ const MainReview = (props) => {
                                                     <button className="btn main modify_btn" onClick={(e) => mainReviewModifyBtnClickHandler(e, reviews.rNo, reviews.star)}>
                                                         수정
                                                     </button>
-                                                    <button className="btn main delete_btn" onClick={(e) => mainReviewDelBtnClickHandler(e, reviews.rNo, reviews.fDataId)}>
+                                                    <button className="btn main delete_btn" onClick={(e) => 
+                                                                                mainReviewDelBtnClickHandler(e, reviews.rNo, reviews.fDataId, reviews.star)}>
                                                         삭제
                                                     </button>
                                                 </>
                                                 : null}
                                         </div>
                                     </li>
-                                })}
+                                )}
                             </ul>
                         </>
-                        :
+                        :                        
                         <>
                             <div className="review_null">
                                 현재 작성된 리뷰가 없습니다.
                             </div>
                         </>
-                    }
+                        }
                 </div>
 
                 <div className="modal_wrap">
