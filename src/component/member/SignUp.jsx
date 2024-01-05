@@ -99,7 +99,7 @@ const SignUp = () => {
         let memberInStorage = localStorage.getItem("memberDB");
         let emptyValue = (uId !== "" && uName !== "" && uPw !== "" && uPhone !== "" && uEmail !== "" && uBirth !== "");
 
-        if (emptyValue) {
+        if (!!emptyValue) {
             if(!!isCheck){
             if (uPw.match(passwordRegEx) !== null) {
                 if(pwSame !== "" && uPw === pwSame ){
@@ -141,7 +141,7 @@ const SignUp = () => {
                 alert('올바른 비밀번호를 입력해주세요.');
             }
         } else {
-            alert('아이디를 중복체크 해주세요.');
+            alert('아이디 중복체크 해주세요.');
         }
         } else {
             alert("정보를 입력해주세요");
