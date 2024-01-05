@@ -100,7 +100,7 @@ const SignUp = () => {
 
         if (emptyValue) {
             if (uPw.match(passwordRegEx) !== null) {
-                if(pwSame !== "" && uPw === pwSame && isCheck){
+                if(pwSame !== "" && uPw === pwSame && !isCheck){
                 if (memberInStorage === null) {
                     let newMemberDb = {
                         [uId]: {
