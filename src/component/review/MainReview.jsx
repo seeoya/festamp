@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ReviewModifyModal from "./ReviewModifyModal";
 import ReviewWriteModal from "./ReviewWriteModal";
-import { useNavigate, Link } from "react-router-dom";
 import "./viewReview.css";
 
 
@@ -10,7 +10,6 @@ const MainReview = (props) => {
     const navigate = useNavigate();
     let logInId = props.loginInfo.logInId; // 로그인 아이디
     let isLogIned = props.loginInfo.isLogIned;
-    
 
     const [isShowWriteModal, setIsShowWriteModal] = useState(false);
     const [isShowModifyModal, setIsShowModifyModal] = useState(false);
@@ -20,14 +19,13 @@ const MainReview = (props) => {
     const [reviewNo, setReviewNo] = useState(0);
     const [uReview, setUReview] = useState("");
     const [rStar, setRStar] = useState("");
-    const [festivalDataId, setFestivalDataId] = useState(props.festivalDataId??"");
-    const [festivalTitle, setFestivalTitle] = useState(props.festivalTitle??"");
+    const [festivalDataId, setFestivalDataId] = useState(props.festivalDataId ?? "");
+    const [festivalTitle, setFestivalTitle] = useState(props.festivalTitle ?? "");
     const [starGrade, setStarGrade] = useState("");
 
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(10);
-    
-    
+
     const [memberDBObjs, setMemberDBObjs] = useState("");
 
     let reviewsCheck;
@@ -37,9 +35,9 @@ const MainReview = (props) => {
         setMemberDBObjs(paseMemDB);
 
         console.log(memberDBObjs);
-        
+
         // reviewDB에서 리스트 가져오기
-        let reviewDBObjs = parseReviewDB();        
+        let reviewDBObjs = parseReviewDB();
         let rDataObjs = reviewDBObjs.rData;
 
         let reviewskeys = [];
@@ -48,7 +46,7 @@ const MainReview = (props) => {
         }
         console.log(reviewskeys);
 
-        let tempArr = [];        
+        let tempArr = [];
         // let fullArr = [];
 
         for (let i = 1; i < reviewskeys.length; i++) {
@@ -56,14 +54,13 @@ const MainReview = (props) => {
 
             if (reviews.fDataId === festivalDataId) {
                 // if (!isLogIned) {
-                    // 로그인 상태가 아니라면
-                    reviews["key"] = reviewskeys[i];
-                    
-                    console.log("reviewskeys[i]:", reviewskeys[i]);
+                // 로그인 상태가 아니라면
+                reviews["key"] = reviewskeys[i];
 
-                    tempArr.push(reviews);                    
-                    
-                                       
+                console.log("reviewskeys[i]:", reviewskeys[i]);
+
+                tempArr.push(reviews);
+
                 // } else if (reviews.uId === logInId) {
                 //     // 로그인 상태라면
                 //     reviews["key"] = reviewskeys[i];
@@ -75,7 +72,7 @@ const MainReview = (props) => {
                 // fullArr.push(reviews);
             }
         }
-        
+
 
         setReviewsArr(tempArr);
         currentPosts(reviewsArr);
@@ -85,15 +82,8 @@ const MainReview = (props) => {
 
         let temp = getStarGrade(festivalDataId);
         setStarGrade(temp);
-
-        
-        
-       
-
-        
     }, [tempFlag, isShowWriteModal, isShowModifyModal, currentPage, starGrade]);
 
-    
     // 메인리스트 리뷰쓰기 버튼
     const mainReviewWriteBtnClickHandler = () => {
         console.log("mainReviewWrite Btn Clicked!");
@@ -104,19 +94,17 @@ const MainReview = (props) => {
             alert("로그인이 필요합니다.");
             // 로그인 페이지로 이동
             navigate("/signin");
-
         } else {
-
             let isReviewArr = [];
             let isReview = JSON.stringify(reviewsArr);
 
             if (isReview.includes(festivalTitle)) {
-                if(isReview.includes(logInId)){
-                alert(`${festivalTitle} 리뷰를 이미 작성하셨습니다!`);
-                } else {
+                if (isReview.includes(logInId)) {
+                    alert(`${festivalTitle} 리뷰를 이미 작성하셨습니다!`);
+                }
+            } else {
                 // write modal show
                 setIsShowWriteModal(true);
-                }
             }
         }
     }
@@ -152,22 +140,21 @@ const MainReview = (props) => {
 
             console.log("reviewDBInStorage: ", reviewDBInStorage);
             // starDB 업데이트
-            let starDBInStorage = localStorage.getItem("starDB");           
+            let starDBInStorage = localStorage.getItem("starDB");
             let starDBObj = JSON.parse(starDBInStorage);
-                        
+
             delete starDBObj[fNo];
-            
+
             starDBInStorage = JSON.stringify(starDBObj);
             localStorage.setItem("starDB", starDBInStorage);
             props.starMinF();
 
-            alert("삭제되었습니다.");                  
+            alert("삭제되었습니다.");
             setTempFlag((pv) => !pv);
-            
+
         } else {
             alert("취소되었습니다.");
         }
-        
     };
 
     // 메인리뷰 더보기 클릭핸들러
@@ -188,13 +175,13 @@ const MainReview = (props) => {
 
     // starDB에서 별평점 가져오기
     const getStarGrade = (fId) => {
-    let starDBInStorage = localStorage.getItem("starDB");           
-    let starDBObj = JSON.parse(starDBInStorage);
-    let starFIdObj = starDBObj[fId];
-    let starMinObj = starFIdObj.starMin;
-    console.log(starMinObj);
-    console.log(starFIdObj.starMin);
-    return starMinObj;
+        let starDBInStorage = localStorage.getItem("starDB");
+        let starDBObj = JSON.parse(starDBInStorage);
+        let starFIdObj = starDBObj[fId];
+        let starMinObj = starFIdObj.starMin;
+        console.log(starMinObj);
+        console.log(starFIdObj.starMin);
+        return starMinObj;
     }
 
     // reviewDB 가져오는 함수
@@ -228,8 +215,6 @@ const MainReview = (props) => {
             let reviewDBObjs = JSON.parse(reviewDBinStorage);
             return reviewDBObjs;
         }
-        
-           
     };
 
     // memberDB 가져오는 함수
@@ -262,63 +247,59 @@ const MainReview = (props) => {
         console.log(currentPosts);
         return currentPosts;
     };
-   
 
     return (
         <div id="review_wrap">
             <div className="view_review">
                 <div className="view_review_header">
-                            <span>{festivalTitle}</span>
-                            <span>{starGrade}</span>
-                            <button
-                                onClick={mainReviewWriteBtnClickHandler}
-                                className="write_btn btn highlight"
-                            >
-                                리뷰 쓰기
-                            </button>
+                    <span>{festivalTitle}</span>
+                    <span>{starGrade}</span>
+                    <button
+                        onClick={mainReviewWriteBtnClickHandler}
+                        className="write_btn btn highlight"
+                    >
+                        리뷰 쓰기
+                    </button>
                 </div>
                 <div className="view_review_list">
-                 {reviewsArr.length > 0 ?
-                    <>
-                    <ul>
-                        {reviewsArr.map((reviews, idx) => {
-                           
-                            <li className="full_list" key={idx}>
-                                <div className="write_info">
-                                    <span>{memberDBObjs[reviews.uId].name}</span>
-                                    <span>{`${[reviews.rDateTime.split("일", 1),]}${"일"}`}</span>
-                                    <span>★</span>
-                                    <span>{reviews.star}</span>
-                                    </div>
-                                    <div className="review_value">
-                                        <span>{reviews.uReview}</span>
-                                    
-                                {reviewsCheck = reviews.uId.includes(logInId) 
-                                 ?
-                                 <>
-                                    <button className="btn main modify_btn" onClick={(e) =>  mainReviewModifyBtnClickHandler(e, reviews.rNo, reviews.star)}>
-                                        수정
-                                    </button>
-                                    <button className="btn main delete_btn" onClick={(e) => mainReviewDelBtnClickHandler(e, reviews.rNo, reviews.fDataId)}>
-                                        삭제
-                                    </button>
-                                </>
-                                 : null}
-                                </div>
-                            </li>                           
-                        })}
-                    </ul>
-                    </>    
-                    :
-                    <>
-                    <div className="review_null">
-                        현재 작성된 리뷰가 없습니다.
-                    </div>
-                    </>
+                    {reviewsArr.length > 0 ?
+                        <>
+                            <ul>
+                                {reviewsArr.map((reviews, idx) => {
+                                    <li className="full_list" key={idx}>
+                                        <div className="write_info">
+                                            <span>{memberDBObjs[reviews.uId].name}</span>
+                                            <span>{`${[reviews.rDateTime.split("일", 1),]}${"일"}`}</span>
+                                            <span>★</span>
+                                            <span>{reviews.star}</span>
+                                        </div>
+                                        <div className="review_value">
+                                            <span>{reviews.uReview}</span>
+
+                                            {reviewsCheck = reviews.uId.includes(logInId)
+                                                ?
+                                                <>
+                                                    <button className="btn main modify_btn" onClick={(e) => mainReviewModifyBtnClickHandler(e, reviews.rNo, reviews.star)}>
+                                                        수정
+                                                    </button>
+                                                    <button className="btn main delete_btn" onClick={(e) => mainReviewDelBtnClickHandler(e, reviews.rNo, reviews.fDataId)}>
+                                                        삭제
+                                                    </button>
+                                                </>
+                                                : null}
+                                        </div>
+                                    </li>
+                                })}
+                            </ul>
+                        </>
+                        :
+                        <>
+                            <div className="review_null">
+                                현재 작성된 리뷰가 없습니다.
+                            </div>
+                        </>
                     }
                 </div>
-
-                
 
                 <div className="modal_wrap">
                     {isShowWriteModal ? (
@@ -343,21 +324,19 @@ const MainReview = (props) => {
                         </>
                     ) : null}
                 </div>
-                
+
                 {reviewsArr.length > 10 ?
+                    <div className="more_view_wrap">
+                        <button type="button" className="more_btn" onClick={moreViewClickHandler}>
+                            + 더보기
+                        </button>
 
-                <div className="more_view_wrap">
-                    <button type="button" className="more_btn" onClick={moreViewClickHandler}>
-                    + 더보기
-                    </button>
-
-                    <button type="button" className="hide_btn" onClick={moreViewCancleClickHandler}>
-                    접기
-                    </button>
-                </div>
-                :
-                null}
-                
+                        <button type="button" className="hide_btn" onClick={moreViewCancleClickHandler}>
+                            접기
+                        </button>
+                    </div>
+                    :
+                    null}
             </div>
         </div>
     );

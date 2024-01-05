@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import MainReview from "../review/MainReview";
 import Map from "../map/Map";
+import MainReview from "../review/MainReview";
 import "./viewStyle.css";
-import { festivalData } from "../../data/festivalData";
 
 const ListView = (props) => {
     let calendar = <i className="fa-regular fa-calendar-days"></i>;
@@ -11,7 +10,7 @@ const ListView = (props) => {
     let price = <i className="fa-solid fa-copyright"></i>;
     let name = <i className="fa-solid fa-building"></i>;
     let tel = <i className="fa-solid fa-phone-volume"></i>;
-    let festData = props.festivalData
+    let festData = props.festivalData;
     let { id } = useParams();
     console.log(id);
     const [eventsArr, setEventsArr] = useState([]);
