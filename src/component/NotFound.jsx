@@ -1,17 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const NotFound = () => {
     return (
-        <div>
-            <h5>
-                <strong>404 Error</strong>에러가 발생하였습니다.
-            </h5>
-            <br />
-            <h5>
-                요청하신 URL을 서버에서 찾을 수 없습니다. 다른 원인은
-                <br />
-                확인할 수 없습니다.
-            </h5>
+        <div id="notfound" className="sec">
+            <div className="sec_item">
+                <h1 className="sec_item_title">페이지가 없습니다.</h1>
+
+                <div className="sec_item_content">
+                    <h2>다시 확인해주세요!</h2>
+
+                    <Link to="/" className="btn main">메인으로</Link>
+                </div>
+
+            </div>
         </div>
     );
 };

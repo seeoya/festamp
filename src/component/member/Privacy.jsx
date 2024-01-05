@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './SignUp.css';
 import Secession from "./Secession";
+<<<<<<< HEAD
 import SignIn from "./SignIn";
+=======
+import './SignUp.css';
+>>>>>>> b103bd039138d71fec1b428fed7a332792a9febe
 
 const Privacy = (props) => {
     console.log("Privacy() Called!!");
     // console.log(logInId);
-    
+
 
     let navigate = useNavigate('');
 
     let isLogIned = props.loginInfo.isLogIned;
     let logInId = props.loginInfo.logInId;
-    
+
 
     // Hook
     const [memberInfo, setMemberInfo] = useState(JSON.parse(localStorage.getItem('memberDB')) ?? "");
@@ -34,7 +37,7 @@ const Privacy = (props) => {
     useEffect(() => {
         if (!isLogIned) {
             alert('로그인 하세요');
-            navigate('/SignIn');
+            navigate('/signin');
         } else {
             console.log(memberInfo);
         }
@@ -82,8 +85,8 @@ const Privacy = (props) => {
         console.log(uBirth);
     }
 
-      // 비밀번호 정규식
-      const formatCheck = () => {
+    // 비밀번호 정규식
+    const formatCheck = () => {
         console.log("formatCheckBtnHandler() Clicked !!");
 
         if (uPw.match(passwordRegEx) !== null) {
@@ -107,36 +110,36 @@ const Privacy = (props) => {
 
         pwSameCheck();
         formatCheck();
-        
+
         if (uName !== "" && uPw !== "" && uPhone !== "" && uEmail !== "" && uBirth !== "") {
-            if (isPass && isFormat){
+            if (isPass && isFormat) {
                 memberInfo[logInId] = {
-                name: uName,
-                pw: uPw,
-                phone: uPhone,
-                email: uEmail,
-                birth: uBirth
-            };
+                    name: uName,
+                    pw: uPw,
+                    phone: uPhone,
+                    email: uEmail,
+                    birth: uBirth
+                };
 
-            let memberStr = JSON.stringify(memberInfo);
-            localStorage.setItem("memberDB", memberStr);
+                let memberStr = JSON.stringify(memberInfo);
+                localStorage.setItem("memberDB", memberStr);
 
-            alert('개인정보 변경 완료 !');
-            navigate("/");
+                alert('개인정보 변경 완료 !');
+                navigate("/");
+            } else {
+                alert('정확한 정보를 입력해주세요.');
+            }
+
         } else {
-            alert('정확한 정보를 입력해주세요.');
-        }
-       
-        } else {
-            alert ("정보를 입력해주세요.");
+            alert("정보를 입력해주세요.");
         }
 
 
     };
-   
-    const secessinoViewHandler = () =>{
+
+    const secessinoViewHandler = () => {
         console.log('secessinoViewHandler() Clicked!!');
-        
+
         setIsSecession(true);
     }
 
