@@ -41,6 +41,7 @@
 }
 
 .stamp_img_wrap {
+    position: relative;
     height: 135px;
 }
 
@@ -49,11 +50,25 @@
     max-width: 130px;
     min-height: 130px;
     max-height: 130px;
-    border: 6px solid rgb(255, 123, 0);
+    border: 6px solid var(--main);
     box-shadow: 1px 1px 1px #dadada;
     border-radius: 50%;
 }
 
-.black_background .stamp_img_wrap {
-    background-color: #000;
+.black_background .stmap_img {
+    position: relative;
+    border: 8px solid var(--highlight);
+}
+
+.black_background .stamp_img_wrap::after {
+    content: "\f06b";
+    position: absolute;
+    bottom: -50px;
+    right: -70px;
+    width: 100%;
+    height: 100%;
+    color: var(--alert);
+    font-family: "Font Awesome 5 Free";
+    font-size: 6rem;
+    font-weight: 900;
 }

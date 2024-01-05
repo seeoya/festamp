@@ -4,8 +4,17 @@ import { Link } from "react-router-dom";
 const Header = (props) => {
     let { isLogIned, setIsLogIned, logInId, setLogInId } = props.loginInfo;
     const [memberData, setMemberData] = useState("");
+    const [isLoginState, setIsLoginState] = useState(isLogIned);
 
     useEffect(() => {
+        changeHeadName();
+    }, [])
+
+    useEffect(() => {
+        changeHeadName();
+    }, [isLoginState])
+
+    const changeHeadName = () => {
         let memberDB = localStorage.getItem("memberDB");
         if (memberDB) {
             memberDB = JSON.parse(localStorage.getItem("memberDB"));
@@ -13,7 +22,7 @@ const Header = (props) => {
                 setMemberData(memberDB[logInId]);
             }
         }
-    }, [])
+    }
 
     return (
         <header>
