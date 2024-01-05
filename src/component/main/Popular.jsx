@@ -56,7 +56,7 @@ const Popular = (props) => {
                 }
             </h1>
 
-            {fesList.length >= 1 ?
+            {starList[0] ?
                 <ul className="list">
                     {fesList.slice(0, maxFestivalCount).map((el, i) => {
                         if (el) {
