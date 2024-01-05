@@ -99,11 +99,11 @@ const MyReview = (props) => {
              // starDB 업데이트
             let starDBInStorage = localStorage.getItem("starDB");           
             let starDBObj = JSON.parse(starDBInStorage);
-            let starObj = starDBObj.sData;
             
-            delete starObj[fNo];
+            
+            delete starDBObj[fNo];
 
-            starDBObj.sData = starObj;
+            
             starDBInStorage = JSON.stringify(starDBObj);
             localStorage.setItem("starDB", starDBInStorage);
             props.starMinF();
