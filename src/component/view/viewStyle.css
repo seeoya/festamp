@@ -1,5 +1,4 @@
 /* view style  */
-
 #listview_wrap .title {
     width: 100%;
     height: 50px;
@@ -78,6 +77,10 @@
 
 #listview_wrap .bottom .event .event_list {
     display: flex;
+}
+
+#listview_wrap .info ul li svg {
+    margin-right: 5px;
 }
 
 #listview_wrap .bottom .event .event_list:nth-child(2n-1), #listview_wrap .info ul li:nth-child(2n-1) {
