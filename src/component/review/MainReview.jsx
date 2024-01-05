@@ -315,7 +315,7 @@ const MainReview = (props) => {
                                         <div className="review_value">
                                             <span>{reviews.uReview}</span>
 
-                                            {reviewsCheck = reviews.uId.includes(logInId)
+                                            {!reviews.uId.includes(logInId)
                                                 ?
                                                 <>
                                                     <button className="btn main modify_btn" onClick={(e) => mainReviewModifyBtnClickHandler(e, reviews.rNo, reviews.star)}>
