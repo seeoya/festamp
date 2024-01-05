@@ -9,49 +9,30 @@ const Secession = (props) => {
 
     let navigate = useNavigate();
 
-    const [isSecession, setIsSecession] = useState(false);
-
-    const memdelete = () => {
-          console.log('memdelete() !!');
-          
-          if (window.confirm("정말 탈퇴하시겠습니까?")) {
-            
-            alert("이용해주셔서 감사합니다.");
-            let storageMem = JSON.parse(localStorage.getItem("memberDB"));
-            
-             let changeInfo = delete storageMem[logiendId];
-             
-            let newmemInfo = JSON.stringify(storageMem)
-            localStorage.setItem("memberDB" ,newmemInfo);
-            logiend(false);
-            navigate("/");
-
-        } else {
-
-            alert("메인으로 돌아갑니다");
-            navigate("/");
-
-        }
-
-    };
-
 
     const deleteInfoHandeler = () => {
         console.log('deleteInfo() Clicked!!!');
 
-        setIsSecession(true);
+        if (window.confirm("정말 탈퇴하시겠습니까?")) {
+            
+          alert("이용해주셔서 감사합니다.");
+          let storageMem = JSON.parse(localStorage.getItem("memberDB"));
+          
+           let changeInfo = delete storageMem[logiendId];
+           
+          let newmemInfo = JSON.stringify(storageMem)
+          localStorage.setItem("memberDB" ,newmemInfo);
+          logiend(false);
+          navigate("/");
 
-        if (isSecession) {
-          memdelete();
-        }
+      } else {
 
-        // let memInfo = JSON.parse(localStorage.getItem("memberDB"))
-        // let currentId = memInfo[logiendId]
-        // console.log(currentId);
+          alert("메인으로 돌아갑니다");
+          navigate("/");
 
-        // currentId('delete');
+      }
 
-
+  
     }
     // 아니오 클릭 시 
     const showMainHandelr = () => {
