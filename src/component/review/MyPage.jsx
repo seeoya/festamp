@@ -77,7 +77,7 @@ const MyPage = (props) => {
     };
 
     // MY리뷰 삭제 버튼 이벤트 핸들러
-    const myReviewDelBtnClickHandler = (e, rNo, fNo) => {
+    const myReviewDelBtnClickHandler = (e, rNo, fNo, rStar) => {
         console.log("reviewDelBtnClickHandler() Called!");
 
         let result = window.confirm("리뷰를 삭제하시겠습니까?");
@@ -100,12 +100,32 @@ const MyPage = (props) => {
             let starDBInStorage = localStorage.getItem("starDB");
             let starDBObj = JSON.parse(starDBInStorage);
 
+            const findNumber = (el) => {
+                if(el === rStar) {
+                  return true;
+                }
+            }
+            let delIdx =  starDBObj[fNo].list.findIndex(findNumber);
+            if (delIdx !== null && delIdx !== '' || delIdx !== undefined ) {
+                delete starDBObj[fNo].list[delIdx];            
+                starDBInStorage = JSON.stringify(starDBObj);
+                localStorage.setItem("starDB", starDBInStorage);
+            }
+                
+                starDBInStorage = localStorage.getItem("starDB");
+                starDBObj = JSON.parse(starDBInStorage);
+                
+                let starDBList = starDBObj[fNo].list;
+                console.log(starDBList);
 
-            delete starDBObj[fNo];
+                starDBObj[fNo] = {
+                    'starMin' : 0,
+                    'list' : starDBList,
+                }
 
-
-            starDBInStorage = JSON.stringify(starDBObj);
-            localStorage.setItem("starDB", starDBInStorage);
+                starDBInStorage = JSON.stringify(starDBObj);
+                localStorage.setItem("starDB", starDBInStorage);            
+            
             props.starMinF();
 
             alert("삭제되었습니다.");
@@ -176,10 +196,10 @@ const MyPage = (props) => {
                             </div>
                             <div className="review_value">
                                 <span>{myReview.uReview}</span>
-                                <button className="btn main" onClick={(e) => myReviewModifyBtnClickHandler(e, myReview.rNo)}>
+                                <button className="btn main" onClick={(e) => myReviewModifyBtnClickHandler(e, myReview.rNo, myReview.star)}>
                                     수정
                                 </button>
-                                <button className="btn main" onClick={(e) => myReviewDelBtnClickHandler(e, myReview.rNo)}>
+                                <button className="btn main" onClick={(e) => myReviewDelBtnClickHandler(e, myReview.rNo, myReview.rStar)}>
                                     삭제
                                 </button>
                             </div>

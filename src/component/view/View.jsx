@@ -91,6 +91,7 @@ const ListView = (props) => {
             <div className="review">
                 <>
                     <MainReview
+                        festData={festData}
                         festivalDataId={festData[id].id}
                         festivalTitle={festData[id].title}
                         loginInfo={props.loginInfo}
