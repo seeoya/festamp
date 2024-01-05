@@ -5,7 +5,7 @@ import Secession from "./Secession";
 
 const Privacy = (props) => {
     console.log("Privacy() Called!!");
-    console.log(logInId);
+    // console.log(logInId);
     
 
     let navigate = useNavigate('');
@@ -196,7 +196,7 @@ const Privacy = (props) => {
                                     onChange={birthChangeHandler} placeholder="생일" />
                               </div>
                               <button type="button" className="btn"  onClick={changeBtnHandler}>정보수정</button>
-                              <button type="button" className="btn"  onClick={(props) => secessinoViewHandler(props)}>회원탈퇴</button>
+                              <button type="button" className="btn"  onClick={ secessinoViewHandler}>회원탈퇴</button>
 
                                                       </div>
                             </div>
@@ -205,7 +205,7 @@ const Privacy = (props) => {
                     {
                         isSecession
                         ?
-                        <Secession/>
+                        <Secession loginInfo={props.loginInfo} />
                         :
                         null
                     }

@@ -16,8 +16,10 @@ const MyReview = (props) => {
     const [postsPerPage, setPostsPerPage] = useState(10);
     const [rStar, setRStar] = useState("");
 
-    // 로그인 확인
+    // 네비게이터 설정
     let navigate = useNavigate('');
+
+    // 로그인 확인
     useEffect(() => {
 
         if (!logInId) {
@@ -74,6 +76,7 @@ const MyReview = (props) => {
         setIsShowModifyModal(true);
     };
 
+    // MY리뷰 삭제 버튼 이벤트 핸들러
     const myReviewDelBtnClickHandler = (e, rNo, fNo) => {
         console.log("reviewDelBtnClickHandler() Called!");
 
