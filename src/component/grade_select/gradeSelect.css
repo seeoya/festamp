@@ -20,12 +20,12 @@
 
 .star_rating label {
     -webkit-text-fill-color: transparent;     /* Will override color (regardless of order) */
-    -webkit-text-stroke-width: 2.3px;
+    -webkit-text-stroke-width: 0.23rem;
     -webkit-text-stroke-color: #2b2a29;
     cursor: pointer;
 }
 
-.star_rating:checked ~ label {
+.star_rating input[type=radio]:checked ~ label {
     -webkit-text-fill-color: rgb(238, 255, 0);
 }
 
@@ -34,23 +34,19 @@
 }
 
 .star_rate {
-    margin-top: 6px;
-    font-size: 18px;
+    margin-top: 0.6rem;
+    font-size: 1.8rem;
     font-weight: bold;
 }
 
 .cur_star_wrap > p {
-    font-size: 14px;
+    font-size: 1.4rem;
     color: #fff476;
 }
 
 .selected_star {
-    font-size: 22px;
+    font-size: 2.2rem;
     font-weight: bold;
     color: #000;
     text-shadow: -1px 0px #fffb00, 1px 2px #fffb00, 1px 0px #fffb00, 0px -1px #fffb00;
-}
-
-.input_star {
-    width: 80px;
 }

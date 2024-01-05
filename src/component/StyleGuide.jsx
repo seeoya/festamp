@@ -26,6 +26,7 @@ const StyleGuide = () => {
                     <div className="box main">MAIN</div>
                     <div className="box sub">SUB</div>
                     <div className="box highlight">HIGHLIGHT</div>
+                    <div className="box alert">ALERT</div>
                 </div>
             </div>
 
@@ -55,6 +56,9 @@ const StyleGuide = () => {
                     </button>
                     <button type="button" className="btn highlight">
                         하이라이트 버튼 (button.btn.highlight)
+                    </button>
+                    <button type="button" className="btn alert">
+                        알림 버튼 (button.btn.alert)
                     </button>
                 </div>
             </div>

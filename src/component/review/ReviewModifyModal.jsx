@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getDateTime } from "./getDateTime";
+import "./mypage.css";
 // import Star from '';
 
 const ReviewModifyModal = (props) => {
@@ -74,9 +75,9 @@ const ReviewModifyModal = (props) => {
     };
 
     return (
-        <div className="review_modify_modal">
-            <div className="modify_info">
-                <span>{oldFTitle}</span><span>{oldRDateTime}</span>★&nbsp;<span>{oldStar}</span>
+        <div className="review_modify_modal full_list">
+            <div className="modify_info write_info">
+                <span>{oldFTitle}</span><span>{oldRDateTime}</span><span>★</span>&nbsp;<span>{oldStar}</span>
             </div>
             <textarea className="review_modify_text input"
                     name="oldUReview"

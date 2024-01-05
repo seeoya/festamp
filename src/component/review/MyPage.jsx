@@ -23,7 +23,7 @@ const MyPage = (props) => {
     useEffect(() => {
 
         if (!logInId) {
-            alert('로그인 하세요');
+            alert('로그인이 필요한 서비스 입니다');
             navigate('/signin');
         } else {
 
@@ -174,7 +174,9 @@ const MyPage = (props) => {
         return currentPosts;
     };
 
-    return (
+    return (<>
+        {logInId
+        ?
         <div className="my_page sec">
 
             <div className="my_stamp ">
@@ -199,7 +201,11 @@ const MyPage = (props) => {
                                 <button className="btn main" onClick={(e) => myReviewModifyBtnClickHandler(e, myReview.rNo, myReview.star)}>
                                     수정
                                 </button>
+<<<<<<< HEAD
                                 <button className="btn main" onClick={(e) => myReviewDelBtnClickHandler(e, myReview.rNo, myReview.rStar)}>
+=======
+                                <button className="btn alert" onClick={(e) => myReviewDelBtnClickHandler(e, myReview.rNo)}>
+>>>>>>> 0ba1ebd44ebd312c95a8b1f6bcb654a6624e994d
                                     삭제
                                 </button>
                             </div>
@@ -227,7 +233,11 @@ const MyPage = (props) => {
                 ) : null}
             </div>
         </div>
-
+        :
+        null
+    }
+        
+        </>
     );
 };
 
