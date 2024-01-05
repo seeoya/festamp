@@ -329,7 +329,7 @@ const MainReview = (props) => {
                     ) : null}
                 </div>
 
-                {reviewsArr.length > 10 ?
+                {reviewsArr.length >= 10 ?
                     <div className="more_view_wrap">
                         <button type="button" className="more_btn" onClick={moreViewClickHandler}>
                             + 더보기

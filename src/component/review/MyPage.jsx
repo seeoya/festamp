@@ -224,8 +224,7 @@ const MyPage = (props) => {
                         ) : null}
                     </div>
 
-
-                    {myReviewsArr.length > 10 ?
+                    {myReviewsArr.length >= 10 ?
                         <div className="more_view_wrap">
                             <button type="button" className="more_btn" onClick={moreViewClickHandler}>
                                 + 더보기
