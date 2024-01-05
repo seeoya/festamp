@@ -18,29 +18,33 @@ const Popular = (props) => {
         setFesList(festivalData);
 
         if (localStorage.getItem("starDB")) {
-            // let starDB = JSON.parse(localStorage.getItem("starDB"));
-            // let tmpFesList = [];
-            // let tmpStarList = [];
+            let starDB = JSON.parse(localStorage.getItem("starDB"));
+            let tmpFesList = [];
+            let tmpStarList = [];
 
-            // Object.keys(starDB).map((el) => {
-            //     tmpStarList.push({ fNo: starDB[el], star: starDB[el].starMin, count: starDB[el].list.length });
-            // })
+            console.log(starDB);
 
-            // tmpStarList.sort((a, b) => {
-            //     if (a.star > b.star) return -1;
-            //     if (a.star < b.star) return +1;
-            //     return 0;
-            // });
+            starDB.map((el, i) => {
+                console.log(el.starMin);
+                if (el.starMin && el.starMin > 0) {
+                    tmpStarList.push({ fNo: i, star: el.starMin, count: el.list.length });
+                }
+            })
 
-            // tmpStarList.map((el) => {
-            //     tmpFesList.push(festivalData[el.fNo])
-            // })
+            console.log(tmpStarList);
 
-            // setFesList(tmpFesList);
-            // setStarList(tmpStarList);
+            tmpStarList.sort((a, b) => {
+                if (a.star > b.star) return -1;
+                if (a.star < b.star) return +1;
+                return 0;
+            });
 
-            // console.log(tmpFesList);
-            // console.log(tmpStarList);
+            tmpStarList.map((el) => {
+                tmpFesList.push(festivalData[el.fNo])
+            })
+
+            setFesList(tmpFesList);
+            setStarList(tmpStarList);
         }
     };
 
@@ -67,7 +71,7 @@ const Popular = (props) => {
                                             <span className="marker">{`${i + 1}`}</span>
                                             <span className="title">{`${el.title}`}</span>
                                         </div>
-                                        {/* <span className="star">★ {starList[i].star}</span> */}
+                                        <span className="star">★ {starList[i].star}</span>
                                     </Link>
                                 </li>
                             );
