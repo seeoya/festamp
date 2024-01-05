@@ -63,11 +63,25 @@ header .link:hover {
 }
 
 /* styleguide */
-#styleguide {
+#styleguide.sec {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
-#styleguide .box_wrap {
+#styleguide.sec .sec {
+    min-height: 100px;
+}
+
+#styleguide .sec_item {
+    width: 800px;
+}
+
+#styleguide .sec_item_content {
     display: flex;
+    flex-direction: row;
 }
 
 #styleguide .box {
