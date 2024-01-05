@@ -33,10 +33,6 @@ const MyPage = (props) => {
     useEffect(() => {
         console.log("useEffect() CALLED!!");
 
-        let paseMemDB = parseMemberDB();
-        setMemberDBObjs(paseMemDB);
-
-
         console.log(props.loginInfo);
 
         console.log(logInId);
