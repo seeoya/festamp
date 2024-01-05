@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Stamp from "../stamp/StampPage";
 import ReviewModifyModal from "./ReviewModifyModal";
 import "./mypage.css";
@@ -210,12 +210,6 @@ const MyPage = (props) => {
                                 </li>
                             ))}
                         </ul>
-
-                    </div>
-
-                    <div className="more_view_wrap">
-                        <Link className="underline" to="#none" onClick={moreViewClickHandler}>+ 더보기 </Link>
-                        <Link className="underline" to="#none" onClick={moreViewCancleClickHandler}>접기</Link>
                     </div>
 
                     <div>
@@ -229,7 +223,21 @@ const MyPage = (props) => {
                             </>
                         ) : null}
                     </div>
-                </div>
+
+
+                    {myReviewsArr.length > 10 ?
+                        <div className="more_view_wrap">
+                            <button type="button" className="more_btn" onClick={moreViewClickHandler}>
+                                + 더보기
+                            </button>
+
+                            <button type="button" className="hide_btn" onClick={moreViewCancleClickHandler}>
+                                접기
+                            </button>
+                        </div>
+                        :
+                        null}
+                </div >
                 :
                 null
             }
