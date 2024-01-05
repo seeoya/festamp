@@ -39,14 +39,14 @@ const Stamp = (props) => {
     }, []);
 
     // function
-    // 길이가 10개인 배열을 만들고 반복문을 돌려 빈 div를 만든다.
+    // 길이가 10개인 빈 배열을 만들고 반복문을 돌려 빈 스탬프 칸을 만든다.
     const defaultDiv = Array.from({ length: 10 }).map((_, idx) => (
         <div className="stamp_item" key={idx}>
             <div className="fes_title"></div>
             <div className="stamp_img_wrap"></div>
         </div>
     ));
-
+    // 리뷰 배열에 일의 자리수를 올림하여 10, 20, 30,... 빈 배열을 생성한다.
     const remainStampItems = Array.from({ length: (0, Math.ceil(myStampArr.length / 10) * 10) }).map((el, idx) => {
         if (myStampArr[idx]) {
             return (
@@ -70,7 +70,7 @@ const Stamp = (props) => {
             );
         }
     });
-
+    // 스탬프 10단위의 알림
     const alretTen = () => {
         for(let i = 1; i <= Math.ceil(myStampArr.length / 10) * 10; i++) {
             if(myStampArr = 10 * i) {
