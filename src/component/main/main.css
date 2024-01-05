@@ -77,6 +77,7 @@
 }
 
 #main .sec_item {
+    padding: 20px 30px 30px;
     width: 50%;
     min-width: auto;
 }
@@ -139,10 +140,21 @@
     background: var(--main);
 }
 
-#main_popular .item .star {
+#main_popular .item .info {
+    display: flex;
+    gap: 10px;
+    font-size: 1.5rem;
+}
+
+#main_popular .item .info > span {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 5px
+}
+
+#main_popular .item .star svg {
+    color: var(--highlight);
 }
 
 #main_random .item {

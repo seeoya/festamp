@@ -22,16 +22,12 @@ const Popular = (props) => {
             let tmpFesList = [];
             let tmpStarList = [];
 
-            console.log(starDB);
-
             starDB.map((el, i) => {
                 console.log(el.starMin);
                 if (el.starMin && el.starMin > 0) {
                     tmpStarList.push({ fNo: i, star: el.starMin, count: el.list.length });
                 }
             })
-
-            console.log(tmpStarList);
 
             tmpStarList.sort((a, b) => {
                 if (a.star > b.star) return -1;
@@ -71,7 +67,11 @@ const Popular = (props) => {
                                             <span className="marker">{`${i + 1}`}</span>
                                             <span className="title">{`${el.title}`}</span>
                                         </div>
-                                        <span className="star">★ {starList[i].star}</span>
+
+                                        <div className="info">
+                                            <span className="comment"><i class="fa-regular fa-comment-dots"></i>{starList[i].count}</span>
+                                            <span className="star"><i class="fa-solid fa-star"></i>{starList[i].star}</span>
+                                        </div>
                                     </Link>
                                 </li>
                             );
