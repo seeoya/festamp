@@ -59,8 +59,3 @@
     width: 50px;
     height: 30px;
 }
-
-/* 임의로 넣었음 */
-.more_view_wrap .underline:hover {
-    text-decoration: underline;
-}

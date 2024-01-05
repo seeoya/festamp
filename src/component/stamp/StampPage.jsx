@@ -53,12 +53,10 @@ const Stamp = (props) => {
                 <div className="stamp_item" key={idx}>
                     <Link to={`/view/${myStampArr[idx].fDataId}`}>
                         <div className="fes_title">{myStampArr[idx].fTitle}</div>
-                    </Link>
-                    <div className="stmap_img_wrap">
-                        <Link to={`/view/${myStampArr[idx].fDataId}`}>
+                        <div className="stmap_img_wrap">
                             <img className="stmap_img" src={fData[myStampArr[idx].fDataId].img} alt={myStampArr[idx].fTitle} />
-                        </Link>
-                    </div>
+                        </div>
+                    </Link>
                 </div>
             );
         } else {
