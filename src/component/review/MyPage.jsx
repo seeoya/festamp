@@ -213,7 +213,7 @@ const MyPage = (props) => {
                 <Stamp myReviewsArr={myReviewsArr} logInId={logInId} festivalData={props.festivalData} />
             </div>
 
-            <div id="review_wrap" className="view_review_list sec">
+            <div id="review_wrap" className="view_review_list sec_item">
                 <ul>
                     <li className="sec_item_title"><h1>MY REVIEW</h1></li>
                     {myReviewsArr.map((myReview, idx) => (
@@ -240,10 +240,7 @@ const MyPage = (props) => {
 
             </div>
 
-            <div className="more_view_wrap">
-                <Link className="underline" to="#none" onClick={moreViewClickHandler}>+ 더보기 </Link>
-                <Link className="underline" to="#none" onClick={moreViewCancleClickHandler}>접기</Link>
-            </div>
+            
 
             <div>
                 {isShowModifyModal ? (
@@ -256,6 +253,18 @@ const MyPage = (props) => {
                     </>
                 ) : null}
             </div>
+            {myReviewsArr.length > 10 ?
+                    <div className="more_view_wrap">
+                        <button type="button" className="more_btn" onClick={moreViewClickHandler}>
+                            + 더보기
+                        </button>
+
+                        <button type="button" className="hide_btn" onClick={moreViewCancleClickHandler}>
+                            접기
+                        </button>
+                    </div>
+                    :
+                    null}
         </div>
         :
         null
