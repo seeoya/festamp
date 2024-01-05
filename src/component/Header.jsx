@@ -21,6 +21,7 @@ const Header = (props) => {
                         RANKING
                     </Link>
                 </li>
+                
                 {isLogIned ? (
                     <>
                         <li>
