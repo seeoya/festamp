@@ -16,11 +16,12 @@ const SignUp = () => {
     const [uEmail, setUEmail] = useState("");
     const [uBirth, setUBirth] = useState("");
 
-    const[isCheck, setIsCheck] = useState(false);
+    const [isCheck, setIsCheck] = useState(false);
+    const [isemptyValue, setIsemptyValue] = useState(false);
 
 
-     // 비밀번호 정규식
-    const passwordRegEx =  /^(?=.*[a-z])((?=.*\d)|(?=.*\W)).{6,12}$/;
+    // 비밀번호 정규식
+    const passwordRegEx = /^(?=.*[a-z])((?=.*\d)|(?=.*\W)).{6,12}$/;
 
     // handleer
     const userNameHandler = (e) => {
@@ -87,10 +88,11 @@ const SignUp = () => {
             }
         } else {
             alert('사용 가능한 아이디입니다.');
+            setIsCheck(true);
         }
     };
 
-  
+
     // 회원가입 버튼
     const joinBtn = () => {
         console.log("joinBtn() Clicked!");
@@ -100,49 +102,49 @@ const SignUp = () => {
         let emptyValue = (uId !== "" && uName !== "" && uPw !== "" && uPhone !== "" && uEmail !== "" && uBirth !== "");
 
         if (emptyValue) {
-            if(!!isCheck){
-            if (uPw.match(passwordRegEx) !== null) {
-                if(pwSame !== "" && uPw === pwSame ){
-                if (memberInStorage === null) {
-                    let newMemberDb = {
-                        [uId]: {
-                            name: uName,
-                            pw: uPw,
-                            phone: uPhone,
-                            email: uEmail,
-                            birth: uBirth,
-                        },
-                    };
+            if (isCheck) {
+                if (uPw.match(passwordRegEx) !== null) {
+                    if (!!pwSame && uPw === pwSame) {
+                        if (memberInStorage === null) {
+                            let newMemberDb = {
+                                [uId]: {
+                                    name: uName,
+                                    pw: uPw,
+                                    phone: uPhone,
+                                    email: uEmail,
+                                    birth: uBirth,
+                                },
+                            };
 
-                    let memberStr = JSON.stringify(newMemberDb);
-                    localStorage.setItem("memberDB", memberStr);
+                            let memberStr = JSON.stringify(newMemberDb);
+                            localStorage.setItem("memberDB", memberStr);
+                        } else {
+                            let memberDbObj = JSON.parse(memberInStorage);
+                            console.log("memberInStorage");
+
+                            memberDbObj[uId] = {
+                                name: uName,
+                                pw: uPw,
+                                phone: uPhone,
+                                email: uEmail,
+                                birth: uBirth,
+                            };
+
+                            let memberStr = JSON.stringify(memberDbObj);
+                            localStorage.setItem("memberDB", memberStr);
+                        }
+
+                        alert("회원가입을 축하드립니다.");
+                        navigate("/signin");
+                    } else {
+                        alert('같은 비밀번호를 입력해주세요');
+                    }
                 } else {
-                    let memberDbObj = JSON.parse(memberInStorage);
-                    console.log("memberInStorage");
-
-                    memberDbObj[uId] = {
-                        name: uName,
-                        pw: uPw,
-                        phone: uPhone,
-                        email: uEmail,
-                        birth: uBirth,
-                    };
-
-                    let memberStr = JSON.stringify(memberDbObj);
-                    localStorage.setItem("memberDB", memberStr);
+                    alert('올바른 비밀번호를 입력해주세요.');
                 }
-
-                alert("회원가입을 축하드립니다.");
-                navigate("/signin");
             } else {
-                alert('같은 비밀번호를 입력해주세요');
+                alert('아이디 중복체크 해주세요.');
             }
-            } else {
-                alert('올바른 비밀번호를 입력해주세요.');
-            }
-        } else {
-            alert('아이디를 중복체크 해주세요.');
-        }
         } else {
             alert("정보를 입력해주세요");
         }

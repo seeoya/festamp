@@ -30,7 +30,7 @@ const MainReview = (props) => {
 
     let reviewsCheck;
     let festData = props.festData;
-    
+
     useEffect(() => {
         console.log("useEffect() CALLED!!");
         let paseMemDB = parseMemberDB();
@@ -49,7 +49,7 @@ const MainReview = (props) => {
         console.log(reviewskeys);
 
         let tempArr = [];
-        
+
         for (let i = 1; i < reviewskeys.length; i++) {
             let reviews = rDataObjs[reviewskeys[i]];
 
@@ -59,7 +59,7 @@ const MainReview = (props) => {
                 console.log("reviewskeys[i]:", reviewskeys[i]);
 
                 tempArr.push(reviews);
-                
+
             }
         }
         setReviewsArr(tempArr);
@@ -68,7 +68,7 @@ const MainReview = (props) => {
 
         currentPosts(reviewsArr);
         setReviewsArr(currentPosts);
-    
+
         // 별평점 함수 호출해서 set
         let temp = getStarGrade(festivalDataId);
         setStarGrade(temp);
@@ -92,9 +92,10 @@ const MainReview = (props) => {
             if (isReview.includes(festivalTitle)) {
                 if (isReview.includes(logInId)) {
                     alert(`${festivalTitle} 리뷰를 이미 작성하셨습니다!`);
+                } else {
+                    setIsShowWriteModal(true);
                 }
             } else {
-                // write modal show
                 setIsShowWriteModal(true);
             }
         }
@@ -130,21 +131,21 @@ const MainReview = (props) => {
             localStorage.setItem("reviewDB", reviewDBInStorage);
 
             console.log("reviewDBInStorage: ", reviewDBInStorage);
-            
+
             // starDB 업데이트
             let starDBInStorage = localStorage.getItem("starDB");
             let starDBObj = JSON.parse(starDBInStorage);
 
             const findNumber = (el) => {
-                if(el === rStar) {
-                  return true;
+                if (el === rStar) {
+                    return true;
                 }
             }
-            let delIdx =  starDBObj[fNo].list.findIndex(findNumber);
-            if (delIdx !== null){
+            let delIdx = starDBObj[fNo].list.findIndex(findNumber);
+            if (delIdx !== null) {
                 delete starDBObj[fNo].list[delIdx];
-                }
-            
+            }
+
             starDBInStorage = JSON.stringify(starDBObj);
             localStorage.setItem("starDB", starDBInStorage);
             starDBInStorage = localStorage.getItem("starDB");
@@ -153,8 +154,8 @@ const MainReview = (props) => {
             console.log(starDBList);
 
             starDBObj[fNo] = {
-                'starMin' : 0,
-                'list' : starDBList,
+                'starMin': 0,
+                'list': starDBList,
             }
 
             starDBInStorage = JSON.stringify(starDBObj);
@@ -196,28 +197,28 @@ const MainReview = (props) => {
             console.log(starFIdObj.starMin);
             return starMinObj;
         } else {
-            let festivalNo = '';    
-            let newStarObj = [{           
-                [festivalNo] : {
+            let festivalNo = '';
+            let newStarObj = [{
+                [festivalNo]: {
                     'starMin': '',
                     'list': '',
-                    },
                 },
+            },
             ];
-        
+
             starDBInStorage = JSON.stringify(newStarObj);
             localStorage.setItem("starDB", starDBInStorage);
 
-            for(let i=0; i < festData.length; i++){  
+            for (let i = 0; i < festData.length; i++) {
                 starDBInStorage = localStorage.getItem("starDB");
                 let starDBObj = JSON.parse(starDBInStorage);
                 starDBObj[i] = {
-                'starMin': 0,
-                'list': '',            
+                    'starMin': 0,
+                    'list': '',
                 }
-                        
-            let addStarObj = JSON.stringify(starDBObj);
-            localStorage.setItem("starDB", addStarObj);
+
+                let addStarObj = JSON.stringify(starDBObj);
+                localStorage.setItem("starDB", addStarObj);
             }
         }
     }
@@ -300,10 +301,10 @@ const MainReview = (props) => {
                     </button>
                 </div>
                 <div className="view_review_list">
-                    {reviewsArr.length > 0 ? 
+                    {reviewsArr.length > 0 ?
                         <>
                             <ul>
-                                {reviewsArr.map((reviews, idx) => 
+                                {reviewsArr.map((reviews, idx) =>
                                     <li className="full_list" key={idx}>
                                         <div className="write_info">
                                             <span>{memberDBObjs[reviews.uId].name}</span>
@@ -314,14 +315,14 @@ const MainReview = (props) => {
                                         <div className="review_value">
                                             <span>{reviews.uReview}</span>
 
-                                            {reviewsCheck = reviews.uId.includes(logInId)
+                                            {!reviews.uId.includes(logInId)
                                                 ?
                                                 <>
                                                     <button className="btn main modify_btn" onClick={(e) => mainReviewModifyBtnClickHandler(e, reviews.rNo, reviews.star)}>
                                                         수정
                                                     </button>
-                                                    <button className="btn alert delete_btn" onClick={(e) => 
-                                                                                mainReviewDelBtnClickHandler(e, reviews.rNo, reviews.fDataId, reviews.star)}>
+                                                    <button className="btn alert delete_btn" onClick={(e) =>
+                                                        mainReviewDelBtnClickHandler(e, reviews.rNo, reviews.fDataId, reviews.star)}>
                                                         삭제
                                                     </button>
                                                 </>
@@ -331,13 +332,13 @@ const MainReview = (props) => {
                                 )}
                             </ul>
                         </>
-                        :                        
+                        :
                         <>
                             <div className="review_null">
                                 현재 작성된 리뷰가 없습니다.
                             </div>
                         </>
-                        }
+                    }
                 </div>
 
                 <div className="modal_wrap">

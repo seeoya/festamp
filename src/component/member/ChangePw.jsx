@@ -1,4 +1,5 @@
 import React, { useId, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ChangePw = (props) => {
     console.log("ChangePw() Called !!");
@@ -8,6 +9,8 @@ const ChangePw = (props) => {
 
     //정규식
     const passwordRegEx = /^(?=.*[a-z])((?=.*\d)|(?=.*\W)).{6,12}$/;
+
+    const navigate =useNavigate();
 
     // 입력창
     const inputNewPW = (e) => {
@@ -57,6 +60,8 @@ const ChangePw = (props) => {
             localStorage.setItem('memberDB', JSON.stringify(memberInStorage));  
 
             alert('비밀번호가 변경되었습니다.');
+            navigate('/signin');
+            
             } else {
                 alert('비밀번호가 일치하지 않습니다.')
             }
