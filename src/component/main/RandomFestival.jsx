@@ -37,7 +37,7 @@ const RandomFestival = (props) => {
                 <div className="random_content">
                     <Link to={`/view/${festivalData[resNum].id}`} className="item">
                         <img
-                            src={`/${festivalData[resNum].img}`}
+                            src={`${festivalData[resNum].img}`}
                             alt={festivalData[resNum].title}
                             className="item_img"
                         />

@@ -30,7 +30,7 @@ const ListView = (props) => {
                 <div className="flex_wrap">
                     <div className="middle">
                         <div className="img">
-                            <img src={`/${festData[id].img}`} />
+                            <img src={`${festData[id].img}`} />
                         </div>
 
                         <div className="explain item_explain">
