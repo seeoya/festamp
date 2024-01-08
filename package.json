@@ -1,4 +1,6 @@
 {
+    "homepage": "https://seeoya.github.io/festamp",
+
     "name": "festamp",
     "version": "0.1.0",
     "private": true,
@@ -15,7 +17,6 @@
         "swiper": "^11.0.5",
         "web-vitals": "^2.1.4"
     },
-    "homepage": "https://seeoya.github.io/festamp",
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
