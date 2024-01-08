@@ -13,7 +13,7 @@ let festivalData = [
         price: "초등학생 이상-1만원 / 미취학아동-무료(증빙서류지참에 한함)",
         store: "양평 향리낚시터/양평 향리낚시터",
         tel: "010-3346-1259",
-        img: "imgs/festival/img1.jpg",
+        img: "./imgs/festival/img1.jpg",
     },
     {
         id: "1",
@@ -29,7 +29,7 @@ let festivalData = [
         price: "입장료 1,000 (프로그램별 별도 요금)",
         store: "포천시/백운계곡상인협동조합",
         tel: "031-536-9917",
-        img: "imgs/festival/img2.jpg",
+        img: "./imgs/festival/img2.jpg",
     },
     {
         id: "2",
@@ -45,7 +45,7 @@ let festivalData = [
         price: "유료 19,000원 ~ 29,000원",
         store: "수미마을/양평빙송어축제 추진위원회",
         tel: "031-775-5205",
-        img: "imgs/festival/img3.jpg",
+        img: "./imgs/festival/img3.jpg",
     },
     {
         id: "3",
@@ -61,7 +61,7 @@ let festivalData = [
         price: "경기도민할인 21,000원+동반 1인 할인(경기도 거주 고객 대상)",
         store: "한국민속촌/한국민속촌",
         tel: "031-288-0000",
-        img: "imgs/festival/img4.jpg",
+        img: "./imgs/festival/img4.jpg",
     },
     {
         id: "4",
@@ -77,7 +77,7 @@ let festivalData = [
         price: "프로그램 별 상이",
         store: "양평군/양평군",
         tel: "031-770-1071~1073",
-        img: "imgs/festival/img5.jpg",
+        img: "./imgs/festival/img5.jpg",
     },
     {
         id: "5",
@@ -93,7 +93,7 @@ let festivalData = [
         price: "어른 : 11,000원 / 청소년 : 8,500원 / 어린이 : 7,500원",
         store: "아침고요수목원",
         tel: "1544-6703",
-        img: "imgs/festival/img6.jpg",
+        img: "./imgs/festival/img6.jpg",
     },
     {
         id: "6",
@@ -109,7 +109,7 @@ let festivalData = [
         price: "(홈페이지 참조)",
         store: "㈜쁘띠프랑스",
         tel: "031-584-8200",
-        img: "imgs/festival/img7.jpg",
+        img: "./imgs/festival/img7.jpg",
     },
     {
         id: "7",
@@ -125,7 +125,7 @@ let festivalData = [
         price: "입장료 대인·소인6,000원, 직화소불고기쌈밥 21000원(입장료 무료)",
         store: "산들소리",
         tel: "010-3039-3252",
-        img: "imgs/festival/img8.jpg",
+        img: "./imgs/festival/img8.jpg",
     },
     {
         id: "8",
@@ -141,7 +141,7 @@ let festivalData = [
         price: "평일 - 일반 10,000원/영유아(36개월 이하) 무료/우대(장애인, 노인, 국가유공자, 단체 (20인) 8,000원 주말 - 일반 12,000원/영유아(36개월 이하) 무료/우대(장애인, 노인, 국가유공자, 단체 (20인) 10,000원",
         store: "허브아일랜드",
         tel: "031-535-6494",
-        img: "imgs/festival/img9.jpg",
+        img: "./imgs/festival/img9.jpg",
     },
     {
         id: "9",
@@ -157,7 +157,7 @@ let festivalData = [
         price: "대인(중학생 이상) 8,000원 소인(24개월 ~ 초등학생) 5,000원 장애인·경로 5,000원",
         store: "안산별빛마을",
         tel: "031-484-5050",
-        img: "imgs/festival/img10.jpg",
+        img: "./imgs/festival/img10.jpg",
     },
     {
         id: "10",
@@ -173,7 +173,7 @@ let festivalData = [
         price: "* 입장료 (대인, 소인 동일) 평일 10,000원 / 주말 13,000원 양주시민 할인) 평일 8,000원 / 주말 10,000원 단체 20인 이상 할인) 평일 8,000원 / 주말 할인 없음",
         store: "㈜아트밸리",
         tel: "031-826-2975",
-        img: "imgs/festival/img11.jpg",
+        img: "./imgs/festival/img11.jpg",
     },
     {
         id: "11",
@@ -189,7 +189,7 @@ let festivalData = [
         price: "주말 및 공휴일-대인 12,000원/ 소인 11,000원 평일- 대인 9,000원/ 소인 8,000원",
         store: "퍼스트가든",
         tel: "031-957-6861",
-        img: "imgs/festival/img12.jpg",
+        img: "./imgs/festival/img12.jpg",
     },
     {
         id: "12",
@@ -205,7 +205,7 @@ let festivalData = [
         price: "무료(부분 유료)",
         store: "의왕시",
         tel: "031-345-2548",
-        img: "imgs/festival/img13.jpg",
+        img: "./imgs/festival/img13.jpg",
     },
     {
         id: "13",
@@ -221,7 +221,7 @@ let festivalData = [
         price: "입장료 1인 1만원 (동행인원 50%할인) 5세미만 무료",
         store: "두메호수 내수면 어업계/ 안성동막골마을 주민회 일동 (안성시 후원)",
         tel: "031-674-4528",
-        img: "imgs/festival/img14.jpg",
+        img: "./imgs/festival/img14.jpg",
     },
     {
         id: "14",
@@ -237,7 +237,7 @@ let festivalData = [
         price: "송어낚시 20,000원(7세 이하 무료) 빙어낚시 20,000원(6세 이하 무료) 송어맨손잡이 30,000원(2마리) 빙어뜰채 10,000원 얼음썰매 10,000원",
         store: "청평설빙 축제위원회",
         tel: "031-584-2755",
-        img: "imgs/festival/img15.jpg",
+        img: "./imgs/festival/img15.jpg",
     },
     {
         id: "15",
@@ -253,7 +253,7 @@ let festivalData = [
         price: "유료 6,000원~20,000원",
         store: "산정호수마을회",
         tel: "031-532-6135",
-        img: "imgs/festival/img16.jpg",
+        img: "./imgs/festival/img16.jpg",
     },
     {
         id: "16",
@@ -269,7 +269,7 @@ let festivalData = [
         price: "서울랜드 파크이용권(주간권 혹은 야간권) 구매 시 무료",
         store: "서울랜드",
         tel: "02-509-6000",
-        img: "imgs/festival/img17.jpg",
+        img: "./imgs/festival/img17.jpg",
     },
     {
         id: "17",
@@ -285,7 +285,7 @@ let festivalData = [
         price: "일반 10,000원 (미취학 아동 5,000원)",
         store: "양평빙어축제위원회",
         tel: "031-771-7750",
-        img: "imgs/festival/img18.jpg",
+        img: "./imgs/festival/img18.jpg",
     },
     {
         id: "18",
@@ -301,7 +301,7 @@ let festivalData = [
         price: "미정",
         store: "광주시, 세계관악협회(WASBE)",
         tel: "031-789-5791",
-        img: "imgs/festival/img19.jpg",
+        img: "./imgs/festival/img19.jpg",
     },
     {
         id: "19",
@@ -317,7 +317,7 @@ let festivalData = [
         price: "무료입장",
         store: "파주장단콩축제추진위원회",
         tel: "031-940-5283~4",
-        img: "imgs/festival/img20.jpg",
+        img: "./imgs/festival/img20.jpg",
     },
     {
         id: "20",
@@ -333,7 +333,7 @@ let festivalData = [
         price: "무료",
         store: "평택시국제교류재단 팽성국제교류센터",
         tel: "031-692-4302",
-        img: "imgs/festival/img21.jpg",
+        img: "./imgs/festival/img21.jpg",
     },
     {
         id: "21",
@@ -349,7 +349,7 @@ let festivalData = [
         price: "무료",
         store: "경기도, (주)유니크굿컴퍼니",
         tel: "070-8706-1010",
-        img: "imgs/festival/img22.jpg",
+        img: "./imgs/festival/img22.jpg",
     },
     {
         id: "22",
@@ -365,7 +365,7 @@ let festivalData = [
         price: "무료",
         store: "연천군/연천군 농산물 큰장터 축제추진위원회",
         tel: "031-839-2313",
-        img: "imgs/festival/img23.jpg",
+        img: "./imgs/festival/img23.jpg",
     },
     {
         id: "23",
@@ -381,7 +381,7 @@ let festivalData = [
         price: "무료",
         store: "파주시",
         tel: "031-940-8545",
-        img: "imgs/festival/img24.jpg",
+        img: "./imgs/festival/img24.jpg",
     },
     {
         id: "24",
@@ -397,7 +397,7 @@ let festivalData = [
         price: "무료",
         store: "한국문화예술위원회/문화발전소 열터",
         tel: "031-236-7103",
-        img: "imgs/festival/img25.jpg",
+        img: "./imgs/festival/img25.jpg",
     },
     {
         id: "25",
@@ -413,7 +413,7 @@ let festivalData = [
         price: "김장보쌈 패키지 기본 20,000원 김장추가 7,500원(선택) 수미마을 체험 프로그램 34,000원 (선택)",
         store: "영농조합법인 수미마을/양평김장보쌈축제 추진위원회",
         tel: "031-775-5205",
-        img: "imgs/festival/img26.jpg",
+        img: "./imgs/festival/img26.jpg",
     },
     {
         id: "26",
@@ -429,7 +429,7 @@ let festivalData = [
         price: "무료(일부 체험프로그램 유료)",
         store: "경기도평생교육진흥원",
         tel: "02-550-2569",
-        img: "imgs/festival/img27.jpg",
+        img: "./imgs/festival/img27.jpg",
     },
 ];
 

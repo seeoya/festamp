@@ -146,7 +146,7 @@ const List = (props) => {
                 </div>
 
                 <Link to="/mypage" className="stamp">
-                    <img src="imgs/logo/stamp2.png" alt="마이페이지로" />
+                    <img src="./imgs/logo/stamp2.png" alt="마이페이지로" />
                 </Link>
             </div>
         </div >
