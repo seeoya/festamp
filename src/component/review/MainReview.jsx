@@ -78,7 +78,7 @@ const MainReview = (props) => {
             let isReview = JSON.stringify(reviewsArr);
 
             if (isReview.includes(festivalTitle)) {
-                if (isReview == logInId) {
+                if (isReview.includes(logInId)) {
                     alert(`이미 ${festivalTitle} 리뷰를 작성하셨습니다!`);
                 } else {
                     setIsShowWriteModal(true);
