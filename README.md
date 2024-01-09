@@ -1,6 +1,5 @@
 <h1>FESTAMP</h1>
-
-####(FESTIVAL + STAMP)
+<h5>(FESTIVAL + STAMP)</h5>
 
 FESTAMP https://seeoya.github.io/festamp/
 
