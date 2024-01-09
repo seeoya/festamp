@@ -67,9 +67,9 @@ Stamp 이벤트를 도입하여 축제 참여 유도와 지역 경제발전으�
 
 ### 참조
 ** Fastamp 주소  
-FESTAMP https://seeoya.github.io/festamp/
+https://seeoya.github.io/festamp/
 
-** 기획 문서(임시)  
+** 기획 문서  
 https://docs.google.com/document/d/1jgHqieCp1A0Apue23lpooUCO52j5oubIT-1w0af9DBU/edit?usp=sharing   
-** 일정표  
+** 일정표(엑셀)  
 https://docs.google.com/spreadsheets/d/1M2SXLV6LnX1kDpQ2XgQZQCUrE2nvvXg-xT9Y88UWTbQ/edit?usp=sharing
