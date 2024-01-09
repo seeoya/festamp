@@ -1,11 +1,11 @@
-  <h1>FESTAMP</h1>
-<h5>(FESTIVAL + STAMP)</h5>
+  #FESTAMP#
+#####(FESTIVAL + STAMP)#####
 
 <h5>[2023.12.26 ~ 2024.01.09]</h5>
 
-<h2>Festamp란?</h2>
-<h4>경기도 내 지역행사를 한눈에 알아볼 수 있도록 플랫폼을 제공하고,
-Stamp 이벤트를 도입하여 축제 참여 유도와 지역 경제발전으로 재순환 할 수 있는 사이트입니다.</h4>
+###Festamp란?###
+경기도 내 지역행사를 한눈에 알아볼 수 있도록 플랫폼을 제공하고,
+Stamp 이벤트를 도입하여 축제 참여 유도와 지역 경제발전으로 재순환 할 수 있는 사이트입니다.
 
 
 FESTAMP https://seeoya.github.io/festamp/
