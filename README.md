@@ -65,7 +65,7 @@ Stamp 이벤트를 도입하여 축제 참여 유도와 지역 경제발전으�
 * **사용 툴** : vscode, github, Local storage
 
 
-### 참조
+#### 참조
 ** Fastamp 주소  
 https://seeoya.github.io/festamp/
 
