@@ -5,7 +5,7 @@
 
 ### 🎆 Festamp란?
 축제인 Festival 과 도장의 Stamp의 합성어로써  
-경기도 내 지역행사를 한눈에 알아볼 수 있도록 플랫폼을 제공하고,  
+경기도 내 지역 행사를 한눈에 알아볼 수 있도록 플랫폼을 제공하고,  
 Stamp 이벤트를 도입하여 축제 참여 유도와 지역 경제발전으로 재순환을 돕기위해 제작되었습니다.
 
 
@@ -65,10 +65,11 @@ Stamp 이벤트를 도입하여 축제 참여 유도와 지역 경제발전으�
 * **사용 툴** : vscode, github, Local storage
 
 
-** Fastamp 주소
-
+### 참조
+** Fastamp 주소  
 FESTAMP https://seeoya.github.io/festamp/
 
-
-기획 문서(임시) https://docs.google.com/document/d/1jgHqieCp1A0Apue23lpooUCO52j5oubIT-1w0af9DBU/edit?usp=sharing   
-일정표 https://docs.google.com/spreadsheets/d/1M2SXLV6LnX1kDpQ2XgQZQCUrE2nvvXg-xT9Y88UWTbQ/edit?usp=sharing
+** 기획 문서(임시)  
+https://docs.google.com/document/d/1jgHqieCp1A0Apue23lpooUCO52j5oubIT-1w0af9DBU/edit?usp=sharing   
+** 일정표  
+https://docs.google.com/spreadsheets/d/1M2SXLV6LnX1kDpQ2XgQZQCUrE2nvvXg-xT9Y88UWTbQ/edit?usp=sharing
