@@ -3,7 +3,7 @@
 ##### React Project [2023.12.26 ~ 2024.01.09]
 
 
-### Festamp란?
+### 🎆 Festamp란?
 축제인 Festival 과 도장의 Stamp의 합성어로써  
 경기도 내 지역행사를 한눈에 알아볼 수 있도록 플랫폼을 제공하고,  
 Stamp 이벤트를 도입하여 축제 참여 유도와 지역 경제발전으로 재순환을 돕기위해 제작되었습니다.
@@ -59,8 +59,8 @@ Stamp 이벤트를 도입하여 축제 참여 유도와 지역 경제발전으�
 
 
 ### ⚙ 개발 환경
-* **사용언어** : HTML, CSS, Javascript, REACT.js
-* **라이브러리&API&플러그인** : Swiper.js, Font-awesome, Google Font, react-router, 카카오 지도 api
+* **사용언어** : HTML, CSS, Javascript
+* **라이브러리&API&플러그인** : REACT.js, Swiper.js, Font-awesome, Google Font, react-router, 카카오 지도 api
 * **데이터 베이스** : Local Storage
 * **사용 툴** : vscode, github, Local storage
 
