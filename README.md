@@ -17,6 +17,13 @@ Stamp 이벤트를 도입하여 축제 참여 유도와 지역 경제발전으�
 * **팀원2** : 송수나 - 회원 가입, 로그인/아웃, 개인정보수정, 회원탈퇴 기능 및 로컬스토리지 회원 DB 추가 및 관리
 * **팀원3** : 최희범 - 정보 수집, 더미 데이터 작성, 축제 리스트/검색 기능, 상세 뷰 페이지, 푸터, 페이지 스타일
 * **팀원4** : 최휘민 - 스타일 초안 작성, 스탬프/별점 기능 개발 및 모듈화, 마이 페이지, PPT작성
+  
+
+### ⚙ 개발 환경
+* **사용언어** : HTML, CSS, Javascript
+* **라이브러리&API&플러그인** : REACT.js, Swiper.js, Font-awesome, Google Font, react-router, 카카오 지도 api
+* **데이터 베이스** : Local Storage
+* **사용 툴** : vscode, github, Local storage
 
 ## 📌 주요 기능
 **회원가입**
@@ -57,12 +64,6 @@ Stamp 이벤트를 도입하여 축제 참여 유도와 지역 경제발전으�
 * 리뷰 작성, 읽기, 수정, 삭제(CRUD)
 
 
-
-### ⚙ 개발 환경
-* **사용언어** : HTML, CSS, Javascript
-* **라이브러리&API&플러그인** : REACT.js, Swiper.js, Font-awesome, Google Font, react-router, 카카오 지도 api
-* **데이터 베이스** : Local Storage
-* **사용 툴** : vscode, github, Local storage
 
 
 #### 참조
