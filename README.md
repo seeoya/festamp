@@ -9,15 +9,6 @@
 #### Stamp 이벤트를 도입하여 축제 참여 유도와 지역 경제발전으로 재순환 할 수 있는 사이트입니다.
 
 
-FESTAMP https://seeoya.github.io/festamp/
-
-
-2023.
-2024.
-2025.   12.
-       13.
-            26 ~
-            2024. 01. 08까지 진행된 REACT PROJECT, FESTAMP.
 
 ### 🧑‍🤝‍🧑 맴버 구성
 **그린 아카데미 Node.js & React 기반 풀스택 개발자 양성과정**
@@ -37,6 +28,10 @@ FESTAMP https://seeoya.github.io/festamp/
 
 
 내용 작성중
+
+
+
+FESTAMP https://seeoya.github.io/festamp/
 
 
 
