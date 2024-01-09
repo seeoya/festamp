@@ -2,7 +2,12 @@
 FESTAMP https://seeoya.github.io/festamp/
 
 
-2023. 12. 26 ~ 2024. 01. 08까지 진행된 REACT PROJECT, FESTAMP.
+2023.
+2024.
+2025.   12.
+       13.
+            26 ~
+            2024. 01. 08까지 진행된 REACT PROJECT, FESTAMP.
 
 불4조
 김수영, 김진희, 송수나, 최희범, 최휘민
